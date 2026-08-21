@@ -37,6 +37,7 @@
     body {
       background-color: #08090b;
       color: #e2e8f0;
+      overflow-x: hidden;
     }
     .glass-card {
       background: rgba(18, 22, 31, 0.65);
@@ -50,39 +51,46 @@
       box-shadow: 0 12px 40px -10px rgba(56, 189, 248, 0.15);
     }
     .hero-mesh {
-      background: radial-gradient(circle at 50% 20%, rgba(37, 99, 235, 0.12) 0%, transparent 60%),
-                  radial-gradient(circle at 80% 40%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
-                  radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.06) 0%, transparent 50%);
+      background: radial-gradient(circle at 50% 15%, rgba(37, 99, 235, 0.15) 0%, transparent 60%),
+                  radial-gradient(circle at 85% 35%, rgba(56, 189, 248, 0.1) 0%, transparent 50%),
+                  radial-gradient(circle at 15% 75%, rgba(37, 99, 235, 0.08) 0%, transparent 50%);
     }
-    .custom-scrollbar::-webkit-scrollbar {
-      width: 6px;
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
     }
-    .custom-scrollbar::-webkit-scrollbar-track {
-      background: #08090b;
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-      background: #1e293b;
-      border-radius: 9999px;
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
     .glow-box {
       box-shadow: 0 0 50px -10px rgba(56, 189, 248, 0.25);
     }
+    /* Prevent iOS zoom on input focus */
+    @media screen and (max-width: 768px) {
+      input, select, textarea {
+        font-size: 16px !important;
+      }
+    }
   </style>
 </head>
-<body class="font-sans antialiased selection:bg-brandCyan/20 selection:text-white custom-scrollbar overflow-x-hidden">
+<body class="font-sans antialiased selection:bg-brandCyan/20 selection:text-white">
 
   <!-- Floating Radial Glow Background -->
   <div class="fixed inset-0 pointer-events-none hero-mesh z-0"></div>
 
   <!-- Navigation Bar -->
-  <header class="fixed top-0 left-0 w-full z-50 bg-[#08090b]/80 backdrop-blur-lg border-b border-brandBorder">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-2 text-base font-bold tracking-wider uppercase text-white">
+  <header class="fixed top-0 left-0 w-full z-50 bg-[#08090b]/90 backdrop-blur-xl border-b border-brandBorder">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-1.5 text-sm sm:text-base font-bold tracking-wider uppercase text-white shrink-0">
         <span>Arvind Verma</span>
         <span class="text-neutral-500 font-normal">|</span>
-        <span class="text-xs text-brandCyan tracking-widest font-mono">Shopify Developer</span>
+        <span class="text-[11px] sm:text-xs text-brandCyan tracking-widest font-mono">Dev</span>
       </a>
-      <nav class="hidden md:flex items-center space-x-8 text-xs font-medium uppercase tracking-widest text-neutral-400">
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden lg:flex items-center space-x-6 xl:space-x-8 text-xs font-medium uppercase tracking-widest text-neutral-400">
         <a href="#hero" class="hover:text-brandCyan transition">Home</a>
         <a href="#metrics" class="hover:text-brandCyan transition">Metrics</a>
         <a href="#expertise" class="hover:text-brandCyan transition">Expertise</a>
@@ -91,112 +99,143 @@
         <a href="#architecture" class="hover:text-brandCyan transition">Architecture</a>
         <a href="#connect" class="text-brandCyan font-semibold hover:underline">Contact</a>
       </nav>
-      <a href="#connect" class="px-5 py-2 rounded-full border border-brandCyan/40 bg-brandCyan/10 text-brandCyan hover:bg-brandCyan hover:text-black font-semibold text-xs transition duration-300">
-        Let's Talk
-      </a>
+
+      <!-- Desktop Action & Mobile Toggle -->
+      <div class="flex items-center gap-3">
+        <a href="#connect" class="hidden sm:inline-flex px-4 py-2 rounded-full border border-brandCyan/40 bg-brandCyan/10 text-brandCyan hover:bg-brandCyan hover:text-black font-semibold text-xs transition duration-300">
+          Let's Talk
+        </a>
+
+        <!-- Mobile Hamburger Button -->
+        <button onclick="toggleMobileMenu()" id="menu-btn" class="lg:hidden p-2 rounded-lg text-neutral-400 hover:text-white hover:bg-white/5 transition" aria-label="Toggle Navigation">
+          <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Slide-Down Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden border-b border-brandBorder bg-[#0c0e14]/98 px-6 py-6 transition-all duration-300">
+      <div class="flex flex-col space-y-4 text-xs font-semibold uppercase tracking-widest text-neutral-300">
+        <a href="#hero" onclick="toggleMobileMenu()" class="py-2 border-b border-white/5 hover:text-brandCyan">Home</a>
+        <a href="#metrics" onclick="toggleMobileMenu()" class="py-2 border-b border-white/5 hover:text-brandCyan">Metrics</a>
+        <a href="#expertise" onclick="toggleMobileMenu()" class="py-2 border-b border-white/5 hover:text-brandCyan">Expertise</a>
+        <a href="#partnerships" onclick="toggleMobileMenu()" class="py-2 border-b border-white/5 hover:text-brandCyan">Partnerships</a>
+        <a href="#works" onclick="toggleMobileMenu()" class="py-2 border-b border-white/5 hover:text-brandCyan">Projects</a>
+        <a href="#architecture" onclick="toggleMobileMenu()" class="py-2 border-b border-white/5 hover:text-brandCyan">Architecture</a>
+        <a href="#connect" onclick="toggleMobileMenu()" class="py-2.5 text-center rounded-xl bg-gradient-to-r from-brandBlue to-brandCyan text-white font-bold tracking-wider mt-2">
+          Let's Talk ↗
+        </a>
+      </div>
     </div>
   </header>
 
-  <main class="relative z-10 pt-28">
+  <main class="relative z-10 pt-20 sm:pt-28">
 
     <!-- Hero Section -->
-    <section id="hero" class="relative max-w-7xl mx-auto px-6 pt-16 pb-20 text-center">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card border-brandBorder text-xs text-neutral-300 mb-8">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Open for Remote Opportunities, Contracts & Freelance Projects
+    <section id="hero" class="relative max-w-7xl mx-auto px-4 sm:px-6 pt-10 sm:pt-16 pb-16 sm:pb-20 text-center">
+      
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card border-brandBorder text-[11px] sm:text-xs text-neutral-300 mb-6 sm:mb-8 text-left max-w-full">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0 animate-pulse"></span> 
+        <span class="truncate">Open for Remote Positions, Contracts & Projects</span>
       </div>
 
-      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight uppercase max-w-4xl mx-auto leading-tight sm:leading-snug">
+      <h1 class="text-2xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight uppercase max-w-4xl mx-auto leading-snug sm:leading-tight">
         Fast, Responsive & High-Converting <br class="hidden sm:inline">
         <span class="bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-brandCyan">
           Shopify Stores
         </span> Built for Scale.
       </h1>
 
-      <p class="mt-6 text-base sm:text-lg text-neutral-400 max-w-2xl mx-auto font-light leading-relaxed">
+      <p class="mt-4 sm:mt-6 text-sm sm:text-lg text-neutral-400 max-w-2xl mx-auto font-light leading-relaxed px-2">
         Specializing in custom Liquid architecture, performance engineering, secure payment gateway integrations, and technical SEO for modern D2C brands.
       </p>
 
-      <div class="mt-10 flex flex-wrap justify-center items-center gap-4">
-        <a href="#works" class="px-8 py-3.5 rounded-lg bg-gradient-to-r from-blue-600 to-sky-500 text-white font-semibold text-xs tracking-wider uppercase shadow-lg shadow-blue-500/20 hover:opacity-95 transition">
+      <div class="mt-8 sm:mt-10 flex flex-col sm:flex-row justify-center items-center gap-3.5 sm:gap-4 w-full px-4 max-w-md sm:max-w-none mx-auto">
+        <a href="#works" class="w-full sm:w-auto px-7 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-sky-500 text-white font-semibold text-xs tracking-wider uppercase shadow-lg shadow-blue-500/20 hover:opacity-95 transition text-center">
           Explore Selected Works
         </a>
-        <a href="#connect" class="px-8 py-3.5 rounded-lg glass-card text-brandCyan font-semibold text-xs tracking-wider uppercase border border-brandCyan/30 hover:border-brandCyan transition">
+        <a href="#connect" class="w-full sm:w-auto px-7 py-3 rounded-xl glass-card text-brandCyan font-semibold text-xs tracking-wider uppercase border border-brandCyan/30 hover:border-brandCyan transition text-center">
           Hire / Collaborate
         </a>
       </div>
     </section>
 
     <!-- Performance & Impact Metrics -->
-    <section id="metrics" class="py-12 border-y border-brandBorder bg-black/40">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          <div class="p-6 glass-card rounded-xl">
-            <p class="text-3xl sm:text-4xl font-extrabold font-mono text-white mb-1"><span class="text-brandCyan">40</span>+</p>
-            <p class="text-xs uppercase tracking-widest text-neutral-400 font-semibold">Stores Built & Custom</p>
+    <section id="metrics" class="py-10 sm:py-12 border-y border-brandBorder bg-black/40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 text-center">
+          <div class="p-4 sm:p-6 glass-card rounded-xl">
+            <p class="text-2xl sm:text-4xl font-extrabold font-mono text-white mb-1"><span class="text-brandCyan">40</span>+</p>
+            <p class="text-[10px] sm:text-xs uppercase tracking-widest text-neutral-400 font-semibold">Stores Built</p>
           </div>
-          <div class="p-6 glass-card rounded-xl">
-            <p class="text-3xl sm:text-4xl font-extrabold font-mono text-white mb-1"><span class="text-brandCyan">30</span>+</p>
-            <p class="text-xs uppercase tracking-widest text-neutral-400 font-semibold">Brands & Clients</p>
+          <div class="p-4 sm:p-6 glass-card rounded-xl">
+            <p class="text-2xl sm:text-4xl font-extrabold font-mono text-white mb-1"><span class="text-brandCyan">30</span>+</p>
+            <p class="text-[10px] sm:text-xs uppercase tracking-widest text-neutral-400 font-semibold">Brands Served</p>
           </div>
-          <div class="p-6 glass-card rounded-xl">
-            <p class="text-3xl sm:text-4xl font-extrabold font-mono text-white mb-1">&lt;<span class="text-brandCyan">1.2</span>s</p>
-            <p class="text-xs uppercase tracking-widest text-neutral-400 font-semibold">Core Web Vitals Speed</p>
+          <div class="p-4 sm:p-6 glass-card rounded-xl">
+            <p class="text-2xl sm:text-4xl font-extrabold font-mono text-white mb-1">&lt;<span class="text-brandCyan">1.2</span>s</p>
+            <p class="text-[10px] sm:text-xs uppercase tracking-widest text-neutral-400 font-semibold">Speed Benchmark</p>
           </div>
-          <div class="p-6 glass-card rounded-xl">
-            <p class="text-3xl sm:text-4xl font-extrabold font-mono text-white mb-1"><span class="text-brandCyan">100</span>%</p>
-            <p class="text-xs uppercase tracking-widest text-neutral-400 font-semibold">Clean Code Architecture</p>
+          <div class="p-4 sm:p-6 glass-card rounded-xl">
+            <p class="text-2xl sm:text-4xl font-extrabold font-mono text-white mb-1"><span class="text-brandCyan">100</span>%</p>
+            <p class="text-[10px] sm:text-xs uppercase tracking-widest text-neutral-400 font-semibold">Clean Code</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Core Expertise Cards -->
-    <section id="expertise" class="py-24 border-b border-brandBorder">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16">
-          <h2 class="text-2xl sm:text-3xl font-extrabold uppercase tracking-widest text-white">Core Capabilities</h2>
-          <p class="text-neutral-500 text-xs font-mono tracking-widest mt-2 uppercase">End-to-End Technical Delivery for Modern E-Commerce</p>
+    <section id="expertise" class="py-16 sm:py-24 border-b border-brandBorder">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12 sm:mb-16">
+          <h2 class="text-xl sm:text-3xl font-extrabold uppercase tracking-widest text-white">Core Capabilities</h2>
+          <p class="text-neutral-500 text-[11px] sm:text-xs font-mono tracking-widest mt-2 uppercase">End-to-End Technical Delivery for Modern E-Commerce</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="glass-card p-6 rounded-2xl">
-            <div class="text-2xl mb-3">🛠️</div>
-            <h3 class="text-base font-bold text-white mb-2">Custom Themes & Liquid</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div class="glass-card p-5 sm:p-6 rounded-2xl">
+            <div class="text-2xl mb-2 sm:mb-3">🛠️</div>
+            <h3 class="text-sm sm:text-base font-bold text-white mb-1 sm:mb-2">Custom Themes & Liquid</h3>
             <p class="text-xs text-neutral-400 leading-relaxed">
               Bespoke Liquid section schemas, dynamic drawer checkouts, custom product options, and lightweight modular layouts built from scratch.
             </p>
           </div>
-          <div class="glass-card p-6 rounded-2xl">
-            <div class="text-2xl mb-3">💳</div>
-            <h3 class="text-base font-bold text-white mb-2">Payment Gateway Integration</h3>
+          <div class="glass-card p-5 sm:p-6 rounded-2xl">
+            <div class="text-2xl mb-2 sm:mb-3">💳</div>
+            <h3 class="text-sm sm:text-base font-bold text-white mb-1 sm:mb-2">Payment Gateway Integration</h3>
             <p class="text-xs text-neutral-400 leading-relaxed">
               Direct checkout integrations enabling seamless domestic and global transactions with zero friction for shoppers.
             </p>
           </div>
-          <div class="glass-card p-6 rounded-2xl">
-            <div class="text-2xl mb-3">⚡</div>
-            <h3 class="text-base font-bold text-white mb-2">Speed & Core Web Vitals</h3>
+          <div class="glass-card p-5 sm:p-6 rounded-2xl">
+            <div class="text-2xl mb-2 sm:mb-3">⚡</div>
+            <h3 class="text-sm sm:text-base font-bold text-white mb-1 sm:mb-2">Speed & Core Web Vitals</h3>
             <p class="text-xs text-neutral-400 leading-relaxed">
               Aggressive script streamlining, vanilla JavaScript logic, lazy-loading pipelines, and asset optimization for maximum Lighthouse scores.
             </p>
           </div>
-          <div class="glass-card p-6 rounded-2xl">
-            <div class="text-2xl mb-3">🔍</div>
-            <h3 class="text-base font-bold text-white mb-2">Technical SEO Architecture</h3>
+          <div class="glass-card p-5 sm:p-6 rounded-2xl">
+            <div class="text-2xl mb-2 sm:mb-3">🔍</div>
+            <h3 class="text-sm sm:text-base font-bold text-white mb-1 sm:mb-2">Technical SEO Architecture</h3>
             <p class="text-xs text-neutral-400 leading-relaxed">
               JSON-LD structured data (Product, Organization, WebPage schema), clean metadata hooks, and canonical URL hygiene for search visibility.
             </p>
           </div>
-          <div class="glass-card p-6 rounded-2xl">
-            <div class="text-2xl mb-3">🔌</div>
-            <h3 class="text-base font-bold text-white mb-2">Custom App & API Integrations</h3>
+          <div class="glass-card p-5 sm:p-6 rounded-2xl">
+            <div class="text-2xl mb-2 sm:mb-3">🔌</div>
+            <h3 class="text-sm sm:text-base font-bold text-white mb-1 sm:mb-2">Custom App & API Integrations</h3>
             <p class="text-xs text-neutral-400 leading-relaxed">
               Connecting third-party logistics, ERPs, CRM platforms, and custom webhooks into Shopify workflows without adding code clutter.
             </p>
           </div>
-          <div class="glass-card p-6 rounded-2xl">
-            <div class="text-2xl mb-3">✨</div>
-            <h3 class="text-base font-bold text-white mb-2">Boutique UI/UX</h3>
+          <div class="glass-card p-5 sm:p-6 rounded-2xl">
+            <div class="text-2xl mb-2 sm:mb-3">✨</div>
+            <h3 class="text-sm sm:text-base font-bold text-white mb-1 sm:mb-2">Boutique UI/UX</h3>
             <p class="text-xs text-neutral-400 leading-relaxed">
               Quiet luxury aesthetic engineering, glassmorphism patterns, micro-interactions, and conversion-focused product storytelling.
             </p>
@@ -206,51 +245,51 @@
     </section>
 
     <!-- Certified Partner Ecosystem Section -->
-    <section id="partnerships" class="py-20 border-b border-brandBorder bg-black/50">
-      <div class="max-w-7xl mx-auto px-6">
+    <section id="partnerships" class="py-16 sm:py-20 border-b border-brandBorder bg-black/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
         
-        <div class="text-center mb-12">
-          <span class="px-3 py-1 rounded-full bg-brandCyan/10 border border-brandCyan/30 text-brandCyan font-mono text-xs uppercase tracking-widest">Integrations & Ecosystem</span>
-          <h2 class="text-2xl sm:text-3xl font-extrabold uppercase tracking-widest text-white mt-3">Certified Partner Integrations</h2>
+        <div class="text-center mb-10 sm:mb-12">
+          <span class="px-3 py-1 rounded-full bg-brandCyan/10 border border-brandCyan/30 text-brandCyan font-mono text-[11px] uppercase tracking-widest">Integrations & Ecosystem</span>
+          <h2 class="text-xl sm:text-3xl font-extrabold uppercase tracking-widest text-white mt-3">Certified Partner Integrations</h2>
           <p class="text-neutral-400 text-xs font-mono tracking-wider mt-2">Specialized in frictionless checkout and automated post-purchase logistics</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           
           <!-- Payment Partners -->
-          <div class="glass-card p-8 rounded-2xl border-brandBorder">
-            <div class="flex items-center gap-3 mb-6">
-              <span class="p-2.5 rounded-xl bg-brandCyan/10 text-brandCyan text-xl">💳</span>
+          <div class="glass-card p-5 sm:p-8 rounded-2xl border-brandBorder">
+            <div class="flex items-center gap-3 mb-5 sm:mb-6">
+              <span class="p-2 sm:p-2.5 rounded-xl bg-brandCyan/10 text-brandCyan text-lg sm:text-xl">💳</span>
               <div>
-                <h3 class="text-lg font-bold text-white">Payment Gateway Partners</h3>
-                <p class="text-xs text-neutral-400">1-Click Checkout, UPI, Cards, Net Banking & Global FX</p>
+                <h3 class="text-base sm:text-lg font-bold text-white">Payment Gateway Partners</h3>
+                <p class="text-[11px] sm:text-xs text-neutral-400">1-Click Checkout, UPI, Cards & Net Banking</p>
               </div>
             </div>
-            <div class="flex flex-wrap gap-2.5">
-              <span class="px-3.5 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-xs text-neutral-200 font-mono font-medium hover:border-brandCyan/40 transition">Razorpay</span>
-              <span class="px-3.5 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-xs text-neutral-200 font-mono font-medium hover:border-brandCyan/40 transition">Cashfree</span>
-              <span class="px-3.5 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-xs text-neutral-200 font-mono font-medium hover:border-brandCyan/40 transition">PayU</span>
-              <span class="px-3.5 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-xs text-neutral-200 font-mono font-medium hover:border-brandCyan/40 transition">GoKwik</span>
-              <span class="px-3.5 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-xs text-neutral-200 font-mono font-medium hover:border-brandCyan/40 transition">Shopflo</span>
-              <span class="px-3.5 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-xs text-neutral-200 font-mono font-medium hover:border-brandCyan/40 transition">PhonePe</span>
-              <span class="px-3.5 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-xs text-neutral-200 font-mono font-medium hover:border-brandCyan/40 transition">PayGlocal</span>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">Razorpay</span>
+              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">Cashfree</span>
+              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">PayU</span>
+              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">GoKwik</span>
+              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">Shopflo</span>
+              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">PhonePe</span>
+              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">PayGlocal</span>
             </div>
           </div>
 
           <!-- Logistics Partners -->
-          <div class="glass-card p-8 rounded-2xl border-brandBorder">
-            <div class="flex items-center gap-3 mb-6">
-              <span class="p-2.5 rounded-xl bg-brandCyan/10 text-brandCyan text-xl">🚚</span>
+          <div class="glass-card p-5 sm:p-8 rounded-2xl border-brandBorder">
+            <div class="flex items-center gap-3 mb-5 sm:mb-6">
+              <span class="p-2 sm:p-2.5 rounded-xl bg-brandCyan/10 text-brandCyan text-lg sm:text-xl">🚚</span>
               <div>
-                <h3 class="text-lg font-bold text-white">Shipping & Logistics Partners</h3>
-                <p class="text-xs text-neutral-400">Automated Order Fulfillment, Tracking & NDR Management</p>
+                <h3 class="text-base sm:text-lg font-bold text-white">Shipping & Logistics Partners</h3>
+                <p class="text-[11px] sm:text-xs text-neutral-400">Automated Fulfillment, Tracking & NDR</p>
               </div>
             </div>
-            <div class="flex flex-wrap gap-2.5">
-              <span class="px-3.5 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-xs text-neutral-200 font-mono font-medium hover:border-brandCyan/40 transition">Shipway</span>
-              <span class="px-3.5 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-xs text-neutral-200 font-mono font-medium hover:border-brandCyan/40 transition">Shiprocket</span>
-              <span class="px-3.5 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-xs text-neutral-200 font-mono font-medium hover:border-brandCyan/40 transition">Delhivery</span>
-              <span class="px-3.5 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-xs text-neutral-200 font-mono font-medium hover:border-brandCyan/40 transition">iThink Logistics</span>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">Shipway</span>
+              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">Shiprocket</span>
+              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">Delhivery</span>
+              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">iThink Logistics</span>
             </div>
           </div>
 
@@ -259,32 +298,32 @@
     </section>
 
     <!-- Selected Works / Portfolio Section -->
-    <section id="works" class="py-24 border-b border-brandBorder">
-      <div class="max-w-7xl mx-auto px-6">
+    <section id="works" class="py-16 sm:py-24 border-b border-brandBorder">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
         
-        <div class="text-center mb-12">
-          <h2 class="text-2xl sm:text-3xl font-extrabold uppercase tracking-widest text-white">Selected Works</h2>
-          <p class="text-neutral-500 text-xs font-mono tracking-widest mt-2 uppercase">Proven Across Footwear, Fashion, Jewellery, Home & Lifestyle</p>
+        <div class="text-center mb-8 sm:mb-12">
+          <h2 class="text-xl sm:text-3xl font-extrabold uppercase tracking-widest text-white">Selected Works</h2>
+          <p class="text-neutral-500 text-[11px] sm:text-xs font-mono tracking-widest mt-2 uppercase">Proven Across Footwear, Fashion, Jewellery, Home & Lifestyle</p>
           
-          <!-- Category Filter Buttons -->
-          <div class="flex flex-wrap justify-center gap-2 mt-8">
-            <button onclick="filterStores('all')" class="filter-btn active px-4 py-1.5 rounded-full text-xs font-medium border border-brandCyan bg-brandCyan/10 text-brandCyan transition" data-category="all">All Projects</button>
-            <button onclick="filterStores('footwear')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium border border-brandBorder glass-card text-neutral-400 hover:text-white transition" data-category="footwear">Footwear</button>
-            <button onclick="filterStores('fashion')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium border border-brandBorder glass-card text-neutral-400 hover:text-white transition" data-category="fashion">Apparel & Ethnic</button>
-            <button onclick="filterStores('jewelry')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium border border-brandBorder glass-card text-neutral-400 hover:text-white transition" data-category="jewelry">Jewellery</button>
-            <button onclick="filterStores('home')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium border border-brandBorder glass-card text-neutral-400 hover:text-white transition" data-category="home">Home & Living</button>
+          <!-- Category Filter Buttons (Horizontal Scrolling on Mobile) -->
+          <div class="flex overflow-x-auto no-scrollbar gap-2 mt-6 sm:mt-8 pb-2 justify-start sm:justify-center">
+            <button onclick="filterStores('all')" class="filter-btn active shrink-0 px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-medium border border-brandCyan bg-brandCyan/10 text-brandCyan transition" data-category="all">All Projects</button>
+            <button onclick="filterStores('footwear')" class="filter-btn shrink-0 px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-medium border border-brandBorder glass-card text-neutral-400 hover:text-white transition" data-category="footwear">Footwear</button>
+            <button onclick="filterStores('fashion')" class="filter-btn shrink-0 px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-medium border border-brandBorder glass-card text-neutral-400 hover:text-white transition" data-category="fashion">Apparel & Ethnic</button>
+            <button onclick="filterStores('jewelry')" class="filter-btn shrink-0 px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-medium border border-brandBorder glass-card text-neutral-400 hover:text-white transition" data-category="jewelry">Jewellery</button>
+            <button onclick="filterStores('home')" class="filter-btn shrink-0 px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-medium border border-brandBorder glass-card text-neutral-400 hover:text-white transition" data-category="home">Home & Living</button>
           </div>
         </div>
 
         <!-- Store Grid -->
-        <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           
           <!-- 1. Michael Angelo -->
-          <div class="project-item footwear glass-card rounded-2xl p-6 flex flex-col justify-between transition duration-300">
+          <div class="project-item footwear glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
             <div>
-              <div class="flex justify-between items-start mb-4">
-                <h3 class="text-xl font-bold text-white">Michael Angelo</h3>
-                <span class="px-2.5 py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Premium Footwear</span>
+              <div class="flex justify-between items-start mb-3 sm:mb-4">
+                <h3 class="text-lg sm:text-xl font-bold text-white">Michael Angelo</h3>
+                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Footwear</span>
               </div>
               <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Premium Footwear. High-density visual storytelling, bespoke product sections, and smooth checkout flow.</p>
             </div>
@@ -292,11 +331,11 @@
           </div>
 
           <!-- 2. Le Concept -->
-          <div class="project-item fashion glass-card rounded-2xl p-6 flex flex-col justify-between transition duration-300">
+          <div class="project-item fashion glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
             <div>
-              <div class="flex justify-between items-start mb-4">
-                <h3 class="text-xl font-bold text-white">Le Concept</h3>
-                <span class="px-2.5 py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Women's Wear</span>
+              <div class="flex justify-between items-start mb-3 sm:mb-4">
+                <h3 class="text-lg sm:text-xl font-bold text-white">Le Concept</h3>
+                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Women's Wear</span>
               </div>
               <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Women's Wear & Apparel. Clean grid aesthetics, fast-loading image pipelines, and modern product drawers.</p>
             </div>
@@ -304,11 +343,11 @@
           </div>
 
           <!-- 3. Spiffers -->
-          <div class="project-item footwear glass-card rounded-2xl p-6 flex flex-col justify-between transition duration-300">
+          <div class="project-item footwear glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
             <div>
-              <div class="flex justify-between items-start mb-4">
-                <h3 class="text-xl font-bold text-white">Spiffers</h3>
-                <span class="px-2.5 py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Footwear Brand</span>
+              <div class="flex justify-between items-start mb-3 sm:mb-4">
+                <h3 class="text-lg sm:text-xl font-bold text-white">Spiffers</h3>
+                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Footwear</span>
               </div>
               <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Footwear Brand. Responsive catalog layout, size selector matrix, and high-conversion product pages.</p>
             </div>
@@ -316,11 +355,11 @@
           </div>
 
           <!-- 4. Nikunj Niidhi Bajaj -->
-          <div class="project-item fashion glass-card rounded-2xl p-6 flex flex-col justify-between transition duration-300">
+          <div class="project-item fashion glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
             <div>
-              <div class="flex justify-between items-start mb-4">
-                <h3 class="text-xl font-bold text-white">Nikunj Niidhi Bajaj</h3>
-                <span class="px-2.5 py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Women Ethnic Wear</span>
+              <div class="flex justify-between items-start mb-3 sm:mb-4">
+                <h3 class="text-lg sm:text-xl font-bold text-white">Nikunj Niidhi Bajaj</h3>
+                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Ethnic Wear</span>
               </div>
               <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Women Ethnic Wear. Bespoke navigation architecture, designer lookbooks, and smooth responsive menus.</p>
             </div>
@@ -328,10 +367,10 @@
           </div>
 
           <!-- 5. Loom & Story -->
-          <div class="project-item fashion glass-card rounded-2xl p-6 flex flex-col justify-between transition duration-300">
+          <div class="project-item fashion glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
             <div>
-              <div class="flex justify-between items-start mb-4">
-                <h3 class="text-xl font-bold text-white">Loom & Story</h3>
+              <div class="flex justify-between items-start mb-3 sm:mb-4">
+                <h3 class="text-lg sm:text-xl font-bold text-white">Loom & Story</h3>
                 <span class="px-2.5 py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Women's Wear</span>
               </div>
               <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Women's Wear. Refined textile storytelling, seamless mobile drawer checkout, and optimized Core Web Vitals.</p>
@@ -340,11 +379,11 @@
           </div>
 
           <!-- 6. Zaydn -->
-          <div class="project-item footwear glass-card rounded-2xl p-6 flex flex-col justify-between transition duration-300">
+          <div class="project-item footwear glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
             <div>
-              <div class="flex justify-between items-start mb-4">
-                <h3 class="text-xl font-bold text-white">Zaydn</h3>
-                <span class="px-2.5 py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Footwear Brand</span>
+              <div class="flex justify-between items-start mb-3 sm:mb-4">
+                <h3 class="text-lg sm:text-xl font-bold text-white">Zaydn</h3>
+                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Footwear</span>
               </div>
               <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Footwear Brand. Interactive product lore features, performance optimization, and custom Liquid components.</p>
             </div>
@@ -352,11 +391,11 @@
           </div>
 
           <!-- 7. Miira -->
-          <div class="project-item jewelry glass-card rounded-2xl p-6 flex flex-col justify-between transition duration-300">
+          <div class="project-item jewelry glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
             <div>
-              <div class="flex justify-between items-start mb-4">
-                <h3 class="text-xl font-bold text-white">Miira</h3>
-                <span class="px-2.5 py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Artificial Jewellery</span>
+              <div class="flex justify-between items-start mb-3 sm:mb-4">
+                <h3 class="text-lg sm:text-xl font-bold text-white">Miira</h3>
+                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Jewellery</span>
               </div>
               <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Artificial Jewellery. Elegant product showcases, high-resolution media galleries, and clean collection filters.</p>
             </div>
@@ -364,11 +403,11 @@
           </div>
 
           <!-- 8. Banarasiya -->
-          <div class="project-item fashion glass-card rounded-2xl p-6 flex flex-col justify-between transition duration-300">
+          <div class="project-item fashion glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
             <div>
-              <div class="flex justify-between items-start mb-4">
-                <h3 class="text-xl font-bold text-white">Banarasiya</h3>
-                <span class="px-2.5 py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Banarasi Saree Store</span>
+              <div class="flex justify-between items-start mb-3 sm:mb-4">
+                <h3 class="text-lg sm:text-xl font-bold text-white">Banarasiya</h3>
+                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Saree Store</span>
               </div>
               <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Banarasi Saree Store. Heritage aesthetic, custom hero sliders, swatch matrix selectors, and zero bloat.</p>
             </div>
@@ -376,11 +415,11 @@
           </div>
 
           <!-- 9. Vespera Homes -->
-          <div class="project-item home glass-card rounded-2xl p-6 flex flex-col justify-between transition duration-300">
+          <div class="project-item home glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
             <div>
-              <div class="flex justify-between items-start mb-4">
-                <h3 class="text-xl font-bold text-white">Vespera Homes</h3>
-                <span class="px-2.5 py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Home Decor</span>
+              <div class="flex justify-between items-start mb-3 sm:mb-4">
+                <h3 class="text-lg sm:text-xl font-bold text-white">Vespera Homes</h3>
+                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Home Decor</span>
               </div>
               <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Home Decor. Modular Liquid section schemas, structured metadata, and streamlined catalog UX.</p>
             </div>
@@ -388,11 +427,11 @@
           </div>
 
           <!-- 10. Sojanya -->
-          <div class="project-item fashion glass-card rounded-2xl p-6 flex flex-col justify-between transition duration-300">
+          <div class="project-item fashion glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
             <div>
-              <div class="flex justify-between items-start mb-4">
-                <h3 class="text-xl font-bold text-white">Sojanya</h3>
-                <span class="px-2.5 py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Men Ethnic Wear</span>
+              <div class="flex justify-between items-start mb-3 sm:mb-4">
+                <h3 class="text-lg sm:text-xl font-bold text-white">Sojanya</h3>
+                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Ethnic Wear</span>
               </div>
               <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Men Ethnic Wear. High-volume catalog architecture optimized for rapid navigation and checkout speed.</p>
             </div>
@@ -400,11 +439,11 @@
           </div>
 
           <!-- 11. Paakhi -->
-          <div class="project-item home glass-card rounded-2xl p-6 flex flex-col justify-between transition duration-300">
+          <div class="project-item home glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
             <div>
-              <div class="flex justify-between items-start mb-4">
-                <h3 class="text-xl font-bold text-white">Paakhi</h3>
-                <span class="px-2.5 py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Home Essentials</span>
+              <div class="flex justify-between items-start mb-3 sm:mb-4">
+                <h3 class="text-lg sm:text-xl font-bold text-white">Paakhi</h3>
+                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Essentials</span>
               </div>
               <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Home Essentials (Pillows, Covers, Bedsheets). Custom collection filtering and clean product variant setups.</p>
             </div>
@@ -412,11 +451,11 @@
           </div>
 
           <!-- 12. Taksh -->
-          <div class="project-item jewelry glass-card rounded-2xl p-6 flex flex-col justify-between transition duration-300">
+          <div class="project-item jewelry glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
             <div>
-              <div class="flex justify-between items-start mb-4">
-                <h3 class="text-xl font-bold text-white">Taksh</h3>
-                <span class="px-2.5 py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Bridal Jewelry</span>
+              <div class="flex justify-between items-start mb-3 sm:mb-4">
+                <h3 class="text-lg sm:text-xl font-bold text-white">Taksh</h3>
+                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Jewelry</span>
               </div>
               <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Premium Artificial & Bridal Jewelry. High-end luxury aesthetics, visual zoom, and polished product merchandising.</p>
             </div>
@@ -425,10 +464,10 @@
 
         </div>
 
-        <!-- Line under work showcasing volume -->
-        <div class="mt-14 text-center">
-          <p class="text-neutral-400 text-sm font-mono tracking-wide glass-card inline-block px-6 py-3 rounded-full border border-brandBorder">
-            ✨ There are many more websites I’ve delivered to clients across diverse e-commerce verticals.
+        <!-- Subtitle note under portfolio -->
+        <div class="mt-10 sm:mt-14 text-center">
+          <p class="text-neutral-400 text-xs sm:text-sm font-mono tracking-wide glass-card inline-block px-5 py-2.5 sm:px-6 sm:py-3 rounded-full border border-brandBorder">
+            ✨ There are many more websites I’ve delivered across diverse industries.
           </p>
         </div>
 
@@ -436,29 +475,32 @@
     </section>
 
     <!-- Liquid & Technical Stack Section -->
-    <section id="architecture" class="py-24 border-b border-brandBorder bg-black/60">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <section id="architecture" class="py-16 sm:py-24 border-b border-brandBorder bg-black/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
           
           <div>
-            <span class="px-3 py-1 rounded-full bg-brandCyan/10 border border-brandCyan/30 text-brandCyan font-mono text-xs uppercase tracking-widest">Engineering Standard</span>
+            <span class="px-3 py-1 rounded-full bg-brandCyan/10 border border-brandCyan/30 text-brandCyan font-mono text-[11px] uppercase tracking-widest">Engineering Standard</span>
             <h2 class="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-white mt-4 leading-snug">
               Engineered Clean. <br>
               Zero App Overhead.
             </h2>
-            <p class="text-neutral-400 text-sm leading-relaxed mt-4">
+            <p class="text-neutral-400 text-xs sm:text-sm leading-relaxed mt-4">
               I eliminate third-party app dependencies by writing custom section schemas, native JavaScript AJAX cart interactions, and JSON-LD structured data directly into the theme files.
             </p>
 
-            <div class="mt-8 space-y-4 font-mono text-xs">
-              <div class="flex items-center gap-3 text-neutral-300">
-                <span class="text-emerald-400">✔</span> Custom Shopify Section Schemas with Live Merchant Settings
+            <div class="mt-6 sm:mt-8 space-y-3 sm:space-y-4 font-mono text-xs">
+              <div class="flex items-start gap-3 text-neutral-300">
+                <span class="text-emerald-400 shrink-0">✔</span> 
+                <span>Custom Shopify Section Schemas with Live Merchant Settings</span>
               </div>
-              <div class="flex items-center gap-3 text-neutral-300">
-                <span class="text-emerald-400">✔</span> Gateway Integration: Razorpay, GoKwik, Cashfree, PayU, Shopflo, PhonePe & PayGlocal
+              <div class="flex items-start gap-3 text-neutral-300">
+                <span class="text-emerald-400 shrink-0">✔</span> 
+                <span>Gateway Integration: Razorpay, GoKwik, Cashfree, PayU, Shopflo, PhonePe & PayGlocal</span>
               </div>
-              <div class="flex items-center gap-3 text-neutral-300">
-                <span class="text-emerald-400">✔</span> Technical SEO: JSON-LD Structured Data & Organization Schemas
+              <div class="flex items-start gap-3 text-neutral-300">
+                <span class="text-emerald-400 shrink-0">✔</span> 
+                <span>Technical SEO: JSON-LD Structured Data & Organization Schemas</span>
               </div>
             </div>
           </div>
@@ -473,7 +515,7 @@
               </div>
               <span class="font-mono text-[11px] text-neutral-400">snippets/seo-structured-data.liquid</span>
             </div>
-            <div class="p-6 font-mono text-xs leading-relaxed overflow-x-auto text-neutral-300 bg-[#08090b]/90">
+            <div class="p-4 sm:p-6 font-mono text-[11px] sm:text-xs leading-relaxed overflow-x-auto text-neutral-300 bg-[#08090b]/90">
               <p><span class="text-purple-400">&lt;script</span> <span class="text-brandCyan">type=</span><span class="text-amber-300">"application/ld+json"</span><span class="text-purple-400">&gt;</span></p>
               <p class="text-neutral-400 pl-4">{</p>
               <p class="text-neutral-400 pl-8"><span class="text-blue-400">"@context"</span>: <span class="text-amber-300">"https://schema.org"</span>,</p>
@@ -489,16 +531,16 @@
       </div>
     </section>
 
-    <!-- Direct Email Submission Form Section with New Fields -->
-    <section id="connect" class="py-24 border-b border-brandBorder relative">
-      <div class="max-w-4xl mx-auto px-6">
-        <div class="glass-card glow-box rounded-3xl p-8 sm:p-12 border-brandCyan/30 relative">
+    <!-- Direct Email Submission Form Section -->
+    <section id="connect" class="py-16 sm:py-24 border-b border-brandBorder relative">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="glass-card glow-box rounded-3xl p-6 sm:p-12 border-brandCyan/30 relative">
           
-          <div class="text-center mb-10">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brandCyan/10 border border-brandCyan/30 text-brandCyan text-xs uppercase tracking-widest font-mono mb-4">
+          <div class="text-center mb-8 sm:mb-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brandCyan/10 border border-brandCyan/30 text-brandCyan text-[11px] uppercase tracking-widest font-mono mb-4">
               Get in Touch
             </div>
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-white uppercase tracking-tight">
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-white uppercase tracking-tight">
               Let's Build Your Store
             </h2>
             <p class="text-neutral-400 text-xs sm:text-sm mt-2 max-w-lg mx-auto">
@@ -507,8 +549,8 @@
           </div>
 
           <!-- Contact Form -->
-          <form id="portfolio-form" onsubmit="submitViaGoogleScript(event)" class="space-y-5">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <form id="portfolio-form" onsubmit="submitViaGoogleScript(event)" class="space-y-4 sm:space-y-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
               <div>
                 <label class="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">Your Name *</label>
                 <input 
@@ -531,7 +573,7 @@
               </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
               <div>
                 <label class="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">Phone / WhatsApp Number</label>
                 <input 
@@ -547,13 +589,13 @@
                   type="text" 
                   id="form-company" 
                   required 
-                  placeholder="e.g. VindX / Brand Name"
+                  placeholder="e.g. Brand Name"
                   class="w-full px-4 py-3 rounded-xl bg-black/60 border border-brandBorder text-white text-sm focus:outline-none focus:border-brandCyan transition font-sans"
                 />
               </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
               <div>
                 <label class="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">Website URL (if applicable)</label>
                 <input 
@@ -601,11 +643,11 @@
           </form>
 
           <!-- Direct Email Copy Highlight Below Form -->
-          <div class="mt-10 pt-8 border-t border-brandBorder flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+          <div class="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-brandBorder flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-xs">
             <span class="text-neutral-400">Prefer direct email?</span>
-            <div class="flex items-center gap-3">
-              <span class="text-brandCyan font-mono">letswork.arvind@gmail.com</span>
-              <button onclick="copyEmail('letswork.arvind@gmail.com', 'quick-copy')" id="quick-copy" class="text-[10px] uppercase font-mono px-2 py-1 bg-white/5 border border-white/10 rounded text-neutral-400 hover:text-white transition">Copy</button>
+            <div class="flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-between sm:justify-start bg-black/40 sm:bg-transparent px-3 py-2 sm:p-0 rounded-lg border border-brandBorder sm:border-none">
+              <span class="text-brandCyan font-mono text-[11px] sm:text-xs truncate">letswork.arvind@gmail.com</span>
+              <button onclick="copyEmail('letswork.arvind@gmail.com', 'quick-copy')" id="quick-copy" class="text-[10px] uppercase font-mono px-2 py-1 bg-white/5 border border-white/10 rounded text-neutral-300 hover:text-white transition shrink-0">Copy</button>
             </div>
           </div>
 
@@ -614,17 +656,17 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-16 bg-black">
-      <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-        <div class="text-center md:text-left">
+    <footer class="py-12 sm:py-16 bg-black">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+        <div>
           <p class="text-white font-semibold text-sm">Arvind Verma</p>
           <p class="text-xs text-neutral-500 mt-1 font-mono">Shopify Developer & E-Commerce Specialist</p>
         </div>
 
-        <div class="flex items-center gap-6 text-xs text-neutral-400">
+        <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-6 text-xs text-neutral-400">
           <a href="https://www.linkedin.com/in/arvind-verma-5061a3228" target="_blank" class="hover:text-brandCyan transition">LinkedIn Profile</a>
-          <span class="text-neutral-700">•</span>
-          <span class="font-mono text-neutral-500">CRAFTED WITH CARE BY VINDX</span>
+          <span class="text-neutral-700 hidden sm:inline">•</span>
+          <span class="font-mono text-neutral-500 text-[11px] sm:text-xs">CRAFTED WITH CARE BY VINDX</span>
         </div>
       </div>
     </footer>
@@ -633,7 +675,18 @@
 
   <!-- Interactive JavaScript -->
   <script>
-    // Direct Google Apps Script Submitter with Expanded Fields
+    // Toggle Mobile Navigation Drawer
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const openIcon = document.getElementById('menu-icon-open');
+      const closeIcon = document.getElementById('menu-icon-close');
+
+      menu.classList.toggle('hidden');
+      openIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    }
+
+    // Direct Google Apps Script Submitter
     async function submitViaGoogleScript(e) {
       e.preventDefault();
       
