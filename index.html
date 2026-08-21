@@ -489,7 +489,7 @@
       </div>
     </section>
 
-    <!-- Direct Email Submission Form Section -->
+    <!-- Direct Email Submission Form Section with New Fields -->
     <section id="connect" class="py-24 border-b border-brandBorder relative">
       <div class="max-w-4xl mx-auto px-6">
         <div class="glass-card glow-box rounded-3xl p-8 sm:p-12 border-brandCyan/30 relative">
@@ -542,12 +542,37 @@
                 />
               </div>
               <div>
+                <label class="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">Company/Brand Name *</label>
+                <input 
+                  type="text" 
+                  id="form-company" 
+                  required 
+                  placeholder="e.g. VindX / Brand Name"
+                  class="w-full px-4 py-3 rounded-xl bg-black/60 border border-brandBorder text-white text-sm focus:outline-none focus:border-brandCyan transition font-sans"
+                />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">Website URL (if applicable)</label>
+                <input 
+                  type="url" 
+                  id="form-website" 
+                  placeholder="https://yourbrand.com"
+                  class="w-full px-4 py-3 rounded-xl bg-black/60 border border-brandBorder text-white text-sm focus:outline-none focus:border-brandCyan transition font-sans"
+                />
+              </div>
+              <div>
                 <label class="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">Service Required</label>
                 <select id="form-service" class="w-full px-4 py-3 rounded-xl bg-black/60 border border-brandBorder text-neutral-300 text-sm focus:outline-none focus:border-brandCyan transition font-sans">
                   <option value="Web Development (Shopify, Wordpress, Custom)">Web Development (Shopify, Wordpress, Custom)</option>
-                  <option value="Shopify Theme Customization & Liquid">Shopify Theme Customization & Liquid</option>
-                  <option value="Speed Optimization & Core Web Vitals">Speed Optimization & Core Web Vitals</option>
-                  <option value="Full-Time Remote / Contract Role">Full-Time Remote / Contract Role</option>
+                  <option value="SEO">SEO</option>
+                  <option value="Paid Ads (Google, Meta, etc.)">Paid Ads (Google, Meta, etc.)</option>
+                  <option value="Graphic Design">Graphic Design</option>
+                  <option value="Video Editing">Video Editing</option>
+                  <option value="Social Media Marketing">Social Media Marketing</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
             </div>
@@ -608,7 +633,7 @@
 
   <!-- Interactive JavaScript -->
   <script>
-    // Direct Google Apps Script Submitter
+    // Direct Google Apps Script Submitter with Expanded Fields
     async function submitViaGoogleScript(e) {
       e.preventDefault();
       
@@ -620,6 +645,8 @@
       const nameVal    = document.getElementById('form-name').value;
       const emailVal   = document.getElementById('form-email').value;
       const phoneVal   = document.getElementById('form-phone').value;
+      const companyVal = document.getElementById('form-company').value;
+      const websiteVal = document.getElementById('form-website').value;
       const serviceVal = document.getElementById('form-service').value;
       const messageVal = document.getElementById('form-message').value;
 
@@ -630,6 +657,8 @@
         name: nameVal,
         email: emailVal,
         phone: phoneVal,
+        company: companyVal,
+        website: websiteVal,
         service: serviceVal,
         message: messageVal
       };
