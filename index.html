@@ -489,53 +489,100 @@
       </div>
     </section>
 
-    <!-- Dedicated Dual-Email Contact Highlight Card -->
+    <!-- Dedicated Contact Form Connected to Google Forms -->
     <section id="connect" class="py-24 border-b border-brandBorder relative">
-      <div class="max-w-5xl mx-auto px-6">
-        <div class="glass-card glow-box rounded-3xl p-8 sm:p-14 text-center border-brandCyan/30 relative overflow-hidden">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="glass-card glow-box rounded-3xl p-8 sm:p-12 border-brandCyan/30 relative">
           
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brandCyan/10 border border-brandCyan/30 text-brandCyan text-xs uppercase tracking-widest font-mono mb-6">
-            Open For Work & Collaborations
-          </div>
-
-          <h2 class="text-3xl sm:text-5xl font-extrabold text-white uppercase tracking-tight leading-tight">
-            Have a Project or Role in Mind?
-          </h2>
-          <p class="text-neutral-400 text-sm sm:text-base max-w-xl mx-auto mt-4 leading-relaxed">
-            Available for remote developer positions, freelance store builds, speed optimizations, and long-term contracts.
-          </p>
-
-          <!-- Email Copy Card 1 -->
-          <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-xl mx-auto">
-            <div class="w-full sm:w-auto flex-1 bg-black/60 border border-brandBorder rounded-xl px-5 py-3.5 flex items-center justify-between gap-3 font-mono text-sm text-white">
-              <span id="email-text-1" class="text-brandCyan select-all">letswork.arvind@gmail.com</span>
-              <button onclick="copyEmail('letswork.arvind@gmail.com', 'btn-1')" id="btn-1" class="text-xs uppercase tracking-wider text-neutral-400 hover:text-white px-2 py-1 rounded bg-white/5 border border-white/10 transition">
-                Copy
-              </button>
+          <div class="text-center mb-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brandCyan/10 border border-brandCyan/30 text-brandCyan text-xs uppercase tracking-widest font-mono mb-4">
+              Get in Touch
             </div>
-            <a href="mailto:letswork.arvind@gmail.com" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-gradient-to-r from-brandBlue to-brandCyan text-white font-bold text-xs tracking-wider uppercase shadow-lg shadow-sky-500/20 hover:opacity-95 transition flex items-center justify-center gap-2">
-              <span>Send Mail</span>
-              <span>↗</span>
-            </a>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white uppercase tracking-tight">
+              Let's Build Your Store
+            </h2>
+            <p class="text-neutral-400 text-xs sm:text-sm mt-2 max-w-lg mx-auto">
+              Share your project details, store requirements, or open remote role below.
+            </p>
           </div>
 
-          <!-- Email Copy Card 2 -->
-          <div class="mt-3 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-xl mx-auto">
-            <div class="w-full sm:w-auto flex-1 bg-black/60 border border-brandBorder rounded-xl px-5 py-3.5 flex items-center justify-between gap-3 font-mono text-sm text-white">
-              <span id="email-text-2" class="text-neutral-300 select-all">grow.vindx@gmail.com</span>
-              <button onclick="copyEmail('grow.vindx@gmail.com', 'btn-2')" id="btn-2" class="text-xs uppercase tracking-wider text-neutral-400 hover:text-white px-2 py-1 rounded bg-white/5 border border-white/10 transition">
-                Copy
-              </button>
+          <!-- Contact Form -->
+          <form id="portfolio-form" onsubmit="submitToGoogleForm(event)" class="space-y-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">Your Name *</label>
+                <input 
+                  type="text" 
+                  id="form-name" 
+                  required 
+                  placeholder="e.g. Rahul Sharma"
+                  class="w-full px-4 py-3 rounded-xl bg-black/60 border border-brandBorder text-white text-sm focus:outline-none focus:border-brandCyan transition font-sans"
+                />
+              </div>
+              <div>
+                <label class="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">Email Address *</label>
+                <input 
+                  type="email" 
+                  id="form-email" 
+                  required 
+                  placeholder="name@company.com"
+                  class="w-full px-4 py-3 rounded-xl bg-black/60 border border-brandBorder text-white text-sm focus:outline-none focus:border-brandCyan transition font-sans"
+                />
+              </div>
             </div>
-            <a href="mailto:grow.vindx@gmail.com" class="w-full sm:w-auto px-6 py-3.5 rounded-xl border border-brandBorder glass-card text-neutral-300 hover:text-white font-bold text-xs tracking-wider uppercase transition flex items-center justify-center gap-2">
-              <span>Alt Mail</span>
-              <span>↗</span>
-            </a>
-          </div>
 
-          <p id="copy-toast" class="text-xs text-emerald-400 font-mono mt-4 opacity-0 transition-opacity duration-300">
-            ✓ Copied to clipboard!
-          </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">Phone / WhatsApp Number</label>
+                <input 
+                  type="tel" 
+                  id="form-phone" 
+                  placeholder="+91 98765 43210"
+                  class="w-full px-4 py-3 rounded-xl bg-black/60 border border-brandBorder text-white text-sm focus:outline-none focus:border-brandCyan transition font-sans"
+                />
+              </div>
+              <div>
+                <label class="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">Service Required</label>
+                <select id="form-service" class="w-full px-4 py-3 rounded-xl bg-black/60 border border-brandBorder text-neutral-300 text-sm focus:outline-none focus:border-brandCyan transition font-sans">
+                  <option value="Web Development (Shopify, Wordpress, Custom)">Web Development (Shopify, Wordpress, Custom)</option>
+                  <option value="Shopify Theme Customization & Liquid">Shopify Theme Customization & Liquid</option>
+                  <option value="Speed Optimization & Core Web Vitals">Speed Optimization & Core Web Vitals</option>
+                  <option value="Full-Time Remote / Contract Role">Full-Time Remote / Contract Role</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">Project Brief / Message *</label>
+              <textarea 
+                id="form-message" 
+                rows="4" 
+                required 
+                placeholder="Tell me about your project scope, timeline, or links..."
+                class="w-full px-4 py-3 rounded-xl bg-black/60 border border-brandBorder text-white text-sm focus:outline-none focus:border-brandCyan transition font-sans"
+              ></textarea>
+            </div>
+
+            <button 
+              type="submit" 
+              id="submit-btn" 
+              class="w-full py-3.5 rounded-xl bg-gradient-to-r from-brandBlue to-brandCyan text-white font-bold text-xs tracking-wider uppercase shadow-lg shadow-sky-500/20 hover:opacity-95 transition flex items-center justify-center gap-2"
+            >
+              <span>Send Message</span>
+              <span>→</span>
+            </button>
+
+            <p id="form-status" class="text-xs text-center font-mono mt-3 hidden"></p>
+          </form>
+
+          <!-- Direct Email Copy Highlight Below Form -->
+          <div class="mt-10 pt-8 border-t border-brandBorder flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+            <span class="text-neutral-400">Prefer direct email?</span>
+            <div class="flex items-center gap-3">
+              <span class="text-brandCyan font-mono">letswork.arvind@gmail.com</span>
+              <button onclick="copyEmail('letswork.arvind@gmail.com', 'quick-copy')" id="quick-copy" class="text-[10px] uppercase font-mono px-2 py-1 bg-white/5 border border-white/10 rounded text-neutral-400 hover:text-white transition">Copy</button>
+            </div>
+          </div>
 
         </div>
       </div>
@@ -561,20 +608,68 @@
 
   <!-- Interactive JavaScript -->
   <script>
+    // Direct Google Form Integration Handler
+    async function submitToGoogleForm(e) {
+      e.preventDefault();
+      
+      const submitBtn = document.getElementById('submit-btn');
+      const statusMsg = document.getElementById('form-status');
+      
+      const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfSvWfPG7h4rl7V3apdG4WZ8149RTNB-_Q3XzxiCK8ufsSbbg/formResponse";
+
+      const ENTRY_NAME    = "entry.2005620554";
+      const ENTRY_EMAIL   = "entry.1045781291";
+      const ENTRY_PHONE   = "entry.1166974658";
+      const ENTRY_SERVICE = "entry.188106857";
+      const ENTRY_MESSAGE = "entry.1028285095";
+
+      const nameVal    = document.getElementById('form-name').value;
+      const emailVal   = document.getElementById('form-email').value;
+      const phoneVal   = document.getElementById('form-phone').value;
+      const serviceVal = document.getElementById('form-service').value;
+      const messageVal = document.getElementById('form-message').value;
+
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Submitting...";
+
+      const formData = new FormData();
+      formData.append(ENTRY_NAME, nameVal);
+      formData.append(ENTRY_EMAIL, emailVal);
+      formData.append(ENTRY_PHONE, phoneVal);
+      formData.append(ENTRY_SERVICE, serviceVal);
+      formData.append(ENTRY_MESSAGE, messageVal);
+
+      try {
+        await fetch(FORM_URL, {
+          method: "POST",
+          mode: "no-cors",
+          body: formData
+        });
+
+        statusMsg.className = "text-xs text-center font-mono mt-3 text-emerald-400 block";
+        statusMsg.innerText = "✓ Thank you! Your message has been sent directly. I will get back to you shortly.";
+        document.getElementById('portfolio-form').reset();
+      } catch (err) {
+        statusMsg.className = "text-xs text-center font-mono mt-3 text-rose-400 block";
+        statusMsg.innerText = "Submission failed. Please connect directly at letswork.arvind@gmail.com";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `<span>Send Message</span> <span>→</span>`;
+      }
+    }
+
+    // Quick Copy Helper
     function copyEmail(email, btnId) {
       navigator.clipboard.writeText(email).then(() => {
-        const toast = document.getElementById('copy-toast');
         const btn = document.getElementById(btnId);
         btn.innerText = "Copied!";
-        toast.innerText = `✓ Copied ${email} to clipboard!`;
-        toast.style.opacity = '1';
         setTimeout(() => {
           btn.innerText = "Copy";
-          toast.style.opacity = '0';
-        }, 2500);
+        }, 2000);
       });
     }
 
+    // Project Filtering Engine
     function filterStores(category) {
       const items = document.querySelectorAll('.project-item');
       const buttons = document.querySelectorAll('.filter-btn');
