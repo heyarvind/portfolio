@@ -608,7 +608,7 @@
 
   <!-- Interactive JavaScript -->
   <script>
-    // Direct Google Form Integration Handler
+    // Direct Google Form Integration Handler (URLSearchParams Encoded)
     async function submitToGoogleForm(e) {
       e.preventDefault();
       
@@ -632,18 +632,21 @@
       submitBtn.disabled = true;
       submitBtn.innerText = "Submitting...";
 
-      const formData = new FormData();
-      formData.append(ENTRY_NAME, nameVal);
-      formData.append(ENTRY_EMAIL, emailVal);
-      formData.append(ENTRY_PHONE, phoneVal);
-      formData.append(ENTRY_SERVICE, serviceVal);
-      formData.append(ENTRY_MESSAGE, messageVal);
+      const params = new URLSearchParams();
+      params.append(ENTRY_NAME, nameVal);
+      params.append(ENTRY_EMAIL, emailVal);
+      params.append(ENTRY_PHONE, phoneVal);
+      params.append(ENTRY_SERVICE, serviceVal);
+      params.append(ENTRY_MESSAGE, messageVal);
 
       try {
         await fetch(FORM_URL, {
           method: "POST",
           mode: "no-cors",
-          body: formData
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: params.toString()
         });
 
         statusMsg.className = "text-xs text-center font-mono mt-3 text-emerald-400 block";
