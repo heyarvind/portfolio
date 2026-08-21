@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arvind Verma | Shopify Specialist & Architect</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brandDark: '#08090b',
+            brandSurface: 'rgba(18, 21, 28, 0.7)',
+            brandBorder: 'rgba(255, 255, 255, 0.08)',
+            brandCyan: '#38bdf8',
+            brandBlue: '#2563eb',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #08090b;
+      color: #e2e8f0;
+    }
+    .glass-card {
+      background: rgba(18, 22, 31, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+    .glass-card:hover {
+      border-color: rgba(56, 189, 248, 0.3);
+      box-shadow: 0 12px 40px -10px rgba(56, 189, 248, 0.15);
+    }
+    .hero-mesh {
+      background: radial-gradient(circle at 50% 20%, rgba(37, 99, 235, 0.12) 0%, transparent 60%),
+                  radial-gradient(circle at 80% 40%, rgba(56, 189, 248, 0.08) 0%, transparent 50%);
+    }
+    .code-glow {
+      text-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #08090b;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased selection:bg-brandCyan/20 selection:text-white custom-scrollbar overflow-x-hidden">
+
+  <!-- Floating Radial Glow Background -->
+  <div class="fixed inset-0 pointer-events-none hero-mesh z-0"></div>
+
+  <!-- Navigation Bar -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-[#08090b]/80 backdrop-blur-lg border-b border-brandBorder">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2 text-base font-bold tracking-wider uppercase text-white">
+        <span>Arvind Verma</span>
+        <span class="text-neutral-500 font-normal">|</span>
+        <span class="text-xs text-brandCyan tracking-widest font-mono">Shopify Specialist</span>
+      </a>
+      <nav class="hidden md:flex items-center space-x-8 text-xs font-medium uppercase tracking-widest text-neutral-400">
+        <a href="#hero" class="hover:text-brandCyan transition">Home</a>
+        <a href="#works" class="hover:text-brandCyan transition">Projects</a>
+        <a href="#philosophy" class="hover:text-brandCyan transition">Design Philosophy</a>
+        <a href="#skills" class="hover:text-brandCyan transition">Technical Stack</a>
+        <a href="#process" class="hover:text-brandCyan transition">Process</a>
+      </nav>
+      <a href="mailto:letswork.arvind@gmail.com" class="px-5 py-2 rounded-full border border-brandCyan/40 bg-brandCyan/10 text-brandCyan hover:bg-brandCyan hover:text-black font-semibold text-xs transition duration-300">
+        Start a Project
+      </a>
+    </div>
+  </header>
+
+  <main class="relative z-10 pt-28">
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative max-w-7xl mx-auto px-6 pt-16 pb-24 text-center">
+      
+      <!-- Ambient Liquid Code Mockup in Background -->
+      <div class="absolute inset-0 max-w-4xl mx-auto opacity-10 pointer-events-none font-mono text-left text-xs text-brandCyan overflow-hidden leading-relaxed select-none">
+        <code>
+          {% render 'product-hero-luxury', product: current_product %}<br>
+          class ShopifyArchitecture extends CustomExperience {<br>
+          &nbsp;&nbsp;constructor() {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;this.performance = 'Core-Web-Vitals-99+';<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;this.thirdPartyApps = 0; // Zero Bloatware<br>
+          &nbsp;&nbsp;}<br>
+          }
+        </code>
+      </div>
+
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card border-brandBorder text-xs text-neutral-300 mb-8">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Available for Remote Engagements & Bespoke Builds
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight uppercase max-w-4xl mx-auto leading-tight sm:leading-snug">
+        I Build Bespoke, High-Performance <br class="hidden sm:inline">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-brandCyan">
+          Shopify Storefronts
+        </span> For Premium Brands.
+      </h1>
+
+      <p class="mt-6 text-base sm:text-lg text-neutral-400 max-w-2xl mx-auto font-light leading-relaxed">
+        Curating experiences via code. Specializing in custom Liquid architecture, performance optimization, and refined D2C storefront solutions.
+      </p>
+
+      <div class="mt-10 flex justify-center items-center gap-4">
+        <a href="#works" class="px-8 py-3.5 rounded-lg bg-gradient-to-r from-blue-600 to-sky-500 text-white font-semibold text-xs tracking-wider uppercase shadow-lg shadow-blue-500/20 hover:opacity-95 transition">
+          Explore Works
+        </a>
+        <a href="https://www.linkedin.com/in/arvind-verma-5061a3228" target="_blank" class="px-8 py-3.5 rounded-lg glass-card text-neutral-300 font-semibold text-xs tracking-wider uppercase hover:text-white transition">
+          LinkedIn Profile
+        </a>
+      </div>
+    </section>
+
+    <!-- Selected Works / Portfolio Section with Dynamic Live Filter -->
+    <section id="works" class="py-24 border-t border-brandBorder">
+      <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="text-center mb-12">
+          <h2 class="text-2xl sm:text-3xl font-extrabold uppercase tracking-widest text-white">Selected Works</h2>
+          <p class="text-neutral-500 text-xs font-mono tracking-widest mt-2 uppercase">Engineered With Custom Liquid • HTML5 • Modern JS</p>
+          
+          <!-- Category Filter Buttons -->
+          <div class="flex flex-wrap justify-center gap-2 mt-8">
+            <button onclick="filterStores('all')" class="filter-btn active px-4 py-1.5 rounded-full text-xs font-medium border border-brandCyan bg-brandCyan/10 text-brandCyan transition" data-category="all">All Projects</button>
+            <button onclick="filterStores('fashion')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium border border-brandBorder glass-card text-neutral-400 hover:text-white transition" data-category="fashion">Fashion & Ethnic</button>
+            <button onclick="filterStores('lifestyle')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium border border-brandBorder glass-card text-neutral-400 hover:text-white transition" data-category="lifestyle">Home & Lifestyle</button>
+            <button onclick="filterStores('accessories')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium border border-brandBorder glass-card text-neutral-400 hover:text-white transition" data-category="accessories">Footwear & Accessories</button>
+          </div>
+        </div>
+
+        <!-- Store Grid -->
+        <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Zaydn -->
+          <div class="project-item fashion glass-card rounded-2xl p-6 flex flex-col justify-between transition duration-300">
+            <div>
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-bold text-white">Zaydn</h3>
+                <span class="px-2.5 py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Luxury D2C</span>
+              </div>
+              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Custom Lifestyle & Apparel. Implemented storytelling lore sections and interactive component logic.</p>
+            </div>
+            <a href="https://zaydns.com/" target="_blank" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+          </div>
+
+          <!-- Le Concept -->
+          <div class="project-item lifestyle glass-card rounded-2xl p-6 flex flex-col justify-between transition duration-300">
+            <div>
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-bold text-white">Le Concept</h3>
+                <span class="px-2.5 py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Minimal Decor</span>
+              </div>
+              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Contemporary Living. Engineered minimal grid systems and high-speed product galleries.</p>
+            </div>
+            <a href="https://www.leconcept.co.in/" target="_blank" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+          </div>
+
+          <!-- Vespera Homes -->
+          <div class="project-item lifestyle glass-card rounded-2xl p-6 flex flex-col justify-between transition duration-300">
+            <div>
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-bold text-white">Vespera Homes</h3>
+                <span class="px-2.5 py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Home & Living</span>
+              </div>
+              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Luxury Home Furnishings. Developed performant Liquid schemas and structured catalogs.</p>
+            </div>
+            <a href="https://www.vesperahomes.com/" target="_blank" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+          </div>
+
+          <!-- Banarasiya -->
+          <div class="project-item fashion glass-card rounded-2xl p-6 flex flex-col justify-between transition duration-300">
+            <div>
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-bold text-white">Banarasiya</h3>
+                <span class="px-2.5 py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Ethnic Wear</span>
+              </div>
+              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Heritage Couture. Custom hero sliders, swatch selectors, and zero-bloat UI components.</p>
+            </div>
+            <a href="https://banarasiya.in/" target="_blank" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+          </div>
+
+          <!-- Loom & Story -->
+          <div class="project-item lifestyle glass-card rounded-2xl p-6 flex flex-col justify-between transition duration-300">
+            <div>
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-bold text-white">Loom & Story</h3>
+                <span class="px-2.5 py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Boutique Textiles</span>
+              </div>
+              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Curated Weaves. Streamlined collection filtering and responsive mobile drawer checkout.</p>
+            </div>
+            <a href="https://loomandstory.com/" target="_blank" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+          </div>
+
+          <!-- Nikunj by Niidhi Bajaj -->
+          <div class="project-item fashion glass-card rounded-2xl p-6 flex flex-col justify-between transition duration-300">
+            <div>
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-bold text-white">Nikunj Niidhi Bajaj</h3>
+                <span class="px-2.5 py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Designer Wear</span>
+              </div>
+              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: High-End Fashion. Custom navigation architecture and optimized image loading pipelines.</p>
+            </div>
+            <a href="https://nikunjbyniidhibajaj.com/" target="_blank" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+          </div>
+
+          <!-- Overdrive Shoes -->
+          <div class="project-item accessories glass-card rounded-2xl p-6 flex flex-col justify-between transition duration-300">
+            <div>
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-bold text-white">Overdrive Shoes</h3>
+                <span class="px-2.5 py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Footwear</span>
+              </div>
+              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Performance Footwear. AJAX cart drawer integration and size matrix selectors.</p>
+            </div>
+            <a href="https://www.overdriveshoes.com/" target="_blank" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+          </div>
+
+          <!-- Sojanya -->
+          <div class="project-item fashion glass-card rounded-2xl p-6 flex flex-col justify-between transition duration-300">
+            <div>
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-bold text-white">Sojanya</h3>
+                <span class="px-2.5 py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Men's Ethnic</span>
+              </div>
+              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Apparel Scale. Catalog architecture designed to handle large product volumes with zero lag.</p>
+            </div>
+            <a href="https://sojanya.com/" target="_blank" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+          </div>
+
+          <!-- Michael Angelo -->
+          <div class="project-item accessories glass-card rounded-2xl p-6 flex flex-col justify-between transition duration-300">
+            <div>
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-bold text-white">Michael Angelo</h3>
+                <span class="px-2.5 py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Leather Goods</span>
+              </div>
+              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Bags & Accessories. Bespoke product sections with high-density visual storytelling.</p>
+            </div>
+            <a href="https://michaelangelo.in/" target="_blank" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Design Philosophy & Technical Stack -->
+    <section id="philosophy" class="py-24 border-t border-brandBorder">
+      <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        
+        <!-- Philosophy Column -->
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold uppercase tracking-widest text-white mb-6">Design Philosophy</h2>
+          <p class="text-neutral-400 leading-relaxed text-sm mb-8">
+            "Quiet luxury" in e-commerce web development means stripping away the unnecessary noise. It is an intentional balance of glassmorphic aesthetics, minimalist palettes, refined typography, and code written strictly for speed and conversions.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="glass-card p-4 rounded-xl text-center">
+              <div class="w-8 h-8 mx-auto mb-2 rounded-full bg-brandCyan/10 text-brandCyan flex items-center justify-center text-sm">⚡</div>
+              <h4 class="text-white text-xs font-semibold">Speed First</h4>
+              <p class="text-[11px] text-neutral-500 mt-1">Core Web Vitals focused optimization</p>
+            </div>
+            <div class="glass-card p-4 rounded-xl text-center">
+              <div class="w-8 h-8 mx-auto mb-2 rounded-full bg-brandCyan/10 text-brandCyan flex items-center justify-center text-sm">✨</div>
+              <h4 class="text-white text-xs font-semibold">Custom Code</h4>
+              <p class="text-[11px] text-neutral-500 mt-1">Eliminating clunky third-party app bloat</p>
+            </div>
+            <div class="glass-card p-4 rounded-xl text-center">
+              <div class="w-8 h-8 mx-auto mb-2 rounded-full bg-brandCyan/10 text-brandCyan flex items-center justify-center text-sm">💎</div>
+              <h4 class="text-white text-xs font-semibold">Premium UI</h4>
+              <p class="text-[11px] text-neutral-500 mt-1">Refined UX that elevates brand equity</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technical Expertise with Visual Bars -->
+        <div id="skills">
+          <h2 class="text-2xl sm:text-3xl font-extrabold uppercase tracking-widest text-white mb-6">Technical Stack</h2>
+          
+          <div class="space-y-6">
+            <div>
+              <div class="flex justify-between text-xs font-mono uppercase mb-2">
+                <span class="text-white">Shopify Liquid Architecture</span>
+                <span class="text-brandCyan">98%</span>
+              </div>
+              <div class="w-full bg-neutral-900 h-2 rounded-full overflow-hidden border border-brandBorder">
+                <div class="bg-gradient-to-r from-blue-600 to-brandCyan h-full rounded-full" style="width: 98%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-mono uppercase mb-2">
+                <span class="text-white">HTML5 & Semantic Structure</span>
+                <span class="text-brandCyan">95%</span>
+              </div>
+              <div class="w-full bg-neutral-900 h-2 rounded-full overflow-hidden border border-brandBorder">
+                <div class="bg-gradient-to-r from-blue-600 to-brandCyan h-full rounded-full" style="width: 95%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-mono uppercase mb-2">
+                <span class="text-white">CSS3 / Tailwind CSS / Animations</span>
+                <span class="text-brandCyan">95%</span>
+              </div>
+              <div class="w-full bg-neutral-900 h-2 rounded-full overflow-hidden border border-brandBorder">
+                <div class="bg-gradient-to-r from-blue-600 to-brandCyan h-full rounded-full" style="width: 95%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-mono uppercase mb-2">
+                <span class="text-white">Modern JavaScript (ES6+ & AJAX)</span>
+                <span class="text-brandCyan">90%</span>
+              </div>
+              <div class="w-full bg-neutral-900 h-2 rounded-full overflow-hidden border border-brandBorder">
+                <div class="bg-gradient-to-r from-blue-600 to-brandCyan h-full rounded-full" style="width: 90%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-mono uppercase mb-2">
+                <span class="text-white">Third-Party API & Custom Integrations</span>
+                <span class="text-brandCyan">88%</span>
+              </div>
+              <div class="w-full bg-neutral-900 h-2 rounded-full overflow-hidden border border-brandBorder">
+                <div class="bg-gradient-to-r from-blue-600 to-brandCyan h-full rounded-full" style="width: 88%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Client Process Flow -->
+    <section id="process" class="py-24 border-t border-brandBorder bg-[#08090b]">
+      <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-2xl sm:text-3xl font-extrabold uppercase tracking-widest text-white text-center mb-16">Client Process</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+          
+          <div class="glass-card p-6 rounded-2xl relative text-center">
+            <div class="w-10 h-10 mx-auto -mt-11 mb-4 rounded-full bg-brandBlue text-white font-bold flex items-center justify-center border-2 border-brandCyan text-sm">1</div>
+            <h4 class="text-white font-semibold text-sm mb-1 uppercase">Architecture</h4>
+            <p class="text-neutral-500 text-xs leading-relaxed">Auditing requirements, store speed benchmarks, and structural planning.</p>
+          </div>
+
+          <div class="glass-card p-6 rounded-2xl relative text-center">
+            <div class="w-10 h-10 mx-auto -mt-11 mb-4 rounded-full bg-brandBlue text-white font-bold flex items-center justify-center border-2 border-brandCyan text-sm">2</div>
+            <h4 class="text-white font-semibold text-sm mb-1 uppercase">UI/UX Design</h4>
+            <p class="text-neutral-500 text-xs leading-relaxed">Translating brand luxury into pixel-perfect, responsive components.</p>
+          </div>
+
+          <div class="glass-card p-6 rounded-2xl relative text-center">
+            <div class="w-10 h-10 mx-auto -mt-11 mb-4 rounded-full bg-brandBlue text-white font-bold flex items-center justify-center border-2 border-brandCyan text-sm">3</div>
+            <h4 class="text-white font-semibold text-sm mb-1 uppercase">Custom Liquid</h4>
+            <p class="text-neutral-500 text-xs leading-relaxed">Zero-bloat coding, AJAX cart integration, dynamic schemas, and mobile tuning.</p>
+          </div>
+
+          <div class="glass-card p-6 rounded-2xl relative text-center">
+            <div class="w-10 h-10 mx-auto -mt-11 mb-4 rounded-full bg-brandBlue text-white font-bold flex items-center justify-center border-2 border-brandCyan text-sm">4</div>
+            <h4 class="text-white font-semibold text-sm mb-1 uppercase">Launch & Speed</h4>
+            <p class="text-neutral-500 text-xs leading-relaxed">Rigorous Core Web Vitals checks, staging QA, and seamless live deployment.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 border-t border-brandBorder bg-black">
+      <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="text-center md:text-left">
+          <p class="text-white font-semibold text-sm">Arvind Verma</p>
+          <a href="mailto:letswork.arvind@gmail.com" class="text-xs text-neutral-400 hover:text-brandCyan transition">letswork.arvind@gmail.com</a>
+        </div>
+
+        <div class="flex items-center gap-6 text-xs text-neutral-400">
+          <a href="https://www.linkedin.com/in/arvind-verma-5061a3228" target="_blank" class="hover:text-brandCyan transition">LinkedIn Profile</a>
+          <span class="text-neutral-700">•</span>
+          <span class="font-mono text-neutral-500">CRAFTED WITH CARE BY VINDX</span>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Interactive JavaScript -->
+  <script>
+    // Live Portfolio Filter Logic
+    function filterStores(category) {
+      const items = document.querySelectorAll('.project-item');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      buttons.forEach(btn => {
+        if(btn.dataset.category === category) {
+          btn.classList.add('border-brandCyan', 'bg-brandCyan/10', 'text-brandCyan');
+          btn.classList.remove('border-brandBorder', 'glass-card', 'text-neutral-400');
+        } else {
+          btn.classList.remove('border-brandCyan', 'bg-brandCyan/10', 'text-brandCyan');
+          btn.classList.add('border-brandBorder', 'glass-card', 'text-neutral-400');
+        }
+      });
+
+      items.forEach(item => {
+        if (category === 'all' || item.classList.contains(category)) {
+          item.style.display = 'flex';
+          setTimeout(() => { item.style.opacity = '1'; }, 10);
+        } else {
+          item.style.opacity = '0';
+          item.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
