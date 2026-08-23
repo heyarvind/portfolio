@@ -137,7 +137,7 @@
             brandDark: '#08090b',
             brandSurface: 'rgba(18, 21, 28, 0.7)',
             brandBorder: 'rgba(255, 255, 255, 0.08)',
-            brandCyan: '#38bdf8',
+            brandCyan: '#0284c7',
             brandBlue: '#2563eb',
           }
         }
@@ -147,26 +147,39 @@
 
   <style>
     body {
-      background-color: #08090b;
-      color: #e2e8f0;
+      background-color: #f8fafc;
+      color: #334155;
       overflow-x: hidden;
     }
-    .glass-card {
-      background: rgba(18, 22, 31, 0.65);
+    
+    /* Dark Glass for Hero */
+    .hero-glass-card {
+      background: rgba(18, 22, 31, 0.75);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     }
+
+    /* Crisp Light Glass for Body Sections */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+    }
     .glass-card:hover {
-      border-color: rgba(56, 189, 248, 0.3);
-      box-shadow: 0 12px 40px -10px rgba(56, 189, 248, 0.15);
+      border-color: rgba(2, 132, 199, 0.4);
+      box-shadow: 0 12px 30px -5px rgba(2, 132, 199, 0.12);
     }
+
     .hero-mesh {
-      background: radial-gradient(circle at 50% 15%, rgba(37, 99, 235, 0.15) 0%, transparent 60%),
-                  radial-gradient(circle at 85% 35%, rgba(56, 189, 248, 0.1) 0%, transparent 50%),
-                  radial-gradient(circle at 15% 75%, rgba(37, 99, 235, 0.08) 0%, transparent 50%);
+      background: radial-gradient(circle at 50% 15%, rgba(37, 99, 235, 0.2) 0%, transparent 60%),
+                  radial-gradient(circle at 85% 35%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 15% 75%, rgba(37, 99, 235, 0.12) 0%, transparent 50%);
     }
+
     .no-scrollbar::-webkit-scrollbar {
       display: none;
     }
@@ -175,8 +188,9 @@
       scrollbar-width: none;
     }
     .glow-box {
-      box-shadow: 0 0 50px -10px rgba(56, 189, 248, 0.25);
+      box-shadow: 0 10px 40px -10px rgba(2, 132, 199, 0.15);
     }
+
     /* Prevent iOS zoom on input focus */
     @media screen and (max-width: 768px) {
       input, select, textarea {
@@ -186,82 +200,84 @@
   </style>
 
   <meta name="google-site-verification" content="wIetArfxf_bDVKXYmOCi_o1CV_5yYKU7NaXp5YQ_UxA" />
-  
 </head>
-<body class="font-sans antialiased selection:bg-brandCyan/20 selection:text-white">
+<body class="font-sans antialiased selection:bg-sky-500/20 selection:text-slate-900">
 
-  <!-- Floating Radial Glow Background -->
-  <div class="fixed inset-0 pointer-events-none hero-mesh z-0"></div>
+  <!-- ============================================== -->
+  <!-- 1. HERO & HEADER (PRESERVED IN MODERN DARK)     -->
+  <!-- ============================================== -->
+  <div class="relative bg-[#08090b] border-b border-slate-200/60 overflow-hidden">
+    
+    <!-- Floating Radial Glow Background for Hero -->
+    <div class="absolute inset-0 pointer-events-none hero-mesh z-0"></div>
 
-  <!-- Navigation Bar -->
-  <header class="fixed top-0 left-0 w-full z-50 bg-[#08090b]/90 backdrop-blur-xl border-b border-brandBorder">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
-      
-      <!-- Brand Logo / Identity -->
-      <a href="#" class="flex items-center gap-1.5 text-sm sm:text-base font-bold tracking-wider uppercase text-white shrink-0">
-        <span>Arvind Verma</span>
-        <span class="text-neutral-500 font-normal">|</span>
-        <span class="text-[11px] sm:text-xs text-brandCyan tracking-widest font-mono">Shopify Expert</span>
-      </a>
-
-      <!-- Desktop Navigation Links -->
-      <nav class="hidden lg:flex items-center space-x-6 xl:space-x-8 text-xs font-medium uppercase tracking-widest text-neutral-400" aria-label="Main Navigation">
-        <a href="#hero" class="hover:text-brandCyan transition">Home</a>
-        <a href="#metrics" class="hover:text-brandCyan transition">Metrics</a>
-        <a href="#expertise" class="hover:text-brandCyan transition">Expertise</a>
-        <a href="#partnerships" class="hover:text-brandCyan transition">Partnerships</a>
-        <a href="#works" class="hover:text-brandCyan transition">Projects</a>
-        <a href="#architecture" class="hover:text-brandCyan transition">Architecture</a>
-        <a href="#connect" class="text-brandCyan font-semibold hover:underline">Contact</a>
-      </nav>
-
-      <!-- Desktop Action & Mobile Toggle -->
-      <div class="flex items-center gap-3">
-        <a href="#connect" class="hidden sm:inline-flex px-4 py-2 rounded-full border border-brandCyan/40 bg-brandCyan/10 text-brandCyan hover:bg-brandCyan hover:text-black font-semibold text-xs transition duration-300">
-          Let's Talk
+    <!-- Navigation Bar -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-[#08090b]/90 backdrop-blur-xl border-b border-brandBorder">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+        
+        <!-- Brand Logo / Identity -->
+        <a href="#" class="flex items-center gap-1.5 text-sm sm:text-base font-bold tracking-wider uppercase text-white shrink-0">
+          <span>Arvind Verma</span>
+          <span class="text-neutral-500 font-normal">|</span>
+          <span class="text-[11px] sm:text-xs text-[#38bdf8] tracking-widest font-mono">Shopify Expert</span>
         </a>
 
-        <!-- Mobile Hamburger Button -->
-        <button onclick="toggleMobileMenu()" id="menu-btn" class="lg:hidden p-2 rounded-lg text-neutral-400 hover:text-white hover:bg-white/5 transition" aria-label="Toggle Navigation">
-          <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-          <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center space-x-6 xl:space-x-8 text-xs font-medium uppercase tracking-widest text-neutral-400" aria-label="Main Navigation">
+          <a href="#hero" class="hover:text-[#38bdf8] transition">Home</a>
+          <a href="#metrics" class="hover:text-[#38bdf8] transition">Metrics</a>
+          <a href="#expertise" class="hover:text-[#38bdf8] transition">Expertise</a>
+          <a href="#partnerships" class="hover:text-[#38bdf8] transition">Partnerships</a>
+          <a href="#works" class="hover:text-[#38bdf8] transition">Projects</a>
+          <a href="#architecture" class="hover:text-[#38bdf8] transition">Architecture</a>
+          <a href="#connect" class="text-[#38bdf8] font-semibold hover:underline">Contact</a>
+        </nav>
+
+        <!-- Desktop Action & Mobile Toggle -->
+        <div class="flex items-center gap-3">
+          <a href="#connect" class="hidden sm:inline-flex px-4 py-2 rounded-full border border-[#38bdf8]/40 bg-[#38bdf8]/10 text-[#38bdf8] hover:bg-[#38bdf8] hover:text-black font-semibold text-xs transition duration-300">
+            Let's Talk
+          </a>
+
+          <!-- Mobile Hamburger Button -->
+          <button onclick="toggleMobileMenu()" id="menu-btn" class="lg:hidden p-2 rounded-lg text-neutral-400 hover:text-white hover:bg-white/5 transition" aria-label="Toggle Navigation">
+            <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
       </div>
-    </div>
 
-    <!-- Mobile Slide-Down Menu -->
-    <div id="mobile-menu" class="hidden lg:hidden border-b border-brandBorder bg-[#0c0e14]/98 px-6 py-6 transition-all duration-300">
-      <div class="flex flex-col space-y-4 text-xs font-semibold uppercase tracking-widest text-neutral-300">
-        <a href="#hero" onclick="toggleMobileMenu()" class="py-2 border-b border-white/5 hover:text-brandCyan">Home</a>
-        <a href="#metrics" onclick="toggleMobileMenu()" class="py-2 border-b border-white/5 hover:text-brandCyan">Metrics</a>
-        <a href="#expertise" onclick="toggleMobileMenu()" class="py-2 border-b border-white/5 hover:text-brandCyan">Expertise</a>
-        <a href="#partnerships" onclick="toggleMobileMenu()" class="py-2 border-b border-white/5 hover:text-brandCyan">Partnerships</a>
-        <a href="#works" onclick="toggleMobileMenu()" class="py-2 border-b border-white/5 hover:text-brandCyan">Projects</a>
-        <a href="#architecture" onclick="toggleMobileMenu()" class="py-2 border-b border-white/5 hover:text-brandCyan">Architecture</a>
-        <a href="#connect" onclick="toggleMobileMenu()" class="py-2.5 text-center rounded-xl bg-gradient-to-r from-brandBlue to-brandCyan text-white font-bold tracking-wider mt-2">
-          Let's Talk ↗
-        </a>
+      <!-- Mobile Slide-Down Menu -->
+      <div id="mobile-menu" class="hidden lg:hidden border-b border-brandBorder bg-[#0c0e14]/98 px-6 py-6 transition-all duration-300">
+        <div class="flex flex-col space-y-4 text-xs font-semibold uppercase tracking-widest text-neutral-300">
+          <a href="#hero" onclick="toggleMobileMenu()" class="py-2 border-b border-white/5 hover:text-[#38bdf8]">Home</a>
+          <a href="#metrics" onclick="toggleMobileMenu()" class="py-2 border-b border-white/5 hover:text-[#38bdf8]">Metrics</a>
+          <a href="#expertise" onclick="toggleMobileMenu()" class="py-2 border-b border-white/5 hover:text-[#38bdf8]">Expertise</a>
+          <a href="#partnerships" onclick="toggleMobileMenu()" class="py-2 border-b border-white/5 hover:text-[#38bdf8]">Partnerships</a>
+          <a href="#works" onclick="toggleMobileMenu()" class="py-2 border-b border-white/5 hover:text-[#38bdf8]">Projects</a>
+          <a href="#architecture" onclick="toggleMobileMenu()" class="py-2 border-b border-white/5 hover:text-[#38bdf8]">Architecture</a>
+          <a href="#connect" onclick="toggleMobileMenu()" class="py-2.5 text-center rounded-xl bg-gradient-to-r from-blue-600 to-sky-500 text-white font-bold tracking-wider mt-2">
+            Let's Talk ↗
+          </a>
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main class="relative z-10 pt-20 sm:pt-28">
-
-    <!-- Hero Section -->
-    <section id="hero" class="relative max-w-7xl mx-auto px-4 sm:px-6 pt-10 sm:pt-16 pb-16 sm:pb-20 text-center">
+    <!-- First Section / Hero (Kept exact as requested) -->
+    <section id="hero" class="relative max-w-7xl mx-auto px-4 sm:px-6 pt-28 sm:pt-36 pb-20 sm:pb-28 text-center z-10">
       
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card border-brandBorder text-[11px] sm:text-xs text-neutral-300 mb-6 sm:mb-8 text-left max-w-full">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full hero-glass-card border-brandBorder text-[11px] sm:text-xs text-neutral-300 mb-6 sm:mb-8 text-left max-w-full">
         <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0 animate-pulse"></span> 
         <span class="truncate">Open for Remote Positions, Contracts &amp; Freelance Projects</span>
       </div>
 
       <h1 class="text-2xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight uppercase max-w-4xl mx-auto leading-snug sm:leading-tight">
         Fast, Responsive &amp; High-Converting <br class="hidden sm:inline">
-        <span class="bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-brandCyan">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-[#38bdf8]">
           Shopify Stores
         </span> Built for Scale.
       </h1>
@@ -271,87 +287,91 @@
       </p>
 
       <div class="mt-8 sm:mt-10 flex flex-col sm:flex-row justify-center items-center gap-3.5 sm:gap-4 w-full px-4 max-w-md sm:max-w-none mx-auto">
-        <a href="#works" class="w-full sm:w-auto px-7 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-sky-500 text-white font-semibold text-xs tracking-wider uppercase shadow-lg shadow-blue-500/20 hover:opacity-95 transition text-center">
+        <a href="#works" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-sky-500 text-white font-semibold text-xs tracking-wider uppercase shadow-lg shadow-blue-500/20 hover:opacity-95 transition text-center">
           Explore Selected Works
         </a>
-        <a href="#connect" class="w-full sm:w-auto px-7 py-3 rounded-xl glass-card text-brandCyan font-semibold text-xs tracking-wider uppercase border border-brandCyan/30 hover:border-brandCyan transition text-center">
+        <a href="#connect" class="w-full sm:w-auto px-7 py-3.5 rounded-xl hero-glass-card text-[#38bdf8] font-semibold text-xs tracking-wider uppercase border border-[#38bdf8]/30 hover:border-[#38bdf8] transition text-center">
           Hire / Collaborate
         </a>
       </div>
     </section>
 
-    <!-- Performance & Impact Metrics -->
-    <section id="metrics" class="py-10 sm:py-12 border-y border-brandBorder bg-black/40">
+  </div>
+
+  <main class="relative z-10">
+
+    <!-- Performance & Impact Metrics (Light Slate Shift) -->
+    <section id="metrics" class="py-10 sm:py-14 border-b border-slate-200 bg-white/70">
       <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 text-center">
           <div class="p-4 sm:p-6 glass-card rounded-xl">
-            <p class="text-2xl sm:text-4xl font-extrabold font-mono text-white mb-1"><span class="text-brandCyan">40</span>+</p>
-            <p class="text-[10px] sm:text-xs uppercase tracking-widest text-neutral-400 font-semibold">Stores Built</p>
+            <p class="text-2xl sm:text-4xl font-extrabold font-mono text-slate-900 mb-1"><span class="text-sky-600">40</span>+</p>
+            <p class="text-[10px] sm:text-xs uppercase tracking-widest text-slate-500 font-semibold">Stores Built</p>
           </div>
           <div class="p-4 sm:p-6 glass-card rounded-xl">
-            <p class="text-2xl sm:text-4xl font-extrabold font-mono text-white mb-1"><span class="text-brandCyan">30</span>+</p>
-            <p class="text-[10px] sm:text-xs uppercase tracking-widest text-neutral-400 font-semibold">Brands Served</p>
+            <p class="text-2xl sm:text-4xl font-extrabold font-mono text-slate-900 mb-1"><span class="text-sky-600">30</span>+</p>
+            <p class="text-[10px] sm:text-xs uppercase tracking-widest text-slate-500 font-semibold">Brands Served</p>
           </div>
           <div class="p-4 sm:p-6 glass-card rounded-xl">
-            <p class="text-2xl sm:text-4xl font-extrabold font-mono text-white mb-1">&lt;<span class="text-brandCyan">1.2</span>s</p>
-            <p class="text-[10px] sm:text-xs uppercase tracking-widest text-neutral-400 font-semibold">Core Web Vitals</p>
+            <p class="text-2xl sm:text-4xl font-extrabold font-mono text-slate-900 mb-1">&lt;<span class="text-sky-600">1.2</span>s</p>
+            <p class="text-[10px] sm:text-xs uppercase tracking-widest text-slate-500 font-semibold">Core Web Vitals</p>
           </div>
           <div class="p-4 sm:p-6 glass-card rounded-xl">
-            <p class="text-2xl sm:text-4xl font-extrabold font-mono text-white mb-1"><span class="text-brandCyan">100</span>%</p>
-            <p class="text-[10px] sm:text-xs uppercase tracking-widest text-neutral-400 font-semibold">Clean Code</p>
+            <p class="text-2xl sm:text-4xl font-extrabold font-mono text-slate-900 mb-1"><span class="text-sky-600">100</span>%</p>
+            <p class="text-[10px] sm:text-xs uppercase tracking-widest text-slate-500 font-semibold">Clean Code</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Core Expertise Cards -->
-    <section id="expertise" class="py-16 sm:py-24 border-b border-brandBorder">
+    <section id="expertise" class="py-16 sm:py-24 border-b border-slate-200 bg-slate-50/50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <div class="text-center mb-12 sm:mb-16">
-          <h2 class="text-xl sm:text-3xl font-extrabold uppercase tracking-widest text-white">Core Capabilities</h2>
-          <p class="text-neutral-500 text-[11px] sm:text-xs font-mono tracking-widest mt-2 uppercase">End-to-End Technical Delivery for Modern E-Commerce</p>
+          <h2 class="text-xl sm:text-3xl font-extrabold uppercase tracking-widest text-slate-900">Core Capabilities</h2>
+          <p class="text-slate-500 text-[11px] sm:text-xs font-mono tracking-widest mt-2 uppercase">End-to-End Technical Delivery for Modern E-Commerce</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           <div class="glass-card p-5 sm:p-6 rounded-2xl">
             <div class="text-2xl mb-2 sm:mb-3">🛠️</div>
-            <h3 class="text-sm sm:text-base font-bold text-white mb-1 sm:mb-2">Custom Themes &amp; Liquid</h3>
-            <p class="text-xs text-neutral-400 leading-relaxed">
+            <h3 class="text-sm sm:text-base font-bold text-slate-900 mb-1 sm:mb-2">Custom Themes &amp; Liquid</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
               Bespoke Liquid section schemas, dynamic drawer checkouts, custom product options, and lightweight modular layouts built from scratch.
             </p>
           </div>
           <div class="glass-card p-5 sm:p-6 rounded-2xl">
             <div class="text-2xl mb-2 sm:mb-3">💳</div>
-            <h3 class="text-sm sm:text-base font-bold text-white mb-1 sm:mb-2">Payment Gateway Integration</h3>
-            <p class="text-xs text-neutral-400 leading-relaxed">
+            <h3 class="text-sm sm:text-base font-bold text-slate-900 mb-1 sm:mb-2">Payment Gateway Integration</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
               Direct checkout integrations enabling seamless domestic and global transactions with zero friction for shoppers.
             </p>
           </div>
           <div class="glass-card p-5 sm:p-6 rounded-2xl">
             <div class="text-2xl mb-2 sm:mb-3">⚡</div>
-            <h3 class="text-sm sm:text-base font-bold text-white mb-1 sm:mb-2">Speed &amp; Core Web Vitals</h3>
-            <p class="text-xs text-neutral-400 leading-relaxed">
+            <h3 class="text-sm sm:text-base font-bold text-slate-900 mb-1 sm:mb-2">Speed &amp; Core Web Vitals</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
               Aggressive script streamlining, vanilla JavaScript logic, lazy-loading pipelines, and asset optimization for maximum Lighthouse scores.
             </p>
           </div>
           <div class="glass-card p-5 sm:p-6 rounded-2xl">
             <div class="text-2xl mb-2 sm:mb-3">🔍</div>
-            <h3 class="text-sm sm:text-base font-bold text-white mb-1 sm:mb-2">Technical SEO Architecture</h3>
-            <p class="text-xs text-neutral-400 leading-relaxed">
+            <h3 class="text-sm sm:text-base font-bold text-slate-900 mb-1 sm:mb-2">Technical SEO Architecture</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
               JSON-LD structured data (Product, Organization, WebPage schema), clean metadata hooks, and canonical URL hygiene for search visibility.
             </p>
           </div>
           <div class="glass-card p-5 sm:p-6 rounded-2xl">
             <div class="text-2xl mb-2 sm:mb-3">🔌</div>
-            <h3 class="text-sm sm:text-base font-bold text-white mb-1 sm:mb-2">Custom App &amp; API Integrations</h3>
-            <p class="text-xs text-neutral-400 leading-relaxed">
+            <h3 class="text-sm sm:text-base font-bold text-slate-900 mb-1 sm:mb-2">Custom App &amp; API Integrations</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
               Connecting third-party logistics, ERPs, CRM platforms, and custom webhooks into Shopify workflows without adding code clutter.
             </p>
           </div>
           <div class="glass-card p-5 sm:p-6 rounded-2xl">
             <div class="text-2xl mb-2 sm:mb-3">✨</div>
-            <h3 class="text-sm sm:text-base font-bold text-white mb-1 sm:mb-2">Boutique UI/UX</h3>
-            <p class="text-xs text-neutral-400 leading-relaxed">
+            <h3 class="text-sm sm:text-base font-bold text-slate-900 mb-1 sm:mb-2">Boutique UI/UX</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
               Quiet luxury aesthetic engineering, glassmorphism patterns, micro-interactions, and conversion-focused product storytelling.
             </p>
           </div>
@@ -360,51 +380,51 @@
     </section>
 
     <!-- Certified Partner Ecosystem Section -->
-    <section id="partnerships" class="py-16 sm:py-20 border-b border-brandBorder bg-black/50">
+    <section id="partnerships" class="py-16 sm:py-20 border-b border-slate-200 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6">
         
         <div class="text-center mb-10 sm:mb-12">
-          <span class="px-3 py-1 rounded-full bg-brandCyan/10 border border-brandCyan/30 text-brandCyan font-mono text-[11px] uppercase tracking-widest">Integrations &amp; Ecosystem</span>
-          <h2 class="text-xl sm:text-3xl font-extrabold uppercase tracking-widest text-white mt-3">Certified Partner Integrations</h2>
-          <p class="text-neutral-400 text-xs font-mono tracking-wider mt-2">Specialized in frictionless checkout and automated post-purchase logistics</p>
+          <span class="px-3 py-1 rounded-full bg-sky-50 border border-sky-200 text-sky-700 font-mono text-[11px] uppercase tracking-widest font-semibold">Integrations &amp; Ecosystem</span>
+          <h2 class="text-xl sm:text-3xl font-extrabold uppercase tracking-widest text-slate-900 mt-3">Certified Partner Integrations</h2>
+          <p class="text-slate-500 text-xs font-mono tracking-wider mt-2">Specialized in frictionless checkout and automated post-purchase logistics</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           
           <!-- Payment Partners -->
-          <div class="glass-card p-5 sm:p-8 rounded-2xl border-brandBorder">
+          <div class="glass-card p-5 sm:p-8 rounded-2xl border-slate-200">
             <div class="flex items-center gap-3 mb-5 sm:mb-6">
-              <span class="p-2 sm:p-2.5 rounded-xl bg-brandCyan/10 text-brandCyan text-lg sm:text-xl">💳</span>
+              <span class="p-2 sm:p-2.5 rounded-xl bg-sky-100 text-sky-600 text-lg sm:text-xl">💳</span>
               <div>
-                <h3 class="text-base sm:text-lg font-bold text-white">Payment Gateway Partners</h3>
-                <p class="text-[11px] sm:text-xs text-neutral-400">1-Click Checkout, UPI, Cards &amp; Net Banking</p>
+                <h3 class="text-base sm:text-lg font-bold text-slate-900">Payment Gateway Partners</h3>
+                <p class="text-[11px] sm:text-xs text-slate-500">1-Click Checkout, UPI, Cards &amp; Net Banking</p>
               </div>
             </div>
             <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">Razorpay</span>
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">Cashfree</span>
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">PayU</span>
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">GoKwik</span>
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">Shopflo</span>
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">PhonePe</span>
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">PayGlocal</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-100 border border-slate-200 text-[11px] sm:text-xs text-slate-700 font-mono font-medium">Razorpay</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-100 border border-slate-200 text-[11px] sm:text-xs text-slate-700 font-mono font-medium">Cashfree</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-100 border border-slate-200 text-[11px] sm:text-xs text-slate-700 font-mono font-medium">PayU</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-100 border border-slate-200 text-[11px] sm:text-xs text-slate-700 font-mono font-medium">GoKwik</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-100 border border-slate-200 text-[11px] sm:text-xs text-slate-700 font-mono font-medium">Shopflo</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-100 border border-slate-200 text-[11px] sm:text-xs text-slate-700 font-mono font-medium">PhonePe</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-100 border border-slate-200 text-[11px] sm:text-xs text-slate-700 font-mono font-medium">PayGlocal</span>
             </div>
           </div>
 
           <!-- Logistics Partners -->
-          <div class="glass-card p-5 sm:p-8 rounded-2xl border-brandBorder">
+          <div class="glass-card p-5 sm:p-8 rounded-2xl border-slate-200">
             <div class="flex items-center gap-3 mb-5 sm:mb-6">
-              <span class="p-2 sm:p-2.5 rounded-xl bg-brandCyan/10 text-brandCyan text-lg sm:text-xl">🚚</span>
+              <span class="p-2 sm:p-2.5 rounded-xl bg-sky-100 text-sky-600 text-lg sm:text-xl">🚚</span>
               <div>
-                <h3 class="text-base sm:text-lg font-bold text-white">Shipping &amp; Logistics Partners</h3>
-                <p class="text-[11px] sm:text-xs text-neutral-400">Automated Fulfillment, Tracking &amp; NDR</p>
+                <h3 class="text-base sm:text-lg font-bold text-slate-900">Shipping &amp; Logistics Partners</h3>
+                <p class="text-[11px] sm:text-xs text-slate-500">Automated Fulfillment, Tracking &amp; NDR</p>
               </div>
             </div>
             <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">Shipway</span>
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">Shiprocket</span>
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">Delhivery</span>
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">iThink Logistics</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-100 border border-slate-200 text-[11px] sm:text-xs text-slate-700 font-mono font-medium">Shipway</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-100 border border-slate-200 text-[11px] sm:text-xs text-slate-700 font-mono font-medium">Shiprocket</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-100 border border-slate-200 text-[11px] sm:text-xs text-slate-700 font-mono font-medium">Delhivery</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-100 border border-slate-200 text-[11px] sm:text-xs text-slate-700 font-mono font-medium">iThink Logistics</span>
             </div>
           </div>
 
@@ -413,20 +433,20 @@
     </section>
 
     <!-- Selected Works / Portfolio Section -->
-    <section id="works" class="py-16 sm:py-24 border-b border-brandBorder">
+    <section id="works" class="py-16 sm:py-24 border-b border-slate-200 bg-slate-50/50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6">
         
         <div class="text-center mb-8 sm:mb-12">
-          <h2 class="text-xl sm:text-3xl font-extrabold uppercase tracking-widest text-white">Selected Works</h2>
-          <p class="text-neutral-500 text-[11px] sm:text-xs font-mono tracking-widest mt-2 uppercase">Proven Across Footwear, Fashion, Jewellery, Home &amp; Lifestyle</p>
+          <h2 class="text-xl sm:text-3xl font-extrabold uppercase tracking-widest text-slate-900">Selected Works</h2>
+          <p class="text-slate-500 text-[11px] sm:text-xs font-mono tracking-widest mt-2 uppercase">Proven Across Footwear, Fashion, Jewellery, Home &amp; Lifestyle</p>
           
-          <!-- Category Filter Buttons (Horizontal Scrolling on Mobile) -->
+          <!-- Category Filter Buttons -->
           <div class="flex overflow-x-auto no-scrollbar gap-2 mt-6 sm:mt-8 pb-2 justify-start sm:justify-center">
-            <button onclick="filterStores('all')" class="filter-btn active shrink-0 px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-medium border border-brandCyan bg-brandCyan/10 text-brandCyan transition" data-category="all">All Projects</button>
-            <button onclick="filterStores('footwear')" class="filter-btn shrink-0 px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-medium border border-brandBorder glass-card text-neutral-400 hover:text-white transition" data-category="footwear">Footwear</button>
-            <button onclick="filterStores('fashion')" class="filter-btn shrink-0 px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-medium border border-brandBorder glass-card text-neutral-400 hover:text-white transition" data-category="fashion">Apparel &amp; Ethnic</button>
-            <button onclick="filterStores('jewelry')" class="filter-btn shrink-0 px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-medium border border-brandBorder glass-card text-neutral-400 hover:text-white transition" data-category="jewelry">Jewellery</button>
-            <button onclick="filterStores('home')" class="filter-btn shrink-0 px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-medium border border-brandBorder glass-card text-neutral-400 hover:text-white transition" data-category="home">Home &amp; Living</button>
+            <button onclick="filterStores('all')" class="filter-btn active shrink-0 px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-medium border border-sky-600 bg-sky-50 text-sky-700 transition" data-category="all">All Projects</button>
+            <button onclick="filterStores('footwear')" class="filter-btn shrink-0 px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-medium border border-slate-200 bg-white text-slate-600 hover:text-slate-900 transition" data-category="footwear">Footwear</button>
+            <button onclick="filterStores('fashion')" class="filter-btn shrink-0 px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-medium border border-slate-200 bg-white text-slate-600 hover:text-slate-900 transition" data-category="fashion">Apparel &amp; Ethnic</button>
+            <button onclick="filterStores('jewelry')" class="filter-btn shrink-0 px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-medium border border-slate-200 bg-white text-slate-600 hover:text-slate-900 transition" data-category="jewelry">Jewellery</button>
+            <button onclick="filterStores('home')" class="filter-btn shrink-0 px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-medium border border-slate-200 bg-white text-slate-600 hover:text-slate-900 transition" data-category="home">Home &amp; Living</button>
           </div>
         </div>
 
@@ -437,151 +457,151 @@
           <div class="project-item footwear glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
             <div>
               <div class="flex justify-between items-start mb-3 sm:mb-4">
-                <h3 class="text-lg sm:text-xl font-bold text-white">Michael Angelo</h3>
-                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Footwear</span>
+                <h3 class="text-lg sm:text-xl font-bold text-slate-900">Michael Angelo</h3>
+                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-sky-50 border border-sky-200 text-[10px] uppercase font-mono text-sky-700 font-semibold">Footwear</span>
               </div>
-              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Premium Footwear. High-density visual storytelling, bespoke product sections, and smooth checkout flow.</p>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">Vertical: Premium Footwear. High-density visual storytelling, bespoke product sections, and smooth checkout flow.</p>
             </div>
-            <a href="https://michaelangelo.in/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <a href="https://michaelangelo.in/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-sky-50 hover:bg-sky-100 text-sky-700 text-center text-xs font-semibold uppercase tracking-wider border border-sky-200 transition block">View Live Store</a>
           </div>
 
           <!-- 2. Le Concept -->
           <div class="project-item fashion glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
             <div>
               <div class="flex justify-between items-start mb-3 sm:mb-4">
-                <h3 class="text-lg sm:text-xl font-bold text-white">Le Concept</h3>
-                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Women's Wear</span>
+                <h3 class="text-lg sm:text-xl font-bold text-slate-900">Le Concept</h3>
+                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-sky-50 border border-sky-200 text-[10px] uppercase font-mono text-sky-700 font-semibold">Women's Wear</span>
               </div>
-              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Women's Wear &amp; Apparel. Clean grid aesthetics, fast-loading image pipelines, and modern product drawers.</p>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">Vertical: Women's Wear &amp; Apparel. Clean grid aesthetics, fast-loading image pipelines, and modern product drawers.</p>
             </div>
-            <a href="https://www.leconcept.co.in/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <a href="https://www.leconcept.co.in/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-sky-50 hover:bg-sky-100 text-sky-700 text-center text-xs font-semibold uppercase tracking-wider border border-sky-200 transition block">View Live Store</a>
           </div>
 
           <!-- 3. Spiffers -->
           <div class="project-item footwear glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
             <div>
               <div class="flex justify-between items-start mb-3 sm:mb-4">
-                <h3 class="text-lg sm:text-xl font-bold text-white">Spiffers</h3>
-                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Footwear</span>
+                <h3 class="text-lg sm:text-xl font-bold text-slate-900">Spiffers</h3>
+                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-sky-50 border border-sky-200 text-[10px] uppercase font-mono text-sky-700 font-semibold">Footwear</span>
               </div>
-              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Footwear Brand. Responsive catalog layout, size selector matrix, and high-conversion product pages.</p>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">Vertical: Footwear Brand. Responsive catalog layout, size selector matrix, and high-conversion product pages.</p>
             </div>
-            <a href="https://www.spiffers.in/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <a href="https://www.spiffers.in/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-sky-50 hover:bg-sky-100 text-sky-700 text-center text-xs font-semibold uppercase tracking-wider border border-sky-200 transition block">View Live Store</a>
           </div>
 
           <!-- 4. Nikunj Niidhi Bajaj -->
           <div class="project-item fashion glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
             <div>
               <div class="flex justify-between items-start mb-3 sm:mb-4">
-                <h3 class="text-lg sm:text-xl font-bold text-white">Nikunj Niidhi Bajaj</h3>
-                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Ethnic Wear</span>
+                <h3 class="text-lg sm:text-xl font-bold text-slate-900">Nikunj Niidhi Bajaj</h3>
+                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-sky-50 border border-sky-200 text-[10px] uppercase font-mono text-sky-700 font-semibold">Ethnic Wear</span>
               </div>
-              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Women Ethnic Wear. Bespoke navigation architecture, designer lookbooks, and smooth responsive menus.</p>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">Vertical: Women Ethnic Wear. Bespoke navigation architecture, designer lookbooks, and smooth responsive menus.</p>
             </div>
-            <a href="https://nikunjbyniidhibajaj.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <a href="https://nikunjbyniidhibajaj.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-sky-50 hover:bg-sky-100 text-sky-700 text-center text-xs font-semibold uppercase tracking-wider border border-sky-200 transition block">View Live Store</a>
           </div>
 
           <!-- 5. Loom & Story -->
           <div class="project-item fashion glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
             <div>
               <div class="flex justify-between items-start mb-3 sm:mb-4">
-                <h3 class="text-lg sm:text-xl font-bold text-white">Loom &amp; Story</h3>
-                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Women's Wear</span>
+                <h3 class="text-lg sm:text-xl font-bold text-slate-900">Loom &amp; Story</h3>
+                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-sky-50 border border-sky-200 text-[10px] uppercase font-mono text-sky-700 font-semibold">Women's Wear</span>
               </div>
-              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Women's Wear. Refined textile storytelling, seamless mobile drawer checkout, and optimized Core Web Vitals.</p>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">Vertical: Women's Wear. Refined textile storytelling, seamless mobile drawer checkout, and optimized Core Web Vitals.</p>
             </div>
-            <a href="https://loomandstory.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <a href="https://loomandstory.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-sky-50 hover:bg-sky-100 text-sky-700 text-center text-xs font-semibold uppercase tracking-wider border border-sky-200 transition block">View Live Store</a>
           </div>
 
           <!-- 6. Zaydn -->
           <div class="project-item footwear glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
             <div>
               <div class="flex justify-between items-start mb-3 sm:mb-4">
-                <h3 class="text-lg sm:text-xl font-bold text-white">Zaydn</h3>
-                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Footwear</span>
+                <h3 class="text-lg sm:text-xl font-bold text-slate-900">Zaydn</h3>
+                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-sky-50 border border-sky-200 text-[10px] uppercase font-mono text-sky-700 font-semibold">Footwear</span>
               </div>
-              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Footwear Brand. Interactive product lore features, performance optimization, and custom Liquid components.</p>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">Vertical: Footwear Brand. Interactive product lore features, performance optimization, and custom Liquid components.</p>
             </div>
-            <a href="https://zaydns.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <a href="https://zaydns.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-sky-50 hover:bg-sky-100 text-sky-700 text-center text-xs font-semibold uppercase tracking-wider border border-sky-200 transition block">View Live Store</a>
           </div>
 
           <!-- 7. Miira -->
           <div class="project-item jewelry glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
             <div>
               <div class="flex justify-between items-start mb-3 sm:mb-4">
-                <h3 class="text-lg sm:text-xl font-bold text-white">Miira</h3>
-                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Jewellery</span>
+                <h3 class="text-lg sm:text-xl font-bold text-slate-900">Miira</h3>
+                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-sky-50 border border-sky-200 text-[10px] uppercase font-mono text-sky-700 font-semibold">Jewellery</span>
               </div>
-              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Artificial Jewellery. Elegant product showcases, high-resolution media galleries, and clean collection filters.</p>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">Vertical: Artificial Jewellery. Elegant product showcases, high-resolution media galleries, and clean collection filters.</p>
             </div>
-            <a href="https://www.miira.in/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <a href="https://www.miira.in/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-sky-50 hover:bg-sky-100 text-sky-700 text-center text-xs font-semibold uppercase tracking-wider border border-sky-200 transition block">View Live Store</a>
           </div>
 
           <!-- 8. Banarasiya -->
           <div class="project-item fashion glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
             <div>
               <div class="flex justify-between items-start mb-3 sm:mb-4">
-                <h3 class="text-lg sm:text-xl font-bold text-white">Banarasiya</h3>
-                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Saree Store</span>
+                <h3 class="text-lg sm:text-xl font-bold text-slate-900">Banarasiya</h3>
+                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-sky-50 border border-sky-200 text-[10px] uppercase font-mono text-sky-700 font-semibold">Saree Store</span>
               </div>
-              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Banarasi Saree Store. Heritage aesthetic, custom hero sliders, swatch matrix selectors, and zero bloat.</p>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">Vertical: Banarasi Saree Store. Heritage aesthetic, custom hero sliders, swatch matrix selectors, and zero bloat.</p>
             </div>
-            <a href="https://banarasiya.in/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <a href="https://banarasiya.in/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-sky-50 hover:bg-sky-100 text-sky-700 text-center text-xs font-semibold uppercase tracking-wider border border-sky-200 transition block">View Live Store</a>
           </div>
 
           <!-- 9. Vespera Homes -->
           <div class="project-item home glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
             <div>
               <div class="flex justify-between items-start mb-3 sm:mb-4">
-                <h3 class="text-lg sm:text-xl font-bold text-white">Vespera Homes</h3>
-                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Home Decor</span>
+                <h3 class="text-lg sm:text-xl font-bold text-slate-900">Vespera Homes</h3>
+                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-sky-50 border border-sky-200 text-[10px] uppercase font-mono text-sky-700 font-semibold">Home Decor</span>
               </div>
-              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Home Decor. Modular Liquid section schemas, structured metadata, and streamlined catalog UX.</p>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">Vertical: Home Decor. Modular Liquid section schemas, structured metadata, and streamlined catalog UX.</p>
             </div>
-            <a href="https://www.vesperahomes.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <a href="https://www.vesperahomes.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-sky-50 hover:bg-sky-100 text-sky-700 text-center text-xs font-semibold uppercase tracking-wider border border-sky-200 transition block">View Live Store</a>
           </div>
 
           <!-- 10. Sojanya -->
           <div class="project-item fashion glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
             <div>
               <div class="flex justify-between items-start mb-3 sm:mb-4">
-                <h3 class="text-lg sm:text-xl font-bold text-white">Sojanya</h3>
-                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Ethnic Wear</span>
+                <h3 class="text-lg sm:text-xl font-bold text-slate-900">Sojanya</h3>
+                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-sky-50 border border-sky-200 text-[10px] uppercase font-mono text-sky-700 font-semibold">Ethnic Wear</span>
               </div>
-              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Men Ethnic Wear. High-volume catalog architecture optimized for rapid navigation and checkout speed.</p>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">Vertical: Men Ethnic Wear. High-volume catalog architecture optimized for rapid navigation and checkout speed.</p>
             </div>
-            <a href="https://sojanya.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <a href="https://sojanya.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-sky-50 hover:bg-sky-100 text-sky-700 text-center text-xs font-semibold uppercase tracking-wider border border-sky-200 transition block">View Live Store</a>
           </div>
 
           <!-- 11. Paakhi -->
           <div class="project-item home glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
             <div>
               <div class="flex justify-between items-start mb-3 sm:mb-4">
-                <h3 class="text-lg sm:text-xl font-bold text-white">Paakhi</h3>
-                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Essentials</span>
+                <h3 class="text-lg sm:text-xl font-bold text-slate-900">Paakhi</h3>
+                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-sky-50 border border-sky-200 text-[10px] uppercase font-mono text-sky-700 font-semibold">Essentials</span>
               </div>
-              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Home Essentials (Pillows, Covers, Bedsheets). Custom collection filtering and clean product variant setups.</p>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">Vertical: Home Essentials (Pillows, Covers, Bedsheets). Custom collection filtering and clean product variant setups.</p>
             </div>
-            <a href="https://paakhihome.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <a href="https://paakhihome.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-sky-50 hover:bg-sky-100 text-sky-700 text-center text-xs font-semibold uppercase tracking-wider border border-sky-200 transition block">View Live Store</a>
           </div>
 
           <!-- 12. Taksh -->
           <div class="project-item jewelry glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
             <div>
               <div class="flex justify-between items-start mb-3 sm:mb-4">
-                <h3 class="text-lg sm:text-xl font-bold text-white">Taksh</h3>
-                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Jewelry</span>
+                <h3 class="text-lg sm:text-xl font-bold text-slate-900">Taksh</h3>
+                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-sky-50 border border-sky-200 text-[10px] uppercase font-mono text-sky-700 font-semibold">Jewelry</span>
               </div>
-              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Premium Artificial &amp; Bridal Jewelry. High-end luxury aesthetics, visual zoom, and polished product merchandising.</p>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">Vertical: Premium Artificial &amp; Bridal Jewelry. High-end luxury aesthetics, visual zoom, and polished product merchandising.</p>
             </div>
-            <a href="https://takshexclusive.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <a href="https://takshexclusive.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-sky-50 hover:bg-sky-100 text-sky-700 text-center text-xs font-semibold uppercase tracking-wider border border-sky-200 transition block">View Live Store</a>
           </div>
 
         </div>
 
         <!-- Subtitle note under portfolio -->
         <div class="mt-10 sm:mt-14 text-center">
-          <p class="text-neutral-400 text-xs sm:text-sm font-mono tracking-wide glass-card inline-block px-5 py-2.5 sm:px-6 sm:py-3 rounded-full border border-brandBorder">
+          <p class="text-slate-600 text-xs sm:text-sm font-mono tracking-wide glass-card inline-block px-5 py-2.5 sm:px-6 sm:py-3 rounded-full border border-slate-200">
             ✨ There are many more websites I’ve delivered across diverse industries.
           </p>
         </div>
@@ -590,39 +610,39 @@
     </section>
 
     <!-- Liquid & Technical Stack Section -->
-    <section id="architecture" class="py-16 sm:py-24 border-b border-brandBorder bg-black/60">
+    <section id="architecture" class="py-16 sm:py-24 border-b border-slate-200 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
           
           <div>
-            <span class="px-3 py-1 rounded-full bg-brandCyan/10 border border-brandCyan/30 text-brandCyan font-mono text-[11px] uppercase tracking-widest">Engineering Standard</span>
-            <h2 class="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-white mt-4 leading-snug">
+            <span class="px-3 py-1 rounded-full bg-sky-50 border border-sky-200 text-sky-700 font-mono text-[11px] uppercase tracking-widest font-semibold">Engineering Standard</span>
+            <h2 class="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-slate-900 mt-4 leading-snug">
               Engineered Clean. <br>
               Zero App Overhead.
             </h2>
-            <p class="text-neutral-400 text-xs sm:text-sm leading-relaxed mt-4">
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mt-4">
               I eliminate third-party app dependencies by writing custom section schemas, native JavaScript AJAX cart interactions, and JSON-LD structured data directly into the theme files.
             </p>
 
             <div class="mt-6 sm:mt-8 space-y-3 sm:space-y-4 font-mono text-xs">
-              <div class="flex items-start gap-3 text-neutral-300">
-                <span class="text-emerald-400 shrink-0">✔</span> 
+              <div class="flex items-start gap-3 text-slate-700">
+                <span class="text-emerald-600 shrink-0 font-bold">✔</span> 
                 <span>Custom Shopify Section Schemas with Live Merchant Settings</span>
               </div>
-              <div class="flex items-start gap-3 text-neutral-300">
-                <span class="text-emerald-400 shrink-0">✔</span> 
+              <div class="flex items-start gap-3 text-slate-700">
+                <span class="text-emerald-600 shrink-0 font-bold">✔</span> 
                 <span>Gateway Integration: Razorpay, GoKwik, Cashfree, PayU, Shopflo, PhonePe &amp; PayGlocal</span>
               </div>
-              <div class="flex items-start gap-3 text-neutral-300">
-                <span class="text-emerald-400 shrink-0">✔</span> 
+              <div class="flex items-start gap-3 text-slate-700">
+                <span class="text-emerald-600 shrink-0 font-bold">✔</span> 
                 <span>Technical SEO: JSON-LD Structured Data &amp; Organization Schemas</span>
               </div>
             </div>
           </div>
 
-          <!-- Code Window Mockup -->
-          <div class="glass-card rounded-2xl overflow-hidden border border-brandBorder shadow-2xl">
-            <div class="bg-[#12161f] px-4 py-3 border-b border-brandBorder flex items-center justify-between">
+          <!-- Code Window Mockup (Clean Dark Contrast Frame) -->
+          <div class="rounded-2xl overflow-hidden border border-slate-800 shadow-2xl bg-[#08090b]">
+            <div class="bg-[#12161f] px-4 py-3 border-b border-slate-800 flex items-center justify-between">
               <div class="flex items-center space-x-2">
                 <span class="w-3 h-3 rounded-full bg-rose-500/80 inline-block"></span>
                 <span class="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
@@ -630,8 +650,8 @@
               </div>
               <span class="font-mono text-[11px] text-neutral-400">snippets/seo-structured-data.liquid</span>
             </div>
-            <div class="p-4 sm:p-6 font-mono text-[11px] sm:text-xs leading-relaxed overflow-x-auto text-neutral-300 bg-[#08090b]/90">
-              <p><span class="text-purple-400">&lt;script</span> <span class="text-brandCyan">type=</span><span class="text-amber-300">"application/ld+json"</span><span class="text-purple-400">&gt;</span></p>
+            <div class="p-4 sm:p-6 font-mono text-[11px] sm:text-xs leading-relaxed overflow-x-auto text-neutral-300">
+              <p><span class="text-purple-400">&lt;script</span> <span class="text-[#38bdf8]">type=</span><span class="text-amber-300">"application/ld+json"</span><span class="text-purple-400">&gt;</span></p>
               <p class="text-neutral-400 pl-4">{</p>
               <p class="text-neutral-400 pl-8"><span class="text-blue-400">"@context"</span>: <span class="text-amber-300">"https://schema.org"</span>,</p>
               <p class="text-neutral-400 pl-8"><span class="text-blue-400">"@type"</span>: <span class="text-amber-300">"Product"</span>,</p>
@@ -646,19 +666,19 @@
       </div>
     </section>
 
-    <!-- Direct Email Submission Form Section -->
-    <section id="connect" class="py-16 sm:py-24 border-b border-brandBorder relative">
+    <!-- Direct Email Submission Form Section (Light Luxury Form) -->
+    <section id="connect" class="py-16 sm:py-24 border-b border-slate-200 bg-slate-50 relative">
       <div class="max-w-4xl mx-auto px-4 sm:px-6">
-        <div class="glass-card glow-box rounded-3xl p-6 sm:p-12 border-brandCyan/30 relative">
+        <div class="glass-card glow-box rounded-3xl p-6 sm:p-12 border-slate-200 relative bg-white/90">
           
           <div class="text-center mb-8 sm:mb-10">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brandCyan/10 border border-brandCyan/30 text-brandCyan text-[11px] uppercase tracking-widest font-mono mb-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-50 border border-sky-200 text-sky-700 text-[11px] uppercase tracking-widest font-mono font-semibold mb-4">
               Get in Touch
             </div>
-            <h2 class="text-2xl sm:text-4xl font-extrabold text-white uppercase tracking-tight">
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 uppercase tracking-tight">
               Let's Build Your Store
             </h2>
-            <p class="text-neutral-400 text-xs sm:text-sm mt-2 max-w-lg mx-auto">
+            <p class="text-slate-600 text-xs sm:text-sm mt-2 max-w-lg mx-auto">
               Share your project details, store requirements, or open remote role below.
             </p>
           </div>
@@ -667,62 +687,62 @@
           <form id="portfolio-form" onsubmit="submitViaGoogleScript(event)" class="space-y-4 sm:space-y-5">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
               <div>
-                <label for="form-name" class="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">Your Name *</label>
+                <label for="form-name" class="block text-xs font-mono uppercase tracking-wider text-slate-700 font-semibold mb-2">Your Name *</label>
                 <input 
                   type="text" 
                   id="form-name" 
                   required 
                   placeholder="e.g. Rahul Sharma"
-                  class="w-full px-4 py-3 rounded-xl bg-black/60 border border-brandBorder text-white text-sm focus:outline-none focus:border-brandCyan transition font-sans"
+                  class="w-full px-4 py-3 rounded-xl bg-slate-50/70 border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-sky-500 focus:bg-white transition font-sans"
                 />
               </div>
               <div>
-                <label for="form-email" class="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">Email Address *</label>
+                <label for="form-email" class="block text-xs font-mono uppercase tracking-wider text-slate-700 font-semibold mb-2">Email Address *</label>
                 <input 
                   type="email" 
                   id="form-email" 
                   required 
                   placeholder="name@company.com"
-                  class="w-full px-4 py-3 rounded-xl bg-black/60 border border-brandBorder text-white text-sm focus:outline-none focus:border-brandCyan transition font-sans"
+                  class="w-full px-4 py-3 rounded-xl bg-slate-50/70 border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-sky-500 focus:bg-white transition font-sans"
                 />
               </div>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
               <div>
-                <label for="form-phone" class="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">Phone / WhatsApp Number</label>
+                <label for="form-phone" class="block text-xs font-mono uppercase tracking-wider text-slate-700 font-semibold mb-2">Phone / WhatsApp Number</label>
                 <input 
                   type="tel" 
                   id="form-phone" 
                   placeholder="+91 98765 43210"
-                  class="w-full px-4 py-3 rounded-xl bg-black/60 border border-brandBorder text-white text-sm focus:outline-none focus:border-brandCyan transition font-sans"
+                  class="w-full px-4 py-3 rounded-xl bg-slate-50/70 border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-sky-500 focus:bg-white transition font-sans"
                 />
               </div>
               <div>
-                <label for="form-company" class="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">Company/Brand Name *</label>
+                <label for="form-company" class="block text-xs font-mono uppercase tracking-wider text-slate-700 font-semibold mb-2">Company/Brand Name *</label>
                 <input 
                   type="text" 
                   id="form-company" 
                   required 
                   placeholder="e.g. Brand Name"
-                  class="w-full px-4 py-3 rounded-xl bg-black/60 border border-brandBorder text-white text-sm focus:outline-none focus:border-brandCyan transition font-sans"
+                  class="w-full px-4 py-3 rounded-xl bg-slate-50/70 border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-sky-500 focus:bg-white transition font-sans"
                 />
               </div>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
               <div>
-                <label for="form-website" class="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">Website URL (if applicable)</label>
+                <label for="form-website" class="block text-xs font-mono uppercase tracking-wider text-slate-700 font-semibold mb-2">Website URL (if applicable)</label>
                 <input 
                   type="url" 
                   id="form-website" 
                   placeholder="https://yourbrand.com"
-                  class="w-full px-4 py-3 rounded-xl bg-black/60 border border-brandBorder text-white text-sm focus:outline-none focus:border-brandCyan transition font-sans"
+                  class="w-full px-4 py-3 rounded-xl bg-slate-50/70 border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-sky-500 focus:bg-white transition font-sans"
                 />
               </div>
               <div>
-                <label for="form-service" class="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">Service Required</label>
-                <select id="form-service" class="w-full px-4 py-3 rounded-xl bg-black/60 border border-brandBorder text-neutral-300 text-sm focus:outline-none focus:border-brandCyan transition font-sans">
+                <label for="form-service" class="block text-xs font-mono uppercase tracking-wider text-slate-700 font-semibold mb-2">Service Required</label>
+                <select id="form-service" class="w-full px-4 py-3 rounded-xl bg-slate-50/70 border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-sky-500 focus:bg-white transition font-sans">
                   <option value="Web Development (Shopify, Wordpress, Custom)">Web Development (Shopify, Wordpress, Custom)</option>
                   <option value="SEO">SEO</option>
                   <option value="Paid Ads (Google, Meta, etc.)">Paid Ads (Google, Meta, etc.)</option>
@@ -735,20 +755,20 @@
             </div>
 
             <div>
-              <label for="form-message" class="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">Project Brief / Message *</label>
+              <label for="form-message" class="block text-xs font-mono uppercase tracking-wider text-slate-700 font-semibold mb-2">Project Brief / Message *</label>
               <textarea 
                 id="form-message" 
                 rows="4" 
                 required 
                 placeholder="Tell me about your project scope, timeline, or links..."
-                class="w-full px-4 py-3 rounded-xl bg-black/60 border border-brandBorder text-white text-sm focus:outline-none focus:border-brandCyan transition font-sans"
+                class="w-full px-4 py-3 rounded-xl bg-slate-50/70 border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-sky-500 focus:bg-white transition font-sans"
               ></textarea>
             </div>
 
             <button 
               type="submit" 
               id="submit-btn" 
-              class="w-full py-3.5 rounded-xl bg-gradient-to-r from-brandBlue to-brandCyan text-white font-bold text-xs tracking-wider uppercase shadow-lg shadow-sky-500/20 hover:opacity-95 transition flex items-center justify-center gap-2"
+              class="w-full py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-sky-500 text-white font-bold text-xs tracking-wider uppercase shadow-lg shadow-sky-500/20 hover:opacity-95 transition flex items-center justify-center gap-2"
             >
               <span>Send Message</span>
               <span>→</span>
@@ -758,11 +778,11 @@
           </form>
 
           <!-- Direct Email Copy Highlight Below Form -->
-          <div class="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-brandBorder flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-xs">
-            <span class="text-neutral-400">Prefer direct email?</span>
-            <div class="flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-between sm:justify-start bg-black/40 sm:bg-transparent px-3 py-2 sm:p-0 rounded-lg border border-brandBorder sm:border-none">
-              <span class="text-brandCyan font-mono text-[11px] sm:text-xs truncate">letswork.arvind@gmail.com</span>
-              <button onclick="copyEmail('letswork.arvind@gmail.com', 'quick-copy')" id="quick-copy" class="text-[10px] uppercase font-mono px-2 py-1 bg-white/5 border border-white/10 rounded text-neutral-300 hover:text-white transition shrink-0">Copy</button>
+          <div class="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-xs">
+            <span class="text-slate-600">Prefer direct email?</span>
+            <div class="flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-between sm:justify-start bg-slate-100 px-3 py-2 sm:p-0 rounded-lg sm:bg-transparent">
+              <span class="text-sky-700 font-mono text-[11px] sm:text-xs truncate font-medium">letswork.arvind@gmail.com</span>
+              <button onclick="copyEmail('letswork.arvind@gmail.com', 'quick-copy')" id="quick-copy" class="text-[10px] uppercase font-mono px-2 py-1 bg-white border border-slate-200 rounded text-slate-700 hover:text-black transition shrink-0 shadow-sm">Copy</button>
             </div>
           </div>
 
@@ -771,15 +791,15 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 sm:py-16 bg-black">
+    <footer class="py-12 sm:py-16 bg-[#08090b] text-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
         <div>
           <p class="text-white font-semibold text-sm">Arvind Verma</p>
-          <p class="text-xs text-neutral-500 mt-1 font-mono">Shopify Developer &amp; E-Commerce Specialist</p>
+          <p class="text-xs text-neutral-400 mt-1 font-mono">Shopify Developer &amp; E-Commerce Specialist</p>
         </div>
 
         <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-6 text-xs text-neutral-400">
-          <a href="https://www.linkedin.com/in/arvind-verma-5061a3228" target="_blank" rel="noopener noreferrer" class="hover:text-brandCyan transition">LinkedIn Profile</a>
+          <a href="https://www.linkedin.com/in/arvind-verma-5061a3228" target="_blank" rel="noopener noreferrer" class="hover:text-[#38bdf8] transition">LinkedIn Profile</a>
           <span class="text-neutral-700 hidden sm:inline">•</span>
           <span class="font-mono text-neutral-500 text-[11px] sm:text-xs">CRAFTED WITH CARE BY VINDX</span>
         </div>
@@ -841,11 +861,11 @@
           body: JSON.stringify(payload)
         });
 
-        statusMsg.className = "text-xs text-center font-mono mt-3 text-emerald-400 block";
+        statusMsg.className = "text-xs text-center font-mono mt-3 text-emerald-600 block font-semibold";
         statusMsg.innerText = "✓ Thank you! Your message has been sent directly to my inbox.";
         document.getElementById('portfolio-form').reset();
       } catch (err) {
-        statusMsg.className = "text-xs text-center font-mono mt-3 text-rose-400 block";
+        statusMsg.className = "text-xs text-center font-mono mt-3 text-rose-600 block font-semibold";
         statusMsg.innerText = "Submission failed. Please email directly at letswork.arvind@gmail.com";
       } finally {
         submitBtn.disabled = false;
@@ -871,11 +891,11 @@
 
       buttons.forEach(btn => {
         if(btn.dataset.category === category) {
-          btn.classList.add('border-brandCyan', 'bg-brandCyan/10', 'text-brandCyan');
-          btn.classList.remove('border-brandBorder', 'glass-card', 'text-neutral-400');
+          btn.classList.add('border-sky-600', 'bg-sky-50', 'text-sky-700');
+          btn.classList.remove('border-slate-200', 'bg-white', 'text-slate-600');
         } else {
-          btn.classList.remove('border-brandCyan', 'bg-brandCyan/10', 'text-brandCyan');
-          btn.classList.add('border-brandBorder', 'glass-card', 'text-neutral-400');
+          btn.classList.remove('border-sky-600', 'bg-sky-50', 'text-sky-700');
+          btn.classList.add('border-slate-200', 'bg-white', 'text-slate-600');
         }
       });
 
