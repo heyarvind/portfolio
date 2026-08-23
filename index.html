@@ -177,7 +177,6 @@
     .glow-box {
       box-shadow: 0 0 50px -10px rgba(56, 189, 248, 0.25);
     }
-    /* Prevent iOS zoom on input focus */
     @media screen and (max-width: 768px) {
       input, select, textarea {
         font-size: 16px !important;
@@ -411,7 +410,7 @@
       </div>
     </section>
 
-    <!-- Selected Works / Portfolio Section -->
+    <!-- Selected Works / Portfolio Section (With Images on All 12 Projects) -->
     <section id="works" class="py-16 sm:py-24 border-b border-brandBorder">
       <div class="max-w-7xl mx-auto px-4 sm:px-6">
         
@@ -419,7 +418,7 @@
           <h2 class="text-xl sm:text-3xl font-extrabold uppercase tracking-widest text-white">Selected Works</h2>
           <p class="text-neutral-500 text-[11px] sm:text-xs font-mono tracking-widest mt-2 uppercase">Proven Across Footwear, Fashion, Jewellery, Home &amp; Lifestyle</p>
           
-          <!-- Category Filter Buttons (Horizontal Scrolling on Mobile) -->
+          <!-- Category Filter Buttons -->
           <div class="flex overflow-x-auto no-scrollbar gap-2 mt-6 sm:mt-8 pb-2 justify-start sm:justify-center">
             <button onclick="filterStores('all')" class="filter-btn active shrink-0 px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-medium border border-brandCyan bg-brandCyan/10 text-brandCyan transition" data-category="all">All Projects</button>
             <button onclick="filterStores('footwear')" class="filter-btn shrink-0 px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-medium border border-brandBorder glass-card text-neutral-400 hover:text-white transition" data-category="footwear">Footwear</button>
@@ -432,13 +431,13 @@
         <!-- Store Grid -->
         <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           
-          <!-- 1. Michael Angelo (With Image) -->
+          <!-- 1. Michael Angelo -->
           <div class="project-item footwear glass-card rounded-2xl overflow-hidden flex flex-col justify-between transition duration-300 group">
             <div>
               <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b border-brandBorder">
                 <img 
                   src="https://cdn.shopify.com/s/files/1/0657/7710/7144/files/Artboard_2_jpg.jpg?v=1779884867" 
-                  alt="Michael Angelo - Premium Footwear Store" 
+                  alt="Michael Angelo - Premium Footwear" 
                   class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
                   loading="lazy"
                 />
@@ -456,13 +455,13 @@
             </div>
           </div>
 
-          <!-- 2. Le Concept (With Image) -->
+          <!-- 2. Le Concept -->
           <div class="project-item fashion glass-card rounded-2xl overflow-hidden flex flex-col justify-between transition duration-300 group">
             <div>
               <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b border-brandBorder">
                 <img 
                   src="https://cdn.shopify.com/s/files/1/0890/7233/7188/files/Mask_group_6.png?v=1783936310" 
-                  alt="Le Concept - Women's Wear Store" 
+                  alt="Le Concept - Women's Wear" 
                   class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
                   loading="lazy"
                 />
@@ -481,123 +480,243 @@
           </div>
 
           <!-- 3. Spiffers -->
-          <div class="project-item footwear glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
+          <div class="project-item footwear glass-card rounded-2xl overflow-hidden flex flex-col justify-between transition duration-300 group">
             <div>
-              <div class="flex justify-between items-start mb-3 sm:mb-4">
-                <h3 class="text-lg sm:text-xl font-bold text-white">Spiffers</h3>
-                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Footwear</span>
+              <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b border-brandBorder">
+                <img 
+                  src="https://www.spiffers.in/cdn/shop/files/Rectangle_142.png?v=1780992822&width=1600" 
+                  alt="Spiffers - Footwear Brand" 
+                  class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
+                  loading="lazy"
+                />
               </div>
-              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Footwear Brand. Responsive catalog layout, size selector matrix, and high-conversion product pages.</p>
+              <div class="p-5 sm:p-6">
+                <div class="flex justify-between items-start mb-3 sm:mb-4">
+                  <h3 class="text-lg sm:text-xl font-bold text-white">Spiffers</h3>
+                  <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Footwear</span>
+                </div>
+                <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Footwear Brand. Responsive catalog layout, size selector matrix, and high-conversion product pages.</p>
+              </div>
             </div>
-            <a href="https://www.spiffers.in/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <div class="p-5 sm:p-6 pt-0">
+              <a href="https://www.spiffers.in/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            </div>
           </div>
 
           <!-- 4. Nikunj Niidhi Bajaj -->
-          <div class="project-item fashion glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
+          <div class="project-item fashion glass-card rounded-2xl overflow-hidden flex flex-col justify-between transition duration-300 group">
             <div>
-              <div class="flex justify-between items-start mb-3 sm:mb-4">
-                <h3 class="text-lg sm:text-xl font-bold text-white">Nikunj Niidhi Bajaj</h3>
-                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Ethnic Wear</span>
+              <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b border-brandBorder">
+                <img 
+                  src="https://nikunjbyniidhibajaj.com/cdn/shop/files/2.png?v=1780501726&width=2400" 
+                  alt="Nikunj Niidhi Bajaj - Women Ethnic Wear" 
+                  class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
+                  loading="lazy"
+                />
               </div>
-              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Women Ethnic Wear. Bespoke navigation architecture, designer lookbooks, and smooth responsive menus.</p>
+              <div class="p-5 sm:p-6">
+                <div class="flex justify-between items-start mb-3 sm:mb-4">
+                  <h3 class="text-lg sm:text-xl font-bold text-white">Nikunj Niidhi Bajaj</h3>
+                  <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Ethnic Wear</span>
+                </div>
+                <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Women Ethnic Wear. Bespoke navigation architecture, designer lookbooks, and smooth responsive menus.</p>
+              </div>
             </div>
-            <a href="https://nikunjbyniidhibajaj.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <div class="p-5 sm:p-6 pt-0">
+              <a href="https://nikunjbyniidhibajaj.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            </div>
           </div>
 
           <!-- 5. Loom & Story -->
-          <div class="project-item fashion glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
+          <div class="project-item fashion glass-card rounded-2xl overflow-hidden flex flex-col justify-between transition duration-300 group">
             <div>
-              <div class="flex justify-between items-start mb-3 sm:mb-4">
-                <h3 class="text-lg sm:text-xl font-bold text-white">Loom &amp; Story</h3>
-                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Women's Wear</span>
+              <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b border-brandBorder">
+                <img 
+                  src="https://loomandstory.com/cdn/shop/files/website.jpg?v=1785494251&width=2000" 
+                  alt="Loom & Story - Women's Wear" 
+                  class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
+                  loading="lazy"
+                />
               </div>
-              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Women's Wear. Refined textile storytelling, seamless mobile drawer checkout, and optimized Core Web Vitals.</p>
+              <div class="p-5 sm:p-6">
+                <div class="flex justify-between items-start mb-3 sm:mb-4">
+                  <h3 class="text-lg sm:text-xl font-bold text-white">Loom &amp; Story</h3>
+                  <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Women's Wear</span>
+                </div>
+                <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Women's Wear. Refined textile storytelling, seamless mobile drawer checkout, and optimized Core Web Vitals.</p>
+              </div>
             </div>
-            <a href="https://loomandstory.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <div class="p-5 sm:p-6 pt-0">
+              <a href="https://loomandstory.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            </div>
           </div>
 
           <!-- 6. Zaydn -->
-          <div class="project-item footwear glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
+          <div class="project-item footwear glass-card rounded-2xl overflow-hidden flex flex-col justify-between transition duration-300 group">
             <div>
-              <div class="flex justify-between items-start mb-3 sm:mb-4">
-                <h3 class="text-lg sm:text-xl font-bold text-white">Zaydn</h3>
-                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Footwear</span>
+              <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b border-brandBorder">
+                <img 
+                  src="https://zaydns.com/cdn/shop/files/YOO.jpg?v=1779727236&width=1200" 
+                  alt="Zaydn - Footwear Brand" 
+                  class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
+                  loading="lazy"
+                />
               </div>
-              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Footwear Brand. Interactive product lore features, performance optimization, and custom Liquid components.</p>
+              <div class="p-5 sm:p-6">
+                <div class="flex justify-between items-start mb-3 sm:mb-4">
+                  <h3 class="text-lg sm:text-xl font-bold text-white">Zaydn</h3>
+                  <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Footwear</span>
+                </div>
+                <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Footwear Brand. Interactive product lore features, performance optimization, and custom Liquid components.</p>
+              </div>
             </div>
-            <a href="https://zaydns.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <div class="p-5 sm:p-6 pt-0">
+              <a href="https://zaydns.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            </div>
           </div>
 
           <!-- 7. Miira -->
-          <div class="project-item jewelry glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
+          <div class="project-item jewelry glass-card rounded-2xl overflow-hidden flex flex-col justify-between transition duration-300 group">
             <div>
-              <div class="flex justify-between items-start mb-3 sm:mb-4">
-                <h3 class="text-lg sm:text-xl font-bold text-white">Miira</h3>
-                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Jewellery</span>
+              <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b border-brandBorder">
+                <img 
+                  src="https://www.miira.in/cdn/shop/files/SparklingnamenecklaceRs2499_700x.jpg?v=1784040283" 
+                  alt="Miira - Artificial Jewellery" 
+                  class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
+                  loading="lazy"
+                />
               </div>
-              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Artificial Jewellery. Elegant product showcases, high-resolution media galleries, and clean collection filters.</p>
+              <div class="p-5 sm:p-6">
+                <div class="flex justify-between items-start mb-3 sm:mb-4">
+                  <h3 class="text-lg sm:text-xl font-bold text-white">Miira</h3>
+                  <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Jewellery</span>
+                </div>
+                <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Artificial Jewellery. Elegant product showcases, high-resolution media galleries, and clean collection filters.</p>
+              </div>
             </div>
-            <a href="https://www.miira.in/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <div class="p-5 sm:p-6 pt-0">
+              <a href="https://www.miira.in/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            </div>
           </div>
 
           <!-- 8. Banarasiya -->
-          <div class="project-item fashion glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
+          <div class="project-item fashion glass-card rounded-2xl overflow-hidden flex flex-col justify-between transition duration-300 group">
             <div>
-              <div class="flex justify-between items-start mb-3 sm:mb-4">
-                <h3 class="text-lg sm:text-xl font-bold text-white">Banarasiya</h3>
-                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Saree Store</span>
+              <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b border-brandBorder">
+                <img 
+                  src="https://cdn.shopify.com/s/files/1/0497/0240/4258/files/Group_93_1.png?v=1778482629" 
+                  alt="Banarasiya - Banarasi Saree Store" 
+                  class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
+                  loading="lazy"
+                />
               </div>
-              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Banarasi Saree Store. Heritage aesthetic, custom hero sliders, swatch matrix selectors, and zero bloat.</p>
+              <div class="p-5 sm:p-6">
+                <div class="flex justify-between items-start mb-3 sm:mb-4">
+                  <h3 class="text-lg sm:text-xl font-bold text-white">Banarasiya</h3>
+                  <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Saree Store</span>
+                </div>
+                <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Banarasi Saree Store. Heritage aesthetic, custom hero sliders, swatch matrix selectors, and zero bloat.</p>
+              </div>
             </div>
-            <a href="https://banarasiya.in/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <div class="p-5 sm:p-6 pt-0">
+              <a href="https://banarasiya.in/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            </div>
           </div>
 
           <!-- 9. Vespera Homes -->
-          <div class="project-item home glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
+          <div class="project-item home glass-card rounded-2xl overflow-hidden flex flex-col justify-between transition duration-300 group">
             <div>
-              <div class="flex justify-between items-start mb-3 sm:mb-4">
-                <h3 class="text-lg sm:text-xl font-bold text-white">Vespera Homes</h3>
-                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Home Decor</span>
+              <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b border-brandBorder">
+                <img 
+                  src="https://www.vesperahomes.com/cdn/shop/files/Self-care_Sunday_Sale_Green_Shopify_Banner_38.png?v=1783680878&width=1920" 
+                  alt="Vespera Homes - Home Decor" 
+                  class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
+                  loading="lazy"
+                />
               </div>
-              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Home Decor. Modular Liquid section schemas, structured metadata, and streamlined catalog UX.</p>
+              <div class="p-5 sm:p-6">
+                <div class="flex justify-between items-start mb-3 sm:mb-4">
+                  <h3 class="text-lg sm:text-xl font-bold text-white">Vespera Homes</h3>
+                  <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Home Decor</span>
+                </div>
+                <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Home Decor. Modular Liquid section schemas, structured metadata, and streamlined catalog UX.</p>
+              </div>
             </div>
-            <a href="https://www.vesperahomes.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <div class="p-5 sm:p-6 pt-0">
+              <a href="https://www.vesperahomes.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            </div>
           </div>
 
           <!-- 10. Sojanya -->
-          <div class="project-item fashion glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
+          <div class="project-item fashion glass-card rounded-2xl overflow-hidden flex flex-col justify-between transition duration-300 group">
             <div>
-              <div class="flex justify-between items-start mb-3 sm:mb-4">
-                <h3 class="text-lg sm:text-xl font-bold text-white">Sojanya</h3>
-                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Ethnic Wear</span>
+              <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b border-brandBorder">
+                <img 
+                  src="https://sojanya.com/cdn/shop/files/2_08eebcdd-d7f0-480a-9ad4-4daf34580003.jpg?v=1757503550&width=1410" 
+                  alt="Sojanya - Men Ethnic Wear" 
+                  class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
+                  loading="lazy"
+                />
               </div>
-              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Men Ethnic Wear. High-volume catalog architecture optimized for rapid navigation and checkout speed.</p>
+              <div class="p-5 sm:p-6">
+                <div class="flex justify-between items-start mb-3 sm:mb-4">
+                  <h3 class="text-lg sm:text-xl font-bold text-white">Sojanya</h3>
+                  <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Ethnic Wear</span>
+                </div>
+                <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Men Ethnic Wear. High-volume catalog architecture optimized for rapid navigation and checkout speed.</p>
+              </div>
             </div>
-            <a href="https://sojanya.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <div class="p-5 sm:p-6 pt-0">
+              <a href="https://sojanya.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            </div>
           </div>
 
           <!-- 11. Paakhi -->
-          <div class="project-item home glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
+          <div class="project-item home glass-card rounded-2xl overflow-hidden flex flex-col justify-between transition duration-300 group">
             <div>
-              <div class="flex justify-between items-start mb-3 sm:mb-4">
-                <h3 class="text-lg sm:text-xl font-bold text-white">Paakhi</h3>
-                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Essentials</span>
+              <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b border-brandBorder">
+                <img 
+                  src="https://paakhihome.com/cdn/shop/files/PRT-004_15_10a2899c-7648-4a38-8f54-1b48b3da78a1.jpg?v=1769081125&width=1296" 
+                  alt="Paakhi - Home Essentials" 
+                  class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
+                  loading="lazy"
+                />
               </div>
-              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Home Essentials (Pillows, Covers, Bedsheets). Custom collection filtering and clean product variant setups.</p>
+              <div class="p-5 sm:p-6">
+                <div class="flex justify-between items-start mb-3 sm:mb-4">
+                  <h3 class="text-lg sm:text-xl font-bold text-white">Paakhi</h3>
+                  <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Essentials</span>
+                </div>
+                <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Home Essentials (Pillows, Covers, Bedsheets). Custom collection filtering and clean product variant setups.</p>
+              </div>
             </div>
-            <a href="https://paakhihome.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <div class="p-5 sm:p-6 pt-0">
+              <a href="https://paakhihome.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            </div>
           </div>
 
           <!-- 12. Taksh -->
-          <div class="project-item jewelry glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition duration-300">
+          <div class="project-item jewelry glass-card rounded-2xl overflow-hidden flex flex-col justify-between transition duration-300 group">
             <div>
-              <div class="flex justify-between items-start mb-3 sm:mb-4">
-                <h3 class="text-lg sm:text-xl font-bold text-white">Taksh</h3>
-                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Jewelry</span>
+              <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b border-brandBorder">
+                <img 
+                  src="https://takshexclusive.com/cdn/shop/files/IMG_20260508_192457.png?v=1778248556&width=2560" 
+                  alt="Taksh - Premium Jewellery" 
+                  class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
+                  loading="lazy"
+                />
               </div>
-              <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Premium Artificial &amp; Bridal Jewelry. High-end luxury aesthetics, visual zoom, and polished product merchandising.</p>
+              <div class="p-5 sm:p-6">
+                <div class="flex justify-between items-start mb-3 sm:mb-4">
+                  <h3 class="text-lg sm:text-xl font-bold text-white">Taksh</h3>
+                  <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Jewelry</span>
+                </div>
+                <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Premium Artificial &amp; Bridal Jewelry. High-end luxury aesthetics, visual zoom, and polished product merchandising.</p>
+              </div>
             </div>
-            <a href="https://takshexclusive.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <div class="p-5 sm:p-6 pt-0">
+              <a href="https://takshexclusive.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            </div>
           </div>
 
         </div>
