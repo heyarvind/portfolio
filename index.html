@@ -117,28 +117,32 @@
   }
   </script>
 
-  <!-- Custom Gradient Favicon "A" -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%2338bdf8'/><stop offset='100%25' stop-color='%232563eb'/></linearGradient></defs><rect width='100' height='100' rx='24' fill='%2308090b'/><text x='50' y='72' font-size='64' font-family='sans-serif' font-weight='900' fill='url(%23g)' text-anchor='middle'>A</text></svg>" type="image/svg+xml" />
+  <!-- Custom Gradient Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%23ff5b36'/><stop offset='100%25' stop-color='%2338d39f'/></linearGradient></defs><rect width='100' height='100' rx='24' fill='%23000'/><text x='50' y='72' font-size='64' font-family='sans-serif' font-weight='900' fill='url(%23g)' text-anchor='middle'>A</text></svg>" type="image/svg+xml" />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&family=Bungee&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', '"Inter"', 'sans-serif'],
             mono: ['"JetBrains Mono"', 'monospace'],
           },
           colors: {
-            brandDark: '#08090b',
-            brandSurface: 'rgba(18, 21, 28, 0.7)',
-            brandBorder: 'rgba(255, 255, 255, 0.08)',
-            brandCyan: '#38bdf8',
-            brandBlue: '#2563eb',
+            neoBg: '#faf8f5',
+            neoYellow: '#ffd84d',
+            neoCoral: '#ff5b36',
+            neoMint: '#34d399',
+            neoCyan: '#38bdf8',
+            neoPink: '#f472b6',
+            neoPurple: '#a78bfa',
+            neoSand: '#f3eee5',
+            neoBorder: '#000000',
           }
         }
       }
@@ -147,26 +151,56 @@
 
   <style>
     body {
-      background-color: #08090b;
-      color: #e2e8f0;
+      background-color: #faf8f5;
+      color: #000000;
       overflow-x: hidden;
     }
-    .glass-card {
-      background: rgba(18, 22, 31, 0.65);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+    /* Neo-Brutalist Hard Shadows */
+    .neo-box {
+      background: #ffffff;
+      border: 2.5px solid #000000;
+      box-shadow: 4px 4px 0px #000000;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .glass-card:hover {
-      border-color: rgba(56, 189, 248, 0.3);
-      box-shadow: 0 12px 40px -10px rgba(56, 189, 248, 0.15);
+    .neo-box-lg {
+      background: #ffffff;
+      border: 3px solid #000000;
+      box-shadow: 6px 6px 0px #000000;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .hero-mesh {
-      background: radial-gradient(circle at 50% 15%, rgba(37, 99, 235, 0.15) 0%, transparent 60%),
-                  radial-gradient(circle at 85% 35%, rgba(56, 189, 248, 0.1) 0%, transparent 50%),
-                  radial-gradient(circle at 15% 75%, rgba(37, 99, 235, 0.08) 0%, transparent 50%);
+    .neo-btn {
+      border: 2.5px solid #000000;
+      box-shadow: 3px 3px 0px #000000;
+      transition: all 0.15s ease;
     }
+    .neo-btn:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 5px 5px 0px #000000;
+    }
+    .neo-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px #000000;
+    }
+    .neo-card-hover:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 8px 8px 0px #000000;
+    }
+
+    /* Marquee Animation */
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      display: flex;
+      width: 200%;
+      animation: marquee 25s linear infinite;
+    }
+    .animate-marquee:hover {
+      animation-play-state: paused;
+    }
+
     .no-scrollbar::-webkit-scrollbar {
       display: none;
     }
@@ -174,9 +208,7 @@
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
-    .glow-box {
-      box-shadow: 0 0 50px -10px rgba(56, 189, 248, 0.25);
-    }
+
     @media screen and (max-width: 768px) {
       input, select, textarea {
         font-size: 16px !important;
@@ -186,764 +218,783 @@
 
   <meta name="google-site-verification" content="wIetArfxf_bDVKXYmOCi_o1CV_5yYKU7NaXp5YQ_UxA" />
 </head>
-<body class="font-sans antialiased selection:bg-brandCyan/20 selection:text-white">
+<body class="font-sans antialiased text-black selection:bg-neoYellow selection:text-black">
 
-  <!-- Floating Radial Glow Background -->
-  <div class="fixed inset-0 pointer-events-none hero-mesh z-0"></div>
-
-  <!-- Navigation Bar -->
-  <header class="fixed top-0 left-0 w-full z-50 bg-[#08090b]/90 backdrop-blur-xl border-b border-brandBorder">
+  <!-- Neo Navigation Header -->
+  <header class="sticky top-0 left-0 w-full z-50 bg-[#faf8f5]/90 backdrop-blur-md border-b-[2.5px] border-black">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
       
-      <!-- Brand Logo / Identity -->
-      <a href="#" class="flex items-center gap-1.5 text-sm sm:text-base font-bold tracking-wider uppercase text-white shrink-0">
-        <span>Arvind Verma</span>
-        <span class="text-neutral-500 font-normal">|</span>
-        <span class="text-[11px] sm:text-xs text-brandCyan tracking-widest font-mono">Shopify Expert</span>
+      <!-- Brand Logo Badge -->
+      <a href="#" class="flex items-center gap-2">
+        <div class="w-9 h-9 rounded-lg bg-neoCoral border-2 border-black flex items-center justify-center font-extrabold text-white text-lg shadow-[2px_2px_0px_#000]">
+          A
+        </div>
+        <div class="flex flex-col">
+          <span class="text-sm sm:text-base font-black uppercase tracking-tight leading-none">Arvind Verma</span>
+          <span class="text-[10px] font-mono text-neutral-600 font-bold uppercase tracking-wider">Shopify Freelancer</span>
+        </div>
       </a>
 
       <!-- Desktop Navigation Links -->
-      <nav class="hidden lg:flex items-center space-x-6 xl:space-x-8 text-xs font-medium uppercase tracking-widest text-neutral-400" aria-label="Main Navigation">
-        <a href="#hero" class="hover:text-brandCyan transition">Home</a>
-        <a href="#metrics" class="hover:text-brandCyan transition">Metrics</a>
-        <a href="#expertise" class="hover:text-brandCyan transition">Expertise</a>
-        <a href="#partnerships" class="hover:text-brandCyan transition">Partnerships</a>
-        <a href="#works" class="hover:text-brandCyan transition">Projects</a>
-        <a href="#architecture" class="hover:text-brandCyan transition">Architecture</a>
-        <a href="#connect" class="text-brandCyan font-semibold hover:underline">Contact</a>
+      <nav class="hidden md:flex items-center space-x-6 text-xs font-bold uppercase tracking-wider">
+        <a href="#services" class="hover:underline underline-offset-4 decoration-2">Services</a>
+        <a href="#architecture" class="hover:underline underline-offset-4 decoration-2">Stack</a>
+        <a href="#partnerships" class="hover:underline underline-offset-4 decoration-2">Partners</a>
+        <a href="#works" class="hover:underline underline-offset-4 decoration-2">Works</a>
+        <a href="#connect" class="hover:underline underline-offset-4 decoration-2">Contact</a>
       </nav>
 
-      <!-- Desktop Action & Mobile Toggle -->
+      <!-- Let's Talk CTA -->
       <div class="flex items-center gap-3">
-        <a href="#connect" class="hidden sm:inline-flex px-4 py-2 rounded-full border border-brandCyan/40 bg-brandCyan/10 text-brandCyan hover:bg-brandCyan hover:text-black font-semibold text-xs transition duration-300">
-          Let's Talk
-        </a>
-
-        <!-- Mobile Hamburger Button -->
-        <button onclick="toggleMobileMenu()" id="menu-btn" class="lg:hidden p-2 rounded-lg text-neutral-400 hover:text-white hover:bg-white/5 transition" aria-label="Toggle Navigation">
-          <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-          <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile Slide-Down Menu -->
-    <div id="mobile-menu" class="hidden lg:hidden border-b border-brandBorder bg-[#0c0e14]/98 px-6 py-6 transition-all duration-300">
-      <div class="flex flex-col space-y-4 text-xs font-semibold uppercase tracking-widest text-neutral-300">
-        <a href="#hero" onclick="toggleMobileMenu()" class="py-2 border-b border-white/5 hover:text-brandCyan">Home</a>
-        <a href="#metrics" onclick="toggleMobileMenu()" class="py-2 border-b border-white/5 hover:text-brandCyan">Metrics</a>
-        <a href="#expertise" onclick="toggleMobileMenu()" class="py-2 border-b border-white/5 hover:text-brandCyan">Expertise</a>
-        <a href="#partnerships" onclick="toggleMobileMenu()" class="py-2 border-b border-white/5 hover:text-brandCyan">Partnerships</a>
-        <a href="#works" onclick="toggleMobileMenu()" class="py-2 border-b border-white/5 hover:text-brandCyan">Projects</a>
-        <a href="#architecture" onclick="toggleMobileMenu()" class="py-2 border-b border-white/5 hover:text-brandCyan">Architecture</a>
-        <a href="#connect" onclick="toggleMobileMenu()" class="py-2.5 text-center rounded-xl bg-gradient-to-r from-brandBlue to-brandCyan text-white font-bold tracking-wider mt-2">
+        <a href="#connect" class="neo-btn px-4 py-2 rounded-full bg-neoCoral text-white font-bold text-xs uppercase tracking-wider">
           Let's Talk ↗
         </a>
       </div>
     </div>
   </header>
 
-  <main class="relative z-10 pt-20 sm:pt-28">
+  <main>
 
-    <!-- Hero Section -->
-    <section id="hero" class="relative max-w-7xl mx-auto px-4 sm:px-6 pt-10 sm:pt-16 pb-16 sm:pb-20 text-center">
+    <!-- ============================================== -->
+    <!-- 1. HERO SECTION (Neo-Brutalist Playful Layout) -->
+    <!-- ============================================== -->
+    <section class="relative max-w-7xl mx-auto px-4 sm:px-6 pt-12 sm:pt-16 pb-16 sm:pb-24 overflow-hidden">
       
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card border-brandBorder text-[11px] sm:text-xs text-neutral-300 mb-6 sm:mb-8 text-left max-w-full">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0 animate-pulse"></span> 
-        <span class="truncate">Open for Remote Positions, Contracts &amp; Freelance Projects</span>
-      </div>
+      <!-- Ambient Sun Element in Background -->
+      <div class="absolute top-4 left-1/3 w-44 h-44 sm:w-64 sm:h-64 rounded-full bg-neoYellow border-[3px] border-black pointer-events-none -z-10 shadow-[6px_6px_0px_#000]"></div>
 
-      <h1 class="text-2xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight uppercase max-w-4xl mx-auto leading-snug sm:leading-tight">
-        Fast, Responsive &amp; High-Converting <br class="hidden sm:inline">
-        <span class="bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-brandCyan">
-          Shopify Stores
-        </span> Built for Scale.
-      </h1>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Left Hero Content -->
+        <div class="lg:col-span-8 text-left">
+          
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full neo-box bg-white text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-6">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 border border-black animate-pulse"></span>
+            <span>Available for Freelance &amp; Remote Contracts</span>
+          </div>
 
-      <p class="mt-4 sm:mt-6 text-sm sm:text-lg text-neutral-400 max-w-2xl mx-auto font-light leading-relaxed px-2">
-        Specializing in custom Liquid architecture, Core Web Vitals speed engineering, secure payment gateway integrations, and technical SEO for modern D2C brands.
-      </p>
+          <h1 class="text-3xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight leading-[1.05] text-black">
+            Hi, I'm Arvind. <br>
+            <span class="bg-neoMint px-2.5 py-0.5 rounded-md border-2 border-black inline-block mt-1 shadow-[3px_3px_0px_#000]">
+              Full Stack,
+            </span> <br>
+            full sleeves rolled.
+          </h1>
 
-      <div class="mt-8 sm:mt-10 flex flex-col sm:flex-row justify-center items-center gap-3.5 sm:gap-4 w-full px-4 max-w-md sm:max-w-none mx-auto">
-        <a href="#works" class="w-full sm:w-auto px-7 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-sky-500 text-white font-semibold text-xs tracking-wider uppercase shadow-lg shadow-blue-500/20 hover:opacity-95 transition text-center">
-          Explore Selected Works
-        </a>
-        <a href="#connect" class="w-full sm:w-auto px-7 py-3 rounded-xl glass-card text-brandCyan font-semibold text-xs tracking-wider uppercase border border-brandCyan/30 hover:border-brandCyan transition text-center">
-          Hire / Collaborate
-        </a>
+          <p class="mt-6 text-base sm:text-lg text-neutral-800 font-medium max-w-2xl leading-relaxed">
+            I design, build, and optimize Shopify storefronts and scalable custom web apps end-to-end — from bespoke Liquid frontend sections to dependable checkout and payment gateway architectures.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="mt-8 flex flex-wrap items-center gap-3">
+            <a href="#works" class="neo-btn px-6 py-3 rounded-xl bg-neoCoral text-white font-black text-xs uppercase tracking-wider">
+              See My Work
+            </a>
+            <a href="#architecture" class="neo-btn px-6 py-3 rounded-xl bg-neoYellow text-black font-black text-xs uppercase tracking-wider">
+              Scroll The Stack ↓
+            </a>
+            <a href="#connect" class="neo-btn px-6 py-3 rounded-xl bg-white text-black font-black text-xs uppercase tracking-wider flex items-center gap-1.5">
+              <span>WhatsApp / Email</span> ↗
+            </a>
+          </div>
+
+          <!-- Stat Counters -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mt-12 max-w-3xl">
+            <div class="neo-box p-4 rounded-xl text-left bg-white">
+              <p class="text-2xl sm:text-3xl font-black font-mono">40+</p>
+              <p class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-neutral-600 mt-1">Stores Built</p>
+            </div>
+            <div class="neo-box p-4 rounded-xl text-left bg-white">
+              <p class="text-2xl sm:text-3xl font-black font-mono">30+</p>
+              <p class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-neutral-600 mt-1">Brands Served</p>
+            </div>
+            <div class="neo-box p-4 rounded-xl text-left bg-white">
+              <p class="text-2xl sm:text-3xl font-black font-mono">&lt;1.2s</p>
+              <p class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-neutral-600 mt-1">Core Web Vitals</p>
+            </div>
+            <div class="neo-box p-4 rounded-xl text-left bg-white">
+              <p class="text-2xl sm:text-3xl font-black font-mono">100%</p>
+              <p class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-neutral-600 mt-1">Clean Code</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Tech Badges Floating Grid -->
+        <div class="lg:col-span-4 hidden lg:flex flex-col gap-4">
+          <div class="neo-box p-5 rounded-2xl bg-neoSand rotate-1 hover:rotate-0 transition">
+            <p class="text-xs font-mono font-bold uppercase tracking-wider text-neutral-500 mb-3">Core Specialization</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 rounded-lg bg-white border-2 border-black font-bold text-xs shadow-[2px_2px_0px_#000]">🛍️ Shopify Plus</span>
+              <span class="px-3 py-1.5 rounded-lg bg-white border-2 border-black font-bold text-xs shadow-[2px_2px_0px_#000]">💎 Liquid Code</span>
+              <span class="px-3 py-1.5 rounded-lg bg-white border-2 border-black font-bold text-xs shadow-[2px_2px_0px_#000]">⚡ Web Vitals</span>
+              <span class="px-3 py-1.5 rounded-lg bg-white border-2 border-black font-bold text-xs shadow-[2px_2px_0px_#000]">💳 1-Click Pay</span>
+            </div>
+          </div>
+          <div class="neo-box p-5 rounded-2xl bg-white -rotate-1 hover:rotate-0 transition">
+            <p class="text-xs font-mono font-bold uppercase tracking-wider text-neutral-500 mb-3">Code Standards</p>
+            <div class="space-y-2 text-xs font-bold">
+              <div class="flex items-center gap-2">
+                <span class="text-neoMint text-base">✔</span> Zero Unnecessary App Bloat
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-neoMint text-base">✔</span> Native JS AJAX Cart Drawers
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-neoMint text-base">✔</span> Structured JSON-LD Schema
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <!-- Performance & Impact Metrics -->
-    <section id="metrics" class="py-10 sm:py-12 border-y border-brandBorder bg-black/40">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6">
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 text-center">
-          <div class="p-4 sm:p-6 glass-card rounded-xl">
-            <p class="text-2xl sm:text-4xl font-extrabold font-mono text-white mb-1"><span class="text-brandCyan">40</span>+</p>
-            <p class="text-[10px] sm:text-xs uppercase tracking-widest text-neutral-400 font-semibold">Stores Built</p>
-          </div>
-          <div class="p-4 sm:p-6 glass-card rounded-xl">
-            <p class="text-2xl sm:text-4xl font-extrabold font-mono text-white mb-1"><span class="text-brandCyan">30</span>+</p>
-            <p class="text-[10px] sm:text-xs uppercase tracking-widest text-neutral-400 font-semibold">Brands Served</p>
-          </div>
-          <div class="p-4 sm:p-6 glass-card rounded-xl">
-            <p class="text-2xl sm:text-4xl font-extrabold font-mono text-white mb-1">&lt;<span class="text-brandCyan">1.2</span>s</p>
-            <p class="text-[10px] sm:text-xs uppercase tracking-widest text-neutral-400 font-semibold">Core Web Vitals</p>
-          </div>
-          <div class="p-4 sm:p-6 glass-card rounded-xl">
-            <p class="text-2xl sm:text-4xl font-extrabold font-mono text-white mb-1"><span class="text-brandCyan">100</span>%</p>
-            <p class="text-[10px] sm:text-xs uppercase tracking-widest text-neutral-400 font-semibold">Clean Code</p>
-          </div>
-        </div>
+    <!-- ============================================== -->
+    <!-- 2. INFINITE TICKER MARQUEE                      -->
+    <!-- ============================================== -->
+    <div class="bg-black text-white border-y-[3px] border-black py-3 overflow-hidden">
+      <div class="animate-marquee font-mono text-xs sm:text-sm font-bold uppercase tracking-widest flex items-center gap-8 whitespace-nowrap">
+        <span>★ SHOPIFY LIQUID</span>
+        <span>★ HTML5 &amp; MODERN CSS3</span>
+        <span>★ JAVASCRIPT ES6+</span>
+        <span>★ CORE WEB VITALS</span>
+        <span>★ TAILWIND CSS</span>
+        <span>★ WORDPRESS &amp; PHP</span>
+        <span>★ 1-CLICK CHECKOUT</span>
+        <span>★ RAZORPAY &amp; GOKWIK</span>
+        <span>★ TECHNICAL SEO</span>
+        <span>★ SHOPIFY LIQUID</span>
+        <span>★ HTML5 &amp; MODERN CSS3</span>
+        <span>★ JAVASCRIPT ES6+</span>
+        <span>★ CORE WEB VITALS</span>
+        <span>★ TAILWIND CSS</span>
+        <span>★ WORDPRESS &amp; PHP</span>
+        <span>★ 1-CLICK CHECKOUT</span>
       </div>
-    </section>
+    </div>
 
-    <!-- Core Expertise Cards -->
-    <section id="expertise" class="py-16 sm:py-24 border-b border-brandBorder">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6">
-        <div class="text-center mb-12 sm:mb-16">
-          <h2 class="text-xl sm:text-3xl font-extrabold uppercase tracking-widest text-white">Core Capabilities</h2>
-          <p class="text-neutral-500 text-[11px] sm:text-xs font-mono tracking-widest mt-2 uppercase">End-to-End Technical Delivery for Modern E-Commerce</p>
-        </div>
+    <!-- ============================================== -->
+    <!-- 3. SERVICES I OFFER (5 Column Card Layout)      -->
+    <!-- ============================================== -->
+    <section id="services" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-left mb-12">
+        <span class="text-xs font-mono font-bold uppercase tracking-widest text-neutral-500">WHAT I DO</span>
+        <h2 class="text-2xl sm:text-5xl font-black uppercase tracking-tight mt-1 text-black">
+          Services <span class="text-neoCoral">I Offer.</span>
+        </h2>
+        <p class="text-neutral-700 text-sm font-medium mt-2">End-to-end technical solutions engineered for high-growth e-commerce brands.</p>
+      </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          <div class="glass-card p-5 sm:p-6 rounded-2xl">
-            <div class="text-2xl mb-2 sm:mb-3">🛠️</div>
-            <h3 class="text-sm sm:text-base font-bold text-white mb-1 sm:mb-2">Custom Themes &amp; Liquid</h3>
-            <p class="text-xs text-neutral-400 leading-relaxed">
-              Bespoke Liquid section schemas, dynamic drawer checkouts, custom product options, and lightweight modular layouts built from scratch.
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        
+        <!-- Card 1 -->
+        <div class="neo-box neo-card-hover p-5 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-neoMint border-2 border-black flex items-center justify-center text-2xl shadow-[2px_2px_0px_#000] mb-4">
+              🛍️
+            </div>
+            <h3 class="text-base font-extrabold uppercase leading-tight text-black">Shopify Development</h3>
+            <p class="text-xs text-neutral-600 mt-2 leading-relaxed">
+              Custom Shopify stores, theme customization, bespoke Liquid sections, schemas, and native cart drawers.
             </p>
           </div>
-          <div class="glass-card p-5 sm:p-6 rounded-2xl">
-            <div class="text-2xl mb-2 sm:mb-3">💳</div>
-            <h3 class="text-sm sm:text-base font-bold text-white mb-1 sm:mb-2">Payment Gateway Integration</h3>
-            <p class="text-xs text-neutral-400 leading-relaxed">
+          <div class="mt-6 pt-4 border-t-2 border-black/10 space-y-1.5 text-[11px] font-bold text-neutral-800">
+            <div>• Custom Themes</div>
+            <div>• Liquid Architecture</div>
+            <div>• AJAX Cart Drawers</div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="neo-box neo-card-hover p-5 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-neoCyan border-2 border-black flex items-center justify-center text-2xl shadow-[2px_2px_0px_#000] mb-4">
+              🌐
+            </div>
+            <h3 class="text-base font-extrabold uppercase leading-tight text-black">WordPress Development</h3>
+            <p class="text-xs text-neutral-600 mt-2 leading-relaxed">
+              Custom PHP templates, responsive business websites, WooCommerce integrations, and clean lightweight builds.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t-2 border-black/10 space-y-1.5 text-[11px] font-bold text-neutral-800">
+            <div>• Custom PHP Templates</div>
+            <div>• WooCommerce Setup</div>
+            <div>• Form &amp; API Hooks</div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="neo-box neo-card-hover p-5 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-neoYellow border-2 border-black flex items-center justify-center text-2xl shadow-[2px_2px_0px_#000] mb-4">
+              💳
+            </div>
+            <h3 class="text-base font-extrabold uppercase leading-tight text-black">Payment &amp; Logistics</h3>
+            <p class="text-xs text-neutral-600 mt-2 leading-relaxed">
               Direct checkout integrations enabling seamless domestic and global transactions with zero friction for shoppers.
             </p>
           </div>
-          <div class="glass-card p-5 sm:p-6 rounded-2xl">
-            <div class="text-2xl mb-2 sm:mb-3">⚡</div>
-            <h3 class="text-sm sm:text-base font-bold text-white mb-1 sm:mb-2">Speed &amp; Core Web Vitals</h3>
-            <p class="text-xs text-neutral-400 leading-relaxed">
-              Aggressive script streamlining, vanilla JavaScript logic, lazy-loading pipelines, and asset optimization for maximum Lighthouse scores.
-            </p>
-          </div>
-          <div class="glass-card p-5 sm:p-6 rounded-2xl">
-            <div class="text-2xl mb-2 sm:mb-3">🔍</div>
-            <h3 class="text-sm sm:text-base font-bold text-white mb-1 sm:mb-2">Technical SEO Architecture</h3>
-            <p class="text-xs text-neutral-400 leading-relaxed">
-              JSON-LD structured data (Product, Organization, WebPage schema), clean metadata hooks, and canonical URL hygiene for search visibility.
-            </p>
-          </div>
-          <div class="glass-card p-5 sm:p-6 rounded-2xl">
-            <div class="text-2xl mb-2 sm:mb-3">🔌</div>
-            <h3 class="text-sm sm:text-base font-bold text-white mb-1 sm:mb-2">Custom App &amp; API Integrations</h3>
-            <p class="text-xs text-neutral-400 leading-relaxed">
-              Connecting third-party logistics, ERPs, CRM platforms, and custom webhooks into Shopify workflows without adding code clutter.
-            </p>
-          </div>
-          <div class="glass-card p-5 sm:p-6 rounded-2xl">
-            <div class="text-2xl mb-2 sm:mb-3">✨</div>
-            <h3 class="text-sm sm:text-base font-bold text-white mb-1 sm:mb-2">Boutique UI/UX</h3>
-            <p class="text-xs text-neutral-400 leading-relaxed">
-              Quiet luxury aesthetic engineering, glassmorphism patterns, micro-interactions, and conversion-focused product storytelling.
-            </p>
+          <div class="mt-6 pt-4 border-t-2 border-black/10 space-y-1.5 text-[11px] font-bold text-neutral-800">
+            <div>• Razorpay / GoKwik</div>
+            <div>• Cashfree / PayU</div>
+            <div>• Shiprocket / Delhivery</div>
           </div>
         </div>
+
+        <!-- Card 4 -->
+        <div class="neo-box neo-card-hover p-5 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-neoCoral border-2 border-black flex items-center justify-center text-2xl shadow-[2px_2px_0px_#000] mb-4 text-white">
+              ⚡
+            </div>
+            <h3 class="text-base font-extrabold uppercase leading-tight text-black">Speed &amp; SEO Tuning</h3>
+            <p class="text-xs text-neutral-600 mt-2 leading-relaxed">
+              Sub-1.2s Core Web Vitals optimization, asset lazy-loading, and structured JSON-LD schema for top Google ranking.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t-2 border-black/10 space-y-1.5 text-[11px] font-bold text-neutral-800">
+            <div>• Core Web Vitals</div>
+            <div>• JSON-LD Schema</div>
+            <div>• Script Optimization</div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="neo-box neo-card-hover p-5 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-neoPurple border-2 border-black flex items-center justify-center text-2xl shadow-[2px_2px_0px_#000] mb-4 text-white">
+              ✨
+            </div>
+            <h3 class="text-base font-extrabold uppercase leading-tight text-black">Website Redesign</h3>
+            <p class="text-xs text-neutral-600 mt-2 leading-relaxed">
+              Modern UI/UX redesigns with clean typography, high-density storytelling, and conversion-focused checkout UX.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t-2 border-black/10 space-y-1.5 text-[11px] font-bold text-neutral-800">
+            <div>• UI/UX Modernization</div>
+            <div>• Conversion UX</div>
+            <div>• Mobile-First Polish</div>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <!-- Certified Partner Ecosystem Section -->
-    <section id="partnerships" class="py-16 sm:py-20 border-b border-brandBorder bg-black/50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <!-- ============================================== -->
+    <!-- 4. THREE LAYERS. ONE DEVELOPER. (Stack Cards)   -->
+    <!-- ============================================== -->
+    <section id="architecture" class="py-16 sm:py-24 bg-neoSand border-y-[3px] border-black">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center">
         
-        <div class="text-center mb-10 sm:mb-12">
-          <span class="px-3 py-1 rounded-full bg-brandCyan/10 border border-brandCyan/30 text-brandCyan font-mono text-[11px] uppercase tracking-widest">Integrations &amp; Ecosystem</span>
-          <h2 class="text-xl sm:text-3xl font-extrabold uppercase tracking-widest text-white mt-3">Certified Partner Integrations</h2>
-          <p class="text-neutral-400 text-xs font-mono tracking-wider mt-2">Specialized in frictionless checkout and automated post-purchase logistics</p>
-        </div>
+        <span class="text-xs font-mono font-bold uppercase tracking-widest text-neutral-600">THE STACK</span>
+        <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight text-black mt-2">
+          Three Layers. <br class="sm:hidden">
+          One Developer.
+        </h2>
+        <p class="text-neutral-700 text-sm font-medium mt-2 max-w-xl mx-auto">
+          Three sides of the same developer — frontend pixels, Shopify Liquid architecture, and seamless ecosystem integrations.
+        </p>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 text-left">
           
-          <!-- Payment Partners -->
-          <div class="glass-card p-5 sm:p-8 rounded-2xl border-brandBorder">
-            <div class="flex items-center gap-3 mb-5 sm:mb-6">
-              <span class="p-2 sm:p-2.5 rounded-xl bg-brandCyan/10 text-brandCyan text-lg sm:text-xl">💳</span>
-              <div>
-                <h3 class="text-base sm:text-lg font-bold text-white">Payment Gateway Partners</h3>
-                <p class="text-[11px] sm:text-xs text-neutral-400">1-Click Checkout, UPI, Cards &amp; Net Banking</p>
-              </div>
+          <!-- Layer 1: Frontend -->
+          <div class="neo-box-lg p-6 rounded-2xl bg-white">
+            <div class="flex items-center justify-between border-b-2 border-black pb-3 mb-4">
+              <span class="text-[10px] font-mono font-bold uppercase tracking-wider bg-neoMint px-2.5 py-1 rounded border border-black">01 // Frontend</span>
+              <span class="text-xs font-mono font-bold text-neutral-500">Designing the surface</span>
             </div>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">Razorpay</span>
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">Cashfree</span>
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">PayU</span>
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">GoKwik</span>
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">Shopflo</span>
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">PhonePe</span>
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">PayGlocal</span>
+            <h3 class="text-xl font-black uppercase text-black">Pixels with Precision.</h3>
+            <p class="text-xs text-neutral-600 mt-2 leading-relaxed">
+              Semantic HTML5, custom Tailwind CSS, and vanilla JavaScript written for sub-second interactions without framework bloat.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-6">
+              <span class="px-2.5 py-1 rounded-md bg-neutral-100 border border-black font-mono text-[11px] font-bold">HTML5</span>
+              <span class="px-2.5 py-1 rounded-md bg-neutral-100 border border-black font-mono text-[11px] font-bold">CSS3</span>
+              <span class="px-2.5 py-1 rounded-md bg-neutral-100 border border-black font-mono text-[11px] font-bold">JavaScript ES6</span>
+              <span class="px-2.5 py-1 rounded-md bg-neutral-100 border border-black font-mono text-[11px] font-bold">Tailwind CSS</span>
+              <span class="px-2.5 py-1 rounded-md bg-neutral-100 border border-black font-mono text-[11px] font-bold">AJAX Carts</span>
             </div>
           </div>
 
-          <!-- Logistics Partners -->
-          <div class="glass-card p-5 sm:p-8 rounded-2xl border-brandBorder">
-            <div class="flex items-center gap-3 mb-5 sm:mb-6">
-              <span class="p-2 sm:p-2.5 rounded-xl bg-brandCyan/10 text-brandCyan text-lg sm:text-xl">🚚</span>
-              <div>
-                <h3 class="text-base sm:text-lg font-bold text-white">Shipping &amp; Logistics Partners</h3>
-                <p class="text-[11px] sm:text-xs text-neutral-400">Automated Fulfillment, Tracking &amp; NDR</p>
-              </div>
+          <!-- Layer 2: Shopify Core -->
+          <div class="neo-box-lg p-6 rounded-2xl bg-[#121622] text-white">
+            <div class="flex items-center justify-between border-b-2 border-white/20 pb-3 mb-4">
+              <span class="text-[10px] font-mono font-bold uppercase tracking-wider bg-neoCoral text-white px-2.5 py-1 rounded border border-black">02 // Backend &amp; Liquid</span>
+              <span class="text-xs font-mono font-bold text-neutral-400">Wiring the logic</span>
             </div>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">Shipway</span>
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">Shiprocket</span>
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">Delhivery</span>
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-900/90 border border-brandBorder text-[11px] sm:text-xs text-neutral-200 font-mono font-medium">iThink Logistics</span>
+            <h3 class="text-xl font-black uppercase text-white">Logic That Holds Up.</h3>
+            <p class="text-xs text-neutral-400 mt-2 leading-relaxed">
+              Custom Liquid section schemas, dynamic settings for merchants, fast snippet includes, and modular component architecture.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-6">
+              <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/30 font-mono text-[11px] font-bold text-white">Shopify Liquid</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/30 font-mono text-[11px] font-bold text-white">Theme Sections</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/30 font-mono text-[11px] font-bold text-white">PHP Templates</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/30 font-mono text-[11px] font-bold text-white">JSON Schemas</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/30 font-mono text-[11px] font-bold text-white">Shopify CLI</span>
+            </div>
+          </div>
+
+          <!-- Layer 3: Ecosystem -->
+          <div class="neo-box-lg p-6 rounded-2xl bg-white">
+            <div class="flex items-center justify-between border-b-2 border-black pb-3 mb-4">
+              <span class="text-[10px] font-mono font-bold uppercase tracking-wider bg-neoYellow px-2.5 py-1 rounded border border-black">03 // Ecosystem</span>
+              <span class="text-xs font-mono font-bold text-neutral-500">Connecting the pipes</span>
+            </div>
+            <h3 class="text-xl font-black uppercase text-black">Integrations that Scale.</h3>
+            <p class="text-xs text-neutral-600 mt-2 leading-relaxed">
+              Connecting 1-click checkout engines, payment gateways, ERPs, and automated fulfillment APIs with reliable error handling.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-6">
+              <span class="px-2.5 py-1 rounded-md bg-neutral-100 border border-black font-mono text-[11px] font-bold">Razorpay</span>
+              <span class="px-2.5 py-1 rounded-md bg-neutral-100 border border-black font-mono text-[11px] font-bold">GoKwik</span>
+              <span class="px-2.5 py-1 rounded-md bg-neutral-100 border border-black font-mono text-[11px] font-bold">Cashfree</span>
+              <span class="px-2.5 py-1 rounded-md bg-neutral-100 border border-black font-mono text-[11px] font-bold">Shiprocket</span>
+              <span class="px-2.5 py-1 rounded-md bg-neutral-100 border border-black font-mono text-[11px] font-bold">Formspark API</span>
             </div>
           </div>
 
         </div>
+
       </div>
     </section>
 
-    <!-- Selected Works / Portfolio Section (With Images on All 12 Projects) -->
-    <section id="works" class="py-16 sm:py-24 border-b border-brandBorder">
+    <!-- ============================================== -->
+    <!-- 5. CERTIFIED PARTNER INTEGRATIONS               -->
+    <!-- ============================================== -->
+    <section id="partnerships" class="py-14 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <span class="text-xs font-mono font-bold uppercase tracking-widest text-neutral-500">ECOSYSTEM EXPERTISE</span>
+        <h2 class="text-2xl sm:text-4xl font-black uppercase tracking-tight mt-1 text-black">Certified Partner Ecosystem</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Payment Partners -->
+        <div class="neo-box p-6 rounded-2xl bg-white">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-10 h-10 rounded-xl bg-neoCoral text-white border-2 border-black flex items-center justify-center text-xl shadow-[2px_2px_0px_#000]">💳</span>
+            <div>
+              <h3 class="text-base font-extrabold uppercase text-black">Payment Gateway Partners</h3>
+              <p class="text-xs text-neutral-600">1-Click Checkout, UPI, Cards &amp; Global Gateways</p>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-2">
+            <span class="px-3 py-1.5 rounded-lg bg-neutral-100 border-2 border-black text-xs font-mono font-bold">Razorpay</span>
+            <span class="px-3 py-1.5 rounded-lg bg-neutral-100 border-2 border-black text-xs font-mono font-bold">Cashfree</span>
+            <span class="px-3 py-1.5 rounded-lg bg-neutral-100 border-2 border-black text-xs font-mono font-bold">PayU</span>
+            <span class="px-3 py-1.5 rounded-lg bg-neutral-100 border-2 border-black text-xs font-mono font-bold">GoKwik</span>
+            <span class="px-3 py-1.5 rounded-lg bg-neutral-100 border-2 border-black text-xs font-mono font-bold">Shopflo</span>
+            <span class="px-3 py-1.5 rounded-lg bg-neutral-100 border-2 border-black text-xs font-mono font-bold">PhonePe</span>
+            <span class="px-3 py-1.5 rounded-lg bg-neutral-100 border-2 border-black text-xs font-mono font-bold">PayGlocal</span>
+          </div>
+        </div>
+
+        <!-- Logistics Partners -->
+        <div class="neo-box p-6 rounded-2xl bg-white">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-10 h-10 rounded-xl bg-neoMint text-black border-2 border-black flex items-center justify-center text-xl shadow-[2px_2px_0px_#000]">🚚</span>
+            <div>
+              <h3 class="text-base font-extrabold uppercase text-black">Logistics &amp; Shipping Partners</h3>
+              <p class="text-xs text-neutral-600">Automated Fulfillment, Tracking &amp; NDR Management</p>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-2">
+            <span class="px-3 py-1.5 rounded-lg bg-neutral-100 border-2 border-black text-xs font-mono font-bold">Shipway</span>
+            <span class="px-3 py-1.5 rounded-lg bg-neutral-100 border-2 border-black text-xs font-mono font-bold">Shiprocket</span>
+            <span class="px-3 py-1.5 rounded-lg bg-neutral-100 border-2 border-black text-xs font-mono font-bold">Delhivery</span>
+            <span class="px-3 py-1.5 rounded-lg bg-neutral-100 border-2 border-black text-xs font-mono font-bold">iThink Logistics</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- 6. THINGS I'VE SHIPPED (Neo Yellow Portfolio)   -->
+    <!-- ============================================== -->
+    <section id="works" class="py-16 sm:py-24 bg-neoYellow border-y-[3px] border-black">
       <div class="max-w-7xl mx-auto px-4 sm:px-6">
         
-        <div class="text-center mb-8 sm:mb-12">
-          <h2 class="text-xl sm:text-3xl font-extrabold uppercase tracking-widest text-white">Selected Works</h2>
-          <p class="text-neutral-500 text-[11px] sm:text-xs font-mono tracking-widest mt-2 uppercase">Proven Across Footwear, Fashion, Jewellery, Home &amp; Lifestyle</p>
-          
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+          <div>
+            <span class="text-xs font-mono font-bold uppercase tracking-widest text-black/70">SELECTED WORKS</span>
+            <h2 class="text-3xl sm:text-6xl font-black uppercase tracking-tight text-black mt-1">
+              Things I've <br class="hidden sm:inline"> shipped.
+            </h2>
+          </div>
+
           <!-- Category Filter Buttons -->
-          <div class="flex overflow-x-auto no-scrollbar gap-2 mt-6 sm:mt-8 pb-2 justify-start sm:justify-center">
-            <button onclick="filterStores('all')" class="filter-btn active shrink-0 px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-medium border border-brandCyan bg-brandCyan/10 text-brandCyan transition" data-category="all">All Projects</button>
-            <button onclick="filterStores('footwear')" class="filter-btn shrink-0 px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-medium border border-brandBorder glass-card text-neutral-400 hover:text-white transition" data-category="footwear">Footwear</button>
-            <button onclick="filterStores('fashion')" class="filter-btn shrink-0 px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-medium border border-brandBorder glass-card text-neutral-400 hover:text-white transition" data-category="fashion">Apparel &amp; Ethnic</button>
-            <button onclick="filterStores('jewelry')" class="filter-btn shrink-0 px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-medium border border-brandBorder glass-card text-neutral-400 hover:text-white transition" data-category="jewelry">Jewellery</button>
-            <button onclick="filterStores('home')" class="filter-btn shrink-0 px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-medium border border-brandBorder glass-card text-neutral-400 hover:text-white transition" data-category="home">Home &amp; Living</button>
+          <div class="flex overflow-x-auto no-scrollbar gap-2 pb-2">
+            <button onclick="filterStores('all')" class="filter-btn active shrink-0 px-4 py-2 rounded-xl neo-btn bg-black text-white font-bold text-xs uppercase" data-category="all">All</button>
+            <button onclick="filterStores('footwear')" class="filter-btn shrink-0 px-4 py-2 rounded-xl neo-btn bg-white text-black font-bold text-xs uppercase" data-category="footwear">Footwear</button>
+            <button onclick="filterStores('fashion')" class="filter-btn shrink-0 px-4 py-2 rounded-xl neo-btn bg-white text-black font-bold text-xs uppercase" data-category="fashion">Fashion &amp; Ethnic</button>
+            <button onclick="filterStores('jewelry')" class="filter-btn shrink-0 px-4 py-2 rounded-xl neo-btn bg-white text-black font-bold text-xs uppercase" data-category="jewelry">Jewellery</button>
+            <button onclick="filterStores('home')" class="filter-btn shrink-0 px-4 py-2 rounded-xl neo-btn bg-white text-black font-bold text-xs uppercase" data-category="home">Home Decor</button>
           </div>
         </div>
 
-        <!-- Store Grid -->
-        <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <!-- 12 Project Cards Grid -->
+        <div id="projects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           
           <!-- 1. Michael Angelo -->
-          <div class="project-item footwear glass-card rounded-2xl overflow-hidden flex flex-col justify-between transition duration-300 group">
+          <div class="project-item footwear neo-box-lg rounded-2xl overflow-hidden flex flex-col justify-between group">
             <div>
-              <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b border-brandBorder">
-                <img 
-                  src="https://cdn.shopify.com/s/files/1/0657/7710/7144/files/Artboard_2_jpg.jpg?v=1779884867" 
-                  alt="Michael Angelo - Premium Footwear" 
-                  class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
-                  loading="lazy"
-                />
+              <div class="relative w-full h-44 overflow-hidden border-b-2 border-black bg-neutral-100">
+                <img src="https://cdn.shopify.com/s/files/1/0657/7710/7144/files/Artboard_2_jpg.jpg?v=1779884867" alt="Michael Angelo" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" loading="lazy" />
+                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded bg-neoCoral text-white border border-black font-mono text-[10px] font-bold uppercase">Footwear</span>
               </div>
-              <div class="p-5 sm:p-6">
-                <div class="flex justify-between items-start mb-3 sm:mb-4">
-                  <h3 class="text-lg sm:text-xl font-bold text-white">Michael Angelo</h3>
-                  <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Footwear</span>
-                </div>
-                <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Premium Footwear. High-density visual storytelling, bespoke product sections, and smooth checkout flow.</p>
+              <div class="p-4">
+                <h3 class="text-base font-black uppercase text-black">Michael Angelo</h3>
+                <p class="text-xs text-neutral-600 mt-1 leading-relaxed line-clamp-2">Premium footwear brand. Bespoke product sections, visual storytelling, and smooth checkout flow.</p>
               </div>
             </div>
-            <div class="p-5 sm:p-6 pt-0">
-              <a href="https://michaelangelo.in/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <div class="p-4 pt-0">
+              <a href="https://michaelangelo.in/" target="_blank" rel="noopener noreferrer" class="neo-btn w-full py-2 rounded-lg bg-neoMint text-black font-black text-center text-xs uppercase block">
+                Live Store ↗
+              </a>
             </div>
           </div>
 
           <!-- 2. Le Concept -->
-          <div class="project-item fashion glass-card rounded-2xl overflow-hidden flex flex-col justify-between transition duration-300 group">
+          <div class="project-item fashion neo-box-lg rounded-2xl overflow-hidden flex flex-col justify-between group">
             <div>
-              <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b border-brandBorder">
-                <img 
-                  src="https://cdn.shopify.com/s/files/1/0890/7233/7188/files/Mask_group_6.png?v=1783936310" 
-                  alt="Le Concept - Women's Wear" 
-                  class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
-                  loading="lazy"
-                />
+              <div class="relative w-full h-44 overflow-hidden border-b-2 border-black bg-neutral-100">
+                <img src="https://cdn.shopify.com/s/files/1/0890/7233/7188/files/Mask_group_6.png?v=1783936310" alt="Le Concept" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" loading="lazy" />
+                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded bg-neoCoral text-white border border-black font-mono text-[10px] font-bold uppercase">Women's Wear</span>
               </div>
-              <div class="p-5 sm:p-6">
-                <div class="flex justify-between items-start mb-3 sm:mb-4">
-                  <h3 class="text-lg sm:text-xl font-bold text-white">Le Concept</h3>
-                  <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Women's Wear</span>
-                </div>
-                <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Women's Wear &amp; Apparel. Clean grid aesthetics, fast-loading image pipelines, and modern product drawers.</p>
+              <div class="p-4">
+                <h3 class="text-base font-black uppercase text-black">Le Concept</h3>
+                <p class="text-xs text-neutral-600 mt-1 leading-relaxed line-clamp-2">Women's apparel store. Clean grid aesthetics, fast image pipelines, and modern product drawers.</p>
               </div>
             </div>
-            <div class="p-5 sm:p-6 pt-0">
-              <a href="https://www.leconcept.co.in/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <div class="p-4 pt-0">
+              <a href="https://www.leconcept.co.in/" target="_blank" rel="noopener noreferrer" class="neo-btn w-full py-2 rounded-lg bg-neoMint text-black font-black text-center text-xs uppercase block">
+                Live Store ↗
+              </a>
             </div>
           </div>
 
           <!-- 3. Spiffers -->
-          <div class="project-item footwear glass-card rounded-2xl overflow-hidden flex flex-col justify-between transition duration-300 group">
+          <div class="project-item footwear neo-box-lg rounded-2xl overflow-hidden flex flex-col justify-between group">
             <div>
-              <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b border-brandBorder">
-                <img 
-                  src="https://www.spiffers.in/cdn/shop/files/Rectangle_142.png?v=1780992822&width=1600" 
-                  alt="Spiffers - Footwear Brand" 
-                  class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
-                  loading="lazy"
-                />
+              <div class="relative w-full h-44 overflow-hidden border-b-2 border-black bg-neutral-100">
+                <img src="https://www.spiffers.in/cdn/shop/files/Rectangle_142.png?v=1780992822&width=1600" alt="Spiffers" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" loading="lazy" />
+                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded bg-neoCoral text-white border border-black font-mono text-[10px] font-bold uppercase">Footwear</span>
               </div>
-              <div class="p-5 sm:p-6">
-                <div class="flex justify-between items-start mb-3 sm:mb-4">
-                  <h3 class="text-lg sm:text-xl font-bold text-white">Spiffers</h3>
-                  <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Footwear</span>
-                </div>
-                <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Footwear Brand. Responsive catalog layout, size selector matrix, and high-conversion product pages.</p>
+              <div class="p-4">
+                <h3 class="text-base font-black uppercase text-black">Spiffers</h3>
+                <p class="text-xs text-neutral-600 mt-1 leading-relaxed line-clamp-2">Footwear brand. Responsive catalog layout, size selector matrix, and high-converting PDPs.</p>
               </div>
             </div>
-            <div class="p-5 sm:p-6 pt-0">
-              <a href="https://www.spiffers.in/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <div class="p-4 pt-0">
+              <a href="https://www.spiffers.in/" target="_blank" rel="noopener noreferrer" class="neo-btn w-full py-2 rounded-lg bg-neoMint text-black font-black text-center text-xs uppercase block">
+                Live Store ↗
+              </a>
             </div>
           </div>
 
           <!-- 4. Nikunj Niidhi Bajaj -->
-          <div class="project-item fashion glass-card rounded-2xl overflow-hidden flex flex-col justify-between transition duration-300 group">
+          <div class="project-item fashion neo-box-lg rounded-2xl overflow-hidden flex flex-col justify-between group">
             <div>
-              <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b border-brandBorder">
-                <img 
-                  src="https://nikunjbyniidhibajaj.com/cdn/shop/files/2.png?v=1780501726&width=2400" 
-                  alt="Nikunj Niidhi Bajaj - Women Ethnic Wear" 
-                  class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
-                  loading="lazy"
-                />
+              <div class="relative w-full h-44 overflow-hidden border-b-2 border-black bg-neutral-100">
+                <img src="https://nikunjbyniidhibajaj.com/cdn/shop/files/2.png?v=1780501726&width=2400" alt="Nikunj Niidhi Bajaj" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" loading="lazy" />
+                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded bg-neoCoral text-white border border-black font-mono text-[10px] font-bold uppercase">Ethnic Wear</span>
               </div>
-              <div class="p-5 sm:p-6">
-                <div class="flex justify-between items-start mb-3 sm:mb-4">
-                  <h3 class="text-lg sm:text-xl font-bold text-white">Nikunj Niidhi Bajaj</h3>
-                  <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Ethnic Wear</span>
-                </div>
-                <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Women Ethnic Wear. Bespoke navigation architecture, designer lookbooks, and smooth responsive menus.</p>
+              <div class="p-4">
+                <h3 class="text-base font-black uppercase text-black">Nikunj Niidhi Bajaj</h3>
+                <p class="text-xs text-neutral-600 mt-1 leading-relaxed line-clamp-2">Designer ethnic wear. Bespoke navigation architecture, lookbooks, and smooth responsive menus.</p>
               </div>
             </div>
-            <div class="p-5 sm:p-6 pt-0">
-              <a href="https://nikunjbyniidhibajaj.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <div class="p-4 pt-0">
+              <a href="https://nikunjbyniidhibajaj.com/" target="_blank" rel="noopener noreferrer" class="neo-btn w-full py-2 rounded-lg bg-neoMint text-black font-black text-center text-xs uppercase block">
+                Live Store ↗
+              </a>
             </div>
           </div>
 
           <!-- 5. Loom & Story -->
-          <div class="project-item fashion glass-card rounded-2xl overflow-hidden flex flex-col justify-between transition duration-300 group">
+          <div class="project-item fashion neo-box-lg rounded-2xl overflow-hidden flex flex-col justify-between group">
             <div>
-              <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b border-brandBorder">
-                <img 
-                  src="https://loomandstory.com/cdn/shop/files/website.jpg?v=1785494251&width=2000" 
-                  alt="Loom & Story - Women's Wear" 
-                  class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
-                  loading="lazy"
-                />
+              <div class="relative w-full h-44 overflow-hidden border-b-2 border-black bg-neutral-100">
+                <img src="https://loomandstory.com/cdn/shop/files/website.jpg?v=1785494251&width=2000" alt="Loom & Story" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" loading="lazy" />
+                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded bg-neoCoral text-white border border-black font-mono text-[10px] font-bold uppercase">Women's Wear</span>
               </div>
-              <div class="p-5 sm:p-6">
-                <div class="flex justify-between items-start mb-3 sm:mb-4">
-                  <h3 class="text-lg sm:text-xl font-bold text-white">Loom &amp; Story</h3>
-                  <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Women's Wear</span>
-                </div>
-                <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Women's Wear. Refined textile storytelling, seamless mobile drawer checkout, and optimized Core Web Vitals.</p>
+              <div class="p-4">
+                <h3 class="text-base font-black uppercase text-black">Loom &amp; Story</h3>
+                <p class="text-xs text-neutral-600 mt-1 leading-relaxed line-clamp-2">Refined textile storytelling, seamless mobile drawer checkout, and optimized Web Vitals.</p>
               </div>
             </div>
-            <div class="p-5 sm:p-6 pt-0">
-              <a href="https://loomandstory.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <div class="p-4 pt-0">
+              <a href="https://loomandstory.com/" target="_blank" rel="noopener noreferrer" class="neo-btn w-full py-2 rounded-lg bg-neoMint text-black font-black text-center text-xs uppercase block">
+                Live Store ↗
+              </a>
             </div>
           </div>
 
           <!-- 6. Zaydn -->
-          <div class="project-item footwear glass-card rounded-2xl overflow-hidden flex flex-col justify-between transition duration-300 group">
+          <div class="project-item footwear neo-box-lg rounded-2xl overflow-hidden flex flex-col justify-between group">
             <div>
-              <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b border-brandBorder">
-                <img 
-                  src="https://zaydns.com/cdn/shop/files/YOO.jpg?v=1779727236&width=1200" 
-                  alt="Zaydn - Footwear Brand" 
-                  class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
-                  loading="lazy"
-                />
+              <div class="relative w-full h-44 overflow-hidden border-b-2 border-black bg-neutral-100">
+                <img src="https://zaydns.com/cdn/shop/files/YOO.jpg?v=1779727236&width=1200" alt="Zaydn" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" loading="lazy" />
+                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded bg-neoCoral text-white border border-black font-mono text-[10px] font-bold uppercase">Footwear</span>
               </div>
-              <div class="p-5 sm:p-6">
-                <div class="flex justify-between items-start mb-3 sm:mb-4">
-                  <h3 class="text-lg sm:text-xl font-bold text-white">Zaydn</h3>
-                  <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Footwear</span>
-                </div>
-                <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Footwear Brand. Interactive product lore features, performance optimization, and custom Liquid components.</p>
+              <div class="p-4">
+                <h3 class="text-base font-black uppercase text-black">Zaydn</h3>
+                <p class="text-xs text-neutral-600 mt-1 leading-relaxed line-clamp-2">Footwear brand. Interactive product lore, performance tuning, and custom Liquid components.</p>
               </div>
             </div>
-            <div class="p-5 sm:p-6 pt-0">
-              <a href="https://zaydns.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <div class="p-4 pt-0">
+              <a href="https://zaydns.com/" target="_blank" rel="noopener noreferrer" class="neo-btn w-full py-2 rounded-lg bg-neoMint text-black font-black text-center text-xs uppercase block">
+                Live Store ↗
+              </a>
             </div>
           </div>
 
           <!-- 7. Miira -->
-          <div class="project-item jewelry glass-card rounded-2xl overflow-hidden flex flex-col justify-between transition duration-300 group">
+          <div class="project-item jewelry neo-box-lg rounded-2xl overflow-hidden flex flex-col justify-between group">
             <div>
-              <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b border-brandBorder">
-                <img 
-                  src="https://www.miira.in/cdn/shop/files/SparklingnamenecklaceRs2499_700x.jpg?v=1784040283" 
-                  alt="Miira - Artificial Jewellery" 
-                  class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
-                  loading="lazy"
-                />
+              <div class="relative w-full h-44 overflow-hidden border-b-2 border-black bg-neutral-100">
+                <img src="https://www.miira.in/cdn/shop/files/SparklingnamenecklaceRs2499_700x.jpg?v=1784040283" alt="Miira" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" loading="lazy" />
+                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded bg-neoCoral text-white border border-black font-mono text-[10px] font-bold uppercase">Jewellery</span>
               </div>
-              <div class="p-5 sm:p-6">
-                <div class="flex justify-between items-start mb-3 sm:mb-4">
-                  <h3 class="text-lg sm:text-xl font-bold text-white">Miira</h3>
-                  <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Jewellery</span>
-                </div>
-                <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Artificial Jewellery. Elegant product showcases, high-resolution media galleries, and clean collection filters.</p>
+              <div class="p-4">
+                <h3 class="text-base font-black uppercase text-black">Miira</h3>
+                <p class="text-xs text-neutral-600 mt-1 leading-relaxed line-clamp-2">Artificial jewellery. High-res product showcases, elegant media grids, and collection filters.</p>
               </div>
             </div>
-            <div class="p-5 sm:p-6 pt-0">
-              <a href="https://www.miira.in/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <div class="p-4 pt-0">
+              <a href="https://www.miira.in/" target="_blank" rel="noopener noreferrer" class="neo-btn w-full py-2 rounded-lg bg-neoMint text-black font-black text-center text-xs uppercase block">
+                Live Store ↗
+              </a>
             </div>
           </div>
 
           <!-- 8. Banarasiya -->
-          <div class="project-item fashion glass-card rounded-2xl overflow-hidden flex flex-col justify-between transition duration-300 group">
+          <div class="project-item fashion neo-box-lg rounded-2xl overflow-hidden flex flex-col justify-between group">
             <div>
-              <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b border-brandBorder">
-                <img 
-                  src="https://cdn.shopify.com/s/files/1/0497/0240/4258/files/Group_93_1.png?v=1778482629" 
-                  alt="Banarasiya - Banarasi Saree Store" 
-                  class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
-                  loading="lazy"
-                />
+              <div class="relative w-full h-44 overflow-hidden border-b-2 border-black bg-neutral-100">
+                <img src="https://cdn.shopify.com/s/files/1/0497/0240/4258/files/Group_93_1.png?v=1778482629" alt="Banarasiya" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" loading="lazy" />
+                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded bg-neoCoral text-white border border-black font-mono text-[10px] font-bold uppercase">Saree Store</span>
               </div>
-              <div class="p-5 sm:p-6">
-                <div class="flex justify-between items-start mb-3 sm:mb-4">
-                  <h3 class="text-lg sm:text-xl font-bold text-white">Banarasiya</h3>
-                  <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Saree Store</span>
-                </div>
-                <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Banarasi Saree Store. Heritage aesthetic, custom hero sliders, swatch matrix selectors, and zero bloat.</p>
+              <div class="p-4">
+                <h3 class="text-base font-black uppercase text-black">Banarasiya</h3>
+                <p class="text-xs text-neutral-600 mt-1 leading-relaxed line-clamp-2">Heritage Banarasi saree storefront. Custom hero sliders, swatch matrix selectors, and zero bloat.</p>
               </div>
             </div>
-            <div class="p-5 sm:p-6 pt-0">
-              <a href="https://banarasiya.in/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <div class="p-4 pt-0">
+              <a href="https://banarasiya.in/" target="_blank" rel="noopener noreferrer" class="neo-btn w-full py-2 rounded-lg bg-neoMint text-black font-black text-center text-xs uppercase block">
+                Live Store ↗
+              </a>
             </div>
           </div>
 
           <!-- 9. Vespera Homes -->
-          <div class="project-item home glass-card rounded-2xl overflow-hidden flex flex-col justify-between transition duration-300 group">
+          <div class="project-item home neo-box-lg rounded-2xl overflow-hidden flex flex-col justify-between group">
             <div>
-              <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b border-brandBorder">
-                <img 
-                  src="https://www.vesperahomes.com/cdn/shop/files/Self-care_Sunday_Sale_Green_Shopify_Banner_38.png?v=1783680878&width=1920" 
-                  alt="Vespera Homes - Home Decor" 
-                  class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
-                  loading="lazy"
-                />
+              <div class="relative w-full h-44 overflow-hidden border-b-2 border-black bg-neutral-100">
+                <img src="https://www.vesperahomes.com/cdn/shop/files/Self-care_Sunday_Sale_Green_Shopify_Banner_38.png?v=1783680878&width=1920" alt="Vespera Homes" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" loading="lazy" />
+                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded bg-neoCoral text-white border border-black font-mono text-[10px] font-bold uppercase">Home Decor</span>
               </div>
-              <div class="p-5 sm:p-6">
-                <div class="flex justify-between items-start mb-3 sm:mb-4">
-                  <h3 class="text-lg sm:text-xl font-bold text-white">Vespera Homes</h3>
-                  <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Home Decor</span>
-                </div>
-                <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Home Decor. Modular Liquid section schemas, structured metadata, and streamlined catalog UX.</p>
+              <div class="p-4">
+                <h3 class="text-base font-black uppercase text-black">Vespera Homes</h3>
+                <p class="text-xs text-neutral-600 mt-1 leading-relaxed line-clamp-2">Home decor &amp; living. Modular section schemas, structured metadata, and clean catalog UX.</p>
               </div>
             </div>
-            <div class="p-5 sm:p-6 pt-0">
-              <a href="https://www.vesperahomes.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <div class="p-4 pt-0">
+              <a href="https://www.vesperahomes.com/" target="_blank" rel="noopener noreferrer" class="neo-btn w-full py-2 rounded-lg bg-neoMint text-black font-black text-center text-xs uppercase block">
+                Live Store ↗
+              </a>
             </div>
           </div>
 
           <!-- 10. Sojanya -->
-          <div class="project-item fashion glass-card rounded-2xl overflow-hidden flex flex-col justify-between transition duration-300 group">
+          <div class="project-item fashion neo-box-lg rounded-2xl overflow-hidden flex flex-col justify-between group">
             <div>
-              <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b border-brandBorder">
-                <img 
-                  src="https://sojanya.com/cdn/shop/files/2_08eebcdd-d7f0-480a-9ad4-4daf34580003.jpg?v=1757503550&width=1410" 
-                  alt="Sojanya - Men Ethnic Wear" 
-                  class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
-                  loading="lazy"
-                />
+              <div class="relative w-full h-44 overflow-hidden border-b-2 border-black bg-neutral-100">
+                <img src="https://sojanya.com/cdn/shop/files/2_08eebcdd-d7f0-480a-9ad4-4daf34580003.jpg?v=1757503550&width=1410" alt="Sojanya" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" loading="lazy" />
+                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded bg-neoCoral text-white border border-black font-mono text-[10px] font-bold uppercase">Ethnic Wear</span>
               </div>
-              <div class="p-5 sm:p-6">
-                <div class="flex justify-between items-start mb-3 sm:mb-4">
-                  <h3 class="text-lg sm:text-xl font-bold text-white">Sojanya</h3>
-                  <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Ethnic Wear</span>
-                </div>
-                <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Men Ethnic Wear. High-volume catalog architecture optimized for rapid navigation and checkout speed.</p>
+              <div class="p-4">
+                <h3 class="text-base font-black uppercase text-black">Sojanya</h3>
+                <p class="text-xs text-neutral-600 mt-1 leading-relaxed line-clamp-2">Men's ethnic wear. High-volume catalog architecture optimized for rapid navigation and speed.</p>
               </div>
             </div>
-            <div class="p-5 sm:p-6 pt-0">
-              <a href="https://sojanya.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <div class="p-4 pt-0">
+              <a href="https://sojanya.com/" target="_blank" rel="noopener noreferrer" class="neo-btn w-full py-2 rounded-lg bg-neoMint text-black font-black text-center text-xs uppercase block">
+                Live Store ↗
+              </a>
             </div>
           </div>
 
           <!-- 11. Paakhi -->
-          <div class="project-item home glass-card rounded-2xl overflow-hidden flex flex-col justify-between transition duration-300 group">
+          <div class="project-item home neo-box-lg rounded-2xl overflow-hidden flex flex-col justify-between group">
             <div>
-              <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b border-brandBorder">
-                <img 
-                  src="https://paakhihome.com/cdn/shop/files/PRT-004_15_10a2899c-7648-4a38-8f54-1b48b3da78a1.jpg?v=1769081125&width=1296" 
-                  alt="Paakhi - Home Essentials" 
-                  class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
-                  loading="lazy"
-                />
+              <div class="relative w-full h-44 overflow-hidden border-b-2 border-black bg-neutral-100">
+                <img src="https://paakhihome.com/cdn/shop/files/PRT-004_15_10a2899c-7648-4a38-8f54-1b48b3da78a1.jpg?v=1769081125&width=1296" alt="Paakhi" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" loading="lazy" />
+                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded bg-neoCoral text-white border border-black font-mono text-[10px] font-bold uppercase">Essentials</span>
               </div>
-              <div class="p-5 sm:p-6">
-                <div class="flex justify-between items-start mb-3 sm:mb-4">
-                  <h3 class="text-lg sm:text-xl font-bold text-white">Paakhi</h3>
-                  <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Essentials</span>
-                </div>
-                <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Home Essentials (Pillows, Covers, Bedsheets). Custom collection filtering and clean product variant setups.</p>
+              <div class="p-4">
+                <h3 class="text-base font-black uppercase text-black">Paakhi</h3>
+                <p class="text-xs text-neutral-600 mt-1 leading-relaxed line-clamp-2">Home essentials. Custom collection filtering and clean product variant setups.</p>
               </div>
             </div>
-            <div class="p-5 sm:p-6 pt-0">
-              <a href="https://paakhihome.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <div class="p-4 pt-0">
+              <a href="https://paakhihome.com/" target="_blank" rel="noopener noreferrer" class="neo-btn w-full py-2 rounded-lg bg-neoMint text-black font-black text-center text-xs uppercase block">
+                Live Store ↗
+              </a>
             </div>
           </div>
 
           <!-- 12. Taksh -->
-          <div class="project-item jewelry glass-card rounded-2xl overflow-hidden flex flex-col justify-between transition duration-300 group">
+          <div class="project-item jewelry neo-box-lg rounded-2xl overflow-hidden flex flex-col justify-between group">
             <div>
-              <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b border-brandBorder">
-                <img 
-                  src="https://takshexclusive.com/cdn/shop/files/IMG_20260508_192457.png?v=1778248556&width=2560" 
-                  alt="Taksh - Premium Jewellery" 
-                  class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
-                  loading="lazy"
-                />
+              <div class="relative w-full h-44 overflow-hidden border-b-2 border-black bg-neutral-100">
+                <img src="https://takshexclusive.com/cdn/shop/files/IMG_20260508_192457.png?v=1778248556&width=2560" alt="Taksh" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" loading="lazy" />
+                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded bg-neoCoral text-white border border-black font-mono text-[10px] font-bold uppercase">Jewellery</span>
               </div>
-              <div class="p-5 sm:p-6">
-                <div class="flex justify-between items-start mb-3 sm:mb-4">
-                  <h3 class="text-lg sm:text-xl font-bold text-white">Taksh</h3>
-                  <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-neutral-900 border border-brandBorder text-[10px] uppercase font-mono text-brandCyan">Jewelry</span>
-                </div>
-                <p class="text-xs text-neutral-400 leading-relaxed mb-4">Vertical: Premium Artificial &amp; Bridal Jewelry. High-end luxury aesthetics, visual zoom, and polished product merchandising.</p>
+              <div class="p-4">
+                <h3 class="text-base font-black uppercase text-black">Taksh</h3>
+                <p class="text-xs text-neutral-600 mt-1 leading-relaxed line-clamp-2">Bridal &amp; artificial jewellery. Luxury visual aesthetic, zoom galleries, and polished UI.</p>
               </div>
             </div>
-            <div class="p-5 sm:p-6 pt-0">
-              <a href="https://takshexclusive.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-brandCyan/20 text-brandCyan text-center text-xs font-semibold uppercase tracking-wider border border-brandCyan/30 transition block">View Live Store</a>
+            <div class="p-4 pt-0">
+              <a href="https://takshexclusive.com/" target="_blank" rel="noopener noreferrer" class="neo-btn w-full py-2 rounded-lg bg-neoMint text-black font-black text-center text-xs uppercase block">
+                Live Store ↗
+              </a>
             </div>
           </div>
 
         </div>
 
-        <!-- Subtitle note under portfolio -->
-        <div class="mt-10 sm:mt-14 text-center">
-          <p class="text-neutral-400 text-xs sm:text-sm font-mono tracking-wide glass-card inline-block px-5 py-2.5 sm:px-6 sm:py-3 rounded-full border border-brandBorder">
-            ✨ There are many more websites I’ve delivered across diverse industries.
+        <!-- Note under portfolio -->
+        <div class="mt-12 text-center">
+          <div class="neo-box px-6 py-3 rounded-full bg-white font-mono font-bold text-xs sm:text-sm inline-block">
+            ✨ Delivered 40+ stores across diverse e-commerce verticals.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- 7. CONTACT FORM (Got an idea? Let's ship it.)   -->
+    <!-- ============================================== -->
+    <section id="connect" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left Contact Info Box -->
+        <div class="lg:col-span-5 text-left">
+          <span class="text-xs font-mono font-bold uppercase tracking-widest text-neutral-500">LET'S BUILD</span>
+          <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight text-black mt-1">
+            Got an idea? <br>
+            <span class="text-neoCoral">Let's ship it.</span>
+          </h2>
+          <p class="text-neutral-700 text-sm font-medium mt-3 leading-relaxed">
+            Frontend, Liquid architecture, payment integrations, or complete store builds — I'm just a message away.
           </p>
+
+          <div class="mt-8 space-y-3">
+            <a href="mailto:letswork.arvind@gmail.com" class="neo-box p-3.5 rounded-xl flex items-center justify-between font-mono font-bold text-xs hover:bg-neutral-50 block">
+              <span class="truncate">✉ letswork.arvind@gmail.com</span>
+              <span class="text-neoCoral">↗</span>
+            </a>
+            <a href="https://www.linkedin.com/in/arvind-verma-5061a3228" target="_blank" rel="noopener noreferrer" class="neo-box p-3.5 rounded-xl flex items-center justify-between font-mono font-bold text-xs hover:bg-neutral-50 block">
+              <span>💼 LinkedIn Profile</span>
+              <span class="text-neoCoral">↗</span>
+            </a>
+            <div class="neo-box p-3.5 rounded-xl flex items-center justify-between font-mono font-bold text-xs bg-neoMint/30">
+              <span>🌍 Open for Remote Work</span>
+              <span>✔</span>
+            </div>
+          </div>
         </div>
 
-      </div>
-    </section>
+        <!-- Right Form Box -->
+        <div class="lg:col-span-7">
+          <div class="neo-box-lg p-6 sm:p-8 rounded-3xl bg-white">
+            
+            <form id="portfolio-form" onsubmit="submitViaGoogleScript(event)" class="space-y-4">
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="form-name" class="block text-xs font-mono font-bold uppercase mb-1">Name *</label>
+                  <input type="text" id="form-name" required placeholder="e.g. Rahul Sharma" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-black bg-[#faf8f5] text-sm font-medium focus:outline-none focus:bg-white transition" />
+                </div>
+                <div>
+                  <label for="form-email" class="block text-xs font-mono font-bold uppercase mb-1">Email Address *</label>
+                  <input type="email" id="form-email" required placeholder="name@company.com" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-black bg-[#faf8f5] text-sm font-medium focus:outline-none focus:bg-white transition" />
+                </div>
+              </div>
 
-    <!-- Liquid & Technical Stack Section -->
-    <section id="architecture" class="py-16 sm:py-24 border-b border-brandBorder bg-black/60">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
-          
-          <div>
-            <span class="px-3 py-1 rounded-full bg-brandCyan/10 border border-brandCyan/30 text-brandCyan font-mono text-[11px] uppercase tracking-widest">Engineering Standard</span>
-            <h2 class="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-white mt-4 leading-snug">
-              Engineered Clean. <br>
-              Zero App Overhead.
-            </h2>
-            <p class="text-neutral-400 text-xs sm:text-sm leading-relaxed mt-4">
-              I eliminate third-party app dependencies by writing custom section schemas, native JavaScript AJAX cart interactions, and JSON-LD structured data directly into the theme files.
-            </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="form-phone" class="block text-xs font-mono font-bold uppercase mb-1">Phone / WhatsApp</label>
+                  <input type="tel" id="form-phone" placeholder="+91 98765 43210" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-black bg-[#faf8f5] text-sm font-medium focus:outline-none focus:bg-white transition" />
+                </div>
+                <div>
+                  <label for="form-company" class="block text-xs font-mono font-bold uppercase mb-1">Company / Brand *</label>
+                  <input type="text" id="form-company" required placeholder="e.g. Brand Name" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-black bg-[#faf8f5] text-sm font-medium focus:outline-none focus:bg-white transition" />
+                </div>
+              </div>
 
-            <div class="mt-6 sm:mt-8 space-y-3 sm:space-y-4 font-mono text-xs">
-              <div class="flex items-start gap-3 text-neutral-300">
-                <span class="text-emerald-400 shrink-0">✔</span> 
-                <span>Custom Shopify Section Schemas with Live Merchant Settings</span>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="form-website" class="block text-xs font-mono font-bold uppercase mb-1">Website URL (if any)</label>
+                  <input type="url" id="form-website" placeholder="https://yourbrand.com" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-black bg-[#faf8f5] text-sm font-medium focus:outline-none focus:bg-white transition" />
+                </div>
+                <div>
+                  <label for="form-service" class="block text-xs font-mono font-bold uppercase mb-1">Project Type</label>
+                  <select id="form-service" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-black bg-[#faf8f5] text-sm font-medium focus:outline-none focus:bg-white transition">
+                    <option value="Shopify Store Development">Shopify Store Development</option>
+                    <option value="WordPress Development">WordPress Development</option>
+                    <option value="Speed & Core Web Vitals">Speed & Core Web Vitals</option>
+                    <option value="Payment Gateway Integration">Payment Gateway Integration</option>
+                    <option value="Full Website Redesign">Full Website Redesign</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
               </div>
-              <div class="flex items-start gap-3 text-neutral-300">
-                <span class="text-emerald-400 shrink-0">✔</span> 
-                <span>Gateway Integration: Razorpay, GoKwik, Cashfree, PayU, Shopflo, PhonePe &amp; PayGlocal</span>
+
+              <div>
+                <label for="form-message" class="block text-xs font-mono font-bold uppercase mb-1">Project Details *</label>
+                <textarea id="form-message" rows="3" required placeholder="Tell me about your project scope, timeline, requirements..." class="w-full px-3.5 py-2.5 rounded-xl border-2 border-black bg-[#faf8f5] text-sm font-medium focus:outline-none focus:bg-white transition"></textarea>
               </div>
-              <div class="flex items-start gap-3 text-neutral-300">
-                <span class="text-emerald-400 shrink-0">✔</span> 
-                <span>Technical SEO: JSON-LD Structured Data &amp; Organization Schemas</span>
-              </div>
-            </div>
+
+              <button type="submit" id="submit-btn" class="neo-btn w-full py-3.5 rounded-xl bg-neoCoral text-white font-black text-xs uppercase tracking-wider">
+                Send Message ↗
+              </button>
+
+              <p id="form-status" class="text-xs text-center font-mono mt-2 hidden"></p>
+            </form>
+
           </div>
-
-          <!-- Code Window Mockup -->
-          <div class="glass-card rounded-2xl overflow-hidden border border-brandBorder shadow-2xl">
-            <div class="bg-[#12161f] px-4 py-3 border-b border-brandBorder flex items-center justify-between">
-              <div class="flex items-center space-x-2">
-                <span class="w-3 h-3 rounded-full bg-rose-500/80 inline-block"></span>
-                <span class="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
-                <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
-              </div>
-              <span class="font-mono text-[11px] text-neutral-400">snippets/seo-structured-data.liquid</span>
-            </div>
-            <div class="p-4 sm:p-6 font-mono text-[11px] sm:text-xs leading-relaxed overflow-x-auto text-neutral-300 bg-[#08090b]/90">
-              <p><span class="text-purple-400">&lt;script</span> <span class="text-brandCyan">type=</span><span class="text-amber-300">"application/ld+json"</span><span class="text-purple-400">&gt;</span></p>
-              <p class="text-neutral-400 pl-4">{</p>
-              <p class="text-neutral-400 pl-8"><span class="text-blue-400">"@context"</span>: <span class="text-amber-300">"https://schema.org"</span>,</p>
-              <p class="text-neutral-400 pl-8"><span class="text-blue-400">"@type"</span>: <span class="text-amber-300">"Product"</span>,</p>
-              <p class="text-neutral-400 pl-8"><span class="text-blue-400">"name"</span>: <span class="text-purple-400">{{</span> <span class="text-white">product.title | json</span> <span class="text-purple-400">}}</span>,</p>
-              <p class="text-neutral-400 pl-8"><span class="text-blue-400">"offers"</span>: { <span class="text-blue-400">"price"</span>: <span class="text-purple-400">{{</span> <span class="text-white">product.price | money_without_currency</span> <span class="text-purple-400">}}</span> }</p>
-              <p class="text-neutral-400 pl-4">}</p>
-              <p><span class="text-purple-400">&lt;/script&gt;</span></p>
-            </div>
-          </div>
-
         </div>
-      </div>
-    </section>
 
-    <!-- Direct Email Submission Form Section -->
-    <section id="connect" class="py-16 sm:py-24 border-b border-brandBorder relative">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6">
-        <div class="glass-card glow-box rounded-3xl p-6 sm:p-12 border-brandCyan/30 relative">
-          
-          <div class="text-center mb-8 sm:mb-10">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brandCyan/10 border border-brandCyan/30 text-brandCyan text-[11px] uppercase tracking-widest font-mono mb-4">
-              Get in Touch
-            </div>
-            <h2 class="text-2xl sm:text-4xl font-extrabold text-white uppercase tracking-tight">
-              Let's Build Your Store
-            </h2>
-            <p class="text-neutral-400 text-xs sm:text-sm mt-2 max-w-lg mx-auto">
-              Share your project details, store requirements, or open remote role below.
-            </p>
-          </div>
-
-          <!-- Contact Form -->
-          <form id="portfolio-form" onsubmit="submitViaGoogleScript(event)" class="space-y-4 sm:space-y-5">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-              <div>
-                <label for="form-name" class="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">Your Name *</label>
-                <input 
-                  type="text" 
-                  id="form-name" 
-                  required 
-                  placeholder="e.g. Rahul Sharma"
-                  class="w-full px-4 py-3 rounded-xl bg-black/60 border border-brandBorder text-white text-sm focus:outline-none focus:border-brandCyan transition font-sans"
-                />
-              </div>
-              <div>
-                <label for="form-email" class="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">Email Address *</label>
-                <input 
-                  type="email" 
-                  id="form-email" 
-                  required 
-                  placeholder="name@company.com"
-                  class="w-full px-4 py-3 rounded-xl bg-black/60 border border-brandBorder text-white text-sm focus:outline-none focus:border-brandCyan transition font-sans"
-                />
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-              <div>
-                <label for="form-phone" class="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">Phone / WhatsApp Number</label>
-                <input 
-                  type="tel" 
-                  id="form-phone" 
-                  placeholder="+91 98765 43210"
-                  class="w-full px-4 py-3 rounded-xl bg-black/60 border border-brandBorder text-white text-sm focus:outline-none focus:border-brandCyan transition font-sans"
-                />
-              </div>
-              <div>
-                <label for="form-company" class="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">Company/Brand Name *</label>
-                <input 
-                  type="text" 
-                  id="form-company" 
-                  required 
-                  placeholder="e.g. Brand Name"
-                  class="w-full px-4 py-3 rounded-xl bg-black/60 border border-brandBorder text-white text-sm focus:outline-none focus:border-brandCyan transition font-sans"
-                />
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-              <div>
-                <label for="form-website" class="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">Website URL (if applicable)</label>
-                <input 
-                  type="url" 
-                  id="form-website" 
-                  placeholder="https://yourbrand.com"
-                  class="w-full px-4 py-3 rounded-xl bg-black/60 border border-brandBorder text-white text-sm focus:outline-none focus:border-brandCyan transition font-sans"
-                />
-              </div>
-              <div>
-                <label for="form-service" class="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">Service Required</label>
-                <select id="form-service" class="w-full px-4 py-3 rounded-xl bg-black/60 border border-brandBorder text-neutral-300 text-sm focus:outline-none focus:border-brandCyan transition font-sans">
-                  <option value="Web Development (Shopify, Wordpress, Custom)">Web Development (Shopify, Wordpress, Custom)</option>
-                  <option value="SEO">SEO</option>
-                  <option value="Paid Ads (Google, Meta, etc.)">Paid Ads (Google, Meta, etc.)</option>
-                  <option value="Graphic Design">Graphic Design</option>
-                  <option value="Video Editing">Video Editing</option>
-                  <option value="Social Media Marketing">Social Media Marketing</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-            </div>
-
-            <div>
-              <label for="form-message" class="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">Project Brief / Message *</label>
-              <textarea 
-                id="form-message" 
-                rows="4" 
-                required 
-                placeholder="Tell me about your project scope, timeline, or links..."
-                class="w-full px-4 py-3 rounded-xl bg-black/60 border border-brandBorder text-white text-sm focus:outline-none focus:border-brandCyan transition font-sans"
-              ></textarea>
-            </div>
-
-            <button 
-              type="submit" 
-              id="submit-btn" 
-              class="w-full py-3.5 rounded-xl bg-gradient-to-r from-brandBlue to-brandCyan text-white font-bold text-xs tracking-wider uppercase shadow-lg shadow-sky-500/20 hover:opacity-95 transition flex items-center justify-center gap-2"
-            >
-              <span>Send Message</span>
-              <span>→</span>
-            </button>
-
-            <p id="form-status" class="text-xs text-center font-mono mt-3 hidden"></p>
-          </form>
-
-          <!-- Direct Email Copy Highlight Below Form -->
-          <div class="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-brandBorder flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-xs">
-            <span class="text-neutral-400">Prefer direct email?</span>
-            <div class="flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-between sm:justify-start bg-black/40 sm:bg-transparent px-3 py-2 sm:p-0 rounded-lg border border-brandBorder sm:border-none">
-              <span class="text-brandCyan font-mono text-[11px] sm:text-xs truncate">letswork.arvind@gmail.com</span>
-              <button onclick="copyEmail('letswork.arvind@gmail.com', 'quick-copy')" id="quick-copy" class="text-[10px] uppercase font-mono px-2 py-1 bg-white/5 border border-white/10 rounded text-neutral-300 hover:text-white transition shrink-0">Copy</button>
-            </div>
-          </div>
-
-        </div>
       </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 sm:py-16 bg-black">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+    <footer class="py-8 bg-black text-white border-t-[3px] border-black">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono">
         <div>
-          <p class="text-white font-semibold text-sm">Arvind Verma</p>
-          <p class="text-xs text-neutral-500 mt-1 font-mono">Shopify Developer &amp; E-Commerce Specialist</p>
+          <span class="font-bold uppercase">© 2026 Arvind Verma.</span> Crafted with care.
         </div>
-
-        <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-6 text-xs text-neutral-400">
-          <a href="https://www.linkedin.com/in/arvind-verma-5061a3228" target="_blank" rel="noopener noreferrer" class="hover:text-brandCyan transition">LinkedIn Profile</a>
-          <span class="text-neutral-700 hidden sm:inline">•</span>
-          <span class="font-mono text-neutral-500 text-[11px] sm:text-xs">CRAFTED WITH CARE BY VINDX</span>
+        <div class="flex items-center gap-4">
+          <a href="https://www.linkedin.com/in/arvind-verma-5061a3228" target="_blank" rel="noopener noreferrer" class="hover:underline">LinkedIn</a>
+          <span>•</span>
+          <a href="mailto:letswork.arvind@gmail.com" class="hover:underline">Email Me</a>
         </div>
       </div>
     </footer>
 
   </main>
 
-  <!-- Interactive JavaScript -->
+  <!-- Interactive JavaScript Engine -->
   <script>
-    // Toggle Mobile Navigation Drawer
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobile-menu');
-      const openIcon = document.getElementById('menu-icon-open');
-      const closeIcon = document.getElementById('menu-icon-close');
-
-      menu.classList.toggle('hidden');
-      openIcon.classList.toggle('hidden');
-      closeIcon.classList.toggle('hidden');
-    }
-
-    // Direct Google Apps Script Submitter
+    // Form Submission Handler
     async function submitViaGoogleScript(e) {
       e.preventDefault();
       
@@ -961,7 +1012,7 @@
       const messageVal = document.getElementById('form-message').value;
 
       submitBtn.disabled = true;
-      submitBtn.innerText = "Sending Message...";
+      submitBtn.innerText = "SENDING...";
 
       const payload = {
         name: nameVal,
@@ -983,50 +1034,37 @@
           body: JSON.stringify(payload)
         });
 
-        statusMsg.className = "text-xs text-center font-mono mt-3 text-emerald-400 block";
+        statusMsg.className = "text-xs text-center font-mono mt-3 text-emerald-600 font-bold block";
         statusMsg.innerText = "✓ Thank you! Your message has been sent directly to my inbox.";
         document.getElementById('portfolio-form').reset();
       } catch (err) {
-        statusMsg.className = "text-xs text-center font-mono mt-3 text-rose-400 block";
+        statusMsg.className = "text-xs text-center font-mono mt-3 text-rose-600 font-bold block";
         statusMsg.innerText = "Submission failed. Please email directly at letswork.arvind@gmail.com";
       } finally {
         submitBtn.disabled = false;
-        submitBtn.innerHTML = `<span>Send Message</span> <span>→</span>`;
+        submitBtn.innerText = "Send Message ↗";
       }
     }
 
-    // Quick Copy Helper
-    function copyEmail(email, btnId) {
-      navigator.clipboard.writeText(email).then(() => {
-        const btn = document.getElementById(btnId);
-        btn.innerText = "Copied!";
-        setTimeout(() => {
-          btn.innerText = "Copy";
-        }, 2000);
-      });
-    }
-
-    // Project Filtering Engine
+    // Category Filtering Engine
     function filterStores(category) {
       const items = document.querySelectorAll('.project-item');
       const buttons = document.querySelectorAll('.filter-btn');
 
       buttons.forEach(btn => {
         if(btn.dataset.category === category) {
-          btn.classList.add('border-brandCyan', 'bg-brandCyan/10', 'text-brandCyan');
-          btn.classList.remove('border-brandBorder', 'glass-card', 'text-neutral-400');
+          btn.classList.remove('bg-white', 'text-black');
+          btn.classList.add('bg-black', 'text-white');
         } else {
-          btn.classList.remove('border-brandCyan', 'bg-brandCyan/10', 'text-brandCyan');
-          btn.classList.add('border-brandBorder', 'glass-card', 'text-neutral-400');
+          btn.classList.remove('bg-black', 'text-white');
+          btn.classList.add('bg-white', 'text-black');
         }
       });
 
       items.forEach(item => {
         if (category === 'all' || item.classList.contains(category)) {
           item.style.display = 'flex';
-          setTimeout(() => { item.style.opacity = '1'; }, 10);
         } else {
-          item.style.opacity = '0';
           item.style.display = 'none';
         }
       });
