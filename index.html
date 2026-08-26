@@ -224,23 +224,23 @@
 <body class="font-sans antialiased text-[#111827] selection:bg-neoOrange selection:text-white">
 
   <!-- ============================================== -->
-  <!-- 1. HEADER                                      -->
+  <!-- 1. HEADER (Compact Button + Mobile Drawer)      -->
   <!-- ============================================== -->
   <header class="w-full bg-[#fbf9f4] border-b-[2.5px] border-[#111827] sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 h-16 sm:h-20 flex items-center justify-between">
       
       <!-- Brand Logo -->
-      <a href="#" class="flex items-center gap-2.5">
-        <div class="w-10 h-10 rounded-xl bg-neoOrange border-[2.5px] border-[#111827] flex items-center justify-center font-black text-white text-xl shadow-[2px_2px_0px_#111827]">
+      <a href="#" class="flex items-center gap-2 sm:gap-2.5">
+        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-neoOrange border-[2px] sm:border-[2.5px] border-[#111827] flex items-center justify-center font-black text-white text-base sm:text-xl shadow-[2px_2px_0px_#111827]">
           A
         </div>
         <div class="flex flex-col">
-          <span class="text-base font-black uppercase tracking-tight leading-none text-[#111827]">Arvind Verma</span>
-          <span class="text-[10px] font-mono text-neutral-500 font-bold uppercase tracking-wider mt-0.5">Shopify and Ecomm Expert</span>
+          <span class="text-xs sm:text-base font-black uppercase tracking-tight leading-none text-[#111827]">Arvind Verma</span>
+          <span class="text-[9px] sm:text-[10px] font-mono text-neutral-500 font-bold uppercase tracking-wider mt-0.5 truncate">Shopify and Ecomm Expert</span>
         </div>
       </a>
 
-      <!-- Navigation Links -->
+      <!-- Desktop Navigation Links -->
       <nav class="hidden md:flex items-center space-x-8 text-xs font-bold uppercase tracking-wider text-neutral-800">
         <a href="#services" class="hover:text-neoOrange transition">Services</a>
         <a href="#stack" class="hover:text-neoOrange transition">Stack</a>
@@ -249,10 +249,33 @@
         <a href="#connect" class="hover:text-neoOrange transition">Contact</a>
       </nav>
 
-      <!-- CTA Button -->
-      <div class="flex items-center gap-3">
-        <a href="#connect" class="neo-btn px-5 py-2.5 bg-neoOrange text-white font-extrabold text-xs uppercase tracking-wider">
+      <!-- Compact CTA & Mobile Toggle -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a href="#connect" class="neo-btn px-3 sm:px-4 py-1.5 sm:py-2 bg-neoOrange text-white font-extrabold text-[11px] sm:text-xs uppercase tracking-wider">
           Let's Talk
+        </a>
+
+        <!-- Hamburger Button (Mobile) -->
+        <button onclick="toggleMobileMenu()" id="menu-btn" class="md:hidden neo-btn p-1.5 sm:p-2 bg-white text-[#111827] flex items-center justify-center" aria-label="Toggle Menu">
+          <svg id="menu-icon-open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg id="menu-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Slide-Down Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t-[2.5px] border-[#111827] bg-[#fbf9f4] px-6 py-5 shadow-lg">
+      <div class="flex flex-col space-y-3.5 text-xs font-bold uppercase tracking-wider text-neutral-800">
+        <a href="#services" onclick="toggleMobileMenu()" class="py-1 hover:text-neoOrange">Services</a>
+        <a href="#stack" onclick="toggleMobileMenu()" class="py-1 hover:text-neoOrange">Stack</a>
+        <a href="#partnerships" onclick="toggleMobileMenu()" class="py-1 hover:text-neoOrange">Partners</a>
+        <a href="#works" onclick="toggleMobileMenu()" class="py-1 hover:text-neoOrange">Work</a>
+        <a href="#connect" onclick="toggleMobileMenu()" class="py-2 text-center neo-btn bg-neoOrange text-white font-extrabold mt-2">
+          Let's Talk ↗
         </a>
       </div>
     </div>
@@ -1066,22 +1089,32 @@
     </section>
 
     <!-- ============================================== -->
-    <!-- 10. FOOTER                                      -->
+    <!-- 10. FOOTER (Clean Aligned Hierarchy)           -->
     <!-- ============================================== -->
-    <footer class="py-10 bg-[#111827] text-white border-t-[2.5px] border-[#111827]">
-      <div class="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono">
+    <footer class="py-12 bg-[#111827] text-white border-t-[2.5px] border-[#111827]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+        
+        <!-- Left Identity -->
         <div>
-          <p class="font-bold text-sm">Arvind Verma</p>
-          <p class="text-neutral-400 mt-0.5">Shopify &amp; E-Commerce Expert</p>
+          <p class="font-black text-base uppercase tracking-tight text-white">Arvind Verma</p>
+          <p class="text-xs text-neutral-400 font-mono mt-0.5">Shopify &amp; E-Commerce Expert</p>
         </div>
 
-        <div class="flex items-center gap-6">
-          <a href="https://www.linkedin.com/in/arvind-verma-5061a3228" target="_blank" rel="noopener noreferrer" class="hover:text-neoOrange transition">LinkedIn Profile</a>
-          <span class="text-neutral-600">•</span>
-          <a href="https://wa.me/918874856868" target="_blank" rel="noopener noreferrer" class="hover:text-neoOrange transition">WhatsApp</a>
-          <span class="text-neutral-600">•</span>
-          <span class="text-neutral-400">CRAFTED WITH CARE BY VINDX</span>
+        <!-- Center / Right Links Alignment -->
+        <div class="flex flex-wrap justify-center items-center gap-5 sm:gap-6 text-xs font-mono">
+          <a href="https://www.linkedin.com/in/arvind-verma-5061a3228" target="_blank" rel="noopener noreferrer" class="text-neutral-300 hover:text-neoOrange transition">
+            LinkedIn Profile
+          </a>
+          <span class="text-neutral-600 font-bold">•</span>
+          <a href="https://wa.me/918874856868" target="_blank" rel="noopener noreferrer" class="text-neutral-300 hover:text-neoOrange transition">
+            WhatsApp
+          </a>
+          <span class="text-neutral-600 font-bold">•</span>
+          <span class="text-neutral-400 uppercase tracking-wider font-semibold">
+            Crafted with care by VindX
+          </span>
         </div>
+
       </div>
     </footer>
 
@@ -1089,6 +1122,17 @@
 
   <!-- Interactive JavaScript -->
   <script>
+    // Toggle Mobile Navigation Drawer
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const openIcon = document.getElementById('menu-icon-open');
+      const closeIcon = document.getElementById('menu-icon-close');
+
+      menu.classList.toggle('hidden');
+      openIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    }
+
     // Direct Google Apps Script Submitter
     async function submitViaGoogleScript(e) {
       e.preventDefault();
