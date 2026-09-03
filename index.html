@@ -4,15 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   
-  <!-- Primary SEO Meta Tags -->
   <title>Arvind Verma | Shopify &amp; E-Commerce Expert</title>
   <meta name="title" content="Arvind Verma | Shopify & E-Commerce Expert" />
   <meta name="description" content="Hire Arvind Verma, an expert Shopify Developer & E-Commerce Specialist specializing in bespoke Liquid sections, speed optimization, payment gateway integrations, and high-converting D2C stores." />
   
-  <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23111827'/><text x='50' y='70' font-size='60' font-family='sans-serif' font-weight='600' fill='%23ffffff' text-anchor='middle'>A</text></svg>" type="image/svg+xml" />
 
-  <!-- Tailwind & Fonts -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -38,7 +35,6 @@
   </script>
 
   <style>
-    /* Mandatory Lenis CSS */
     html.lenis, html.lenis body { height: auto; }
     .lenis.lenis-smooth { scroll-behavior: auto !important; }
     .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
@@ -52,10 +48,7 @@
       font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     }
 
-    /* Floating Shapes Custom Shapes */
-    .shape-polygon {
-      clip-path: polygon(5% 0, 100% 10%, 95% 100%, 0 90%);
-    }
+    .shape-polygon { clip-path: polygon(5% 0, 100% 10%, 95% 100%, 0 90%); }
 
     @keyframes marquee {
       0% { transform: translateX(0%); }
@@ -75,7 +68,6 @@
     ::-webkit-scrollbar-thumb { background: #cccccc; border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: #999999; }
 
-    /* Prevent iOS Zoom on Forms */
     @media screen and (max-width: 768px) {
       input, select, textarea { font-size: 16px !important; }
     }
@@ -87,16 +79,13 @@
     <!-- ============================================== -->
     <!-- 1. HERO SECTION                                -->
     <!-- ============================================== -->
-    <section class="relative w-full h-[100vh] bg-bgGray overflow-hidden">
-      
-      <!-- Top Left: Logo Box -->
+    <section class="relative w-full h-[100dvh] bg-bgGray overflow-hidden">
       <div class="absolute top-6 left-6 sm:top-10 sm:left-10 z-30">
         <div class="w-12 h-14 sm:w-16 sm:h-20 border-[2px] border-dark rounded-2xl sm:rounded-3xl flex items-center justify-center bg-transparent">
           <span class="text-2xl sm:text-4xl font-bold tracking-tighter">A</span>
         </div>
       </div>
 
-      <!-- Desktop Navigation Links -->
       <div class="absolute top-8 right-6 sm:top-14 sm:right-12 z-30 hidden sm:block">
         <a href="#works" class="text-2xl sm:text-3xl font-medium tracking-tight hover:opacity-50 transition-opacity">WORK</a>
       </div>
@@ -110,14 +99,13 @@
         SCROLL DOWN &darr;
       </div>
 
-      <!-- Center: Giant Name -->
       <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none px-4">
         <h1 class="gsap-hero-text text-[17vw] sm:text-[11vw] leading-[0.85] font-medium text-center uppercase tracking-tighter text-dark">
           ARVIND<br>VERMA
         </h1>
       </div>
 
-      <!-- Floating Elements (Perfectly spaced for Mobile & Desktop) -->
+      <!-- Floating Badges -->
       <div class="gsap-float-1 absolute top-[18%] left-[8%] sm:top-[25%] sm:left-[25%] z-20 bg-brandOrange rounded-full px-6 py-4 sm:px-10 sm:py-6 transform -rotate-12 shadow-sm pointer-events-none">
         <p class="text-[10px] sm:text-sm font-medium uppercase tracking-widest text-dark text-center leading-tight">
           SHOPIFY<br>EXPERT
@@ -129,7 +117,7 @@
         </p>
       </div>
 
-      <!-- Social Icons (Top Right on Mobile, Right Center on Desktop) -->
+      <!-- Social Icons Top Right Mobile / Right Center Desktop -->
       <div class="absolute top-8 right-6 sm:top-1/2 sm:-translate-y-1/2 sm:right-10 z-30 flex sm:flex-col gap-3">
         <a href="https://www.linkedin.com/in/arvind-verma-5061a3228" target="_blank" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-dark flex items-center justify-center hover:bg-dark hover:text-white transition-colors">
           <span class="text-[10px] sm:text-xs font-semibold">in</span>
@@ -169,7 +157,7 @@
       </div>
     </div>
 
-    <!-- Minimal Stats Bar (Fixed Grid for Mobile) -->
+    <!-- Minimal Stats Bar -->
     <section class="border-b border-dark/5 bg-bgGray">
       <div class="max-w-7xl mx-auto px-6 sm:px-12 py-10 grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-4 text-center sm:text-left">
         <div class="gsap-stat px-2 sm:px-4 sm:border-r border-dark/10 last:border-0">
@@ -192,7 +180,7 @@
     </section>
 
     <!-- ============================================== -->
-    <!-- 3. CAPABILITIES & SERVICES (Editorial Layout)  -->
+    <!-- 3. CAPABILITIES & SERVICES                     -->
     <!-- ============================================== -->
     <section id="services" class="py-24 sm:py-32 max-w-7xl mx-auto px-6 sm:px-12 bg-bgGray">
       <div class="gsap-fade-up max-w-2xl mb-16 sm:mb-24">
@@ -202,45 +190,37 @@
         <p class="text-dark/60 text-sm sm:text-sm mt-5 font-mono max-w-md">End-to-End Technical Delivery for Modern E-Commerce</p>
       </div>
 
-      <!-- New Sleek Typographic Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
-        
         <div class="gsap-service-item border-t border-dark/20 pt-6 group">
           <span class="text-brandOrange font-mono text-xs font-bold mb-4 block">01</span>
           <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight text-dark mb-4 group-hover:text-brandOrange transition-colors">Custom Themes &amp; Liquid</h3>
           <p class="text-sm text-dark/60 leading-relaxed font-mono">Bespoke Liquid section schemas, dynamic drawer checkouts, custom product options, and lightweight modular layouts built from scratch.</p>
         </div>
-
         <div class="gsap-service-item border-t border-dark/20 pt-6 group">
           <span class="text-brandOrange font-mono text-xs font-bold mb-4 block">02</span>
           <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight text-dark mb-4 group-hover:text-brandOrange transition-colors">Payment Gateway</h3>
           <p class="text-sm text-dark/60 leading-relaxed font-mono">Direct checkout integrations enabling seamless domestic and global transactions with zero friction for shoppers.</p>
         </div>
-
         <div class="gsap-service-item border-t border-dark/20 pt-6 group">
           <span class="text-brandOrange font-mono text-xs font-bold mb-4 block">03</span>
           <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight text-dark mb-4 group-hover:text-brandOrange transition-colors">Shipping &amp; Logistics</h3>
           <p class="text-sm text-dark/60 leading-relaxed font-mono">Automated courier allocation, real-time tracking webhooks, NDR management, and seamless reverse pickup flows.</p>
         </div>
-
         <div class="gsap-service-item border-t border-dark/20 pt-6 group">
           <span class="text-brandOrange font-mono text-xs font-bold mb-4 block">04</span>
           <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight text-dark mb-4 group-hover:text-brandOrange transition-colors">Core Web Vitals</h3>
           <p class="text-sm text-dark/60 leading-relaxed font-mono">Aggressive script streamlining, vanilla JavaScript logic, and asset optimization for maximum Lighthouse scores.</p>
         </div>
-
         <div class="gsap-service-item border-t border-dark/20 pt-6 group">
           <span class="text-brandOrange font-mono text-xs font-bold mb-4 block">05</span>
           <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight text-dark mb-4 group-hover:text-brandOrange transition-colors">Technical SEO</h3>
           <p class="text-sm text-dark/60 leading-relaxed font-mono">JSON-LD structured data (Product, Organization schema), clean metadata hooks, and canonical URL hygiene.</p>
         </div>
-
         <div class="gsap-service-item border-t border-dark/20 pt-6 group">
           <span class="text-brandOrange font-mono text-xs font-bold mb-4 block">06</span>
           <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight text-dark mb-4 group-hover:text-brandOrange transition-colors">API Integrations</h3>
           <p class="text-sm text-dark/60 leading-relaxed font-mono">Connecting third-party logistics, ERPs, CRM platforms, and custom webhooks into Shopify without adding bloat.</p>
         </div>
-
       </div>
     </section>
 
@@ -249,7 +229,6 @@
     <!-- ============================================== -->
     <section id="stack" class="py-24 sm:py-32 bg-white border-y border-dark/5">
       <div class="max-w-7xl mx-auto px-6 sm:px-12 text-center">
-        
         <div class="gsap-fade-up">
           <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter text-dark leading-[0.9]">
             Three layers.<br>One developer.
@@ -260,7 +239,6 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mt-16 sm:mt-20 text-left">
-          
           <div class="gsap-stack-card p-8 sm:p-10 border border-dark/5 rounded-3xl bg-bgGray">
             <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-brandBlue">01 // FRONTEND</span>
             <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight text-dark mt-4">Pixels with personality.</h3>
@@ -271,7 +249,6 @@
               <span class="px-4 py-1.5 rounded-full bg-white text-xs font-semibold shadow-sm">JS ES6</span>
             </div>
           </div>
-
           <div class="gsap-stack-card p-8 sm:p-10 border border-dark/5 rounded-3xl bg-dark text-white">
             <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-brandOrange">02 // BACKEND</span>
             <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight text-white mt-4">Logic that holds up.</h3>
@@ -281,7 +258,6 @@
               <span class="px-4 py-1.5 rounded-full bg-white/10 text-xs font-semibold border border-white/10">JSON Schemas</span>
             </div>
           </div>
-
           <div class="gsap-stack-card p-8 sm:p-10 border border-dark/5 rounded-3xl bg-bgGray">
             <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-brandBlue">03 // DATA</span>
             <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight text-dark mt-4">Data that behaves.</h3>
@@ -292,178 +268,429 @@
               <span class="px-4 py-1.5 rounded-full bg-white text-xs font-semibold shadow-sm">Shiprocket</span>
             </div>
           </div>
-
         </div>
       </div>
     </section>
 
     <!-- ============================================== -->
-    <!-- 5. SELECTED WORKS                              -->
+    <!-- 5. SELECTED WORKS (Compact 4-col desktop, 2-col mobile) -->
     <!-- ============================================== -->
     <section id="works" class="py-24 sm:py-32 bg-bgGray">
-      <div class="max-w-7xl mx-auto px-6 sm:px-12">
+      <div class="max-w-[90rem] mx-auto px-4 sm:px-10">
         
-        <div class="gsap-fade-up flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6 sm:gap-8">
+        <div class="gsap-fade-up flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
           <div>
             <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter text-dark leading-[0.9]">
               Selected<br>Work
             </h2>
           </div>
 
-          <!-- Category Filters -->
-          <div class="flex overflow-x-auto no-scrollbar gap-2 sm:gap-3 pb-2 font-mono text-xs sm:text-sm w-full md:w-auto">
-            <button onclick="filterStores('all')" class="filter-btn active shrink-0 px-5 py-2 rounded-full bg-dark text-white transition-colors" data-category="all">All</button>
-            <button onclick="filterStores('footwear')" class="filter-btn shrink-0 px-5 py-2 rounded-full border border-dark/10 hover:border-dark text-dark transition-colors" data-category="footwear">Footwear</button>
-            <button onclick="filterStores('fashion')" class="filter-btn shrink-0 px-5 py-2 rounded-full border border-dark/10 hover:border-dark text-dark transition-colors" data-category="fashion">Fashion</button>
-            <button onclick="filterStores('jewelry')" class="filter-btn shrink-0 px-5 py-2 rounded-full border border-dark/10 hover:border-dark text-dark transition-colors" data-category="jewelry">Jewellery</button>
-            <button onclick="filterStores('home')" class="filter-btn shrink-0 px-5 py-2 rounded-full border border-dark/10 hover:border-dark text-dark transition-colors" data-category="home">Home</button>
+          <!-- Category Filters (Fixed Tab Logic) -->
+          <div class="flex overflow-x-auto no-scrollbar gap-2 sm:gap-3 pb-2 font-mono text-[10px] sm:text-xs w-full md:w-auto">
+            <button onclick="filterStores('all')" class="filter-btn active shrink-0 px-4 py-2 rounded-full bg-dark text-white transition-colors" data-category="all">All</button>
+            <button onclick="filterStores('footwear')" class="filter-btn shrink-0 px-4 py-2 rounded-full border border-dark/10 bg-transparent text-dark transition-colors" data-category="footwear">Footwear</button>
+            <button onclick="filterStores('fashion')" class="filter-btn shrink-0 px-4 py-2 rounded-full border border-dark/10 bg-transparent text-dark transition-colors" data-category="fashion">Fashion</button>
+            <button onclick="filterStores('jewelry')" class="filter-btn shrink-0 px-4 py-2 rounded-full border border-dark/10 bg-transparent text-dark transition-colors" data-category="jewelry">Jewellery</button>
+            <button onclick="filterStores('home')" class="filter-btn shrink-0 px-4 py-2 rounded-full border border-dark/10 bg-transparent text-dark transition-colors" data-category="home">Home</button>
           </div>
         </div>
 
-        <!-- Project Cards Grid -->
-        <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12">
+        <!-- 2 cols on mobile, 4 on desktop -->
+        <div id="projects-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mt-8">
           
           <a href="https://michaelangelo.in/" target="_blank" class="gsap-project-item footwear group block">
-            <div class="w-full h-64 sm:h-[22rem] overflow-hidden rounded-3xl bg-white mb-5 shadow-sm">
+            <div class="w-full aspect-[4/5] overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
               <img src="https://cdn.shopify.com/s/files/1/0657/7710/7144/files/Artboard_2_jpg.jpg?v=1779884867" alt="Michael Angelo" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" loading="lazy" />
             </div>
-            <div class="px-2">
-              <h3 class="text-lg sm:text-xl font-medium uppercase tracking-tight text-dark flex items-center justify-between">
+            <div class="px-1">
+              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
                 Michael Angelo
-                <span class="opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:translate-x-1 duration-300 text-brandOrange">&rarr;</span>
               </h3>
-              <p class="text-xs text-dark/50 mt-1.5 font-mono">Premium Footwear • Custom Sections</p>
+              <p class="text-[9px] sm:text-[10px] text-dark/50 mt-1 font-mono uppercase truncate">Premium Footwear</p>
             </div>
           </a>
 
           <a href="https://www.leconcept.co.in/" target="_blank" class="gsap-project-item fashion group block">
-            <div class="w-full h-64 sm:h-[22rem] overflow-hidden rounded-3xl bg-white mb-5 shadow-sm">
+            <div class="w-full aspect-[4/5] overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
               <img src="https://cdn.shopify.com/s/files/1/0890/7233/7188/files/Mask_group_6.png?v=1783936310" alt="Le Concept" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" loading="lazy" />
             </div>
-            <div class="px-2">
-              <h3 class="text-lg sm:text-xl font-medium uppercase tracking-tight text-dark flex items-center justify-between">
+            <div class="px-1">
+              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
                 Le Concept
-                <span class="opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:translate-x-1 duration-300 text-brandOrange">&rarr;</span>
               </h3>
-              <p class="text-xs text-dark/50 mt-1.5 font-mono">Women's Wear • Grid Aesthetics</p>
+              <p class="text-[9px] sm:text-[10px] text-dark/50 mt-1 font-mono uppercase truncate">Women's Wear</p>
             </div>
           </a>
 
           <a href="https://www.spiffers.in/" target="_blank" class="gsap-project-item footwear group block">
-            <div class="w-full h-64 sm:h-[22rem] overflow-hidden rounded-3xl bg-white mb-5 shadow-sm">
+            <div class="w-full aspect-[4/5] overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
               <img src="https://www.spiffers.in/cdn/shop/files/Rectangle_142.png?v=1780992822&width=1600" alt="Spiffers" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" loading="lazy" />
             </div>
-            <div class="px-2">
-              <h3 class="text-lg sm:text-xl font-medium uppercase tracking-tight text-dark flex items-center justify-between">
+            <div class="px-1">
+              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
                 Spiffers
-                <span class="opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:translate-x-1 duration-300 text-brandOrange">&rarr;</span>
               </h3>
-              <p class="text-xs text-dark/50 mt-1.5 font-mono">Footwear Brand • High-Conversion</p>
+              <p class="text-[9px] sm:text-[10px] text-dark/50 mt-1 font-mono uppercase truncate">Footwear Brand</p>
             </div>
           </a>
 
           <a href="https://nikunjbyniidhibajaj.com/" target="_blank" class="gsap-project-item fashion group block">
-            <div class="w-full h-64 sm:h-[22rem] overflow-hidden rounded-3xl bg-white mb-5 shadow-sm">
+            <div class="w-full aspect-[4/5] overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
               <img src="https://nikunjbyniidhibajaj.com/cdn/shop/files/2.png?v=1780501726&width=2400" alt="Nikunj Niidhi Bajaj" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" loading="lazy" />
             </div>
-            <div class="px-2">
-              <h3 class="text-lg sm:text-xl font-medium uppercase tracking-tight text-dark flex items-center justify-between">
-                Nikunj Niidhi Bajaj
-                <span class="opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:translate-x-1 duration-300 text-brandOrange">&rarr;</span>
+            <div class="px-1">
+              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
+                Nikunj Niidhi
               </h3>
-              <p class="text-xs text-dark/50 mt-1.5 font-mono">Women Ethnic Wear • Bespoke Nav</p>
+              <p class="text-[9px] sm:text-[10px] text-dark/50 mt-1 font-mono uppercase truncate">Women Ethnic Wear</p>
             </div>
           </a>
 
           <a href="https://loomandstory.com/" target="_blank" class="gsap-project-item fashion group block">
-            <div class="w-full h-64 sm:h-[22rem] overflow-hidden rounded-3xl bg-white mb-5 shadow-sm">
+            <div class="w-full aspect-[4/5] overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
               <img src="https://loomandstory.com/cdn/shop/files/website.jpg?v=1785494251&width=2000" alt="Loom & Story" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" loading="lazy" />
             </div>
-            <div class="px-2">
-              <h3 class="text-lg sm:text-xl font-medium uppercase tracking-tight text-dark flex items-center justify-between">
+            <div class="px-1">
+              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
                 Loom &amp; Story
-                <span class="opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:translate-x-1 duration-300 text-brandOrange">&rarr;</span>
               </h3>
-              <p class="text-xs text-dark/50 mt-1.5 font-mono">Women's Wear • Textile Storytelling</p>
+              <p class="text-[9px] sm:text-[10px] text-dark/50 mt-1 font-mono uppercase truncate">Textile Storytelling</p>
             </div>
           </a>
 
           <a href="https://zaydns.com/" target="_blank" class="gsap-project-item footwear group block">
-            <div class="w-full h-64 sm:h-[22rem] overflow-hidden rounded-3xl bg-white mb-5 shadow-sm">
+            <div class="w-full aspect-[4/5] overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
               <img src="https://zaydns.com/cdn/shop/files/YOO.jpg?v=1779727236&width=1200" alt="Zaydn" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" loading="lazy" />
             </div>
-            <div class="px-2">
-              <h3 class="text-lg sm:text-xl font-medium uppercase tracking-tight text-dark flex items-center justify-between">
+            <div class="px-1">
+              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
                 Zaydn
-                <span class="opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:translate-x-1 duration-300 text-brandOrange">&rarr;</span>
               </h3>
-              <p class="text-xs text-dark/50 mt-1.5 font-mono">Footwear Brand • Interactive Features</p>
+              <p class="text-[9px] sm:text-[10px] text-dark/50 mt-1 font-mono uppercase truncate">Sneaker Brand</p>
             </div>
           </a>
 
           <a href="https://www.miira.in/" target="_blank" class="gsap-project-item jewelry group block">
-            <div class="w-full h-64 sm:h-[22rem] overflow-hidden rounded-3xl bg-white mb-5 shadow-sm">
+            <div class="w-full aspect-[4/5] overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
               <img src="https://www.miira.in/cdn/shop/files/SparklingnamenecklaceRs2499_700x.jpg?v=1784040283" alt="Miira" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" loading="lazy" />
             </div>
-            <div class="px-2">
-              <h3 class="text-lg sm:text-xl font-medium uppercase tracking-tight text-dark flex items-center justify-between">
+            <div class="px-1">
+              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
                 Miira
-                <span class="opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:translate-x-1 duration-300 text-brandOrange">&rarr;</span>
               </h3>
-              <p class="text-xs text-dark/50 mt-1.5 font-mono">Artificial Jewellery • Elegant Showcases</p>
+              <p class="text-[9px] sm:text-[10px] text-dark/50 mt-1 font-mono uppercase truncate">Artificial Jewellery</p>
             </div>
           </a>
 
           <a href="https://banarasiya.in/" target="_blank" class="gsap-project-item fashion group block">
-            <div class="w-full h-64 sm:h-[22rem] overflow-hidden rounded-3xl bg-white mb-5 shadow-sm">
+            <div class="w-full aspect-[4/5] overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
               <img src="https://cdn.shopify.com/s/files/1/0497/0240/4258/files/Group_93_1.png?v=1778482629" alt="Banarasiya" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" loading="lazy" />
             </div>
-            <div class="px-2">
-              <h3 class="text-lg sm:text-xl font-medium uppercase tracking-tight text-dark flex items-center justify-between">
+            <div class="px-1">
+              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
                 Banarasiya
-                <span class="opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:translate-x-1 duration-300 text-brandOrange">&rarr;</span>
               </h3>
-              <p class="text-xs text-dark/50 mt-1.5 font-mono">Saree Store • Heritage UX</p>
+              <p class="text-[9px] sm:text-[10px] text-dark/50 mt-1 font-mono uppercase truncate">Heritage Saree Store</p>
             </div>
           </a>
 
           <a href="https://www.vesperahomes.com/" target="_blank" class="gsap-project-item home group block">
-            <div class="w-full h-64 sm:h-[22rem] overflow-hidden rounded-3xl bg-white mb-5 shadow-sm">
+            <div class="w-full aspect-[4/5] overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
               <img src="https://www.vesperahomes.com/cdn/shop/files/Self-care_Sunday_Sale_Green_Shopify_Banner_38.png?v=1783680878&width=1920" alt="Vespera Homes" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" loading="lazy" />
             </div>
-            <div class="px-2">
-              <h3 class="text-lg sm:text-xl font-medium uppercase tracking-tight text-dark flex items-center justify-between">
+            <div class="px-1">
+              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
                 Vespera Homes
-                <span class="opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:translate-x-1 duration-300 text-brandOrange">&rarr;</span>
               </h3>
-              <p class="text-xs text-dark/50 mt-1.5 font-mono">Home Decor • Modular Schemas</p>
+              <p class="text-[9px] sm:text-[10px] text-dark/50 mt-1 font-mono uppercase truncate">Home Decor</p>
             </div>
           </a>
 
           <a href="https://sojanya.com/" target="_blank" class="gsap-project-item fashion group block">
-            <div class="w-full h-64 sm:h-[22rem] overflow-hidden rounded-3xl bg-white mb-5 shadow-sm">
+            <div class="w-full aspect-[4/5] overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
               <img src="https://sojanya.com/cdn/shop/files/2_08eebcdd-d7f0-480a-9ad4-4daf34580003.jpg?v=1757503550&width=1410" alt="Sojanya" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" loading="lazy" />
             </div>
-            <div class="px-2">
-              <h3 class="text-lg sm:text-xl font-medium uppercase tracking-tight text-dark flex items-center justify-between">
+            <div class="px-1">
+              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
                 Sojanya
-                <span class="opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:translate-x-1 duration-300 text-brandOrange">&rarr;</span>
               </h3>
-              <p class="text-xs text-dark/50 mt-1.5 font-mono">Men Ethnic Wear • High-Volume Catalog</p>
+              <p class="text-[9px] sm:text-[10px] text-dark/50 mt-1 font-mono uppercase truncate">Men Ethnic Wear</p>
             </div>
           </a>
 
           <a href="https://paakhihome.com/" target="_blank" class="gsap-project-item home group block">
-            <div class="w-full h-64 sm:h-[22rem] overflow-hidden rounded-3xl bg-white mb-5 shadow-sm">
-              <img src="https://paakhihome.com/cdn/shop/files/PRT-004_15_10a2899c-76**Restoring Social Icons**
-If the icons were hidden on mobile (e.g., using `hidden md:flex` in Tailwind or `display: none` in CSS), override that behavior and pin them to the top right corner.
+            <div class="w-full aspect-[4/5] overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
+              <img src="https://paakhihome.com/cdn/shop/files/PRT-004_15_10a2899c-7648-4a38-8f54-1b48b3da78a1.jpg?v=1769081125&width=1296" alt="Paakhi" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            </div>
+            <div class="px-1">
+              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
+                Paakhi
+              </h3>
+              <p class="text-[9px] sm:text-[10px] text-dark/50 mt-1 font-mono uppercase truncate">Home Essentials</p>
+            </div>
+          </a>
 
-```css
-.social-icons-container {
-  display: flex !important; /* Override mobile hiding */
-  position: absolute;
-  top: 1.5rem; /* Align with the top margin of the 'A' logo */
-  right: 1.5rem;
-  gap: 1rem;
-  z-index: 10; 
-}
+          <a href="https://takshexclusive.com/" target="_blank" class="gsap-project-item jewelry group block">
+            <div class="w-full aspect-[4/5] overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
+              <img src="https://takshexclusive.com/cdn/shop/files/IMG_20260508_192457.png?v=1778248556&width=2560" alt="Taksh" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            </div>
+            <div class="px-1">
+              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
+                Taksh
+              </h3>
+              <p class="text-[9px] sm:text-[10px] text-dark/50 mt-1 font-mono uppercase truncate">Bridal Jewelry</p>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- 6. CONTACT FORM                                -->
+    <!-- ============================================== -->
+    <section id="connect" class="py-12 sm:py-24 max-w-[90rem] mx-auto px-4 sm:px-10 mb-12 sm:mb-20">
+      
+      <!-- Huge White Rounded Container -->
+      <div class="bg-white rounded-[2.5rem] sm:rounded-[3rem] p-6 sm:p-16 lg:p-20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-dark/5 overflow-hidden">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
+          
+          <!-- Left Contact Info -->
+          <div class="gsap-contact-info flex flex-col justify-between">
+            <div>
+              <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter text-dark leading-[1.05]">
+                Got an idea?<br>Let's talk.
+              </h2>
+              <p class="text-dark/60 text-sm mt-5 sm:mt-8 font-mono leading-relaxed max-w-md">
+                Shopify builds, Liquid architecture, checkout optimization, or payment integrations — I'm ready to ship it.
+              </p>
+            </div>
+
+            <!-- Contact Links -->
+            <div class="mt-8 sm:mt-0 space-y-4 sm:space-y-6 font-mono text-[10px] sm:text-sm">
+              <a href="mailto:letswork.arvind@gmail.com" class="flex items-center gap-4 sm:gap-5 group w-fit">
+                <span class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#f2f2f2] flex items-center justify-center group-hover:bg-dark group-hover:text-white transition-all duration-300 text-dark/60">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                </span>
+                <span class="text-dark/80 group-hover:text-dark transition-colors border-b border-transparent group-hover:border-dark pb-0.5 break-all">letswork.arvind@gmail.com</span>
+              </a>
+              <a href="https://wa.me/918874856868" target="_blank" class="flex items-center gap-4 sm:gap-5 group w-fit">
+                <span class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#f2f2f2] flex items-center justify-center group-hover:bg-dark group-hover:text-white transition-all duration-300 text-dark/60">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                </span>
+                <span class="text-dark/80 group-hover:text-dark transition-colors border-b border-transparent group-hover:border-dark pb-0.5">+91 8874856868</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Form Box (Mobile Animation Fixed) -->
+          <div class="gsap-contact-form mt-4 lg:mt-0">
+            <form id="portfolio-form" onsubmit="submitViaGoogleScript(event)" class="space-y-6 sm:space-y-12">
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10">
+                <div class="relative group">
+                  <label for="form-name" class="block text-[10px] sm:text-xs font-mono font-semibold text-dark/40 uppercase mb-1 transition-colors group-focus-within:text-dark">Name</label>
+                  <input type="text" id="form-name" required class="w-full px-0 py-2 bg-transparent border-b border-dark/10 text-base sm:text-sm text-dark focus:outline-none focus:border-dark transition-colors" />
+                </div>
+                <div class="relative group">
+                  <label for="form-email" class="block text-[10px] sm:text-xs font-mono font-semibold text-dark/40 uppercase mb-1 transition-colors group-focus-within:text-dark">Email</label>
+                  <input type="email" id="form-email" required class="w-full px-0 py-2 bg-transparent border-b border-dark/10 text-base sm:text-sm text-dark focus:outline-none focus:border-dark transition-colors" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10">
+                <div class="relative group">
+                  <label for="form-phone" class="block text-[10px] sm:text-xs font-mono font-semibold text-dark/40 uppercase mb-1 transition-colors group-focus-within:text-dark">Phone</label>
+                  <input type="tel" id="form-phone" class="w-full px-0 py-2 bg-transparent border-b border-dark/10 text-base sm:text-sm text-dark focus:outline-none focus:border-dark transition-colors" />
+                </div>
+                <div class="relative group">
+                  <label for="form-company" class="block text-[10px] sm:text-xs font-mono font-semibold text-dark/40 uppercase mb-1 transition-colors group-focus-within:text-dark">Company</label>
+                  <input type="text" id="form-company" required class="w-full px-0 py-2 bg-transparent border-b border-dark/10 text-base sm:text-sm text-dark focus:outline-none focus:border-dark transition-colors" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10">
+                <div class="relative group">
+                  <label for="form-website" class="block text-[10px] sm:text-xs font-mono font-semibold text-dark/40 uppercase mb-1 transition-colors group-focus-within:text-dark">Website URL</label>
+                  <input type="url" id="form-website" class="w-full px-0 py-2 bg-transparent border-b border-dark/10 text-base sm:text-sm text-dark focus:outline-none focus:border-dark transition-colors" />
+                </div>
+                <div class="relative group">
+                  <label for="form-service" class="block text-[10px] sm:text-xs font-mono font-semibold text-dark/40 uppercase mb-1 transition-colors group-focus-within:text-dark">Service</label>
+                  <select id="form-service" class="w-full px-0 py-2 bg-transparent border-b border-dark/10 text-base sm:text-sm text-dark focus:outline-none focus:border-dark transition-colors appearance-none rounded-none cursor-pointer">
+                    <option value="Custom Shopify Theme & Store Development">Custom Shopify Theme & Store Development</option>
+                    <option value="Shopify Speed & Core Web Vitals">Shopify Speed & Core Web Vitals</option>
+                    <option value="Payment Gateway Integration">Payment Gateway Integration</option>
+                    <option value="Shipping & Logistics Automation">Shipping & Logistics Automation</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="relative group">
+                <label for="form-message" class="block text-[10px] sm:text-xs font-mono font-semibold text-dark/40 uppercase mb-1 transition-colors group-focus-within:text-dark">Message</label>
+                <textarea id="form-message" rows="1" required class="w-full px-0 py-2 bg-transparent border-b border-dark/10 text-base sm:text-sm text-dark focus:outline-none focus:border-dark transition-colors resize-none"></textarea>
+              </div>
+
+              <button type="submit" id="submit-btn" class="w-full sm:w-auto px-10 py-4 rounded-full bg-dark text-white font-medium text-xs sm:text-sm uppercase tracking-wider mt-4 hover:bg-brandOrange transition-colors shadow-lg shadow-dark/20 flex items-center justify-center gap-3">
+                Send Message <span>&rarr;</span>
+              </button>
+              <p id="form-status" class="text-sm font-mono mt-3 hidden"></p>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- 7. FOOTER                                      -->
+    <!-- ============================================== -->
+    <footer class="py-10 sm:py-12 bg-bgGray border-t border-dark/5">
+      <div class="max-w-7xl mx-auto px-6 sm:px-12 flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6 text-center sm:text-left">
+        <div>
+          <p class="font-medium text-lg sm:text-xl uppercase tracking-tight text-dark">Arvind Verma</p>
+          <p class="text-xs text-dark/50 font-mono mt-1">&copy; 2026. All rights reserved.</p>
+        </div>
+        <div class="flex gap-6 sm:gap-8 text-sm font-mono text-dark/80">
+          <a href="https://www.linkedin.com/in/arvind-verma-5061a3228" target="_blank" class="hover:text-brandOrange transition-colors">LinkedIn</a>
+          <a href="https://wa.me/918874856868" target="_blank" class="hover:text-brandOrange transition-colors">WhatsApp</a>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+  <!-- GSAP & ScrollTrigger Core Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- Interactive Logic & Animations -->
+  <script>
+    document.addEventListener("DOMContentLoaded", (event) => {
+      const lenis = new Lenis({
+        duration: 1.5,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        direction: 'vertical',
+        smooth: true,
+      });
+
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+      gsap.ticker.lagSmoothing(0);
+
+      gsap.registerPlugin(ScrollTrigger);
+      // Ignore mobile UI shifts
+      ScrollTrigger.config({ ignoreMobileResize: true });
+
+      const heroTl = gsap.timeline();
+      heroTl.from(".gsap-hero-text", { y: 50, opacity: 0, duration: 1.5, ease: "power4.out" })
+            .from(".gsap-float-1", { scale: 0, opacity: 0, rotation: 0, duration: 1, ease: "back.out(1.5)" }, "-=1")
+            .from(".gsap-float-2", { scale: 0, opacity: 0, rotation: 0, duration: 1, ease: "back.out(1.5)" }, "-=0.8");
+
+      gsap.to(".gsap-float-1", { y: -15, rotation: -15, duration: 3, yoyo: true, repeat: -1, ease: "sine.inOut" });
+      gsap.to(".gsap-float-2", { y: 15, rotation: 3, duration: 3.5, yoyo: true, repeat: -1, ease: "sine.inOut" });
+
+      gsap.from(".gsap-stat", {
+        scrollTrigger: { trigger: ".gsap-stat", start: "top 90%" },
+        y: 30, opacity: 0, duration: 1, stagger: 0.1, ease: "power3.out"
+      });
+
+      gsap.utils.toArray('.gsap-fade-up').forEach(element => {
+        gsap.from(element, {
+          scrollTrigger: { trigger: element, start: "top 85%" },
+          y: 40, opacity: 0, duration: 1.2, ease: "power4.out"
+        });
+      });
+
+      const staggerGroups = [".gsap-service-item", ".gsap-stack-card", ".gsap-project-item"];
+      staggerGroups.forEach(groupClass => {
+        gsap.from(groupClass, {
+          scrollTrigger: { trigger: groupClass, start: "top 85%" },
+          y: 40, opacity: 0, duration: 1.2, stagger: 0.1, ease: "power4.out"
+        });
+      });
+
+      gsap.from(".gsap-contact-info", {
+        scrollTrigger: { trigger: "#connect", start: "top 85%" },
+        y: 30, opacity: 0, duration: 1.2, ease: "power4.out"
+      });
+      // Changed to vertical animation so it doesn't overflow horizontally on mobile
+      gsap.from(".gsap-contact-form", {
+        scrollTrigger: { trigger: "#connect", start: "top 85%" },
+        y: 40, opacity: 0, duration: 1.2, ease: "power4.out"
+      });
+    });
+
+    async function submitViaGoogleScript(e) {
+      e.preventDefault();
+      const submitBtn = document.getElementById('submit-btn');
+      const statusMsg = document.getElementById('form-status');
+      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxikOKgThHvPuSbtPBg-vRB03yvX9SLVd2wv1eATG_OlUKLim-6YSJx4KoAbebuzas-/exec";
+
+      const payload = {
+        name: document.getElementById('form-name').value,
+        email: document.getElementById('form-email').value,
+        phone: document.getElementById('form-phone').value,
+        company: document.getElementById('form-company').value,
+        website: document.getElementById('form-website').value,
+        service: document.getElementById('form-service').value,
+        message: document.getElementById('form-message').value
+      };
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = "SENDING... <span>&rarr;</span>";
+      statusMsg.classList.remove('hidden');
+      statusMsg.className = "text-sm font-mono mt-3 text-dark/60 block";
+      statusMsg.innerText = "Sending message...";
+
+      try {
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        statusMsg.className = "text-sm font-mono mt-3 text-green-600 font-medium block";
+        statusMsg.innerText = "✓ Thank you! Message sent.";
+        document.getElementById('portfolio-form').reset();
+      } catch (err) {
+        statusMsg.className = "text-sm font-mono mt-3 text-red-600 font-medium block";
+        statusMsg.innerText = "Submission failed. Please email directly.";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = "Send Message <span>&rarr;</span>";
+      }
+    }
+
+    function filterStores(category) {
+      const items = document.querySelectorAll('.gsap-project-item');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      buttons.forEach(btn => {
+        if(btn.dataset.category === category) {
+          btn.classList.add('bg-dark', 'text-white');
+          btn.classList.remove('bg-transparent', 'text-dark', 'border-dark/10');
+        } else {
+          btn.classList.remove('bg-dark', 'text-white');
+          btn.classList.add('bg-transparent', 'text-dark', 'border-dark/10');
+        }
+      });
+
+      items.forEach(item => {
+        if (category === 'all' || item.classList.contains(category)) {
+          item.style.display = 'block';
+          gsap.fromTo(item, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" });
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      // Refresh ScrollTrigger to recalculate page height immediately after filtering
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 100);
+    }
+  </script>
+</body>
+</html>
