@@ -197,37 +197,37 @@
     </div>
   </div>
 
-  <main>
-    <!-- ============================================== -->
-    <!-- SCROLLABLE CANVAS CONTENT                      -->
-    <!-- ============================================== -->
+  <!-- ============================================== -->
+  <!-- SCROLLABLE CANVAS CONTENT (Padded & Narrower)  -->
+  <!-- ============================================== -->
+  <main class="max-w-[70vw] mx-auto px-16 sm:px-24">
 
     <!-- 1. HERO SECTION -->
-    <section class="relative w-full h-[100dvh] overflow-hidden">
+    <section class="relative w-full h-[100dvh] overflow-hidden flex items-center justify-center">
       <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none px-4">
-        <h1 class="gsap-hero-text text-[18vw] sm:text-[11vw] leading-[0.85] font-medium text-center uppercase tracking-tighter opacity-0">
+        <h1 class="gsap-hero-text text-[15vw] sm:text-[9vw] leading-[0.85] font-medium text-center uppercase tracking-tighter opacity-0">
           <span class="block">ARVIND</span>
           <em class="font-serif italic font-normal tracking-normal opacity-90 lowercase">verma</em>
         </h1>
       </div>
 
-      <div class="gsap-float-1 absolute top-[18%] left-[8%] sm:top-[25%] sm:left-[25%] z-20 bg-brandOrange text-textDark rounded-full px-6 py-4 sm:px-10 sm:py-6 transform -rotate-12 shadow-sm pointer-events-none opacity-0">
+      <div class="gsap-float-1 absolute top-[22%] left-[2%] sm:left-[10%] z-20 bg-brandOrange text-textDark rounded-full px-6 py-4 sm:px-10 sm:py-6 transform -rotate-12 shadow-sm pointer-events-none opacity-0">
         <p class="text-[10px] sm:text-sm font-medium uppercase tracking-widest text-center leading-tight">SHOPIFY<br>EXPERT</p>
       </div>
-      <div class="gsap-float-2 absolute bottom-[20%] right-[8%] sm:bottom-[25%] sm:right-[25%] z-20 bg-brandBlue text-textDark shape-polygon px-8 py-6 sm:px-12 sm:py-8 transform rotate-6 shadow-sm pointer-events-none opacity-0">
+      <div class="gsap-float-2 absolute bottom-[22%] right-[2%] sm:right-[10%] z-20 bg-brandBlue text-textDark shape-polygon px-8 py-6 sm:px-12 sm:py-8 transform rotate-6 shadow-sm pointer-events-none opacity-0">
         <p class="text-[10px] sm:text-sm font-medium uppercase tracking-widest text-center leading-tight">E-COMMERCE<br>DEVELOPER</p>
       </div>
     </section>
 
     <!-- 2. MARQUEE & STATS -->
-    <div class="bg-textDark text-white dark:bg-white dark:text-textDark py-4 overflow-hidden">
+    <div class="bg-textDark text-white dark:bg-white dark:text-textDark py-4 overflow-hidden -mx-16 sm:-mx-24">
       <div class="marquee-track font-mono text-sm sm:text-base font-normal uppercase tracking-widest flex items-center gap-12 whitespace-nowrap opacity-90">
         <span>★ SHOPIFY LIQUID</span><span>★ HTML5 &amp; MODERN CSS3</span><span>★ JAVASCRIPT ES6+</span><span>★ CORE WEB VITALS &lt;1.2S</span><span>★ 1-CLICK CHECKOUT</span><span>★ TECHNICAL SEO SCHEMA</span><span>★ SHOPIFY LIQUID</span><span>★ HTML5 &amp; MODERN CSS3</span><span>★ JAVASCRIPT ES6+</span><span>★ CORE WEB VITALS &lt;1.2S</span><span>★ 1-CLICK CHECKOUT</span>
       </div>
     </div>
 
-    <section class="border-b border-textDark/10 dark:border-white/10 transition-colors">
-      <div class="max-w-7xl mx-auto px-6 sm:px-12 py-10 grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-4 text-center">
+    <section class="border-b border-textDark/10 dark:border-white/10 transition-colors -mx-16 sm:-mx-24 px-16 sm:px-24">
+      <div class="max-w-7xl mx-auto py-10 grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-4 text-center">
         <div class="gsap-stat px-2 sm:px-4 sm:border-r border-textDark/10 dark:border-white/10">
           <p class="text-3xl sm:text-4xl font-medium tracking-tighter">40+</p>
           <p class="text-[10px] sm:text-xs uppercase tracking-widest mt-1 opacity-50 font-mono font-semibold">Stores Built</p>
@@ -248,7 +248,7 @@
     </section>
 
     <!-- 3. SERVICES -->
-    <section id="services" class="py-24 sm:py-32 max-w-7xl mx-auto px-6 sm:px-12">
+    <section id="services" class="py-24 sm:py-32">
       <div class="gsap-fade-up max-w-2xl mb-16 sm:mb-24">
         <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter leading-[1.05]">
           <span class="block">Capabilities &amp;</span>
@@ -276,9 +276,9 @@
       </div>
     </section>
 
-    <!-- 4. SELECTED WORKS -->
-    <section id="works" class="py-24 sm:py-32 bg-white dark:bg-[#121212] transition-colors border-y border-textDark/5 dark:border-white/5">
-      <div class="max-w-[90rem] mx-auto px-4 sm:px-10">
+    <!-- 4. SELECTED WORKS (All 12 Projects Restored) -->
+    <section id="works" class="py-24 sm:py-32 bg-white dark:bg-[#121212] transition-colors border-y border-textDark/5 dark:border-white/5 -mx-16 sm:-mx-24 px-16 sm:px-24">
+      <div class="max-w-[90rem] mx-auto">
         <div class="gsap-fade-up flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
           <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter leading-[1.05]">
             <em class="font-serif italic font-normal tracking-normal opacity-80 lowercase">selected</em>
@@ -288,11 +288,14 @@
             <button onclick="filterStores('all')" class="magnetic-btn filter-btn active shrink-0 px-4 py-2 rounded-full bg-textDark text-white dark:bg-white dark:text-textDark transition-colors" data-category="all">All</button>
             <button onclick="filterStores('footwear')" class="magnetic-btn filter-btn shrink-0 px-4 py-2 rounded-full border border-textDark/20 dark:border-white/20 bg-transparent transition-colors" data-category="footwear">Footwear</button>
             <button onclick="filterStores('fashion')" class="magnetic-btn filter-btn shrink-0 px-4 py-2 rounded-full border border-textDark/20 dark:border-white/20 bg-transparent transition-colors" data-category="fashion">Fashion</button>
+            <button onclick="filterStores('jewelry')" class="magnetic-btn filter-btn shrink-0 px-4 py-2 rounded-full border border-textDark/20 dark:border-white/20 bg-transparent transition-colors" data-category="jewelry">Jewellery</button>
+            <button onclick="filterStores('home')" class="magnetic-btn filter-btn shrink-0 px-4 py-2 rounded-full border border-textDark/20 dark:border-white/20 bg-transparent transition-colors" data-category="home">Home</button>
           </div>
         </div>
 
         <div id="projects-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mt-8">
           
+          <!-- 1. Michael Angelo -->
           <button onclick="openCaseStudy('michael-angelo')" class="gsap-project-item footwear group block text-left w-full">
             <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
               <img src="https://cdn.shopify.com/s/files/1/0657/7710/7144/files/Artboard_2_jpg.jpg?v=1779884867" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
@@ -306,6 +309,91 @@
             </div>
           </button>
 
+          <!-- 2. Le Concept -->
+          <button onclick="openCaseStudy('banarasiya')" class="gsap-project-item fashion group block text-left w-full">
+            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
+              <img src="https://cdn.shopify.com/s/files/1/0890/7233/7188/files/Mask_group_6.png?v=1783936310" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
+              <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700" src="https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4"></video>
+            </div>
+            <div class="px-1">
+              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
+                Le Concept <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brandOrange">&rarr;</span>
+              </h3>
+              <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Women's Wear</p>
+            </div>
+          </button>
+
+          <!-- 3. Spiffers -->
+          <button onclick="openCaseStudy('threesixfive')" class="gsap-project-item footwear group block text-left w-full">
+            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
+              <img src="https://www.spiffers.in/cdn/shop/files/Rectangle_142.png?v=1780992822&width=1600" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
+              <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700" src="https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4"></video>
+            </div>
+            <div class="px-1">
+              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
+                Spiffers <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brandOrange">&rarr;</span>
+              </h3>
+              <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Footwear Brand</p>
+            </div>
+          </button>
+
+          <!-- 4. Nikunj Niidhi Bajaj -->
+          <button onclick="openCaseStudy('vindx')" class="gsap-project-item fashion group block text-left w-full">
+            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
+              <img src="https://nikunjbyniidhibajaj.com/cdn/shop/files/2.png?v=1780501726&width=2400" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
+              <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700" src="https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4"></video>
+            </div>
+            <div class="px-1">
+              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
+                Nikunj Niidhi <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brandOrange">&rarr;</span>
+              </h3>
+              <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Women Ethnic Wear</p>
+            </div>
+          </button>
+
+          <!-- 5. Loom & Story -->
+          <button onclick="openCaseStudy('vindx')" class="gsap-project-item fashion group block text-left w-full">
+            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
+              <img src="https://loomandstory.com/cdn/shop/files/website.jpg?v=1785494251&width=2000" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
+              <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700" src="https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4"></video>
+            </div>
+            <div class="px-1">
+              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
+                Loom &amp; Story <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brandOrange">&rarr;</span>
+              </h3>
+              <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Textile Storytelling</p>
+            </div>
+          </button>
+
+          <!-- 6. Zaydn -->
+          <button onclick="openCaseStudy('vindx')" class="gsap-project-item footwear group block text-left w-full">
+            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
+              <img src="https://zaydns.com/cdn/shop/files/YOO.jpg?v=1779727236&width=1200" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
+              <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700" src="https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4"></video>
+            </div>
+            <div class="px-1">
+              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
+                Zaydn <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brandOrange">&rarr;</span>
+              </h3>
+              <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Sneaker Brand</p>
+            </div>
+          </button>
+
+          <!-- 7. Miira -->
+          <button onclick="openCaseStudy('vindx')" class="gsap-project-item jewelry group block text-left w-full">
+            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
+              <img src="https://www.miira.in/cdn/shop/files/SparklingnamenecklaceRs2499_700x.jpg?v=1784040283" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
+              <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700" src="https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4"></video>
+            </div>
+            <div class="px-1">
+              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
+                Miira <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brandOrange">&rarr;</span>
+              </h3>
+              <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Artificial Jewellery</p>
+            </div>
+          </button>
+
+          <!-- 8. Banarasiya -->
           <button onclick="openCaseStudy('banarasiya')" class="gsap-project-item fashion group block text-left w-full">
             <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
               <img src="https://cdn.shopify.com/s/files/1/0497/0240/4258/files/Group_93_1.png?v=1778482629" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
@@ -319,29 +407,59 @@
             </div>
           </button>
 
-          <button onclick="openCaseStudy('threesixfive')" class="gsap-project-item fashion group block text-left w-full">
+          <!-- 9. Vespera Homes -->
+          <button onclick="openCaseStudy('vindx')" class="gsap-project-item home group block text-left w-full">
             <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
-              <img src="https://nikunjbyniidhibajaj.com/cdn/shop/files/2.png?v=1780501726&width=2400" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
+              <img src="https://www.vesperahomes.com/cdn/shop/files/Self-care_Sunday_Sale_Green_Shopify_Banner_38.png?v=1783680878&width=1920" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
               <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700" src="https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4"></video>
             </div>
             <div class="px-1">
               <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
-                ThreeSixFive <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brandOrange">&rarr;</span>
+                Vespera Homes <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brandOrange">&rarr;</span>
               </h3>
-              <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Custom Storefront</p>
+              <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Home Decor</p>
             </div>
           </button>
 
+          <!-- 10. Sojanya -->
           <button onclick="openCaseStudy('vindx')" class="gsap-project-item fashion group block text-left w-full">
             <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
-              <img src="https://loomandstory.com/cdn/shop/files/website.jpg?v=1785494251&width=2000" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
+              <img src="https://sojanya.com/cdn/shop/files/2_08eebcdd-d7f0-480a-9ad4-4daf34580003.jpg?v=1757503550&width=1410" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
               <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700" src="https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4"></video>
             </div>
             <div class="px-1">
               <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
-                VindX Engine <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brandOrange">&rarr;</span>
+                Sojanya <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brandOrange">&rarr;</span>
               </h3>
-              <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Custom Shopify App</p>
+              <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Men Ethnic Wear</p>
+            </div>
+          </button>
+
+          <!-- 11. Paakhi -->
+          <button onclick="openCaseStudy('vindx')" class="gsap-project-item home group block text-left w-full">
+            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
+              <img src="https://paakhihome.com/cdn/shop/files/PRT-004_15_10a2899c-7648-4a38-8f54-1b48b3da78a1.jpg?v=1769081125&width=1296" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
+              <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700" src="https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4"></video>
+            </div>
+            <div class="px-1">
+              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
+                Paakhi <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brandOrange">&rarr;</span>
+              </h3>
+              <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Home Essentials</p>
+            </div>
+          </button>
+
+          <!-- 12. Taksh -->
+          <button onclick="openCaseStudy('vindx')" class="gsap-project-item jewelry group block text-left w-full">
+            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
+              <img src="https://takshexclusive.com/cdn/shop/files/IMG_20260508_192457.png?v=1778248556&width=2560" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
+              <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700" src="https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4"></video>
+            </div>
+            <div class="px-1">
+              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
+                Taksh <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brandOrange">&rarr;</span>
+              </h3>
+              <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Bridal Jewelry</p>
             </div>
           </button>
 
@@ -361,8 +479,8 @@
       </div>
     </section>
 
-    <!-- 6. CONTACT FORM -->
-    <section id="connect" class="py-12 sm:py-20 max-w-[90rem] mx-auto px-4 sm:px-10 mb-12 sm:mb-20">
+    <!-- 6. CONTACT FORM (Full Original Fields Restored) -->
+    <section id="connect" class="py-12 sm:py-24 mb-12 sm:mb-20">
       <div class="bg-cardLight dark:bg-cardDark rounded-[2.5rem] sm:rounded-[3rem] p-6 sm:p-16 lg:p-20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-textDark/5 dark:border-white/5 overflow-hidden transition-colors">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
           <div class="gsap-contact-info flex flex-col justify-between">
@@ -407,6 +525,22 @@
                   <input type="text" id="form-company" required class="w-full px-0 py-2 bg-transparent border-b border-textDark/10 dark:border-white/10 text-base sm:text-sm focus:outline-none focus:border-current transition-colors cursor-text" />
                 </div>
               </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10">
+                <div class="relative group">
+                  <label class="block text-[10px] sm:text-xs font-mono font-semibold opacity-40 uppercase mb-1 group-focus-within:opacity-100 transition-opacity">Website URL</label>
+                  <input type="url" id="form-website" class="w-full px-0 py-2 bg-transparent border-b border-textDark/10 dark:border-white/10 text-base sm:text-sm focus:outline-none focus:border-current transition-colors cursor-text" />
+                </div>
+                <div class="relative group">
+                  <label class="block text-[10px] sm:text-xs font-mono font-semibold opacity-40 uppercase mb-1 group-focus-within:opacity-100 transition-opacity">Service</label>
+                  <select id="form-service" class="w-full px-0 py-2 bg-transparent border-b border-textDark/10 dark:border-white/10 text-base sm:text-sm focus:outline-none focus:border-current transition-colors appearance-none rounded-none cursor-pointer">
+                    <option value="Custom Shopify Theme & Store Development" class="dark:bg-cardDark">Custom Shopify Theme & Store Development</option>
+                    <option value="Shopify Speed & Core Web Vitals" class="dark:bg-cardDark">Shopify Speed & Core Web Vitals</option>
+                    <option value="Payment Gateway Integration" class="dark:bg-cardDark">Payment Gateway Integration</option>
+                    <option value="Shipping & Logistics Automation" class="dark:bg-cardDark">Shipping & Logistics Automation</option>
+                    <option value="Other" class="dark:bg-cardDark">Other</option>
+                  </select>
+                </div>
+              </div>
               <div class="relative group">
                 <label class="block text-[10px] sm:text-xs font-mono font-semibold opacity-40 uppercase mb-1 group-focus-within:opacity-100 transition-opacity">Message</label>
                 <textarea id="form-message" rows="1" required class="w-full px-0 py-2 bg-transparent border-b border-textDark/10 dark:border-white/10 text-base sm:text-sm focus:outline-none focus:border-current transition-colors resize-none cursor-text"></textarea>
@@ -422,7 +556,7 @@
 
     <!-- 7. FOOTER -->
     <footer class="py-10 sm:py-12 border-t border-textDark/5 dark:border-white/5 relative z-10 transition-colors">
-      <div class="max-w-7xl mx-auto px-6 sm:px-12 flex flex-col md:flex-row justify-between items-center gap-6 text-center sm:text-left">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center sm:text-left">
         <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
           <div>
             <p class="font-medium text-lg sm:text-xl uppercase tracking-tight">Arvind Verma</p>
@@ -585,16 +719,33 @@
     async function submitViaGoogleScript(e) {
       e.preventDefault();
       const submitBtn = document.getElementById('submit-btn');
-      submitBtn.disabled = true; submitBtn.innerHTML = "SENDING... <span>&rarr;</span>";
+      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxikOKgThHvPuSbtPBg-vRB03yvX9SLVd2wv1eATG_OlUKLim-6YSJx4KoAbebuzas-/exec";
+
+      const payload = {
+        name: document.getElementById('form-name').value,
+        email: document.getElementById('form-email').value,
+        phone: document.getElementById('form-phone').value,
+        company: document.getElementById('form-company').value,
+        website: document.getElementById('form-website').value,
+        service: document.getElementById('form-service').value,
+        message: document.getElementById('form-message').value
+      };
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = "SENDING... <span>&rarr;</span>";
 
       try {
-        await new Promise(r => setTimeout(r, 1000));
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
         showToast("✓ Message sent securely.", false);
         document.getElementById('portfolio-form').reset();
       } catch (err) {
         showToast("✕ Submission failed. Please email.", true);
       } finally {
-        submitBtn.disabled = false; submitBtn.innerHTML = "Send Message <span>&rarr;</span>";
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = "Send Message <span>&rarr;</span>";
       }
     }
 
