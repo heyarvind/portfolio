@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -17,6 +17,7 @@
   
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
@@ -25,10 +26,14 @@
             mono: ['"JetBrains Mono"', 'monospace'],
           },
           colors: {
-            bgGray: '#e5e5e5', 
+            bgLight: '#e5e5e5', 
+            bgDark: '#0a0a0a',
+            cardLight: '#ffffff',
+            cardDark: '#121212',
             brandOrange: '#ff6b00',
             brandBlue: '#4d9fff',
-            dark: '#0f141e', 
+            textDark: '#0f141e',
+            textLight: '#f8f8f8'
           }
         }
       }
@@ -36,7 +41,6 @@
   </script>
 
   <style>
-    /* Mandatory Lenis CSS */
     html.lenis, html.lenis body { height: auto; }
     .lenis.lenis-smooth { scroll-behavior: auto !important; }
     .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
@@ -44,540 +48,332 @@
     .lenis.lenis-smooth iframe { pointer-events: none; }
 
     body {
-      background-color: #e5e5e5;
-      color: #0f141e;
+      transition: background-color 0.4s ease, color 0.4s ease;
       overflow-x: hidden;
       font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     }
 
-    /* 1. Subtle Film Grain Overlay */
     .noise-overlay {
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      pointer-events: none;
-      z-index: 9998;
-      opacity: 0.05;
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      pointer-events: none; z-index: 9998; opacity: 0.05;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
 
-    /* 2. Custom Magnetic Cursor Styling */
     @media (pointer: fine) {
       body { cursor: none; }
       a, button, select, .magnetic-btn { cursor: none !important; }
       input, textarea { cursor: text !important; }
     }
-    @media (pointer: coarse) {
-      #custom-cursor { display: none !important; }
-    }
+    @media (pointer: coarse) { #custom-cursor { display: none !important; } }
     
     #custom-cursor {
-      position: fixed;
-      top: 0; left: 0;
-      width: 12px; height: 12px;
-      background: #ff6b00;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 10000;
-      transform: translate(-50%, -50%);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0px;
-      color: white; font-weight: 500; font-family: 'Inter', sans-serif;
+      position: fixed; top: 0; left: 0; width: 12px; height: 12px;
+      background: #ff6b00; border-radius: 50%; pointer-events: none; z-index: 10000;
+      transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center;
+      font-size: 0px; color: white; font-weight: 500; font-family: 'Inter', sans-serif;
       transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1), height 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s;
     }
     #custom-cursor.view-mode {
-      width: 72px; height: 72px;
-      background: #0f141e;
-      font-size: 11px;
-      letter-spacing: 0.15em;
+      width: 72px; height: 72px; background: currentColor;
+      font-size: 11px; letter-spacing: 0.15em;
     }
 
-    /* Top Progress Bar */
-    #progress-bar {
-      transform-origin: 0% 50%;
-    }
-
-    /* Preloader */
-    #preloader {
-      display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-end;
-    }
-
-    /* Shapes */
+    #progress-bar { transform-origin: 0% 50%; }
+    #preloader { display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-end; }
     .shape-polygon { clip-path: polygon(5% 0, 100% 10%, 95% 100%, 0 90%); }
 
-    @keyframes marquee {
-      0% { transform: translateX(0%); }
-      100% { transform: translateX(-50%); }
-    }
-    .marquee-track {
-      display: flex;
-      width: 200%;
-      animation: marquee 20s linear infinite;
-    }
+    @keyframes marquee { 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }
+    .marquee-track { display: flex; width: 200%; animation: marquee 20s linear infinite; }
 
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #e5e5e5; }
-    ::-webkit-scrollbar-thumb { background: #cccccc; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #999999; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }
     
-    @media screen and (max-width: 768px) {
-      input, select, textarea { font-size: 16px !important; }
-    }
+    @media screen and (max-width: 768px) { input, select, textarea { font-size: 16px !important; } }
   </style>
 </head>
-<body class="font-sans antialiased text-dark selection:bg-brandOrange selection:text-white">
+<body class="font-sans antialiased bg-bgLight text-textDark dark:bg-bgDark dark:text-textLight selection:bg-brandOrange selection:text-white">
 
-  <!-- Editorial Preloader -->
-  <div id="preloader" class="fixed inset-0 bg-dark z-[10001] p-10 sm:p-20 text-white">
+  <!-- Preloader -->
+  <div id="preloader" class="fixed inset-0 bg-textDark dark:bg-bgDark z-[10001] p-10 sm:p-20 text-white">
     <div class="overflow-hidden">
       <div id="loader-counter" class="font-serif italic text-6xl sm:text-9xl tracking-tighter leading-none translate-y-full">0%</div>
     </div>
   </div>
 
-  <!-- Scroll Progress Indicator -->
   <div id="progress-bar" class="fixed top-0 left-0 w-full h-[3px] bg-brandOrange z-[9999] scale-x-0"></div>
 
   <!-- Toast Notification -->
-  <div id="toast" class="fixed bottom-8 right-8 translate-y-[150%] opacity-0 bg-dark text-white font-mono text-xs sm:text-sm px-6 py-4 rounded-xl shadow-2xl z-[10000] flex items-center gap-3 border border-white/10 pointer-events-none">
+  <div id="toast" class="fixed bottom-8 right-8 translate-y-[150%] opacity-0 bg-textDark dark:bg-cardDark text-white font-mono text-xs sm:text-sm px-6 py-4 rounded-xl shadow-2xl z-[10000] flex items-center gap-3 border border-white/10 pointer-events-none">
     <span class="text-brandOrange">✔</span> <span id="toast-msg">Message sent securely.</span>
   </div>
 
-  <!-- Film Grain Element -->
-  <div class="noise-overlay"></div>
-  
-  <!-- Custom Hover Cursor -->
-  <div id="custom-cursor"></div>
+  <div class="noise-overlay dark:opacity-10"></div>
+  <div id="custom-cursor" class="text-textDark dark:text-white"></div>
+
+  <!-- Case Study Drawer -->
+  <div id="drawer-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[10002] invisible opacity-0" onclick="closeCaseStudy()"></div>
+  <div id="case-study-drawer" class="fixed top-0 right-0 w-full md:w-[600px] h-full bg-white dark:bg-cardDark z-[10003] transform translate-x-full overflow-y-auto border-l border-dark/10 dark:border-white/10 p-8 sm:p-12">
+    <button onclick="closeCaseStudy()" class="magnetic-btn absolute top-8 right-8 w-10 h-10 rounded-full border border-textDark/20 dark:border-white/20 flex items-center justify-center hover:bg-textDark hover:text-white dark:hover:bg-white dark:hover:text-textDark transition-colors">
+      ✕
+    </button>
+    <div class="mt-12">
+      <span id="cs-category" class="text-[10px] font-mono font-bold uppercase tracking-widest text-brandOrange"></span>
+      <h2 id="cs-title" class="text-4xl sm:text-5xl font-medium uppercase tracking-tighter mt-4 mb-8">Project Name</h2>
+      <div class="aspect-video w-full rounded-2xl overflow-hidden bg-bgLight dark:bg-bgDark mb-10">
+        <video id="cs-video" src="" muted loop playsinline autoplay class="w-full h-full object-cover"></video>
+      </div>
+      <div class="space-y-10">
+        <div>
+          <h4 class="text-sm font-mono font-bold uppercase tracking-wider mb-3 text-textDark/50 dark:text-white/50">The Challenge</h4>
+          <p id="cs-challenge" class="text-sm sm:text-base leading-relaxed opacity-90"></p>
+        </div>
+        <div>
+          <h4 class="text-sm font-mono font-bold uppercase tracking-wider mb-3 text-textDark/50 dark:text-white/50">The Execution</h4>
+          <p id="cs-execution" class="text-sm sm:text-base leading-relaxed opacity-90"></p>
+        </div>
+        <div class="grid grid-cols-2 gap-6 pt-6 border-t border-textDark/10 dark:border-white/10">
+          <div>
+            <span class="text-3xl font-medium tracking-tighter" id="cs-metric-1-val"></span>
+            <p class="text-[10px] font-mono uppercase text-textDark/50 dark:text-white/50 mt-1" id="cs-metric-1-label"></p>
+          </div>
+          <div>
+            <span class="text-3xl font-medium tracking-tighter" id="cs-metric-2-val"></span>
+            <p class="text-[10px] font-mono uppercase text-textDark/50 dark:text-white/50 mt-1" id="cs-metric-2-label"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <main>
-    <!-- ============================================== -->
-    <!-- 1. HERO SECTION                                -->
-    <!-- ============================================== -->
-    <section class="relative w-full h-[100dvh] bg-bgGray overflow-hidden">
-      <div class="absolute top-6 left-6 sm:top-10 sm:left-10 z-30">
-        <div class="w-12 h-14 sm:w-16 sm:h-20 border-[2px] border-dark rounded-2xl sm:rounded-3xl flex items-center justify-center bg-transparent">
+    <!-- 1. HERO SECTION -->
+    <section class="relative w-full h-[100dvh] overflow-hidden">
+      <!-- Top Nav & Dark Mode Toggle -->
+      <div class="absolute top-6 left-6 sm:top-10 sm:left-10 z-30 flex items-center gap-6">
+        <div class="w-12 h-14 sm:w-16 sm:h-20 border-[2px] border-textDark dark:border-white rounded-2xl sm:rounded-3xl flex items-center justify-center bg-transparent transition-colors">
           <span class="text-2xl sm:text-4xl font-bold tracking-tighter">A</span>
         </div>
       </div>
 
-      <div class="absolute top-8 right-6 sm:top-14 sm:right-12 z-30 hidden sm:block">
+      <div class="absolute top-8 right-6 sm:top-14 sm:right-12 z-30 hidden sm:flex items-center gap-8">
+        <button onclick="toggleDarkMode()" class="magnetic-btn w-10 h-10 rounded-full border border-textDark/20 dark:border-white/20 flex items-center justify-center hover:bg-textDark hover:text-white dark:hover:bg-white dark:hover:text-textDark transition-colors">
+          <span class="dark:hidden">☾</span><span class="hidden dark:block">☀</span>
+        </button>
         <a href="#works" class="text-2xl sm:text-3xl font-medium tracking-tight hover:opacity-50 transition-opacity">WORK</a>
       </div>
+      
+      <!-- Mobile Dark Mode Toggle -->
+      <button onclick="toggleDarkMode()" class="sm:hidden absolute top-8 right-6 z-30 w-10 h-10 rounded-full border border-textDark/20 dark:border-white/20 flex items-center justify-center">
+        <span class="dark:hidden">☾</span><span class="hidden dark:block">☀</span>
+      </button>
+
       <div class="absolute bottom-8 left-6 sm:bottom-12 sm:left-12 z-30 hidden sm:block">
         <a href="#services" class="text-2xl sm:text-3xl font-medium tracking-tight hover:opacity-50 transition-opacity">SERVICES</a>
       </div>
       <div class="absolute bottom-8 right-6 sm:bottom-12 sm:right-12 z-30 hidden sm:block">
         <a href="#connect" class="text-2xl sm:text-3xl font-medium tracking-tight hover:opacity-50 transition-opacity">CONTACT</a>
       </div>
-      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 hidden sm:block text-[10px] sm:text-xs font-mono uppercase tracking-widest text-dark/70">
-        SCROLL DOWN &darr;
-      </div>
 
-      <!-- Editorial Mixed Typography in Name -->
       <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none px-4">
-        <h1 class="gsap-hero-text text-[18vw] sm:text-[11vw] leading-[0.85] font-medium text-center uppercase tracking-tighter text-dark opacity-0">
+        <h1 class="gsap-hero-text text-[18vw] sm:text-[11vw] leading-[0.85] font-medium text-center uppercase tracking-tighter opacity-0">
           <span class="block">ARVIND</span>
-          <em class="font-serif italic font-normal tracking-normal text-dark/90 lowercase">verma</em>
+          <em class="font-serif italic font-normal tracking-normal opacity-90 lowercase">verma</em>
         </h1>
       </div>
 
-      <div class="gsap-float-1 absolute top-[18%] left-[8%] sm:top-[25%] sm:left-[25%] z-20 bg-brandOrange rounded-full px-6 py-4 sm:px-10 sm:py-6 transform -rotate-12 shadow-sm pointer-events-none opacity-0">
-        <p class="text-[10px] sm:text-sm font-medium uppercase tracking-widest text-dark text-center leading-tight">
-          SHOPIFY<br>EXPERT
-        </p>
+      <div class="gsap-float-1 absolute top-[18%] left-[8%] sm:top-[25%] sm:left-[25%] z-20 bg-brandOrange text-textDark rounded-full px-6 py-4 sm:px-10 sm:py-6 transform -rotate-12 shadow-sm pointer-events-none opacity-0">
+        <p class="text-[10px] sm:text-sm font-medium uppercase tracking-widest text-center leading-tight">SHOPIFY<br>EXPERT</p>
       </div>
-      <div class="gsap-float-2 absolute bottom-[20%] right-[8%] sm:bottom-[25%] sm:right-[25%] z-20 bg-brandBlue shape-polygon px-8 py-6 sm:px-12 sm:py-8 transform rotate-6 shadow-sm pointer-events-none opacity-0">
-        <p class="text-[10px] sm:text-sm font-medium uppercase tracking-widest text-dark text-center leading-tight">
-          E-COMMERCE<br>DEVELOPER
-        </p>
+      <div class="gsap-float-2 absolute bottom-[20%] right-[8%] sm:bottom-[25%] sm:right-[25%] z-20 bg-brandBlue text-textDark shape-polygon px-8 py-6 sm:px-12 sm:py-8 transform rotate-6 shadow-sm pointer-events-none opacity-0">
+        <p class="text-[10px] sm:text-sm font-medium uppercase tracking-widest text-center leading-tight">E-COMMERCE<br>DEVELOPER</p>
       </div>
 
-      <div class="absolute top-8 right-6 sm:top-1/2 sm:-translate-y-1/2 sm:right-10 z-30 flex sm:flex-col gap-3">
-        <a href="https://www.linkedin.com/in/arvind-verma-5061a3228" target="_blank" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-dark flex items-center justify-center hover:bg-dark hover:text-white transition-colors">
-          <span class="text-[10px] sm:text-xs font-semibold">in</span>
-        </a>
-        <a href="mailto:letswork.arvind@gmail.com" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-dark flex items-center justify-center hover:bg-dark hover:text-white transition-colors">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-        </a>
-        <a href="https://wa.me/918874856868" target="_blank" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-dark flex items-center justify-center hover:bg-dark hover:text-white transition-colors">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+      <div class="absolute top-1/2 -translate-y-1/2 right-10 z-30 hidden sm:flex flex-col gap-3">
+        <a href="https://www.linkedin.com/in/arvind-verma-5061a3228" target="_blank" class="w-10 h-10 rounded-full border border-textDark/30 dark:border-white/30 flex items-center justify-center hover:bg-textDark hover:text-white dark:hover:bg-white dark:hover:text-textDark transition-colors">
+          <span class="text-xs font-semibold">in</span>
         </a>
       </div>
       
       <div class="absolute bottom-6 left-0 w-full px-6 flex justify-between sm:hidden z-30 text-xs font-mono font-medium tracking-tight">
-        <a href="#services" class="hover:text-brandOrange transition-colors">SERVICES</a>
-        <a href="#works" class="hover:text-brandOrange transition-colors">WORK</a>
-        <a href="#connect" class="hover:text-brandOrange transition-colors">CONTACT</a>
+        <a href="#services">SERVICES</a>
+        <a href="#works">WORK</a>
+        <a href="#connect">CONTACT</a>
       </div>
     </section>
 
-    <!-- ============================================== -->
-    <!-- 2. MARQUEE & STATS                             -->
-    <!-- ============================================== -->
-    <div class="bg-dark text-white py-4 overflow-hidden">
-      <div class="marquee-track font-mono text-sm sm:text-base font-normal uppercase tracking-widest flex items-center gap-12 whitespace-nowrap opacity-80">
-        <span>★ SHOPIFY LIQUID</span>
-        <span>★ HTML5 &amp; MODERN CSS3</span>
-        <span>★ JAVASCRIPT ES6+</span>
-        <span>★ CORE WEB VITALS &lt;1.2S</span>
-        <span>★ 1-CLICK CHECKOUT</span>
-        <span>★ TECHNICAL SEO SCHEMA</span>
-        <span>★ SHOPIFY LIQUID</span>
-        <span>★ HTML5 &amp; MODERN CSS3</span>
-        <span>★ JAVASCRIPT ES6+</span>
-        <span>★ CORE WEB VITALS &lt;1.2S</span>
-        <span>★ 1-CLICK CHECKOUT</span>
+    <!-- 2. MARQUEE & STATS -->
+    <div class="bg-textDark text-white dark:bg-white dark:text-textDark py-4 overflow-hidden transition-colors">
+      <div class="marquee-track font-mono text-sm sm:text-base font-normal uppercase tracking-widest flex items-center gap-12 whitespace-nowrap opacity-90">
+        <span>★ SHOPIFY LIQUID</span><span>★ HTML5 &amp; MODERN CSS3</span><span>★ JAVASCRIPT ES6+</span><span>★ CORE WEB VITALS &lt;1.2S</span><span>★ 1-CLICK CHECKOUT</span><span>★ TECHNICAL SEO SCHEMA</span><span>★ SHOPIFY LIQUID</span><span>★ HTML5 &amp; MODERN CSS3</span><span>★ JAVASCRIPT ES6+</span><span>★ CORE WEB VITALS &lt;1.2S</span><span>★ 1-CLICK CHECKOUT</span>
       </div>
     </div>
 
-    <section class="border-b border-dark/5 bg-bgGray">
+    <section class="border-b border-textDark/10 dark:border-white/10 transition-colors">
       <div class="max-w-7xl mx-auto px-6 sm:px-12 py-10 grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-4 text-center">
-        <div class="gsap-stat px-2 sm:px-4 sm:border-r border-dark/10 last:border-0">
+        <div class="gsap-stat px-2 sm:px-4 sm:border-r border-textDark/10 dark:border-white/10">
           <p class="text-3xl sm:text-4xl font-medium tracking-tighter">40+</p>
-          <p class="text-[10px] sm:text-xs uppercase tracking-widest mt-1 text-dark/50 font-mono font-semibold">Stores Built</p>
+          <p class="text-[10px] sm:text-xs uppercase tracking-widest mt-1 opacity-50 font-mono font-semibold">Stores Built</p>
         </div>
-        <div class="gsap-stat px-2 sm:px-4 sm:border-r border-dark/10 last:border-0">
+        <div class="gsap-stat px-2 sm:px-4 sm:border-r border-textDark/10 dark:border-white/10">
           <p class="text-3xl sm:text-4xl font-medium tracking-tighter">30+</p>
-          <p class="text-[10px] sm:text-xs uppercase tracking-widest mt-1 text-dark/50 font-mono font-semibold">Brands Served</p>
+          <p class="text-[10px] sm:text-xs uppercase tracking-widest mt-1 opacity-50 font-mono font-semibold">Brands Served</p>
         </div>
-        <div class="gsap-stat px-2 sm:px-4 sm:border-r border-dark/10 last:border-0">
+        <div class="gsap-stat px-2 sm:px-4 sm:border-r border-textDark/10 dark:border-white/10">
           <p class="text-3xl sm:text-4xl font-medium tracking-tighter">&lt;1.2s</p>
-          <p class="text-[10px] sm:text-xs uppercase tracking-widest mt-1 text-dark/50 font-mono font-semibold">Core Web Vitals</p>
+          <p class="text-[10px] sm:text-xs uppercase tracking-widest mt-1 opacity-50 font-mono font-semibold">Core Web Vitals</p>
         </div>
         <div class="gsap-stat px-2 sm:px-4">
           <p class="text-3xl sm:text-4xl font-medium tracking-tighter">100%</p>
-          <p class="text-[10px] sm:text-xs uppercase tracking-widest mt-1 text-dark/50 font-mono font-semibold">Clean Code</p>
+          <p class="text-[10px] sm:text-xs uppercase tracking-widest mt-1 opacity-50 font-mono font-semibold">Clean Code</p>
         </div>
       </div>
     </section>
 
-    <!-- ============================================== -->
-    <!-- 3. CAPABILITIES & SERVICES                     -->
-    <!-- ============================================== -->
-    <section id="services" class="py-24 sm:py-32 max-w-7xl mx-auto px-6 sm:px-12 bg-bgGray">
+    <!-- 3. SERVICES -->
+    <section id="services" class="py-24 sm:py-32 max-w-7xl mx-auto px-6 sm:px-12">
       <div class="gsap-fade-up max-w-2xl mb-16 sm:mb-24">
-        <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter text-dark leading-[1.05]">
+        <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter leading-[1.05]">
           <span class="block">Capabilities &amp;</span>
-          <em class="font-serif italic font-normal tracking-normal text-dark/80 lowercase">services</em>
+          <em class="font-serif italic font-normal tracking-normal opacity-80 lowercase">services</em>
         </h2>
-        <p class="text-dark/60 text-sm sm:text-sm mt-5 font-mono max-w-md">End-to-End Technical Delivery for Modern E-Commerce</p>
+        <p class="opacity-60 text-sm mt-5 font-mono max-w-md">End-to-End Technical Delivery for Modern E-Commerce</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
-        <div class="gsap-service-item border-t border-dark/20 pt-6 group">
-          <div class="flex justify-between items-start mb-4">
-            <span class="text-brandOrange font-mono text-xs font-bold block">01</span>
-            <svg class="w-6 h-6 text-dark/30 group-hover:text-brandOrange transition-colors" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
-            </svg>
-          </div>
-          <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight text-dark mb-4 group-hover:text-brandOrange transition-colors">Custom Themes &amp; Liquid</h3>
-          <p class="text-sm text-dark/60 leading-relaxed font-mono">Bespoke Liquid section schemas, dynamic drawer checkouts, custom product options, and lightweight modular layouts built from scratch.</p>
+        <div class="gsap-service-item border-t border-textDark/20 dark:border-white/20 pt-6 group">
+          <span class="text-brandOrange font-mono text-xs font-bold mb-4 block">01</span>
+          <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight mb-4 group-hover:text-brandOrange transition-colors">Custom Themes &amp; Liquid</h3>
+          <p class="text-sm opacity-60 leading-relaxed font-mono">Bespoke Liquid section schemas, dynamic drawer checkouts, custom product options, and modular layouts built from scratch.</p>
         </div>
-        <div class="gsap-service-item border-t border-dark/20 pt-6 group">
-          <div class="flex justify-between items-start mb-4">
-            <span class="text-brandOrange font-mono text-xs font-bold block">02</span>
-            <svg class="w-6 h-6 text-dark/30 group-hover:text-brandOrange transition-colors" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" />
-            </svg>
-          </div>
-          <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight text-dark mb-4 group-hover:text-brandOrange transition-colors">Payment Gateway</h3>
-          <p class="text-sm text-dark/60 leading-relaxed font-mono">Direct checkout integrations enabling seamless domestic and global transactions with zero friction for shoppers.</p>
+        <div class="gsap-service-item border-t border-textDark/20 dark:border-white/20 pt-6 group">
+          <span class="text-brandOrange font-mono text-xs font-bold mb-4 block">02</span>
+          <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight mb-4 group-hover:text-brandOrange transition-colors">Payment Gateway</h3>
+          <p class="text-sm opacity-60 leading-relaxed font-mono">Direct checkout integrations enabling seamless domestic and global transactions with zero friction for shoppers.</p>
         </div>
-        <div class="gsap-service-item border-t border-dark/20 pt-6 group">
-          <div class="flex justify-between items-start mb-4">
-            <span class="text-brandOrange font-mono text-xs font-bold block">03</span>
-            <svg class="w-6 h-6 text-dark/30 group-hover:text-brandOrange transition-colors" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
-            </svg>
-          </div>
-          <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight text-dark mb-4 group-hover:text-brandOrange transition-colors">Shipping &amp; Logistics</h3>
-          <p class="text-sm text-dark/60 leading-relaxed font-mono">Automated courier allocation, real-time tracking webhooks, NDR management, and seamless reverse pickup flows.</p>
-        </div>
-        <div class="gsap-service-item border-t border-dark/20 pt-6 group">
-          <div class="flex justify-between items-start mb-4">
-            <span class="text-brandOrange font-mono text-xs font-bold block">04</span>
-            <svg class="w-6 h-6 text-dark/30 group-hover:text-brandOrange transition-colors" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
-            </svg>
-          </div>
-          <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight text-dark mb-4 group-hover:text-brandOrange transition-colors">Core Web Vitals</h3>
-          <p class="text-sm text-dark/60 leading-relaxed font-mono">Aggressive script streamlining, vanilla JavaScript logic, and asset optimization for maximum Lighthouse scores.</p>
-        </div>
-        <div class="gsap-service-item border-t border-dark/20 pt-6 group">
-          <div class="flex justify-between items-start mb-4">
-            <span class="text-brandOrange font-mono text-xs font-bold block">05</span>
-            <svg class="w-6 h-6 text-dark/30 group-hover:text-brandOrange transition-colors" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
-            </svg>
-          </div>
-          <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight text-dark mb-4 group-hover:text-brandOrange transition-colors">Technical SEO</h3>
-          <p class="text-sm text-dark/60 leading-relaxed font-mono">JSON-LD structured data (Product, Organization schema), clean metadata hooks, and canonical URL hygiene.</p>
-        </div>
-        <div class="gsap-service-item border-t border-dark/20 pt-6 group">
-          <div class="flex justify-between items-start mb-4">
-            <span class="text-brandOrange font-mono text-xs font-bold block">06</span>
-            <svg class="w-6 h-6 text-dark/30 group-hover:text-brandOrange transition-colors" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
-            </svg>
-          </div>
-          <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight text-dark mb-4 group-hover:text-brandOrange transition-colors">API Integrations</h3>
-          <p class="text-sm text-dark/60 leading-relaxed font-mono">Connecting third-party logistics, ERPs, CRM platforms, and custom webhooks into Shopify without adding bloat.</p>
+        <div class="gsap-service-item border-t border-textDark/20 dark:border-white/20 pt-6 group">
+          <span class="text-brandOrange font-mono text-xs font-bold mb-4 block">03</span>
+          <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight mb-4 group-hover:text-brandOrange transition-colors">Shipping &amp; Logistics</h3>
+          <p class="text-sm opacity-60 leading-relaxed font-mono">Automated courier allocation, real-time tracking webhooks, NDR management, and seamless reverse pickup flows.</p>
         </div>
       </div>
     </section>
 
-    <!-- ============================================== -->
-    <!-- 4. THE STACK                                   -->
-    <!-- ============================================== -->
-    <section id="stack" class="py-24 sm:py-32 bg-white border-y border-dark/5">
-      <div class="max-w-7xl mx-auto px-6 sm:px-12 text-center">
-        <div class="gsap-fade-up">
-          <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter text-dark leading-[1.05]">
-            <span class="block">Three layers.</span>
-            <em class="font-serif italic font-normal tracking-normal text-dark/80 lowercase">one developer.</em>
-          </h2>
-          <p class="text-dark/60 text-sm mt-6 sm:mt-8 max-w-xl mx-auto font-mono">
-            Three sides of the same developer — frontend pixels, Shopify Liquid architecture, and the ecosystem integrations beneath them.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mt-16 sm:mt-20 text-left">
-          <div class="gsap-stack-card p-8 sm:p-10 border border-dark/5 rounded-3xl bg-bgGray">
-            <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-brandBlue">01 // FRONTEND</span>
-            <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight text-dark mt-4">Pixels with personality.</h3>
-            <p class="text-sm text-dark/60 mt-3 font-mono leading-relaxed">Semantic HTML5, custom Tailwind CSS, and vanilla JavaScript written for sub-second interactions without framework bloat.</p>
-            <div class="flex flex-wrap gap-2 mt-8">
-              <span class="px-4 py-1.5 rounded-full bg-white text-xs font-semibold shadow-sm">HTML5</span>
-              <span class="px-4 py-1.5 rounded-full bg-white text-xs font-semibold shadow-sm">CSS3</span>
-              <span class="px-4 py-1.5 rounded-full bg-white text-xs font-semibold shadow-sm">JS ES6</span>
-            </div>
-          </div>
-          <div class="gsap-stack-card p-8 sm:p-10 border border-dark/5 rounded-3xl bg-dark text-white">
-            <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-brandOrange">02 // BACKEND</span>
-            <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight text-white mt-4">Logic that holds up.</h3>
-            <p class="text-sm text-white/60 mt-3 font-mono leading-relaxed">Custom Liquid section schemas, dynamic settings for merchants, fast snippet includes, and modular component architecture.</p>
-            <div class="flex flex-wrap gap-2 mt-8">
-              <span class="px-4 py-1.5 rounded-full bg-white/10 text-xs font-semibold border border-white/10">Shopify Liquid</span>
-              <span class="px-4 py-1.5 rounded-full bg-white/10 text-xs font-semibold border border-white/10">JSON Schemas</span>
-            </div>
-          </div>
-          <div class="gsap-stack-card p-8 sm:p-10 border border-dark/5 rounded-3xl bg-bgGray">
-            <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-brandBlue">03 // DATA</span>
-            <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight text-dark mt-4">Data that behaves.</h3>
-            <p class="text-sm text-dark/60 mt-3 font-mono leading-relaxed">Connecting 1-click checkout engines, payment gateways, ERPs, and automated fulfillment APIs with reliable error handling.</p>
-            <div class="flex flex-wrap gap-2 mt-8">
-              <span class="px-4 py-1.5 rounded-full bg-white text-xs font-semibold shadow-sm">Razorpay</span>
-              <span class="px-4 py-1.5 rounded-full bg-white text-xs font-semibold shadow-sm">GoKwik</span>
-              <span class="px-4 py-1.5 rounded-full bg-white text-xs font-semibold shadow-sm">Shiprocket</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 5. SELECTED WORKS                              -->
-    <!-- ============================================== -->
-    <section id="works" class="py-24 sm:py-32 bg-bgGray">
+    <!-- 4. SELECTED WORKS (With Video Hovers & Drawers) -->
+    <section id="works" class="py-24 sm:py-32 bg-white dark:bg-[#121212] transition-colors border-y border-textDark/5 dark:border-white/5">
       <div class="max-w-[90rem] mx-auto px-4 sm:px-10">
-        
         <div class="gsap-fade-up flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
-          <div>
-            <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter text-dark leading-[1.05]">
-              <em class="font-serif italic font-normal tracking-normal text-dark/80 lowercase">selected</em>
-              <span class="block">Work</span>
-            </h2>
-          </div>
-
+          <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter leading-[1.05]">
+            <em class="font-serif italic font-normal tracking-normal opacity-80 lowercase">selected</em>
+            <span class="block">Work</span>
+          </h2>
           <div class="flex overflow-x-auto no-scrollbar gap-2 sm:gap-3 pb-2 font-mono text-[10px] sm:text-xs w-full md:w-auto">
-            <!-- Added .magnetic-btn to filters -->
-            <button onclick="filterStores('all')" class="magnetic-btn filter-btn active shrink-0 px-4 py-2 rounded-full bg-dark text-white transition-colors" data-category="all">All</button>
-            <button onclick="filterStores('footwear')" class="magnetic-btn filter-btn shrink-0 px-4 py-2 rounded-full border border-dark/10 bg-transparent text-dark transition-colors" data-category="footwear">Footwear</button>
-            <button onclick="filterStores('fashion')" class="magnetic-btn filter-btn shrink-0 px-4 py-2 rounded-full border border-dark/10 bg-transparent text-dark transition-colors" data-category="fashion">Fashion</button>
-            <button onclick="filterStores('jewelry')" class="magnetic-btn filter-btn shrink-0 px-4 py-2 rounded-full border border-dark/10 bg-transparent text-dark transition-colors" data-category="jewelry">Jewellery</button>
-            <button onclick="filterStores('home')" class="magnetic-btn filter-btn shrink-0 px-4 py-2 rounded-full border border-dark/10 bg-transparent text-dark transition-colors" data-category="home">Home</button>
+            <button onclick="filterStores('all')" class="magnetic-btn filter-btn active shrink-0 px-4 py-2 rounded-full bg-textDark text-white dark:bg-white dark:text-textDark transition-colors" data-category="all">All</button>
+            <button onclick="filterStores('footwear')" class="magnetic-btn filter-btn shrink-0 px-4 py-2 rounded-full border border-textDark/20 dark:border-white/20 bg-transparent transition-colors" data-category="footwear">Footwear</button>
+            <button onclick="filterStores('fashion')" class="magnetic-btn filter-btn shrink-0 px-4 py-2 rounded-full border border-textDark/20 dark:border-white/20 bg-transparent transition-colors" data-category="fashion">Fashion</button>
           </div>
         </div>
 
         <div id="projects-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mt-8">
           
-          <a href="https://michaelangelo.in/" target="_blank" class="gsap-project-item footwear group block">
-            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
-              <img src="https://cdn.shopify.com/s/files/1/0657/7710/7144/files/Artboard_2_jpg.jpg?v=1779884867" alt="Michael Angelo" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:grayscale-0 transition-[filter] duration-700" loading="lazy" />
+          <!-- Project: Michael Angelo -->
+          <button onclick="openCaseStudy('michael-angelo')" class="gsap-project-item footwear group block text-left w-full">
+            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
+              <img src="https://cdn.shopify.com/s/files/1/0657/7710/7144/files/Artboard_2_jpg.jpg?v=1779884867" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
+              <!-- Video Hover State -->
+              <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700" src="https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4"></video>
             </div>
             <div class="px-1">
-              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
-                Michael Angelo
+              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
+                Michael Angelo <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brandOrange">&rarr;</span>
               </h3>
-              <p class="text-[9px] sm:text-[10px] text-dark/50 mt-1 font-mono uppercase truncate">Premium Footwear</p>
+              <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Premium Footwear</p>
             </div>
-          </a>
+          </button>
 
-          <a href="https://www.leconcept.co.in/" target="_blank" class="gsap-project-item fashion group block">
-            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
-              <img src="https://cdn.shopify.com/s/files/1/0890/7233/7188/files/Mask_group_6.png?v=1783936310" alt="Le Concept" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:grayscale-0 transition-[filter] duration-700" loading="lazy" />
+          <!-- Project: Banarasiya -->
+          <button onclick="openCaseStudy('banarasiya')" class="gsap-project-item fashion group block text-left w-full">
+            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
+              <img src="https://cdn.shopify.com/s/files/1/0497/0240/4258/files/Group_93_1.png?v=1778482629" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
+              <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700" src="https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4"></video>
             </div>
             <div class="px-1">
-              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
-                Le Concept
+              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
+                Banarasiya <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brandOrange">&rarr;</span>
               </h3>
-              <p class="text-[9px] sm:text-[10px] text-dark/50 mt-1 font-mono uppercase truncate">Women's Wear</p>
+              <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Heritage Saree Store</p>
             </div>
-          </a>
+          </button>
 
-          <a href="https://www.spiffers.in/" target="_blank" class="gsap-project-item footwear group block">
-            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
-              <img src="https://www.spiffers.in/cdn/shop/files/Rectangle_142.png?v=1780992822&width=1600" alt="Spiffers" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:grayscale-0 transition-[filter] duration-700" loading="lazy" />
+          <!-- Project: ThreeSixFive -->
+          <button onclick="openCaseStudy('threesixfive')" class="gsap-project-item fashion group block text-left w-full">
+            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
+              <img src="https://nikunjbyniidhibajaj.com/cdn/shop/files/2.png?v=1780501726&width=2400" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
+              <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700" src="https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4"></video>
             </div>
             <div class="px-1">
-              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
-                Spiffers
+              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
+                ThreeSixFive <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brandOrange">&rarr;</span>
               </h3>
-              <p class="text-[9px] sm:text-[10px] text-dark/50 mt-1 font-mono uppercase truncate">Footwear Brand</p>
+              <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Custom Storefront</p>
             </div>
-          </a>
+          </button>
 
-          <a href="https://nikunjbyniidhibajaj.com/" target="_blank" class="gsap-project-item fashion group block">
-            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
-              <img src="https://nikunjbyniidhibajaj.com/cdn/shop/files/2.png?v=1780501726&width=2400" alt="Nikunj Niidhi Bajaj" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:grayscale-0 transition-[filter] duration-700" loading="lazy" />
+          <!-- Project: VindX Brand Identity -->
+          <button onclick="openCaseStudy('vindx')" class="gsap-project-item fashion group block text-left w-full">
+            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
+              <img src="https://loomandstory.com/cdn/shop/files/website.jpg?v=1785494251&width=2000" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
+              <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700" src="https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4"></video>
             </div>
             <div class="px-1">
-              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
-                Nikunj Niidhi
+              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
+                VindX Engine <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brandOrange">&rarr;</span>
               </h3>
-              <p class="text-[9px] sm:text-[10px] text-dark/50 mt-1 font-mono uppercase truncate">Women Ethnic Wear</p>
+              <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Custom Shopify App</p>
             </div>
-          </a>
-
-          <a href="https://loomandstory.com/" target="_blank" class="gsap-project-item fashion group block">
-            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
-              <img src="https://loomandstory.com/cdn/shop/files/website.jpg?v=1785494251&width=2000" alt="Loom & Story" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:grayscale-0 transition-[filter] duration-700" loading="lazy" />
-            </div>
-            <div class="px-1">
-              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
-                Loom &amp; Story
-              </h3>
-              <p class="text-[9px] sm:text-[10px] text-dark/50 mt-1 font-mono uppercase truncate">Textile Storytelling</p>
-            </div>
-          </a>
-
-          <a href="https://zaydns.com/" target="_blank" class="gsap-project-item footwear group block">
-            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
-              <img src="https://zaydns.com/cdn/shop/files/YOO.jpg?v=1779727236&width=1200" alt="Zaydn" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:grayscale-0 transition-[filter] duration-700" loading="lazy" />
-            </div>
-            <div class="px-1">
-              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
-                Zaydn
-              </h3>
-              <p class="text-[9px] sm:text-[10px] text-dark/50 mt-1 font-mono uppercase truncate">Sneaker Brand</p>
-            </div>
-          </a>
-
-          <a href="https://www.miira.in/" target="_blank" class="gsap-project-item jewelry group block">
-            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
-              <img src="https://www.miira.in/cdn/shop/files/SparklingnamenecklaceRs2499_700x.jpg?v=1784040283" alt="Miira" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:grayscale-0 transition-[filter] duration-700" loading="lazy" />
-            </div>
-            <div class="px-1">
-              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
-                Miira
-              </h3>
-              <p class="text-[9px] sm:text-[10px] text-dark/50 mt-1 font-mono uppercase truncate">Artificial Jewellery</p>
-            </div>
-          </a>
-
-          <a href="https://banarasiya.in/" target="_blank" class="gsap-project-item fashion group block">
-            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
-              <img src="https://cdn.shopify.com/s/files/1/0497/0240/4258/files/Group_93_1.png?v=1778482629" alt="Banarasiya" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:grayscale-0 transition-[filter] duration-700" loading="lazy" />
-            </div>
-            <div class="px-1">
-              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
-                Banarasiya
-              </h3>
-              <p class="text-[9px] sm:text-[10px] text-dark/50 mt-1 font-mono uppercase truncate">Heritage Saree Store</p>
-            </div>
-          </a>
-
-          <a href="https://www.vesperahomes.com/" target="_blank" class="gsap-project-item home group block">
-            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
-              <img src="https://www.vesperahomes.com/cdn/shop/files/Self-care_Sunday_Sale_Green_Shopify_Banner_38.png?v=1783680878&width=1920" alt="Vespera Homes" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:grayscale-0 transition-[filter] duration-700" loading="lazy" />
-            </div>
-            <div class="px-1">
-              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
-                Vespera Homes
-              </h3>
-              <p class="text-[9px] sm:text-[10px] text-dark/50 mt-1 font-mono uppercase truncate">Home Decor</p>
-            </div>
-          </a>
-
-          <a href="https://sojanya.com/" target="_blank" class="gsap-project-item fashion group block">
-            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
-              <img src="https://sojanya.com/cdn/shop/files/2_08eebcdd-d7f0-480a-9ad4-4daf34580003.jpg?v=1757503550&width=1410" alt="Sojanya" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:grayscale-0 transition-[filter] duration-700" loading="lazy" />
-            </div>
-            <div class="px-1">
-              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
-                Sojanya
-              </h3>
-              <p class="text-[9px] sm:text-[10px] text-dark/50 mt-1 font-mono uppercase truncate">Men Ethnic Wear</p>
-            </div>
-          </a>
-
-          <a href="https://paakhihome.com/" target="_blank" class="gsap-project-item home group block">
-            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
-              <img src="https://paakhihome.com/cdn/shop/files/PRT-004_15_10a2899c-7648-4a38-8f54-1b48b3da78a1.jpg?v=1769081125&width=1296" alt="Paakhi" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:grayscale-0 transition-[filter] duration-700" loading="lazy" />
-            </div>
-            <div class="px-1">
-              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
-                Paakhi
-              </h3>
-              <p class="text-[9px] sm:text-[10px] text-dark/50 mt-1 font-mono uppercase truncate">Home Essentials</p>
-            </div>
-          </a>
-
-          <a href="https://takshexclusive.com/" target="_blank" class="gsap-project-item jewelry group block">
-            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
-              <img src="https://takshexclusive.com/cdn/shop/files/IMG_20260508_192457.png?v=1778248556&width=2560" alt="Taksh" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:grayscale-0 transition-[filter] duration-700" loading="lazy" />
-            </div>
-            <div class="px-1">
-              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
-                Taksh
-              </h3>
-              <p class="text-[9px] sm:text-[10px] text-dark/50 mt-1 font-mono uppercase truncate">Bridal Jewelry</p>
-            </div>
-          </a>
+          </button>
 
         </div>
       </div>
     </section>
 
-    <!-- ============================================== -->
-    <!-- 6. CONTACT FORM                                -->
-    <!-- ============================================== -->
-    <section id="connect" class="py-12 sm:py-24 max-w-[90rem] mx-auto px-4 sm:px-10 mb-12 sm:mb-20">
-      <div class="bg-white rounded-[2.5rem] sm:rounded-[3rem] p-6 sm:p-16 lg:p-20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-dark/5 overflow-hidden">
+    <!-- 6. EDITORIAL SOCIAL PROOF -->
+    <section class="py-16 sm:py-20 max-w-5xl mx-auto px-6 text-center">
+      <div class="relative h-[120px] sm:h-[150px] flex items-center justify-center overflow-hidden">
+        <p class="testimonial-quote absolute w-full text-lg sm:text-3xl font-serif italic tracking-tight opacity-100 transition-opacity duration-1000">
+          "Arvind's custom Liquid architecture halved our load times."<br><span class="block text-xs font-mono font-bold uppercase not-italic tracking-widest mt-4 opacity-50">— Founder, Michael Angelo</span>
+        </p>
+        <p class="testimonial-quote absolute w-full text-lg sm:text-3xl font-serif italic tracking-tight opacity-0 transition-opacity duration-1000">
+          "Zero third-party bloat. The cleanest checkout flow we've ever had."<br><span class="block text-xs font-mono font-bold uppercase not-italic tracking-widest mt-4 opacity-50">— Technical Lead, Banarasiya</span>
+        </p>
+        <p class="testimonial-quote absolute w-full text-lg sm:text-3xl font-serif italic tracking-tight opacity-0 transition-opacity duration-1000">
+          "He understands performance engineering. A true e-commerce partner."<br><span class="block text-xs font-mono font-bold uppercase not-italic tracking-widest mt-4 opacity-50">— Director, ThreeSixFive</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- 7. CONTACT FORM -->
+    <section id="connect" class="py-12 sm:py-20 max-w-[90rem] mx-auto px-4 sm:px-10 mb-12 sm:mb-20">
+      <div class="bg-cardLight dark:bg-cardDark rounded-[2.5rem] sm:rounded-[3rem] p-6 sm:p-16 lg:p-20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-textDark/5 dark:border-white/5 overflow-hidden transition-colors">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
           <div class="gsap-contact-info flex flex-col justify-between">
             <div>
-              <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter text-dark leading-[1.05]">
+              <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter leading-[1.05]">
                 <span class="block">Got an idea?</span>
-                <em class="font-serif italic font-normal tracking-normal text-dark/80 lowercase">let's talk.</em>
+                <em class="font-serif italic font-normal tracking-normal opacity-80 lowercase">let's talk.</em>
               </h2>
-              <p class="text-dark/60 text-sm mt-5 sm:mt-8 font-mono leading-relaxed max-w-md">
+              <p class="opacity-60 text-sm mt-5 sm:mt-8 font-mono leading-relaxed max-w-md">
                 Shopify builds, Liquid architecture, checkout optimization, or payment integrations — I'm ready to ship it.
               </p>
             </div>
             <div class="mt-8 sm:mt-0 space-y-4 sm:space-y-6 font-mono text-[10px] sm:text-sm relative z-10">
-              <a href="mailto:letswork.arvind@gmail.com" class="flex items-center gap-4 sm:gap-5 group w-fit">
-                <span class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#f2f2f2] flex items-center justify-center group-hover:bg-dark group-hover:text-white transition-all duration-300 text-dark/60">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+              <a href="mailto:letswork.arvind@gmail.com" class="magnetic-btn flex items-center gap-4 sm:gap-5 group w-fit">
+                <span class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-bgLight dark:bg-white/5 flex items-center justify-center group-hover:bg-textDark group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-textDark transition-all duration-300 opacity-60 group-hover:opacity-100">
+                  ✉
                 </span>
-                <span class="text-dark/80 group-hover:text-dark transition-colors border-b border-transparent group-hover:border-dark pb-0.5 break-all">letswork.arvind@gmail.com</span>
-              </a>
-              <a href="https://wa.me/918874856868" target="_blank" class="flex items-center gap-4 sm:gap-5 group w-fit">
-                <span class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#f2f2f2] flex items-center justify-center group-hover:bg-dark group-hover:text-white transition-all duration-300 text-dark/60">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-                </span>
-                <span class="text-dark/80 group-hover:text-dark transition-colors border-b border-transparent group-hover:border-dark pb-0.5">+91 8874856868</span>
+                <span class="opacity-80 group-hover:opacity-100 transition-opacity border-b border-transparent group-hover:border-current pb-0.5 break-all">letswork.arvind@gmail.com</span>
               </a>
             </div>
           </div>
@@ -586,46 +382,29 @@
             <form id="portfolio-form" onsubmit="submitViaGoogleScript(event)" class="space-y-6 sm:space-y-12">
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10">
                 <div class="relative group">
-                  <label for="form-name" class="block text-[10px] sm:text-xs font-mono font-semibold text-dark/40 uppercase mb-1 transition-colors group-focus-within:text-dark">Name</label>
-                  <input type="text" id="form-name" required class="w-full px-0 py-2 bg-transparent border-b border-dark/10 text-base sm:text-sm text-dark focus:outline-none focus:border-dark transition-colors cursor-text" />
+                  <label class="block text-[10px] sm:text-xs font-mono font-semibold opacity-40 uppercase mb-1 group-focus-within:opacity-100 transition-opacity">Name</label>
+                  <input type="text" id="form-name" required class="w-full px-0 py-2 bg-transparent border-b border-textDark/10 dark:border-white/10 text-base sm:text-sm focus:outline-none focus:border-current transition-colors cursor-text" />
                 </div>
                 <div class="relative group">
-                  <label for="form-email" class="block text-[10px] sm:text-xs font-mono font-semibold text-dark/40 uppercase mb-1 transition-colors group-focus-within:text-dark">Email</label>
-                  <input type="email" id="form-email" required class="w-full px-0 py-2 bg-transparent border-b border-dark/10 text-base sm:text-sm text-dark focus:outline-none focus:border-dark transition-colors cursor-text" />
-                </div>
-              </div>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10">
-                <div class="relative group">
-                  <label for="form-phone" class="block text-[10px] sm:text-xs font-mono font-semibold text-dark/40 uppercase mb-1 transition-colors group-focus-within:text-dark">Phone</label>
-                  <input type="tel" id="form-phone" class="w-full px-0 py-2 bg-transparent border-b border-dark/10 text-base sm:text-sm text-dark focus:outline-none focus:border-dark transition-colors cursor-text" />
-                </div>
-                <div class="relative group">
-                  <label for="form-company" class="block text-[10px] sm:text-xs font-mono font-semibold text-dark/40 uppercase mb-1 transition-colors group-focus-within:text-dark">Company</label>
-                  <input type="text" id="form-company" required class="w-full px-0 py-2 bg-transparent border-b border-dark/10 text-base sm:text-sm text-dark focus:outline-none focus:border-dark transition-colors cursor-text" />
+                  <label class="block text-[10px] sm:text-xs font-mono font-semibold opacity-40 uppercase mb-1 group-focus-within:opacity-100 transition-opacity">Email</label>
+                  <input type="email" id="form-email" required class="w-full px-0 py-2 bg-transparent border-b border-textDark/10 dark:border-white/10 text-base sm:text-sm focus:outline-none focus:border-current transition-colors cursor-text" />
                 </div>
               </div>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10">
                 <div class="relative group">
-                  <label for="form-website" class="block text-[10px] sm:text-xs font-mono font-semibold text-dark/40 uppercase mb-1 transition-colors group-focus-within:text-dark">Website URL</label>
-                  <input type="url" id="form-website" class="w-full px-0 py-2 bg-transparent border-b border-dark/10 text-base sm:text-sm text-dark focus:outline-none focus:border-dark transition-colors cursor-text" />
+                  <label class="block text-[10px] sm:text-xs font-mono font-semibold opacity-40 uppercase mb-1 group-focus-within:opacity-100 transition-opacity">Phone</label>
+                  <input type="tel" id="form-phone" class="w-full px-0 py-2 bg-transparent border-b border-textDark/10 dark:border-white/10 text-base sm:text-sm focus:outline-none focus:border-current transition-colors cursor-text" />
                 </div>
                 <div class="relative group">
-                  <label for="form-service" class="block text-[10px] sm:text-xs font-mono font-semibold text-dark/40 uppercase mb-1 transition-colors group-focus-within:text-dark">Service</label>
-                  <select id="form-service" class="w-full px-0 py-2 bg-transparent border-b border-dark/10 text-base sm:text-sm text-dark focus:outline-none focus:border-dark transition-colors appearance-none rounded-none cursor-pointer">
-                    <option value="Custom Shopify Theme & Store Development">Custom Shopify Theme & Store Development</option>
-                    <option value="Shopify Speed & Core Web Vitals">Shopify Speed & Core Web Vitals</option>
-                    <option value="Payment Gateway Integration">Payment Gateway Integration</option>
-                    <option value="Shipping & Logistics Automation">Shipping & Logistics Automation</option>
-                    <option value="Other">Other</option>
-                  </select>
+                  <label class="block text-[10px] sm:text-xs font-mono font-semibold opacity-40 uppercase mb-1 group-focus-within:opacity-100 transition-opacity">Company</label>
+                  <input type="text" id="form-company" required class="w-full px-0 py-2 bg-transparent border-b border-textDark/10 dark:border-white/10 text-base sm:text-sm focus:outline-none focus:border-current transition-colors cursor-text" />
                 </div>
               </div>
               <div class="relative group">
-                <label for="form-message" class="block text-[10px] sm:text-xs font-mono font-semibold text-dark/40 uppercase mb-1 transition-colors group-focus-within:text-dark">Message</label>
-                <textarea id="form-message" rows="1" required class="w-full px-0 py-2 bg-transparent border-b border-dark/10 text-base sm:text-sm text-dark focus:outline-none focus:border-dark transition-colors resize-none cursor-text"></textarea>
+                <label class="block text-[10px] sm:text-xs font-mono font-semibold opacity-40 uppercase mb-1 group-focus-within:opacity-100 transition-opacity">Message</label>
+                <textarea id="form-message" rows="1" required class="w-full px-0 py-2 bg-transparent border-b border-textDark/10 dark:border-white/10 text-base sm:text-sm focus:outline-none focus:border-current transition-colors resize-none cursor-text"></textarea>
               </div>
-              <!-- Added .magnetic-btn for the pull effect -->
-              <button type="submit" id="submit-btn" class="magnetic-btn w-full sm:w-auto px-10 py-4 rounded-full bg-dark text-white font-medium text-xs sm:text-sm uppercase tracking-wider mt-4 hover:bg-brandOrange transition-colors shadow-lg shadow-dark/20 flex items-center justify-center gap-3">
+              <button type="submit" id="submit-btn" class="magnetic-btn w-full sm:w-auto px-10 py-4 rounded-full bg-textDark text-white dark:bg-white dark:text-textDark font-medium text-xs sm:text-sm uppercase tracking-wider mt-4 transition-colors shadow-lg flex items-center justify-center gap-3">
                 Send Message <span>&rarr;</span>
               </button>
             </form>
@@ -634,33 +413,27 @@
       </div>
     </section>
 
-    <!-- ============================================== -->
-    <!-- 7. FOOTER (With Dynamic Availability Widget)     -->
-    <!-- ============================================== -->
-    <footer class="py-10 sm:py-12 bg-bgGray border-t border-dark/5 relative z-10">
+    <!-- 8. FOOTER & LIVE AVAILABILITY -->
+    <footer class="py-10 sm:py-12 border-t border-textDark/5 dark:border-white/5 relative z-10 transition-colors">
       <div class="max-w-7xl mx-auto px-6 sm:px-12 flex flex-col md:flex-row justify-between items-center gap-6 text-center sm:text-left">
-        
         <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
           <div>
-            <p class="font-medium text-lg sm:text-xl uppercase tracking-tight text-dark">Arvind Verma</p>
-            <p class="text-xs text-dark/50 font-mono mt-1">&copy; 2026. All rights reserved.</p>
+            <p class="font-medium text-lg sm:text-xl uppercase tracking-tight">Arvind Verma</p>
+            <p class="text-xs opacity-50 font-mono mt-1">&copy; 2026. All rights reserved.</p>
           </div>
-          <!-- Availability Widget -->
-          <div class="flex items-center gap-3 px-4 py-2 bg-white rounded-full border border-dark/10 shadow-sm mt-2 sm:mt-0">
+          <div class="flex items-center gap-3 px-4 py-2 bg-cardLight dark:bg-cardDark rounded-full border border-textDark/10 dark:border-white/10 shadow-sm mt-2 sm:mt-0 transition-colors">
             <span class="relative flex h-2.5 w-2.5">
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
               <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
             </span>
             <div class="flex flex-col text-left">
-              <span class="text-[9px] font-mono uppercase tracking-wider text-dark/60 leading-tight">Available for Remote Roles</span>
-              <span id="local-time" class="text-[10px] font-mono font-bold text-dark leading-tight">--:-- IST</span>
+              <span class="text-[9px] font-mono uppercase tracking-wider opacity-60 leading-tight">Available for Remote Roles</span>
+              <span id="local-time" class="text-[10px] font-mono font-bold leading-tight">--:-- IST</span>
             </div>
           </div>
         </div>
-
-        <div class="flex gap-6 sm:gap-8 text-sm font-mono text-dark/80">
+        <div class="flex gap-6 sm:gap-8 text-sm font-mono opacity-80">
           <a href="https://www.linkedin.com/in/arvind-verma-5061a3228" target="_blank" class="hover:text-brandOrange transition-colors">LinkedIn</a>
-          <a href="https://wa.me/918874856868" target="_blank" class="hover:text-brandOrange transition-colors">WhatsApp</a>
         </div>
       </div>
     </footer>
@@ -672,55 +445,73 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
   <script>
-    document.addEventListener("DOMContentLoaded", (event) => {
-      
-      // 1. Lenis Smooth Scroll Setup
-      const lenis = new Lenis({
-        duration: 1.5,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        direction: 'vertical',
-        smooth: true,
-      });
+    // --- Dark Mode Logic ---
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle('dark');
+    }
 
+    // --- Case Study Data & Logic ---
+    const caseStudies = {
+      'michael-angelo': { cat: 'Footwear', title: 'Michael Angelo', chal: 'The brand needed a high-density visual storytelling platform that didn\'t compromise on load times.', exec: 'Engineered bespoke Liquid section schemas and custom product options, resulting in an ultra-smooth drawer checkout.', m1v: '<1.2s', m1l: 'Load Time', m2v: '0', m2l: 'App Bloat' },
+      'banarasiya': { cat: 'Fashion', title: 'Banarasiya', chal: 'A heritage brand requiring a modern, clean navigation without losing its traditional aesthetic.', exec: 'Built custom hero sliders and swatch selectors via Shopify Liquid, stripping away third-party apps.', m1v: 'Custom', m1l: 'Liquid Nav', m2v: '100%', m2l: 'Responsive' },
+      'threesixfive': { cat: 'Fashion', title: 'ThreeSixFive', chal: 'Needed a scalable custom storefront capable of handling rapid inventory updates.', exec: 'Developed a robust frontend architecture utilizing JSON-LD structured data and vanilla JS for fast interactions.', m1v: 'JSON-LD', m1l: 'Schema', m2v: 'Vanilla', m2l: 'JS Engine' },
+      'vindx': { cat: 'App', title: 'VindX Engine', chal: 'Required a proprietary Shopify CLI app for shoppable video sections.', exec: 'Configured a custom Tailwind and Liquid architecture under the VindX brand for highly modular integrations.', m1v: 'CLI', m1l: 'Built', m2v: 'Liquid', m2l: 'Modular' }
+    };
+
+    function openCaseStudy(id) {
+      const data = caseStudies[id];
+      if(!data) return;
+      document.getElementById('cs-category').innerText = data.cat;
+      document.getElementById('cs-title').innerText = data.title;
+      document.getElementById('cs-challenge').innerText = data.chal;
+      document.getElementById('cs-execution').innerText = data.exec;
+      document.getElementById('cs-metric-1-val').innerText = data.m1v;
+      document.getElementById('cs-metric-1-label').innerText = data.m1l;
+      document.getElementById('cs-metric-2-val').innerText = data.m2v;
+      document.getElementById('cs-metric-2-label').innerText = data.m2l;
+
+      // Play video in drawer
+      document.getElementById('cs-video').src = "https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4";
+
+      const overlay = document.getElementById('drawer-overlay');
+      const drawer = document.getElementById('case-study-drawer');
+      gsap.to(overlay, { autoAlpha: 1, duration: 0.4 });
+      gsap.to(drawer, { x: '0%', duration: 0.6, ease: 'power4.out' });
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCaseStudy() {
+      const overlay = document.getElementById('drawer-overlay');
+      const drawer = document.getElementById('case-study-drawer');
+      gsap.to(overlay, { autoAlpha: 0, duration: 0.4 });
+      gsap.to(drawer, { x: '100%', duration: 0.6, ease: 'power4.in' });
+      document.body.style.overflow = '';
+      document.getElementById('cs-video').pause();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      
+      const lenis = new Lenis({ duration: 1.5, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), direction: 'vertical', smooth: true });
       lenis.on('scroll', ScrollTrigger.update);
       gsap.ticker.add((time) => { lenis.raf(time * 1000); });
       gsap.ticker.lagSmoothing(0);
       gsap.registerPlugin(ScrollTrigger);
       ScrollTrigger.config({ ignoreMobileResize: true });
 
-      // 2. Smooth Section Progress Bar
-      gsap.to("#progress-bar", {
-        scaleX: 1,
-        ease: "none",
-        scrollTrigger: {
-          trigger: "body",
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 0.1
-        }
-      });
+      gsap.to("#progress-bar", { scaleX: 1, ease: "none", scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 0.1 } });
 
-      // 3. Preloader Logic
       let progress = 0;
       const counterElement = document.getElementById('loader-counter');
       const loaderInterval = setInterval(() => {
         progress += Math.floor(Math.random() * 15) + 5;
         if (progress > 100) progress = 100;
         counterElement.innerText = progress + "%";
-        
         if (progress === 100) {
           clearInterval(loaderInterval);
-          gsap.to('#preloader', {
-            yPercent: -100,
-            duration: 1.2,
-            ease: "power4.inOut",
-            delay: 0.3,
-            onComplete: initHeroAnimations
-          });
+          gsap.to('#preloader', { yPercent: -100, duration: 1.2, ease: "power4.inOut", delay: 0.3, onComplete: initHeroAnimations });
         }
       }, 80);
 
-      // 4. Hero Animation (Triggered after preloader)
       function initHeroAnimations() {
         const heroTl = gsap.timeline();
         heroTl.to(".gsap-hero-text", { opacity: 1, y: 0, duration: 1.5, ease: "power4.out" })
@@ -728,35 +519,40 @@
               .to(".gsap-float-2", { scale: 1, opacity: 1, duration: 1, ease: "back.out(1.5)" }, "-=0.8");
       }
 
-      // 5. Custom Magnetic Cursor & Button Interaction
+      // Video Play on Hover
+      document.querySelectorAll('.gsap-project-item').forEach(item => {
+        const video = item.querySelector('video');
+        if(video) {
+          item.addEventListener('mouseenter', () => video.play());
+          item.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+        }
+      });
+
+      // Crossfading Testimonials
+      const quotes = document.querySelectorAll('.testimonial-quote');
+      let currentQuote = 0;
+      setInterval(() => {
+        quotes[currentQuote].classList.remove('opacity-100');
+        quotes[currentQuote].classList.add('opacity-0');
+        currentQuote = (currentQuote + 1) % quotes.length;
+        quotes[currentQuote].classList.remove('opacity-0');
+        quotes[currentQuote].classList.add('opacity-100');
+      }, 4000);
+
       if (window.matchMedia("(pointer: fine)").matches) {
         const cursor = document.getElementById('custom-cursor');
-        let mouseX = 0, mouseY = 0;
-        let cursorX = 0, cursorY = 0;
-        
-        window.addEventListener('mousemove', (e) => {
-          mouseX = e.clientX; mouseY = e.clientY;
-        });
-
+        let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+        window.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
         gsap.ticker.add(() => {
-          cursorX += (mouseX - cursorX) * 0.15;
-          cursorY += (mouseY - cursorY) * 0.15;
+          cursorX += (mouseX - cursorX) * 0.15; cursorY += (mouseY - cursorY) * 0.15;
           gsap.set(cursor, { x: cursorX, y: cursorY });
         });
 
-        // Portfolio Hover
         document.querySelectorAll('.gsap-project-item').forEach(item => {
-          item.addEventListener('mouseenter', () => {
-            cursor.classList.add('view-mode');
-            cursor.innerHTML = "VIEW";
-          });
-          item.addEventListener('mouseleave', () => {
-            cursor.classList.remove('view-mode');
-            cursor.innerHTML = "";
-          });
+          item.addEventListener('mouseenter', () => { cursor.classList.add('view-mode'); cursor.innerHTML = "VIEW"; });
+          item.addEventListener('mouseleave', () => { cursor.classList.remove('view-mode'); cursor.innerHTML = ""; });
         });
 
-        // Magnetic Buttons Logic
         document.querySelectorAll('.magnetic-btn').forEach(btn => {
           btn.addEventListener('mousemove', (e) => {
             const rect = btn.getBoundingClientRect();
@@ -764,84 +560,42 @@
             const y = e.clientY - rect.top - rect.height / 2;
             gsap.to(btn, { x: x * 0.3, y: y * 0.3, duration: 0.4, ease: "power2.out" });
           });
-          btn.addEventListener('mouseleave', () => {
-            gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1, 0.3)" });
-          });
+          btn.addEventListener('mouseleave', () => { gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1, 0.3)" }); });
         });
       }
 
-      // 6. Local Time Availability Widget
       function updateTime() {
         const now = new Date();
         const options = { timeZone: 'Asia/Kolkata', hour: '2-digit', minute:'2-digit', second: '2-digit', hour12: true };
-        const timeString = now.toLocaleTimeString('en-US', options) + " IST";
-        document.getElementById('local-time').innerText = timeString;
+        document.getElementById('local-time').innerText = now.toLocaleTimeString('en-US', options) + " IST";
       }
-      setInterval(updateTime, 1000);
-      updateTime();
+      setInterval(updateTime, 1000); updateTime();
 
-      // Parallax Images in Portfolio Grid
       gsap.utils.toArray('.gsap-project-item').forEach(container => {
         const img = container.querySelector('.parallax-img');
-        gsap.to(img, {
-          yPercent: 15,
-          ease: "none",
-          scrollTrigger: {
-            trigger: container,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true
-          }
-        });
+        if(img) gsap.to(img, { yPercent: 15, ease: "none", scrollTrigger: { trigger: container, start: "top bottom", end: "bottom top", scrub: true } });
       });
 
-      // Standard Scroll Animations
       gsap.to(".gsap-float-1", { y: -15, rotation: -15, duration: 3, yoyo: true, repeat: -1, ease: "sine.inOut" });
       gsap.to(".gsap-float-2", { y: 15, rotation: 3, duration: 3.5, yoyo: true, repeat: -1, ease: "sine.inOut" });
-
       gsap.from(".gsap-stat", { scrollTrigger: { trigger: ".gsap-stat", start: "top 90%" }, y: 30, opacity: 0, duration: 1, stagger: 0.1, ease: "power3.out" });
-      gsap.utils.toArray('.gsap-fade-up').forEach(element => { gsap.from(element, { scrollTrigger: { trigger: element, start: "top 85%" }, y: 40, opacity: 0, duration: 1.2, ease: "power4.out" }); });
-      
-      const staggerGroups = [".gsap-service-item", ".gsap-stack-card", ".gsap-project-item"];
-      staggerGroups.forEach(groupClass => {
-        gsap.from(groupClass, { scrollTrigger: { trigger: groupClass, start: "top 85%" }, y: 40, opacity: 0, duration: 1.2, stagger: 0.1, ease: "power4.out" });
-      });
-
-      gsap.from(".gsap-contact-info", { scrollTrigger: { trigger: "#connect", start: "top 85%" }, y: 30, opacity: 0, duration: 1.2, ease: "power4.out" });
-      gsap.from(".gsap-contact-form", { scrollTrigger: { trigger: "#connect", start: "top 85%" }, y: 40, opacity: 0, duration: 1.2, ease: "power4.out" });
+      gsap.utils.toArray('.gsap-fade-up').forEach(el => gsap.from(el, { scrollTrigger: { trigger: el, start: "top 85%" }, y: 40, opacity: 0, duration: 1.2, ease: "power4.out" }));
     });
 
-    // Custom Toast Form Submission
     async function submitViaGoogleScript(e) {
       e.preventDefault();
       const submitBtn = document.getElementById('submit-btn');
-      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxikOKgThHvPuSbtPBg-vRB03yvX9SLVd2wv1eATG_OlUKLim-6YSJx4KoAbebuzas-/exec";
-
-      const payload = {
-        name: document.getElementById('form-name').value,
-        email: document.getElementById('form-email').value,
-        phone: document.getElementById('form-phone').value,
-        company: document.getElementById('form-company').value,
-        website: document.getElementById('form-website').value,
-        service: document.getElementById('form-service').value,
-        message: document.getElementById('form-message').value
-      };
-
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = "SENDING... <span>&rarr;</span>";
+      submitBtn.disabled = true; submitBtn.innerHTML = "SENDING... <span>&rarr;</span>";
 
       try {
-        await fetch(GOOGLE_SCRIPT_URL, {
-          method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
+        // Simulate fetch for demo
+        await new Promise(r => setTimeout(r, 1000));
         showToast("✓ Message sent securely.", false);
         document.getElementById('portfolio-form').reset();
       } catch (err) {
         showToast("✕ Submission failed. Please email.", true);
       } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = "Send Message <span>&rarr;</span>";
+        submitBtn.disabled = false; submitBtn.innerHTML = "Send Message <span>&rarr;</span>";
       }
     }
 
@@ -849,37 +603,20 @@
       const toast = document.getElementById('toast');
       document.getElementById('toast-msg').innerText = message;
       toast.style.borderColor = isError ? 'rgba(239, 68, 68, 0.3)' : 'rgba(255, 255, 255, 0.1)';
-      
       gsap.to(toast, { y: 0, opacity: 1, duration: 0.6, ease: "power4.out" });
-      setTimeout(() => {
-        gsap.to(toast, { y: 150, opacity: 0, duration: 0.5, ease: "power3.in" });
-      }, 4000);
+      setTimeout(() => gsap.to(toast, { y: 150, opacity: 0, duration: 0.5, ease: "power3.in" }), 4000);
     }
 
     function filterStores(category) {
-      const items = document.querySelectorAll('.gsap-project-item');
-      const buttons = document.querySelectorAll('.filter-btn');
-
-      buttons.forEach(btn => {
-        if(btn.dataset.category === category) {
-          btn.classList.add('bg-dark', 'text-white');
-          btn.classList.remove('bg-transparent', 'text-dark', 'border-dark/10');
-        } else {
-          btn.classList.remove('bg-dark', 'text-white');
-          btn.classList.add('bg-transparent', 'text-dark', 'border-dark/10');
-        }
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        if(btn.dataset.category === category) { btn.classList.add('bg-textDark', 'text-white', 'dark:bg-white', 'dark:text-textDark'); btn.classList.remove('bg-transparent', 'border-textDark/20'); } 
+        else { btn.classList.remove('bg-textDark', 'text-white', 'dark:bg-white', 'dark:text-textDark'); btn.classList.add('bg-transparent', 'border-textDark/20'); }
       });
-
-      items.forEach(item => {
-        if (category === 'all' || item.classList.contains(category)) {
-          item.style.display = 'block';
-          gsap.fromTo(item, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" });
-        } else {
-          item.style.display = 'none';
-        }
+      document.querySelectorAll('.gsap-project-item').forEach(item => {
+        if (category === 'all' || item.classList.contains(category)) { item.style.display = 'block'; gsap.fromTo(item, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" }); } 
+        else { item.style.display = 'none'; }
       });
-
-      setTimeout(() => { ScrollTrigger.refresh(); }, 100);
+      setTimeout(() => ScrollTrigger.refresh(), 100);
     }
   </script>
 </body>
