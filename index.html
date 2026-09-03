@@ -43,84 +43,7 @@
         "telephone": "+918874856868",
         "sameAs": [
           "https://www.linkedin.com/in/arvind-verma-5061a3228"
-        ],
-        "knowsAbout": [
-          "Shopify Development",
-          "Shopify Liquid",
-          "Payment Gateway Integration",
-          "Shipping and Logistics Integration",
-          "Core Web Vitals Optimization",
-          "Technical SEO",
-          "E-Commerce Architecture",
-          "HTML5",
-          "CSS3",
-          "JavaScript"
-        ],
-        "description": "Shopify & E-Commerce Expert with 40+ stores built, specializing in speed optimization, custom section schemas, and payment integrations."
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://vindx.in/#website",
-        "url": "https://vindx.in/",
-        "name": "Arvind Verma | Shopify & E-Commerce Expert Portfolio",
-        "publisher": {
-          "@id": "https://vindx.in/#person"
-        },
-        "description": "Portfolio of Shopify & E-Commerce Expert Arvind Verma showcasing high-converting D2C stores, payment integrations, and performance engineering."
-      },
-      {
-        "@type": "ProfessionalService",
-        "@id": "https://vindx.in/#service",
-        "name": "Arvind Verma - Shopify Web Development",
-        "url": "https://vindx.in/",
-        "priceRange": "$$",
-        "image": "https://vindx.in/og-image.jpg",
-        "email": "letswork.arvind@gmail.com",
-        "founder": {
-          "@id": "https://vindx.in/#person"
-        },
-        "areaServed": ["Worldwide", "India", "United States", "United Kingdom", "Canada", "Australia"],
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Shopify Development Services",
-          "itemListElement": [
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Custom Shopify Store Development & Theme Customization"
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Shopify Speed Optimization & Core Web Vitals Tuning"
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Payment Gateway & 1-Click Checkout Integration"
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Shipping & Logistics Integration"
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Technical SEO & Structured Schema Architecture"
-              }
-            }
-          ]
-        }
+        ]
       }
     ]
   }
@@ -129,6 +52,7 @@
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23ff5b36'/><text x='50' y='70' font-size='60' font-family='sans-serif' font-weight='900' fill='%23ffffff' text-anchor='middle'>A</text></svg>" type="image/svg+xml" />
 
+  <!-- Tailwind & Fonts -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -164,30 +88,31 @@
       overflow-x: hidden;
     }
     
+    /* Refined Minimal Neo-Brutalism */
     .neo-card {
       background: #ffffff;
-      border: 2.5px solid #111827;
-      box-shadow: 4px 4px 0px #111827;
-      border-radius: 18px;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      border: 2px solid #111827;
+      box-shadow: 3px 3px 0px #111827;
+      border-radius: 16px;
+      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .neo-card:hover {
       transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0px #111827;
+      box-shadow: 5px 5px 0px #111827;
     }
     
     .neo-btn {
-      border: 2.5px solid #111827;
-      box-shadow: 3px 3px 0px #111827;
-      border-radius: 12px;
-      transition: all 0.12s ease;
+      border: 2px solid #111827;
+      box-shadow: 2px 2px 0px #111827;
+      border-radius: 10px;
+      transition: all 0.15s ease;
     }
     .neo-btn:hover {
       transform: translate(-1px, -1px);
-      box-shadow: 4px 4px 0px #111827;
+      box-shadow: 3px 3px 0px #111827;
     }
     .neo-btn:active {
-      transform: translate(2px, 2px);
+      transform: translate(1px, 1px);
       box-shadow: 1px 1px 0px #111827;
     }
 
@@ -204,34 +129,28 @@
       animation-play-state: paused;
     }
 
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     
     @media screen and (max-width: 768px) {
-      input, select, textarea {
-        font-size: 16px !important;
-      }
+      input, select, textarea { font-size: 16px !important; }
     }
-  </style>
 
-  <meta name="google-site-verification" content="wIetArfxf_bDVKXYmOCi_o1CV_5yYKU7NaXp5YQ_UxA" />
+    /* Prevent FOUC (Flash of Unstyled Content) for GSAP */
+    .gsap-reveal { visibility: hidden; }
+  </style>
 </head>
 <body class="font-sans antialiased text-[#111827] selection:bg-neoOrange selection:text-white">
 
   <!-- ============================================== -->
-  <!-- 1. HEADER (Compact Button + Mobile Drawer)      -->
+  <!-- 1. HEADER                                      -->
   <!-- ============================================== -->
-  <header class="w-full bg-[#fbf9f4] border-b-[2.5px] border-[#111827] sticky top-0 z-50">
+  <header class="w-full bg-[#fbf9f4] border-b-[2px] border-[#111827] sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-8 h-16 sm:h-20 flex items-center justify-between">
       
       <!-- Brand Logo -->
       <a href="#" class="flex items-center gap-2 sm:gap-2.5">
-        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-neoOrange border-[2px] sm:border-[2.5px] border-[#111827] flex items-center justify-center font-black text-white text-base sm:text-xl shadow-[2px_2px_0px_#111827]">
+        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-neoOrange border-[2px] border-[#111827] flex items-center justify-center font-black text-white text-base sm:text-xl shadow-[2px_2px_0px_#111827]">
           A
         </div>
         <div class="flex flex-col">
@@ -251,24 +170,24 @@
 
       <!-- Compact CTA & Mobile Toggle -->
       <div class="flex items-center gap-2 sm:gap-3">
-        <a href="#connect" class="neo-btn px-3 sm:px-4 py-1.5 sm:py-2 bg-neoOrange text-white font-extrabold text-[11px] sm:text-xs uppercase tracking-wider">
+        <a href="#connect" class="neo-btn px-4 py-2 bg-neoOrange text-white font-extrabold text-[11px] sm:text-xs uppercase tracking-wider hidden sm:inline-block">
           Let's Talk
         </a>
 
         <!-- Hamburger Button (Mobile) -->
         <button onclick="toggleMobileMenu()" id="menu-btn" class="md:hidden neo-btn p-1.5 sm:p-2 bg-white text-[#111827] flex items-center justify-center" aria-label="Toggle Menu">
           <svg id="menu-icon-open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
           <svg id="menu-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
       </div>
     </div>
 
     <!-- Mobile Slide-Down Menu -->
-    <div id="mobile-menu" class="hidden md:hidden border-t-[2.5px] border-[#111827] bg-[#fbf9f4] px-6 py-5 shadow-lg">
+    <div id="mobile-menu" class="hidden md:hidden border-t-[2px] border-[#111827] bg-[#fbf9f4] px-6 py-5 shadow-lg absolute w-full">
       <div class="flex flex-col space-y-3.5 text-xs font-bold uppercase tracking-wider text-neutral-800">
         <a href="#services" onclick="toggleMobileMenu()" class="py-1 hover:text-neoOrange">Services</a>
         <a href="#stack" onclick="toggleMobileMenu()" class="py-1 hover:text-neoOrange">Stack</a>
@@ -286,10 +205,10 @@
     <!-- ============================================== -->
     <!-- 2. HERO SECTION                                -->
     <!-- ============================================== -->
-    <section class="relative bg-[#fbf9f4] pt-12 sm:pt-16 pb-16 sm:pb-24 overflow-hidden border-b-[2.5px] border-[#111827]">
+    <section class="relative bg-[#fbf9f4] pt-16 sm:pt-24 pb-20 sm:pb-32 overflow-hidden border-b-[2px] border-[#111827]">
       
       <!-- Graphic Sun in Background -->
-      <div class="absolute top-4 left-1/4 sm:left-1/3 w-48 h-48 sm:w-72 sm:h-72 rounded-full bg-[#fde047] border-[3px] border-[#111827] pointer-events-none -z-0 opacity-90 shadow-[4px_4px_0px_#111827]"></div>
+      <div class="gsap-sun absolute top-10 left-1/4 sm:left-1/3 w-48 h-48 sm:w-72 sm:h-72 rounded-full bg-[#fde047] border-[2px] border-[#111827] pointer-events-none opacity-80 shadow-[3px_3px_0px_#111827]"></div>
 
       <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
@@ -297,25 +216,25 @@
           <!-- Left Hero Content -->
           <div class="lg:col-span-8 text-left">
             
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border-[2.5px] border-[#111827] text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-6 shadow-[2.5px_2.5px_0px_#111827]">
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 border border-[#111827] animate-pulse"></span>
+            <div class="gsap-hero-el inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border-[2px] border-[#111827] text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-8 shadow-[2px_2px_0px_#111827]">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 border border-[#111827] animate-pulse"></span>
               <span>Available For Freelance &amp; Remote Contracts</span>
             </div>
 
-            <h1 class="text-3xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight leading-[1.08] text-[#111827]">
+            <h1 class="gsap-hero-el text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight leading-[1.08] text-[#111827]">
               Hi, I'm Arvind. <br>
-              <span class="bg-[#2dd4bf] px-3 py-0.5 rounded-xl border-[2.5px] border-[#111827] inline-block mt-1.5 shadow-[3px_3px_0px_#111827]">
+              <span class="bg-[#2dd4bf] px-3 py-1 rounded-xl border-[2px] border-[#111827] inline-block mt-2 shadow-[2px_2px_0px_#111827]">
                 Shopify &amp; Ecomm Expert,
               </span> <br>
               shipping clean code.
             </h1>
 
-            <p class="mt-6 text-sm sm:text-base text-neutral-700 font-medium max-w-2xl leading-relaxed">
+            <p class="gsap-hero-el mt-6 text-sm sm:text-base text-neutral-600 font-medium max-w-2xl leading-relaxed">
               Specializing in custom Liquid architecture, Core Web Vitals speed engineering, secure payment gateway integrations, and technical SEO for modern D2C brands.
             </p>
 
             <!-- Buttons -->
-            <div class="mt-8 flex flex-wrap items-center gap-3.5">
+            <div class="gsap-hero-el mt-8 flex flex-wrap items-center gap-3.5">
               <a href="#works" class="neo-btn px-6 py-3.5 bg-neoOrange text-white font-extrabold text-xs uppercase tracking-wider">
                 See My Work
               </a>
@@ -328,30 +247,30 @@
             </div>
 
             <!-- 4 Metric Cards -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mt-12 max-w-3xl">
+            <div class="gsap-hero-el grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mt-14 max-w-3xl">
               <div class="neo-card p-4 text-left">
                 <p class="text-2xl sm:text-3xl font-black font-mono text-[#111827]">40+</p>
-                <p class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-neutral-500 mt-0.5">Stores Built</p>
+                <p class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-neutral-500 mt-1">Stores Built</p>
               </div>
               <div class="neo-card p-4 text-left">
                 <p class="text-2xl sm:text-3xl font-black font-mono text-[#111827]">30+</p>
-                <p class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-neutral-500 mt-0.5">Brands Served</p>
+                <p class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-neutral-500 mt-1">Brands Served</p>
               </div>
               <div class="neo-card p-4 text-left">
                 <p class="text-2xl sm:text-3xl font-black font-mono text-[#111827]">&lt;1.2s</p>
-                <p class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-neutral-500 mt-0.5">Core Web Vitals</p>
+                <p class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-neutral-500 mt-1">Core Web Vitals</p>
               </div>
               <div class="neo-card p-4 text-left">
                 <p class="text-2xl sm:text-3xl font-black font-mono text-[#111827]">100%</p>
-                <p class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-neutral-500 mt-0.5">Clean Code</p>
+                <p class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-neutral-500 mt-1">Clean Code</p>
               </div>
             </div>
 
           </div>
 
           <!-- Right Floating Skill Badges -->
-          <div class="lg:col-span-4 hidden lg:flex flex-col gap-4">
-            <div class="neo-card p-6 bg-[#f3eee5] rotate-1">
+          <div class="lg:col-span-4 hidden lg:flex flex-col gap-6 relative">
+            <div class="floating-badge-1 neo-card p-6 bg-[#f3eee5] rotate-2">
               <p class="text-xs font-mono font-bold uppercase tracking-wider text-neutral-500 mb-3">Core Specialization</p>
               <div class="flex flex-wrap gap-2">
                 <span class="px-3 py-1.5 rounded-lg bg-white border-[2px] border-[#111827] font-bold text-xs shadow-[2px_2px_0px_#111827]">🛍️ Ecom Expert</span>
@@ -360,7 +279,7 @@
                 <span class="px-3 py-1.5 rounded-lg bg-white border-[2px] border-[#111827] font-bold text-xs shadow-[2px_2px_0px_#111827]">💳 1-Click Pay</span>
               </div>
             </div>
-            <div class="neo-card p-6 bg-white -rotate-1">
+            <div class="floating-badge-2 neo-card p-6 bg-white -rotate-2">
               <p class="text-xs font-mono font-bold uppercase tracking-wider text-neutral-500 mb-3">Engineering Standard</p>
               <div class="space-y-2 text-xs font-bold text-neutral-800">
                 <div class="flex items-center gap-2">
@@ -381,9 +300,9 @@
     </section>
 
     <!-- ============================================== -->
-    <!-- 3. MARQUEE STRIP                                -->
+    <!-- 3. MARQUEE STRIP                               -->
     <!-- ============================================== -->
-    <div class="bg-[#111827] text-white py-3.5 border-b-[2.5px] border-[#111827] overflow-hidden">
+    <div class="bg-[#111827] text-white py-4 border-b-[2px] border-[#111827] overflow-hidden">
       <div class="marquee-track font-mono text-xs sm:text-sm font-bold uppercase tracking-widest flex items-center gap-8 whitespace-nowrap">
         <span>★ SHOPIFY LIQUID</span>
         <span>★ HTML5 &amp; MODERN CSS3</span>
@@ -403,112 +322,63 @@
     </div>
 
     <!-- ============================================== -->
-    <!-- 4. SERVICES I OFFER (6 Core Capabilities)       -->
+    <!-- 4. SERVICES I OFFER                            -->
     <!-- ============================================== -->
-    <section id="services" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-8">
-      <div class="text-left mb-12">
+    <section id="services" class="py-20 sm:py-32 max-w-7xl mx-auto px-4 sm:px-8">
+      <div class="gsap-fade-up text-left mb-14">
         <span class="text-xs font-mono font-bold uppercase tracking-widest text-neutral-500">WHAT I DO</span>
-        <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#111827] mt-1">
+        <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#111827] mt-2">
           Services <span class="text-neoOrange">I Offer.</span>
         </h2>
-        <p class="text-neutral-600 text-xs sm:text-sm font-mono mt-1 uppercase">End-to-End Technical Delivery for Modern E-Commerce</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-5">
         
-        <!-- 1. Custom Themes & Liquid -->
-        <div class="neo-card p-5 flex flex-col justify-between">
+        <div class="gsap-service-card neo-card p-6 flex flex-col justify-between">
           <div>
-            <div class="w-12 h-12 rounded-xl bg-neoTeal border-[2px] border-[#111827] flex items-center justify-center text-2xl shadow-[2px_2px_0px_#111827] mb-4">
-              🛠️
-            </div>
+            <div class="w-12 h-12 rounded-xl bg-neoTeal border-[2px] border-[#111827] flex items-center justify-center text-2xl shadow-[2px_2px_0px_#111827] mb-5">🛠️</div>
             <h3 class="text-sm font-black uppercase text-[#111827] leading-snug">Custom Themes &amp; Liquid</h3>
-            <p class="text-xs text-neutral-600 mt-2 leading-relaxed">
-              Bespoke Liquid section schemas, dynamic drawer checkouts, custom product options, and lightweight modular layouts built from scratch.
-            </p>
-          </div>
-          <div class="mt-6 pt-3 border-t-2 border-neutral-200 text-[10px] font-mono font-bold text-neutral-500">
-            • LIQUID SCHEMAS
+            <p class="text-xs text-neutral-600 mt-2 leading-relaxed">Bespoke Liquid section schemas, dynamic drawer checkouts, custom product options, and lightweight modular layouts built from scratch.</p>
           </div>
         </div>
 
-        <!-- 2. Payment Gateway Integration -->
-        <div class="neo-card p-5 flex flex-col justify-between">
+        <div class="gsap-service-card neo-card p-6 flex flex-col justify-between">
           <div>
-            <div class="w-12 h-12 rounded-xl bg-neoYellow border-[2px] border-[#111827] flex items-center justify-center text-2xl shadow-[2px_2px_0px_#111827] mb-4">
-              💳
-            </div>
-            <h3 class="text-sm font-black uppercase text-[#111827] leading-snug">Payment Gateway Integration</h3>
-            <p class="text-xs text-neutral-600 mt-2 leading-relaxed">
-              Direct checkout integrations enabling seamless domestic and global transactions with zero friction for shoppers.
-            </p>
-          </div>
-          <div class="mt-6 pt-3 border-t-2 border-neutral-200 text-[10px] font-mono font-bold text-neutral-500">
-            • 1-CLICK PAY
+            <div class="w-12 h-12 rounded-xl bg-neoYellow border-[2px] border-[#111827] flex items-center justify-center text-2xl shadow-[2px_2px_0px_#111827] mb-5">💳</div>
+            <h3 class="text-sm font-black uppercase text-[#111827] leading-snug">Payment Gateway</h3>
+            <p class="text-xs text-neutral-600 mt-2 leading-relaxed">Direct checkout integrations enabling seamless domestic and global transactions with zero friction for shoppers.</p>
           </div>
         </div>
 
-        <!-- 3. Shipping & Logistics Integration -->
-        <div class="neo-card p-5 flex flex-col justify-between">
+        <div class="gsap-service-card neo-card p-6 flex flex-col justify-between">
           <div>
-            <div class="w-12 h-12 rounded-xl bg-[#86efac] border-[2px] border-[#111827] flex items-center justify-center text-2xl shadow-[2px_2px_0px_#111827] mb-4">
-              🚚
-            </div>
-            <h3 class="text-sm font-black uppercase text-[#111827] leading-snug">Shipping &amp; Logistics Integration</h3>
-            <p class="text-xs text-neutral-600 mt-2 leading-relaxed">
-              Automated courier allocation, real-time tracking webhooks, NDR management, and seamless reverse pickup flows.
-            </p>
-          </div>
-          <div class="mt-6 pt-3 border-t-2 border-neutral-200 text-[10px] font-mono font-bold text-neutral-500">
-            • AUTO FULFILLMENT
+            <div class="w-12 h-12 rounded-xl bg-[#86efac] border-[2px] border-[#111827] flex items-center justify-center text-2xl shadow-[2px_2px_0px_#111827] mb-5">🚚</div>
+            <h3 class="text-sm font-black uppercase text-[#111827] leading-snug">Shipping &amp; Logistics</h3>
+            <p class="text-xs text-neutral-600 mt-2 leading-relaxed">Automated courier allocation, real-time tracking webhooks, NDR management, and seamless reverse pickup flows.</p>
           </div>
         </div>
 
-        <!-- 4. Speed & Core Web Vitals -->
-        <div class="neo-card p-5 flex flex-col justify-between">
+        <div class="gsap-service-card neo-card p-6 flex flex-col justify-between">
           <div>
-            <div class="w-12 h-12 rounded-xl bg-neoOrange border-[2px] border-[#111827] flex items-center justify-center text-2xl shadow-[2px_2px_0px_#111827] text-white mb-4">
-              ⚡
-            </div>
-            <h3 class="text-sm font-black uppercase text-[#111827] leading-snug">Speed &amp; Core Web Vitals</h3>
-            <p class="text-xs text-neutral-600 mt-2 leading-relaxed">
-              Aggressive script streamlining, vanilla JavaScript logic, lazy-loading pipelines, and asset optimization for maximum Lighthouse scores.
-            </p>
-          </div>
-          <div class="mt-6 pt-3 border-t-2 border-neutral-200 text-[10px] font-mono font-bold text-neutral-500">
-            • &lt;1.2S SPEED
+            <div class="w-12 h-12 rounded-xl bg-neoOrange border-[2px] border-[#111827] flex items-center justify-center text-2xl shadow-[2px_2px_0px_#111827] text-white mb-5">⚡</div>
+            <h3 class="text-sm font-black uppercase text-[#111827] leading-snug">Core Web Vitals</h3>
+            <p class="text-xs text-neutral-600 mt-2 leading-relaxed">Aggressive script streamlining, vanilla JavaScript logic, and asset optimization for maximum Lighthouse scores.</p>
           </div>
         </div>
 
-        <!-- 5. Technical SEO Architecture -->
-        <div class="neo-card p-5 flex flex-col justify-between">
+        <div class="gsap-service-card neo-card p-6 flex flex-col justify-between">
           <div>
-            <div class="w-12 h-12 rounded-xl bg-neoBlue border-[2px] border-[#111827] flex items-center justify-center text-2xl shadow-[2px_2px_0px_#111827] text-white mb-4">
-              🔍
-            </div>
-            <h3 class="text-sm font-black uppercase text-[#111827] leading-snug">Technical SEO Architecture</h3>
-            <p class="text-xs text-neutral-600 mt-2 leading-relaxed">
-              JSON-LD structured data (Product, Organization, WebPage schema), clean metadata hooks, and canonical URL hygiene for search visibility.
-            </p>
-          </div>
-          <div class="mt-6 pt-3 border-t-2 border-neutral-200 text-[10px] font-mono font-bold text-neutral-500">
-            • JSON-LD SCHEMA
+            <div class="w-12 h-12 rounded-xl bg-neoBlue border-[2px] border-[#111827] flex items-center justify-center text-2xl shadow-[2px_2px_0px_#111827] text-white mb-5">🔍</div>
+            <h3 class="text-sm font-black uppercase text-[#111827] leading-snug">Technical SEO</h3>
+            <p class="text-xs text-neutral-600 mt-2 leading-relaxed">JSON-LD structured data (Product, Organization schema), clean metadata hooks, and canonical URL hygiene.</p>
           </div>
         </div>
 
-        <!-- 6. Custom App & API Integrations -->
-        <div class="neo-card p-5 flex flex-col justify-between">
+        <div class="gsap-service-card neo-card p-6 flex flex-col justify-between">
           <div>
-            <div class="w-12 h-12 rounded-xl bg-[#c084fc] border-[2px] border-[#111827] flex items-center justify-center text-2xl shadow-[2px_2px_0px_#111827] text-white mb-4">
-              🔌
-            </div>
-            <h3 class="text-sm font-black uppercase text-[#111827] leading-snug">Custom App &amp; API Integrations</h3>
-            <p class="text-xs text-neutral-600 mt-2 leading-relaxed">
-              Connecting third-party logistics, ERPs, CRM platforms, and custom webhooks into Shopify workflows without adding code clutter.
-            </p>
-          </div>
-          <div class="mt-6 pt-3 border-t-2 border-neutral-200 text-[10px] font-mono font-bold text-neutral-500">
-            • WEBHOOKS &amp; APIS
+            <div class="w-12 h-12 rounded-xl bg-[#c084fc] border-[2px] border-[#111827] flex items-center justify-center text-2xl shadow-[2px_2px_0px_#111827] text-white mb-5">🔌</div>
+            <h3 class="text-sm font-black uppercase text-[#111827] leading-snug">API Integrations</h3>
+            <p class="text-xs text-neutral-600 mt-2 leading-relaxed">Connecting third-party logistics, ERPs, CRM platforms, and custom webhooks into Shopify without adding bloat.</p>
           </div>
         </div>
 
@@ -516,463 +386,136 @@
     </section>
 
     <!-- ============================================== -->
-    <!-- 5. THE STACK (Three Layers. One Developer.)    -->
+    <!-- 5. THE STACK                                   -->
     <!-- ============================================== -->
-    <section id="stack" class="py-16 sm:py-24 bg-[#f3eee5] border-y-[2.5px] border-[#111827]">
+    <section id="stack" class="py-20 sm:py-32 bg-[#f3eee5] border-y-[2px] border-[#111827]">
       <div class="max-w-7xl mx-auto px-4 sm:px-8 text-center">
         
-        <span class="text-xs font-mono font-bold uppercase tracking-widest text-neutral-600">THE STACK</span>
-        <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#111827] mt-1">
-          Three layers. <br class="sm:hidden">
-          One developer.
-        </h2>
-        <p class="text-neutral-700 text-xs sm:text-sm font-medium mt-2 max-w-xl mx-auto">
-          Three sides of the same developer — frontend pixels, Shopify Liquid architecture, and the ecosystem integrations beneath them.
-        </p>
+        <div class="gsap-fade-up">
+          <span class="text-xs font-mono font-bold uppercase tracking-widest text-neutral-600">THE STACK</span>
+          <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#111827] mt-2">
+            Three layers. <br class="sm:hidden">
+            One developer.
+          </h2>
+          <p class="text-neutral-600 text-sm font-medium mt-4 max-w-xl mx-auto">
+            Three sides of the same developer — frontend pixels, Shopify Liquid architecture, and the ecosystem integrations beneath them.
+          </p>
+        </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 text-left">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 text-left">
           
-          <!-- Card 1: Frontend -->
-          <div class="neo-card p-6 bg-white">
-            <div class="flex items-center justify-between border-b-2 border-[#111827] pb-3 mb-4">
-              <span class="text-[10px] font-mono font-bold uppercase tracking-wider bg-neoTeal px-2.5 py-1 rounded-md border border-[#111827]">01 // FRONTEND</span>
-              <span class="text-xs font-mono font-bold text-neutral-400">Designing the surface</span>
+          <div class="gsap-stack-card neo-card p-8 bg-white">
+            <div class="flex items-center justify-between border-b-[2px] border-[#111827] pb-4 mb-5">
+              <span class="text-[10px] font-mono font-bold uppercase tracking-wider bg-neoTeal px-3 py-1.5 rounded border border-[#111827]">01 // FRONTEND</span>
             </div>
             <h3 class="text-xl font-black uppercase text-[#111827]">Pixels with personality.</h3>
-            <p class="text-xs text-neutral-600 mt-2 leading-relaxed">
-              Semantic HTML5, custom Tailwind CSS, and vanilla JavaScript written for sub-second interactions without framework bloat.
-            </p>
+            <p class="text-sm text-neutral-600 mt-3 leading-relaxed">Semantic HTML5, custom Tailwind CSS, and vanilla JavaScript written for sub-second interactions without framework bloat.</p>
             <div class="flex flex-wrap gap-2 mt-6">
-              <span class="px-2.5 py-1 rounded-md bg-neutral-100 border border-[#111827] font-mono text-[11px] font-bold">HTML5</span>
-              <span class="px-2.5 py-1 rounded-md bg-neutral-100 border border-[#111827] font-mono text-[11px] font-bold">CSS3</span>
-              <span class="px-2.5 py-1 rounded-md bg-neutral-100 border border-[#111827] font-mono text-[11px] font-bold">JavaScript ES6</span>
-              <span class="px-2.5 py-1 rounded-md bg-neutral-100 border border-[#111827] font-mono text-[11px] font-bold">Tailwind CSS</span>
-              <span class="px-2.5 py-1 rounded-md bg-neutral-100 border border-[#111827] font-mono text-[11px] font-bold">AJAX Carts</span>
+              <span class="px-3 py-1 rounded bg-neutral-100 border border-[#111827] font-mono text-xs font-bold">HTML5</span>
+              <span class="px-3 py-1 rounded bg-neutral-100 border border-[#111827] font-mono text-xs font-bold">CSS3</span>
+              <span class="px-3 py-1 rounded bg-neutral-100 border border-[#111827] font-mono text-xs font-bold">JavaScript ES6</span>
+              <span class="px-3 py-1 rounded bg-neutral-100 border border-[#111827] font-mono text-xs font-bold">Tailwind CSS</span>
             </div>
           </div>
 
-          <!-- Card 2: Backend Logic -->
-          <div class="neo-card p-6 bg-[#111827] text-white">
-            <div class="flex items-center justify-between border-b-2 border-white/20 pb-3 mb-4">
-              <span class="text-[10px] font-mono font-bold uppercase tracking-wider bg-neoOrange text-white px-2.5 py-1 rounded-md border border-[#111827]">02 // BACKEND</span>
-              <span class="text-xs font-mono font-bold text-neutral-400">Wiring the logic</span>
+          <div class="gsap-stack-card neo-card p-8 bg-[#111827] text-white">
+            <div class="flex items-center justify-between border-b-[2px] border-white/20 pb-4 mb-5">
+              <span class="text-[10px] font-mono font-bold uppercase tracking-wider bg-neoOrange text-white px-3 py-1.5 rounded border border-[#111827]">02 // BACKEND</span>
             </div>
             <h3 class="text-xl font-black uppercase text-white">Logic that holds up.</h3>
-            <p class="text-xs text-neutral-400 mt-2 leading-relaxed">
-              Custom Liquid section schemas, dynamic settings for merchants, fast snippet includes, and modular component architecture.
-            </p>
+            <p class="text-sm text-neutral-400 mt-3 leading-relaxed">Custom Liquid section schemas, dynamic settings for merchants, fast snippet includes, and modular component architecture.</p>
             <div class="flex flex-wrap gap-2 mt-6">
-              <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/20 font-mono text-[11px] font-bold text-white">Shopify Liquid</span>
-              <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/20 font-mono text-[11px] font-bold text-white">JSON Schemas</span>
-              <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/20 font-mono text-[11px] font-bold text-white">Theme Sections</span>
-              <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/20 font-mono text-[11px] font-bold text-white">Metafields</span>
-              <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/20 font-mono text-[11px] font-bold text-white">Shopify CLI</span>
+              <span class="px-3 py-1 rounded bg-white/10 border border-white/20 font-mono text-xs font-bold text-white">Shopify Liquid</span>
+              <span class="px-3 py-1 rounded bg-white/10 border border-white/20 font-mono text-xs font-bold text-white">JSON Schemas</span>
+              <span class="px-3 py-1 rounded bg-white/10 border border-white/20 font-mono text-xs font-bold text-white">Metafields</span>
             </div>
           </div>
 
-          <!-- Card 3: Ecosystem Data -->
-          <div class="neo-card p-6 bg-white">
-            <div class="flex items-center justify-between border-b-2 border-[#111827] pb-3 mb-4">
-              <span class="text-[10px] font-mono font-bold uppercase tracking-wider bg-neoYellow px-2.5 py-1 rounded-md border border-[#111827]">03 // STORAGE &amp; DATA</span>
-              <span class="text-xs font-mono font-bold text-neutral-400">Shaping the data</span>
+          <div class="gsap-stack-card neo-card p-8 bg-white">
+            <div class="flex items-center justify-between border-b-[2px] border-[#111827] pb-4 mb-5">
+              <span class="text-[10px] font-mono font-bold uppercase tracking-wider bg-neoYellow px-3 py-1.5 rounded border border-[#111827]">03 // DATA</span>
             </div>
             <h3 class="text-xl font-black uppercase text-[#111827]">Data that behaves.</h3>
-            <p class="text-xs text-neutral-600 mt-2 leading-relaxed">
-              Connecting 1-click checkout engines, payment gateways, ERPs, and automated fulfillment APIs with reliable error handling.
-            </p>
+            <p class="text-sm text-neutral-600 mt-3 leading-relaxed">Connecting 1-click checkout engines, payment gateways, ERPs, and automated fulfillment APIs with reliable error handling.</p>
             <div class="flex flex-wrap gap-2 mt-6">
-              <span class="px-2.5 py-1 rounded-md bg-neutral-100 border border-[#111827] font-mono text-[11px] font-bold">Razorpay</span>
-              <span class="px-2.5 py-1 rounded-md bg-neutral-100 border border-[#111827] font-mono text-[11px] font-bold">GoKwik</span>
-              <span class="px-2.5 py-1 rounded-md bg-neutral-100 border border-[#111827] font-mono text-[11px] font-bold">Cashfree</span>
-              <span class="px-2.5 py-1 rounded-md bg-neutral-100 border border-[#111827] font-mono text-[11px] font-bold">Shiprocket</span>
-              <span class="px-2.5 py-1 rounded-md bg-neutral-100 border border-[#111827] font-mono text-[11px] font-bold">Formspark API</span>
+              <span class="px-3 py-1 rounded bg-neutral-100 border border-[#111827] font-mono text-xs font-bold">Razorpay</span>
+              <span class="px-3 py-1 rounded bg-neutral-100 border border-[#111827] font-mono text-xs font-bold">GoKwik</span>
+              <span class="px-3 py-1 rounded bg-neutral-100 border border-[#111827] font-mono text-xs font-bold">Shiprocket</span>
             </div>
           </div>
 
         </div>
-
-      </div>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 6. CERTIFIED PARTNERS                          -->
-    <!-- ============================================== -->
-    <section id="partnerships" class="py-16 sm:py-20 bg-[#f9e8eb] border-b-[2.5px] border-[#111827]">
-      <div class="max-w-7xl mx-auto px-4 sm:px-8 text-center">
-        
-        <span class="text-xs font-mono font-bold uppercase tracking-widest text-neutral-600">ECOSYSTEM &amp; INTEGRATIONS</span>
-        <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#111827] mt-1">
-          Certified partner <span class="text-neoOrange">integrations.</span>
-        </h2>
-        <p class="text-neutral-700 text-xs sm:text-sm font-medium mt-2 max-w-xl mx-auto">
-          Specialized in frictionless 1-click checkouts and automated post-purchase logistics.
-        </p>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10 text-left">
-          
-          <!-- Payment Partners -->
-          <div class="neo-card p-6 bg-white">
-            <div class="flex items-center gap-3 mb-4">
-              <span class="w-10 h-10 rounded-xl bg-neoOrange text-white border-2 border-[#111827] flex items-center justify-center text-xl shadow-[2px_2px_0px_#111827]">💳</span>
-              <div>
-                <h3 class="text-base font-extrabold uppercase text-[#111827]">Payment Gateway Partners</h3>
-                <p class="text-xs text-neutral-500 font-mono">1-Click Checkout, UPI, Cards &amp; Net Banking</p>
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-2 pt-2">
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-100 border-2 border-[#111827] text-xs font-mono font-bold">Razorpay</span>
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-100 border-2 border-[#111827] text-xs font-mono font-bold">Cashfree</span>
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-100 border-2 border-[#111827] text-xs font-mono font-bold">PayU</span>
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-100 border-2 border-[#111827] text-xs font-mono font-bold">GoKwik</span>
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-100 border-2 border-[#111827] text-xs font-mono font-bold">Shopflo</span>
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-100 border-2 border-[#111827] text-xs font-mono font-bold">PhonePe</span>
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-100 border-2 border-[#111827] text-xs font-mono font-bold">PayGlocal</span>
-            </div>
-          </div>
-
-          <!-- Logistics Partners -->
-          <div class="neo-card p-6 bg-white">
-            <div class="flex items-center gap-3 mb-4">
-              <span class="w-10 h-10 rounded-xl bg-neoTeal text-[#111827] border-2 border-[#111827] flex items-center justify-center text-xl shadow-[2px_2px_0px_#111827]">🚚</span>
-              <div>
-                <h3 class="text-base font-extrabold uppercase text-[#111827]">Shipping &amp; Logistics Partners</h3>
-                <p class="text-xs text-neutral-500 font-mono">Automated Fulfillment, Tracking &amp; NDR</p>
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-2 pt-2">
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-100 border-2 border-[#111827] text-xs font-mono font-bold">Shipway</span>
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-100 border-2 border-[#111827] text-xs font-mono font-bold">Shiprocket</span>
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-100 border-2 border-[#111827] text-xs font-mono font-bold">Delhivery</span>
-              <span class="px-3 py-1.5 rounded-lg bg-neutral-100 border-2 border-[#111827] text-xs font-mono font-bold">iThink Logistics</span>
-            </div>
-          </div>
-
-        </div>
-
       </div>
     </section>
 
     <!-- ============================================== -->
     <!-- 7. SELECTED WORKS                              -->
     <!-- ============================================== -->
-    <section id="works" class="py-16 sm:py-24 bg-[#fce38a] border-b-[2.5px] border-[#111827]">
+    <section id="works" class="py-20 sm:py-32 bg-[#fbf9f4] border-b-[2px] border-[#111827]">
       <div class="max-w-7xl mx-auto px-4 sm:px-8">
         
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+        <div class="gsap-fade-up flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
             <span class="text-xs font-mono font-bold uppercase tracking-widest text-[#111827]/70">SELECTED WORK</span>
-            <h2 class="text-3xl sm:text-6xl font-black uppercase tracking-tight text-[#111827] mt-1">
+            <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#111827] mt-2">
               Things I've <br class="hidden sm:inline"> shipped.
             </h2>
           </div>
 
           <!-- Category Filter Buttons -->
           <div class="flex overflow-x-auto no-scrollbar gap-2 pb-2">
-            <button onclick="filterStores('all')" class="filter-btn active shrink-0 px-4 py-2 rounded-xl neo-btn bg-[#111827] text-white font-bold text-xs uppercase" data-category="all">All</button>
-            <button onclick="filterStores('footwear')" class="filter-btn shrink-0 px-4 py-2 rounded-xl neo-btn bg-white text-[#111827] font-bold text-xs uppercase" data-category="footwear">Footwear</button>
-            <button onclick="filterStores('fashion')" class="filter-btn shrink-0 px-4 py-2 rounded-xl neo-btn bg-white text-[#111827] font-bold text-xs uppercase" data-category="fashion">Fashion</button>
-            <button onclick="filterStores('jewelry')" class="filter-btn shrink-0 px-4 py-2 rounded-xl neo-btn bg-white text-[#111827] font-bold text-xs uppercase" data-category="jewelry">Jewellery</button>
-            <button onclick="filterStores('home')" class="filter-btn shrink-0 px-4 py-2 rounded-xl neo-btn bg-white text-[#111827] font-bold text-xs uppercase" data-category="home">Home</button>
+            <button onclick="filterStores('all')" class="filter-btn active shrink-0 px-5 py-2.5 rounded-xl neo-btn bg-[#111827] text-white font-bold text-xs uppercase" data-category="all">All</button>
+            <button onclick="filterStores('footwear')" class="filter-btn shrink-0 px-5 py-2.5 rounded-xl neo-btn bg-white text-[#111827] font-bold text-xs uppercase" data-category="footwear">Footwear</button>
+            <button onclick="filterStores('fashion')" class="filter-btn shrink-0 px-5 py-2.5 rounded-xl neo-btn bg-white text-[#111827] font-bold text-xs uppercase" data-category="fashion">Fashion</button>
+            <button onclick="filterStores('home')" class="filter-btn shrink-0 px-5 py-2.5 rounded-xl neo-btn bg-white text-[#111827] font-bold text-xs uppercase" data-category="home">Home</button>
           </div>
         </div>
 
-        <!-- 12 Project Cards Grid -->
-        <div id="projects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <!-- Project Cards Grid -->
+        <div id="projects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           
-          <!-- 1. Michael Angelo -->
-          <div class="project-item footwear neo-card overflow-hidden flex flex-col justify-between group">
+          <div class="gsap-project-item footwear neo-card overflow-hidden flex flex-col justify-between group">
             <div>
-              <div class="relative w-full h-44 overflow-hidden border-b-[2.5px] border-[#111827] bg-white">
+              <div class="relative w-full h-56 overflow-hidden border-b-[2px] border-[#111827] bg-white">
                 <img src="https://cdn.shopify.com/s/files/1/0657/7710/7144/files/Artboard_2_jpg.jpg?v=1779884867" alt="Michael Angelo" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" loading="lazy" />
-                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded bg-neoOrange text-white border border-[#111827] font-mono text-[10px] font-bold uppercase">Footwear</span>
               </div>
-              <div class="p-4">
-                <h3 class="text-base font-black uppercase text-[#111827]">Michael Angelo</h3>
-                <p class="text-xs text-neutral-600 mt-1 leading-relaxed line-clamp-2">Vertical: Premium Footwear. High-density visual storytelling, bespoke product sections, and smooth checkout flow.</p>
+              <div class="p-5">
+                <h3 class="text-lg font-black uppercase text-[#111827]">Michael Angelo</h3>
+                <p class="text-sm text-neutral-600 mt-2 leading-relaxed">Vertical: Premium Footwear. High-density visual storytelling, bespoke product sections, and smooth checkout flow.</p>
               </div>
             </div>
-            <div class="p-4 pt-0">
-              <a href="https://michaelangelo.in/" target="_blank" rel="noopener noreferrer" class="neo-btn w-full py-2 bg-neoTeal text-[#111827] font-black text-center text-xs uppercase block">
-                View Live Store ↗
-              </a>
+            <div class="p-5 pt-0">
+              <a href="https://michaelangelo.in/" target="_blank" rel="noopener noreferrer" class="neo-btn w-full py-3 bg-neoTeal text-[#111827] font-black text-center text-xs uppercase block">View Live Store ↗</a>
             </div>
           </div>
 
-          <!-- 2. Le Concept -->
-          <div class="project-item fashion neo-card overflow-hidden flex flex-col justify-between group">
+          <div class="gsap-project-item fashion neo-card overflow-hidden flex flex-col justify-between group">
             <div>
-              <div class="relative w-full h-44 overflow-hidden border-b-[2.5px] border-[#111827] bg-white">
+              <div class="relative w-full h-56 overflow-hidden border-b-[2px] border-[#111827] bg-white">
                 <img src="https://cdn.shopify.com/s/files/1/0890/7233/7188/files/Mask_group_6.png?v=1783936310" alt="Le Concept" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" loading="lazy" />
-                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded bg-neoOrange text-white border border-[#111827] font-mono text-[10px] font-bold uppercase">Women's Wear</span>
               </div>
-              <div class="p-4">
-                <h3 class="text-base font-black uppercase text-[#111827]">Le Concept</h3>
-                <p class="text-xs text-neutral-600 mt-1 leading-relaxed line-clamp-2">Vertical: Women's Wear &amp; Apparel. Clean grid aesthetics, fast-loading image pipelines, and modern product drawers.</p>
+              <div class="p-5">
+                <h3 class="text-lg font-black uppercase text-[#111827]">Le Concept</h3>
+                <p class="text-sm text-neutral-600 mt-2 leading-relaxed">Vertical: Women's Wear. Clean grid aesthetics, fast-loading image pipelines, and modern product drawers.</p>
               </div>
             </div>
-            <div class="p-4 pt-0">
-              <a href="https://www.leconcept.co.in/" target="_blank" rel="noopener noreferrer" class="neo-btn w-full py-2 bg-neoTeal text-[#111827] font-black text-center text-xs uppercase block">
-                View Live Store ↗
-              </a>
+            <div class="p-5 pt-0">
+              <a href="https://www.leconcept.co.in/" target="_blank" rel="noopener noreferrer" class="neo-btn w-full py-3 bg-neoTeal text-[#111827] font-black text-center text-xs uppercase block">View Live Store ↗</a>
             </div>
           </div>
 
-          <!-- 3. Spiffers -->
-          <div class="project-item footwear neo-card overflow-hidden flex flex-col justify-between group">
+          <div class="gsap-project-item fashion neo-card overflow-hidden flex flex-col justify-between group">
             <div>
-              <div class="relative w-full h-44 overflow-hidden border-b-[2.5px] border-[#111827] bg-white">
-                <img src="https://www.spiffers.in/cdn/shop/files/Rectangle_142.png?v=1780992822&width=1600" alt="Spiffers" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" loading="lazy" />
-                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded bg-neoOrange text-white border border-[#111827] font-mono text-[10px] font-bold uppercase">Footwear</span>
-              </div>
-              <div class="p-4">
-                <h3 class="text-base font-black uppercase text-[#111827]">Spiffers</h3>
-                <p class="text-xs text-neutral-600 mt-1 leading-relaxed line-clamp-2">Vertical: Footwear Brand. Responsive catalog layout, size selector matrix, and high-conversion product pages.</p>
-              </div>
-            </div>
-            <div class="p-4 pt-0">
-              <a href="https://www.spiffers.in/" target="_blank" rel="noopener noreferrer" class="neo-btn w-full py-2 bg-neoTeal text-[#111827] font-black text-center text-xs uppercase block">
-                View Live Store ↗
-              </a>
-            </div>
-          </div>
-
-          <!-- 4. Nikunj Niidhi Bajaj -->
-          <div class="project-item fashion neo-card overflow-hidden flex flex-col justify-between group">
-            <div>
-              <div class="relative w-full h-44 overflow-hidden border-b-[2.5px] border-[#111827] bg-white">
-                <img src="https://nikunjbyniidhibajaj.com/cdn/shop/files/2.png?v=1780501726&width=2400" alt="Nikunj Niidhi Bajaj" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" loading="lazy" />
-                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded bg-neoOrange text-white border border-[#111827] font-mono text-[10px] font-bold uppercase">Ethnic Wear</span>
-              </div>
-              <div class="p-4">
-                <h3 class="text-base font-black uppercase text-[#111827]">Nikunj Niidhi Bajaj</h3>
-                <p class="text-xs text-neutral-600 mt-1 leading-relaxed line-clamp-2">Vertical: Women Ethnic Wear. Bespoke navigation architecture, designer lookbooks, and smooth responsive menus.</p>
-              </div>
-            </div>
-            <div class="p-4 pt-0">
-              <a href="https://nikunjbyniidhibajaj.com/" target="_blank" rel="noopener noreferrer" class="neo-btn w-full py-2 bg-neoTeal text-[#111827] font-black text-center text-xs uppercase block">
-                View Live Store ↗
-              </a>
-            </div>
-          </div>
-
-          <!-- 5. Loom & Story -->
-          <div class="project-item fashion neo-card overflow-hidden flex flex-col justify-between group">
-            <div>
-              <div class="relative w-full h-44 overflow-hidden border-b-[2.5px] border-[#111827] bg-white">
-                <img src="https://loomandstory.com/cdn/shop/files/website.jpg?v=1785494251&width=2000" alt="Loom & Story" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" loading="lazy" />
-                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded bg-neoOrange text-white border border-[#111827] font-mono text-[10px] font-bold uppercase">Women's Wear</span>
-              </div>
-              <div class="p-4">
-                <h3 class="text-base font-black uppercase text-[#111827]">Loom &amp; Story</h3>
-                <p class="text-xs text-neutral-600 mt-1 leading-relaxed line-clamp-2">Vertical: Women's Wear. Refined textile storytelling, seamless mobile drawer checkout, and optimized Core Web Vitals.</p>
-              </div>
-            </div>
-            <div class="p-4 pt-0">
-              <a href="https://loomandstory.com/" target="_blank" rel="noopener noreferrer" class="neo-btn w-full py-2 bg-neoTeal text-[#111827] font-black text-center text-xs uppercase block">
-                View Live Store ↗
-              </a>
-            </div>
-          </div>
-
-          <!-- 6. Zaydn -->
-          <div class="project-item footwear neo-card overflow-hidden flex flex-col justify-between group">
-            <div>
-              <div class="relative w-full h-44 overflow-hidden border-b-[2.5px] border-[#111827] bg-white">
-                <img src="https://zaydns.com/cdn/shop/files/YOO.jpg?v=1779727236&width=1200" alt="Zaydn" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" loading="lazy" />
-                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded bg-neoOrange text-white border border-[#111827] font-mono text-[10px] font-bold uppercase">Footwear</span>
-              </div>
-              <div class="p-4">
-                <h3 class="text-base font-black uppercase text-[#111827]">Zaydn</h3>
-                <p class="text-xs text-neutral-600 mt-1 leading-relaxed line-clamp-2">Vertical: Footwear Brand. Interactive product lore features, performance optimization, and custom Liquid components.</p>
-              </div>
-            </div>
-            <div class="p-4 pt-0">
-              <a href="https://zaydns.com/" target="_blank" rel="noopener noreferrer" class="neo-btn w-full py-2 bg-neoTeal text-[#111827] font-black text-center text-xs uppercase block">
-                View Live Store ↗
-              </a>
-            </div>
-          </div>
-
-          <!-- 7. Miira -->
-          <div class="project-item jewelry neo-card overflow-hidden flex flex-col justify-between group">
-            <div>
-              <div class="relative w-full h-44 overflow-hidden border-b-[2.5px] border-[#111827] bg-white">
-                <img src="https://www.miira.in/cdn/shop/files/SparklingnamenecklaceRs2499_700x.jpg?v=1784040283" alt="Miira" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" loading="lazy" />
-                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded bg-neoOrange text-white border border-[#111827] font-mono text-[10px] font-bold uppercase">Jewellery</span>
-              </div>
-              <div class="p-4">
-                <h3 class="text-base font-black uppercase text-[#111827]">Miira</h3>
-                <p class="text-xs text-neutral-600 mt-1 leading-relaxed line-clamp-2">Vertical: Artificial Jewellery. Elegant product showcases, high-resolution media galleries, and clean collection filters.</p>
-              </div>
-            </div>
-            <div class="p-4 pt-0">
-              <a href="https://www.miira.in/" target="_blank" rel="noopener noreferrer" class="neo-btn w-full py-2 bg-neoTeal text-[#111827] font-black text-center text-xs uppercase block">
-                View Live Store ↗
-              </a>
-            </div>
-          </div>
-
-          <!-- 8. Banarasiya -->
-          <div class="project-item fashion neo-card overflow-hidden flex flex-col justify-between group">
-            <div>
-              <div class="relative w-full h-44 overflow-hidden border-b-[2.5px] border-[#111827] bg-white">
+              <div class="relative w-full h-56 overflow-hidden border-b-[2px] border-[#111827] bg-white">
                 <img src="https://cdn.shopify.com/s/files/1/0497/0240/4258/files/Group_93_1.png?v=1778482629" alt="Banarasiya" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" loading="lazy" />
-                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded bg-neoOrange text-white border border-[#111827] font-mono text-[10px] font-bold uppercase">Saree Store</span>
               </div>
-              <div class="p-4">
-                <h3 class="text-base font-black uppercase text-[#111827]">Banarasiya</h3>
-                <p class="text-xs text-neutral-600 mt-1 leading-relaxed line-clamp-2">Vertical: Banarasi Saree Store. Heritage aesthetic, custom hero sliders, swatch matrix selectors, and zero bloat.</p>
-              </div>
-            </div>
-            <div class="p-4 pt-0">
-              <a href="https://banarasiya.in/" target="_blank" rel="noopener noreferrer" class="neo-btn w-full py-2 bg-neoTeal text-[#111827] font-black text-center text-xs uppercase block">
-                View Live Store ↗
-              </a>
-            </div>
-          </div>
-
-          <!-- 9. Vespera Homes -->
-          <div class="project-item home neo-card overflow-hidden flex flex-col justify-between group">
-            <div>
-              <div class="relative w-full h-44 overflow-hidden border-b-[2.5px] border-[#111827] bg-white">
-                <img src="https://www.vesperahomes.com/cdn/shop/files/Self-care_Sunday_Sale_Green_Shopify_Banner_38.png?v=1783680878&width=1920" alt="Vespera Homes" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" loading="lazy" />
-                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded bg-neoOrange text-white border border-[#111827] font-mono text-[10px] font-bold uppercase">Home Decor</span>
-              </div>
-              <div class="p-4">
-                <h3 class="text-base font-black uppercase text-[#111827]">Vespera Homes</h3>
-                <p class="text-xs text-neutral-600 mt-1 leading-relaxed line-clamp-2">Vertical: Home Decor. Modular Liquid section schemas, structured metadata, and streamlined catalog UX.</p>
+              <div class="p-5">
+                <h3 class="text-lg font-black uppercase text-[#111827]">Banarasiya</h3>
+                <p class="text-sm text-neutral-600 mt-2 leading-relaxed">Vertical: Banarasi Saree Store. Heritage aesthetic, custom hero sliders, swatch selectors, and zero bloat.</p>
               </div>
             </div>
-            <div class="p-4 pt-0">
-              <a href="https://www.vesperahomes.com/" target="_blank" rel="noopener noreferrer" class="neo-btn w-full py-2 bg-neoTeal text-[#111827] font-black text-center text-xs uppercase block">
-                View Live Store ↗
-              </a>
-            </div>
-          </div>
-
-          <!-- 10. Sojanya -->
-          <div class="project-item fashion neo-card overflow-hidden flex flex-col justify-between group">
-            <div>
-              <div class="relative w-full h-44 overflow-hidden border-b-[2.5px] border-[#111827] bg-white">
-                <img src="https://sojanya.com/cdn/shop/files/2_08eebcdd-d7f0-480a-9ad4-4daf34580003.jpg?v=1757503550&width=1410" alt="Sojanya" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" loading="lazy" />
-                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded bg-neoOrange text-white border border-[#111827] font-mono text-[10px] font-bold uppercase">Ethnic Wear</span>
-              </div>
-              <div class="p-4">
-                <h3 class="text-base font-black uppercase text-[#111827]">Sojanya</h3>
-                <p class="text-xs text-neutral-600 mt-1 leading-relaxed line-clamp-2">Vertical: Men Ethnic Wear. High-volume catalog architecture optimized for rapid navigation and checkout speed.</p>
-              </div>
-            </div>
-            <div class="p-4 pt-0">
-              <a href="https://sojanya.com/" target="_blank" rel="noopener noreferrer" class="neo-btn w-full py-2 bg-neoTeal text-[#111827] font-black text-center text-xs uppercase block">
-                View Live Store ↗
-              </a>
-            </div>
-          </div>
-
-          <!-- 11. Paakhi -->
-          <div class="project-item home neo-card overflow-hidden flex flex-col justify-between group">
-            <div>
-              <div class="relative w-full h-44 overflow-hidden border-b-[2.5px] border-[#111827] bg-white">
-                <img src="https://paakhihome.com/cdn/shop/files/PRT-004_15_10a2899c-7648-4a38-8f54-1b48b3da78a1.jpg?v=1769081125&width=1296" alt="Paakhi" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" loading="lazy" />
-                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded bg-neoOrange text-white border border-[#111827] font-mono text-[10px] font-bold uppercase">Essentials</span>
-              </div>
-              <div class="p-4">
-                <h3 class="text-base font-black uppercase text-[#111827]">Paakhi</h3>
-                <p class="text-xs text-neutral-600 mt-1 leading-relaxed line-clamp-2">Vertical: Home Essentials (Pillows, Covers, Bedsheets). Custom collection filtering and clean product variant setups.</p>
-              </div>
-            </div>
-            <div class="p-4 pt-0">
-              <a href="https://paakhihome.com/" target="_blank" rel="noopener noreferrer" class="neo-btn w-full py-2 bg-neoTeal text-[#111827] font-black text-center text-xs uppercase block">
-                View Live Store ↗
-              </a>
-            </div>
-          </div>
-
-          <!-- 12. Taksh -->
-          <div class="project-item jewelry neo-card overflow-hidden flex flex-col justify-between group">
-            <div>
-              <div class="relative w-full h-44 overflow-hidden border-b-[2.5px] border-[#111827] bg-white">
-                <img src="https://takshexclusive.com/cdn/shop/files/IMG_20260508_192457.png?v=1778248556&width=2560" alt="Taksh" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" loading="lazy" />
-                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded bg-neoOrange text-white border border-[#111827] font-mono text-[10px] font-bold uppercase">Jewellery</span>
-              </div>
-              <div class="p-4">
-                <h3 class="text-base font-black uppercase text-[#111827]">Taksh</h3>
-                <p class="text-xs text-neutral-600 mt-1 leading-relaxed line-clamp-2">Vertical: Premium Artificial &amp; Bridal Jewelry. High-end luxury aesthetics, visual zoom, and polished product merchandising.</p>
-              </div>
-            </div>
-            <div class="p-4 pt-0">
-              <a href="https://takshexclusive.com/" target="_blank" rel="noopener noreferrer" class="neo-btn w-full py-2 bg-neoTeal text-[#111827] font-black text-center text-xs uppercase block">
-                View Live Store ↗
-              </a>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Note Badge Below Works -->
-        <div class="mt-12 text-center">
-          <div class="neo-card px-6 py-3 bg-white font-mono font-bold text-xs sm:text-sm inline-block">
-            ✨ There are many more websites I’ve delivered across diverse industries.
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 8. ARCHITECTURE & CODE SNIPPET                 -->
-    <!-- ============================================== -->
-    <section id="stack-code" class="py-16 sm:py-24 bg-[#fbf9f4] border-b-[2.5px] border-[#111827]">
-      <div class="max-w-7xl mx-auto px-4 sm:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          
-          <div class="lg:col-span-6 text-left">
-            <span class="text-xs font-mono font-bold uppercase tracking-widest bg-neoOrange/10 border border-neoOrange/30 text-neoOrange px-3 py-1 rounded-full">Engineering Standard</span>
-            <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#111827] mt-4 leading-snug">
-              Engineered Clean. <br>
-              Zero App Overhead.
-            </h2>
-            <p class="text-neutral-700 text-xs sm:text-sm leading-relaxed mt-4 font-medium">
-              I eliminate third-party app dependencies by writing custom section schemas, native JavaScript AJAX cart interactions, and JSON-LD structured data directly into the theme files.
-            </p>
-
-            <div class="mt-6 space-y-3 font-mono text-xs font-bold text-neutral-800">
-              <div class="flex items-start gap-2.5">
-                <span class="text-emerald-500 font-black">✔</span>
-                <span>Custom Shopify Section Schemas with Live Merchant Settings</span>
-              </div>
-              <div class="flex items-start gap-2.5">
-                <span class="text-emerald-500 font-black">✔</span>
-                <span>Gateway Integration: Razorpay, GoKwik, Cashfree, PayU, Shopflo, PhonePe &amp; PayGlocal</span>
-              </div>
-              <div class="flex items-start gap-2.5">
-                <span class="text-emerald-500 font-black">✔</span>
-                <span>Technical SEO: JSON-LD Structured Data &amp; Organization Schemas</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Code Window Mockup -->
-          <div class="lg:col-span-6">
-            <div class="neo-card bg-[#111827] text-white overflow-hidden p-0">
-              <div class="bg-[#1f2937] px-4 py-3 border-b-[2.5px] border-[#111827] flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                  <span class="w-3 h-3 rounded-full bg-rose-500 border border-black inline-block"></span>
-                  <span class="w-3 h-3 rounded-full bg-amber-400 border border-black inline-block"></span>
-                  <span class="w-3 h-3 rounded-full bg-emerald-400 border border-black inline-block"></span>
-                </div>
-                <span class="font-mono text-[11px] text-neutral-400">snippets/seo-structured-data.liquid</span>
-              </div>
-              <div class="p-5 font-mono text-[11px] sm:text-xs leading-relaxed overflow-x-auto text-neutral-300 bg-[#090d16]">
-                <p><span class="text-purple-400">&lt;script</span> <span class="text-neoTeal">type=</span><span class="text-amber-300">"application/ld+json"</span><span class="text-purple-400">&gt;</span></p>
-                <p class="text-neutral-400 pl-4">{</p>
-                <p class="text-neutral-400 pl-8"><span class="text-blue-400">"@context"</span>: <span class="text-amber-300">"https://schema.org"</span>,</p>
-                <p class="text-neutral-400 pl-8"><span class="text-blue-400">"@type"</span>: <span class="text-amber-300">"Product"</span>,</p>
-                <p class="text-neutral-400 pl-8"><span class="text-blue-400">"name"</span>: <span class="text-purple-400">{{</span> <span class="text-white">product.title | json</span> <span class="text-purple-400">}}</span>,</p>
-                <p class="text-neutral-400 pl-8"><span class="text-blue-400">"offers"</span>: { <span class="text-blue-400">"price"</span>: <span class="text-purple-400">{{</span> <span class="text-white">product.price | money_without_currency</span> <span class="text-purple-400">}}</span> }</p>
-                <p class="text-neutral-400 pl-4">}</p>
-                <p><span class="text-purple-400">&lt;/script&gt;</span></p>
-              </div>
+            <div class="p-5 pt-0">
+              <a href="https://banarasiya.in/" target="_blank" rel="noopener noreferrer" class="neo-btn w-full py-3 bg-neoTeal text-[#111827] font-black text-center text-xs uppercase block">View Live Store ↗</a>
             </div>
           </div>
 
@@ -983,105 +526,57 @@
     <!-- ============================================== -->
     <!-- 9. CONTACT FORM                                -->
     <!-- ============================================== -->
-    <section id="connect" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-8">
-      
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    <section id="connect" class="py-20 sm:py-32 max-w-7xl mx-auto px-4 sm:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         
         <!-- Left Contact Info Box -->
-        <div class="lg:col-span-5 text-left">
+        <div class="gsap-contact-info lg:col-span-5 text-left">
           <span class="text-xs font-mono font-bold uppercase tracking-widest text-neutral-500">LET'S BUILD</span>
-          <h2 class="text-3xl sm:text-6xl font-black uppercase tracking-tight text-[#111827] mt-1">
+          <h2 class="text-4xl sm:text-6xl font-black uppercase tracking-tight text-[#111827] mt-2">
             Got an idea? <br>
             <span class="text-neoOrange">Let's ship it.</span>
           </h2>
-          <p class="text-neutral-700 text-xs sm:text-sm font-medium mt-3 leading-relaxed">
+          <p class="text-neutral-600 text-sm font-medium mt-4 leading-relaxed">
             Shopify builds, Liquid architecture, checkout optimization, or payment integrations — I'm just a message away.
           </p>
 
-          <div class="mt-8 space-y-3">
-            <a href="mailto:letswork.arvind@gmail.com" class="neo-card p-4 flex items-center justify-between font-mono font-bold text-xs bg-white block">
+          <div class="mt-10 space-y-4">
+            <a href="mailto:letswork.arvind@gmail.com" class="neo-card p-5 flex items-center justify-between font-mono font-bold text-sm bg-white block">
               <span class="truncate">✉ letswork.arvind@gmail.com</span>
-              <span class="text-neoOrange text-base">↗</span>
+              <span class="text-neoOrange text-lg">↗</span>
             </a>
-            <a href="https://wa.me/918874856868" target="_blank" rel="noopener noreferrer" class="neo-card p-4 flex items-center justify-between font-mono font-bold text-xs bg-white block">
+            <a href="https://wa.me/918874856868" target="_blank" rel="noopener noreferrer" class="neo-card p-5 flex items-center justify-between font-mono font-bold text-sm bg-white block">
               <span>💬 WhatsApp: +91 8874856868</span>
-              <span class="text-neoOrange text-base">↗</span>
+              <span class="text-neoOrange text-lg">↗</span>
             </a>
-            <a href="https://www.linkedin.com/in/arvind-verma-5061a3228" target="_blank" rel="noopener noreferrer" class="neo-card p-4 flex items-center justify-between font-mono font-bold text-xs bg-white block">
-              <span>💼 LinkedIn Profile</span>
-              <span class="text-neoOrange text-base">↗</span>
-            </a>
-            <div class="neo-card p-4 flex items-center justify-between font-mono font-bold text-xs bg-neoTeal/20">
-              <span>🌍 Open for Remote Work</span>
-              <span class="text-emerald-600 font-black">✔</span>
-            </div>
           </div>
         </div>
 
         <!-- Right Form Box -->
-        <div class="lg:col-span-7">
-          <div class="neo-card p-6 sm:p-8 bg-white">
-            
-            <form id="portfolio-form" onsubmit="submitViaGoogleScript(event)" class="space-y-4">
-              
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="gsap-contact-form lg:col-span-7">
+          <div class="neo-card p-8 sm:p-10 bg-white">
+            <form id="portfolio-form" onsubmit="submitViaGoogleScript(event)" class="space-y-5">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
-                  <label for="form-name" class="block text-xs font-mono font-bold uppercase mb-1">Your Name *</label>
-                  <input type="text" id="form-name" required placeholder="e.g. Rahul Sharma" class="w-full px-3.5 py-2.5 rounded-xl border-[2.5px] border-[#111827] bg-[#fbf9f4] text-sm font-medium focus:outline-none focus:bg-white transition" />
+                  <label for="form-name" class="block text-xs font-mono font-bold uppercase mb-2">Your Name *</label>
+                  <input type="text" id="form-name" required placeholder="e.g. Rahul Sharma" class="w-full px-4 py-3 rounded-xl border-[2px] border-[#111827] bg-[#fbf9f4] text-sm focus:outline-none focus:bg-white transition" />
                 </div>
                 <div>
-                  <label for="form-email" class="block text-xs font-mono font-bold uppercase mb-1">Email Address *</label>
-                  <input type="email" id="form-email" required placeholder="name@company.com" class="w-full px-3.5 py-2.5 rounded-xl border-[2.5px] border-[#111827] bg-[#fbf9f4] text-sm font-medium focus:outline-none focus:bg-white transition" />
-                </div>
-              </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label for="form-phone" class="block text-xs font-mono font-bold uppercase mb-1">Phone / WhatsApp Number</label>
-                  <input type="tel" id="form-phone" placeholder="+91 88748 56868" class="w-full px-3.5 py-2.5 rounded-xl border-[2.5px] border-[#111827] bg-[#fbf9f4] text-sm font-medium focus:outline-none focus:bg-white transition" />
-                </div>
-                <div>
-                  <label for="form-company" class="block text-xs font-mono font-bold uppercase mb-1">Company / Brand Name *</label>
-                  <input type="text" id="form-company" required placeholder="e.g. Brand Name" class="w-full px-3.5 py-2.5 rounded-xl border-[2.5px] border-[#111827] bg-[#fbf9f4] text-sm font-medium focus:outline-none focus:bg-white transition" />
-                </div>
-              </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label for="form-website" class="block text-xs font-mono font-bold uppercase mb-1">Website URL (if applicable)</label>
-                  <input type="url" id="form-website" placeholder="https://yourbrand.com" class="w-full px-3.5 py-2.5 rounded-xl border-[2.5px] border-[#111827] bg-[#fbf9f4] text-sm font-medium focus:outline-none focus:bg-white transition" />
-                </div>
-                <div>
-                  <label for="form-service" class="block text-xs font-mono font-bold uppercase mb-1">Service Required</label>
-                  <select id="form-service" class="w-full px-3.5 py-2.5 rounded-xl border-[2.5px] border-[#111827] bg-[#fbf9f4] text-sm font-medium focus:outline-none focus:bg-white transition">
-                    <option value="Custom Shopify Theme & Store Development">Custom Shopify Theme & Store Development</option>
-                    <option value="Shopify Speed & Core Web Vitals Optimization">Shopify Speed & Core Web Vitals Optimization</option>
-                    <option value="Payment Gateway & 1-Click Checkout Integration">Payment Gateway & 1-Click Checkout Integration</option>
-                    <option value="Shipping & Logistics Automation">Shipping & Logistics Automation</option>
-                    <option value="Technical SEO & Structured Schema">Technical SEO & Structured Schema</option>
-                    <option value="Custom Liquid Sections & Apps">Custom Liquid Sections & Apps</option>
-                    <option value="Other">Other</option>
-                  </select>
+                  <label for="form-email" class="block text-xs font-mono font-bold uppercase mb-2">Email Address *</label>
+                  <input type="email" id="form-email" required placeholder="name@company.com" class="w-full px-4 py-3 rounded-xl border-[2px] border-[#111827] bg-[#fbf9f4] text-sm focus:outline-none focus:bg-white transition" />
                 </div>
               </div>
 
               <div>
-                <label for="form-message" class="block text-xs font-mono font-bold uppercase mb-1">Project Brief / Message *</label>
-                <textarea id="form-message" rows="3" required placeholder="Tell me about your project scope, timeline, or links..." class="w-full px-3.5 py-2.5 rounded-xl border-[2.5px] border-[#111827] bg-[#fbf9f4] text-sm font-medium focus:outline-none focus:bg-white transition"></textarea>
+                <label for="form-message" class="block text-xs font-mono font-bold uppercase mb-2">Project Brief / Message *</label>
+                <textarea id="form-message" rows="4" required placeholder="Tell me about your project scope, timeline, or links..." class="w-full px-4 py-3 rounded-xl border-[2px] border-[#111827] bg-[#fbf9f4] text-sm focus:outline-none focus:bg-white transition"></textarea>
               </div>
 
-              <button type="submit" id="submit-btn" class="neo-btn w-full py-3.5 rounded-xl bg-neoOrange text-white font-black text-xs uppercase tracking-wider">
+              <button type="submit" id="submit-btn" class="neo-btn w-full py-4 rounded-xl bg-neoOrange text-white font-black text-sm uppercase tracking-wider mt-2">
                 Send Message ↗
               </button>
-
-              <p id="form-status" class="text-xs text-center font-mono mt-2 hidden"></p>
+              <p id="form-status" class="text-sm text-center font-mono mt-3 hidden"></p>
             </form>
-
-            <div class="mt-6 pt-4 border-t-2 border-neutral-200 flex items-center justify-between text-xs font-mono text-neutral-500">
-              <span>Direct: letswork.arvind@gmail.com</span>
-              <button onclick="copyEmail('letswork.arvind@gmail.com', 'quick-copy')" id="quick-copy" class="px-2 py-1 bg-neutral-100 border border-[#111827] rounded text-[10px] font-bold uppercase hover:bg-neutral-200">Copy</button>
-            </div>
-
           </div>
         </div>
 
@@ -1089,45 +584,85 @@
     </section>
 
     <!-- ============================================== -->
-    <!-- 10. FOOTER (Clean Aligned Hierarchy)           -->
+    <!-- 10. FOOTER                                     -->
     <!-- ============================================== -->
-    <footer class="py-12 bg-[#111827] text-white border-t-[2.5px] border-[#111827]">
+    <footer class="py-12 bg-[#111827] text-white border-t-[2px] border-[#111827]">
       <div class="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
-        
-        <!-- Left Identity -->
         <div>
-          <p class="font-black text-base uppercase tracking-tight text-white">Arvind Verma</p>
-          <p class="text-xs text-neutral-400 font-mono mt-0.5">Shopify &amp; E-Commerce Expert</p>
+          <p class="font-black text-lg uppercase tracking-tight text-white">Arvind Verma</p>
+          <p class="text-xs text-neutral-400 font-mono mt-1">Shopify &amp; E-Commerce Expert</p>
         </div>
-
-        <!-- Center / Right Links Alignment -->
         <div class="flex flex-wrap justify-center items-center gap-5 sm:gap-6 text-xs font-mono">
-          <a href="https://www.linkedin.com/in/arvind-verma-5061a3228" target="_blank" rel="noopener noreferrer" class="text-neutral-300 hover:text-neoOrange transition">
-            LinkedIn Profile
-          </a>
+          <a href="https://www.linkedin.com/in/arvind-verma-5061a3228" target="_blank" class="text-neutral-300 hover:text-neoOrange transition">LinkedIn</a>
           <span class="text-neutral-600 font-bold">•</span>
-          <a href="https://wa.me/918874856868" target="_blank" rel="noopener noreferrer" class="text-neutral-300 hover:text-neoOrange transition">
-            WhatsApp
-          </a>
-          <span class="text-neutral-600 font-bold">•</span>
-          <span class="text-neutral-400 uppercase tracking-wider font-semibold">
-            Crafted with care by VindX
-          </span>
+          <a href="https://wa.me/918874856868" target="_blank" class="text-neutral-300 hover:text-neoOrange transition">WhatsApp</a>
         </div>
-
       </div>
     </footer>
 
   </main>
 
-  <!-- Interactive JavaScript -->
+  <!-- GSAP & ScrollTrigger Core Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- Interactive Logic & Animations -->
   <script>
+    // Initialize GSAP Animations
+    document.addEventListener("DOMContentLoaded", (event) => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Hero Section Entrance Animation
+      const heroTl = gsap.timeline();
+      heroTl.from(".gsap-sun", { scale: 0, opacity: 0, duration: 1, ease: "back.out(1.5)" })
+            .from(".gsap-hero-el", { y: 30, opacity: 0, duration: 0.8, stagger: 0.15, ease: "power3.out" }, "-=0.5");
+
+      // Floating Badges Animation (Infinite Loop)
+      gsap.to(".floating-badge-1", { y: -12, rotation: 3, duration: 2.5, yoyo: true, repeat: -1, ease: "sine.inOut" });
+      gsap.to(".floating-badge-2", { y: 12, rotation: -3, duration: 3, yoyo: true, repeat: -1, ease: "sine.inOut" });
+
+      // Scroll Animations for Sections
+      gsap.utils.toArray('.gsap-fade-up').forEach(element => {
+        gsap.from(element, {
+          scrollTrigger: { trigger: element, start: "top 85%" },
+          y: 40, opacity: 0, duration: 0.8, ease: "power3.out"
+        });
+      });
+
+      // Staggered Cards (Services)
+      gsap.from(".gsap-service-card", {
+        scrollTrigger: { trigger: "#services", start: "top 80%" },
+        y: 40, opacity: 0, duration: 0.6, stagger: 0.1, ease: "power2.out"
+      });
+
+      // Staggered Cards (Stack)
+      gsap.from(".gsap-stack-card", {
+        scrollTrigger: { trigger: "#stack", start: "top 80%" },
+        y: 40, opacity: 0, duration: 0.6, stagger: 0.15, ease: "power2.out"
+      });
+
+      // Staggered Cards (Projects)
+      gsap.from(".gsap-project-item", {
+        scrollTrigger: { trigger: "#works", start: "top 80%" },
+        y: 40, opacity: 0, duration: 0.6, stagger: 0.1, ease: "power2.out"
+      });
+
+      // Contact Form Reveal
+      gsap.from(".gsap-contact-info", {
+        scrollTrigger: { trigger: "#connect", start: "top 80%" },
+        x: -40, opacity: 0, duration: 0.8, ease: "power3.out"
+      });
+      gsap.from(".gsap-contact-form", {
+        scrollTrigger: { trigger: "#connect", start: "top 80%" },
+        x: 40, opacity: 0, duration: 0.8, ease: "power3.out"
+      });
+    });
+
     // Toggle Mobile Navigation Drawer
     function toggleMobileMenu() {
       const menu = document.getElementById('mobile-menu');
       const openIcon = document.getElementById('menu-icon-open');
       const closeIcon = document.getElementById('menu-icon-close');
-
       menu.classList.toggle('hidden');
       openIcon.classList.toggle('hidden');
       closeIcon.classList.toggle('hidden');
@@ -1136,90 +671,64 @@
     // Direct Google Apps Script Submitter
     async function submitViaGoogleScript(e) {
       e.preventDefault();
-      
       const submitBtn = document.getElementById('submit-btn');
       const statusMsg = document.getElementById('form-status');
-      
       const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxikOKgThHvPuSbtPBg-vRB03yvX9SLVd2wv1eATG_OlUKLim-6YSJx4KoAbebuzas-/exec";
 
-      const nameVal    = document.getElementById('form-name').value;
-      const emailVal   = document.getElementById('form-email').value;
-      const phoneVal   = document.getElementById('form-phone').value;
-      const companyVal = document.getElementById('form-company').value;
-      const websiteVal = document.getElementById('form-website').value;
-      const serviceVal = document.getElementById('form-service').value;
-      const messageVal = document.getElementById('form-message').value;
+      const payload = {
+        name: document.getElementById('form-name').value,
+        email: document.getElementById('form-email').value,
+        message: document.getElementById('form-message').value
+      };
 
       submitBtn.disabled = true;
       submitBtn.innerText = "SENDING...";
-
-      const payload = {
-        name: nameVal,
-        email: emailVal,
-        phone: phoneVal,
-        company: companyVal,
-        website: websiteVal,
-        service: serviceVal,
-        message: messageVal
-      };
+      statusMsg.classList.remove('hidden');
+      statusMsg.className = "text-sm text-center font-mono mt-3 text-neutral-600 block";
+      statusMsg.innerText = "Sending message...";
 
       try {
         await fetch(GOOGLE_SCRIPT_URL, {
-          method: "POST",
-          mode: "no-cors",
-          headers: {
-            "Content-Type": "application/json"
-          },
+          method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload)
         });
-
-        statusMsg.className = "text-xs text-center font-mono mt-3 text-emerald-600 font-bold block";
-        statusMsg.innerText = "✓ Thank you! Your message has been sent directly to my inbox.";
+        statusMsg.className = "text-sm text-center font-mono mt-3 text-emerald-600 font-bold block";
+        statusMsg.innerText = "✓ Thank you! Your message has been sent.";
         document.getElementById('portfolio-form').reset();
       } catch (err) {
-        statusMsg.className = "text-xs text-center font-mono mt-3 text-rose-600 font-bold block";
-        statusMsg.innerText = "Submission failed. Please email directly at letswork.arvind@gmail.com";
+        statusMsg.className = "text-sm text-center font-mono mt-3 text-rose-600 font-bold block";
+        statusMsg.innerText = "Submission failed. Please email directly.";
       } finally {
         submitBtn.disabled = false;
         submitBtn.innerText = "Send Message ↗";
       }
     }
 
-    // Quick Copy Helper
-    function copyEmail(email, btnId) {
-      navigator.clipboard.writeText(email).then(() => {
-        const btn = document.getElementById(btnId);
-        btn.innerText = "Copied!";
-        setTimeout(() => {
-          btn.innerText = "Copy";
-        }, 2000);
-      });
-    }
-
     // Project Filtering Engine
     function filterStores(category) {
-      const items = document.querySelectorAll('.project-item');
+      const items = document.querySelectorAll('.gsap-project-item');
       const buttons = document.querySelectorAll('.filter-btn');
 
       buttons.forEach(btn => {
         if(btn.dataset.category === category) {
-          btn.classList.remove('bg-white', 'text-[#111827]');
-          btn.classList.add('bg-[#111827]', 'text-white');
+          btn.classList.replace('bg-white', 'bg-[#111827]');
+          btn.classList.replace('text-[#111827]', 'text-white');
         } else {
-          btn.classList.remove('bg-[#111827]', 'text-white');
-          btn.classList.add('bg-white', 'text-[#111827]');
+          btn.classList.replace('bg-[#111827]', 'bg-white');
+          btn.classList.replace('text-white', 'text-[#111827]');
         }
       });
 
       items.forEach(item => {
         if (category === 'all' || item.classList.contains(category)) {
           item.style.display = 'flex';
+          // Re-trigger GSAP animation for filtered items
+          gsap.fromTo(item, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.4 });
         } else {
           item.style.display = 'none';
         }
       });
     }
   </script>
-
 </body>
 </html>
