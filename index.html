@@ -13,7 +13,6 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Added Playfair Display for the mixed editorial typography -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,500;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   
   <script>
@@ -64,7 +63,7 @@
     /* 2. Custom Magnetic Cursor Styling */
     @media (pointer: fine) {
       body { cursor: none; }
-      a, button, select { cursor: none !important; }
+      a, button, select, .magnetic-btn { cursor: none !important; }
       input, textarea { cursor: text !important; }
     }
     @media (pointer: coarse) {
@@ -90,6 +89,16 @@
       background: #0f141e;
       font-size: 11px;
       letter-spacing: 0.15em;
+    }
+
+    /* Top Progress Bar */
+    #progress-bar {
+      transform-origin: 0% 50%;
+    }
+
+    /* Preloader */
+    #preloader {
+      display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-end;
     }
 
     /* Shapes */
@@ -118,6 +127,21 @@
   </style>
 </head>
 <body class="font-sans antialiased text-dark selection:bg-brandOrange selection:text-white">
+
+  <!-- Editorial Preloader -->
+  <div id="preloader" class="fixed inset-0 bg-dark z-[10001] p-10 sm:p-20 text-white">
+    <div class="overflow-hidden">
+      <div id="loader-counter" class="font-serif italic text-6xl sm:text-9xl tracking-tighter leading-none translate-y-full">0%</div>
+    </div>
+  </div>
+
+  <!-- Scroll Progress Indicator -->
+  <div id="progress-bar" class="fixed top-0 left-0 w-full h-[3px] bg-brandOrange z-[9999] scale-x-0"></div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-8 right-8 translate-y-[150%] opacity-0 bg-dark text-white font-mono text-xs sm:text-sm px-6 py-4 rounded-xl shadow-2xl z-[10000] flex items-center gap-3 border border-white/10 pointer-events-none">
+    <span class="text-brandOrange">✔</span> <span id="toast-msg">Message sent securely.</span>
+  </div>
 
   <!-- Film Grain Element -->
   <div class="noise-overlay"></div>
@@ -151,18 +175,18 @@
 
       <!-- Editorial Mixed Typography in Name -->
       <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none px-4">
-        <h1 class="gsap-hero-text text-[18vw] sm:text-[11vw] leading-[0.85] font-medium text-center uppercase tracking-tighter text-dark">
+        <h1 class="gsap-hero-text text-[18vw] sm:text-[11vw] leading-[0.85] font-medium text-center uppercase tracking-tighter text-dark opacity-0">
           <span class="block">ARVIND</span>
           <em class="font-serif italic font-normal tracking-normal text-dark/90 lowercase">verma</em>
         </h1>
       </div>
 
-      <div class="gsap-float-1 absolute top-[18%] left-[8%] sm:top-[25%] sm:left-[25%] z-20 bg-brandOrange rounded-full px-6 py-4 sm:px-10 sm:py-6 transform -rotate-12 shadow-sm pointer-events-none">
+      <div class="gsap-float-1 absolute top-[18%] left-[8%] sm:top-[25%] sm:left-[25%] z-20 bg-brandOrange rounded-full px-6 py-4 sm:px-10 sm:py-6 transform -rotate-12 shadow-sm pointer-events-none opacity-0">
         <p class="text-[10px] sm:text-sm font-medium uppercase tracking-widest text-dark text-center leading-tight">
           SHOPIFY<br>EXPERT
         </p>
       </div>
-      <div class="gsap-float-2 absolute bottom-[20%] right-[8%] sm:bottom-[25%] sm:right-[25%] z-20 bg-brandBlue shape-polygon px-8 py-6 sm:px-12 sm:py-8 transform rotate-6 shadow-sm pointer-events-none">
+      <div class="gsap-float-2 absolute bottom-[20%] right-[8%] sm:bottom-[25%] sm:right-[25%] z-20 bg-brandBlue shape-polygon px-8 py-6 sm:px-12 sm:py-8 transform rotate-6 shadow-sm pointer-events-none opacity-0">
         <p class="text-[10px] sm:text-sm font-medium uppercase tracking-widest text-dark text-center leading-tight">
           E-COMMERCE<br>DEVELOPER
         </p>
@@ -207,7 +231,6 @@
     </div>
 
     <section class="border-b border-dark/5 bg-bgGray">
-      <!-- Fixed: Removed sm:text-left to keep everything perfectly centered on all devices -->
       <div class="max-w-7xl mx-auto px-6 sm:px-12 py-10 grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-4 text-center">
         <div class="gsap-stat px-2 sm:px-4 sm:border-r border-dark/10 last:border-0">
           <p class="text-3xl sm:text-4xl font-medium tracking-tighter">40+</p>
@@ -233,7 +256,6 @@
     <!-- ============================================== -->
     <section id="services" class="py-24 sm:py-32 max-w-7xl mx-auto px-6 sm:px-12 bg-bgGray">
       <div class="gsap-fade-up max-w-2xl mb-16 sm:mb-24">
-        <!-- Editorial Mixed Typography -->
         <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter text-dark leading-[1.05]">
           <span class="block">Capabilities &amp;</span>
           <em class="font-serif italic font-normal tracking-normal text-dark/80 lowercase">services</em>
@@ -311,7 +333,6 @@
     <section id="stack" class="py-24 sm:py-32 bg-white border-y border-dark/5">
       <div class="max-w-7xl mx-auto px-6 sm:px-12 text-center">
         <div class="gsap-fade-up">
-          <!-- Editorial Mixed Typography -->
           <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter text-dark leading-[1.05]">
             <span class="block">Three layers.</span>
             <em class="font-serif italic font-normal tracking-normal text-dark/80 lowercase">one developer.</em>
@@ -363,7 +384,6 @@
         
         <div class="gsap-fade-up flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
           <div>
-            <!-- Editorial Mixed Typography -->
             <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter text-dark leading-[1.05]">
               <em class="font-serif italic font-normal tracking-normal text-dark/80 lowercase">selected</em>
               <span class="block">Work</span>
@@ -371,11 +391,12 @@
           </div>
 
           <div class="flex overflow-x-auto no-scrollbar gap-2 sm:gap-3 pb-2 font-mono text-[10px] sm:text-xs w-full md:w-auto">
-            <button onclick="filterStores('all')" class="filter-btn active shrink-0 px-4 py-2 rounded-full bg-dark text-white transition-colors" data-category="all">All</button>
-            <button onclick="filterStores('footwear')" class="filter-btn shrink-0 px-4 py-2 rounded-full border border-dark/10 bg-transparent text-dark transition-colors" data-category="footwear">Footwear</button>
-            <button onclick="filterStores('fashion')" class="filter-btn shrink-0 px-4 py-2 rounded-full border border-dark/10 bg-transparent text-dark transition-colors" data-category="fashion">Fashion</button>
-            <button onclick="filterStores('jewelry')" class="filter-btn shrink-0 px-4 py-2 rounded-full border border-dark/10 bg-transparent text-dark transition-colors" data-category="jewelry">Jewellery</button>
-            <button onclick="filterStores('home')" class="filter-btn shrink-0 px-4 py-2 rounded-full border border-dark/10 bg-transparent text-dark transition-colors" data-category="home">Home</button>
+            <!-- Added .magnetic-btn to filters -->
+            <button onclick="filterStores('all')" class="magnetic-btn filter-btn active shrink-0 px-4 py-2 rounded-full bg-dark text-white transition-colors" data-category="all">All</button>
+            <button onclick="filterStores('footwear')" class="magnetic-btn filter-btn shrink-0 px-4 py-2 rounded-full border border-dark/10 bg-transparent text-dark transition-colors" data-category="footwear">Footwear</button>
+            <button onclick="filterStores('fashion')" class="magnetic-btn filter-btn shrink-0 px-4 py-2 rounded-full border border-dark/10 bg-transparent text-dark transition-colors" data-category="fashion">Fashion</button>
+            <button onclick="filterStores('jewelry')" class="magnetic-btn filter-btn shrink-0 px-4 py-2 rounded-full border border-dark/10 bg-transparent text-dark transition-colors" data-category="jewelry">Jewellery</button>
+            <button onclick="filterStores('home')" class="magnetic-btn filter-btn shrink-0 px-4 py-2 rounded-full border border-dark/10 bg-transparent text-dark transition-colors" data-category="home">Home</button>
           </div>
         </div>
 
@@ -537,7 +558,6 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
           <div class="gsap-contact-info flex flex-col justify-between">
             <div>
-              <!-- Editorial Mixed Typography -->
               <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter text-dark leading-[1.05]">
                 <span class="block">Got an idea?</span>
                 <em class="font-serif italic font-normal tracking-normal text-dark/80 lowercase">let's talk.</em>
@@ -604,10 +624,10 @@
                 <label for="form-message" class="block text-[10px] sm:text-xs font-mono font-semibold text-dark/40 uppercase mb-1 transition-colors group-focus-within:text-dark">Message</label>
                 <textarea id="form-message" rows="1" required class="w-full px-0 py-2 bg-transparent border-b border-dark/10 text-base sm:text-sm text-dark focus:outline-none focus:border-dark transition-colors resize-none cursor-text"></textarea>
               </div>
-              <button type="submit" id="submit-btn" class="w-full sm:w-auto px-10 py-4 rounded-full bg-dark text-white font-medium text-xs sm:text-sm uppercase tracking-wider mt-4 hover:bg-brandOrange transition-colors shadow-lg shadow-dark/20 flex items-center justify-center gap-3">
+              <!-- Added .magnetic-btn for the pull effect -->
+              <button type="submit" id="submit-btn" class="magnetic-btn w-full sm:w-auto px-10 py-4 rounded-full bg-dark text-white font-medium text-xs sm:text-sm uppercase tracking-wider mt-4 hover:bg-brandOrange transition-colors shadow-lg shadow-dark/20 flex items-center justify-center gap-3">
                 Send Message <span>&rarr;</span>
               </button>
-              <p id="form-status" class="text-sm font-mono mt-3 hidden"></p>
             </form>
           </div>
         </div>
@@ -615,14 +635,29 @@
     </section>
 
     <!-- ============================================== -->
-    <!-- 7. FOOTER                                      -->
+    <!-- 7. FOOTER (With Dynamic Availability Widget)     -->
     <!-- ============================================== -->
     <footer class="py-10 sm:py-12 bg-bgGray border-t border-dark/5 relative z-10">
-      <div class="max-w-7xl mx-auto px-6 sm:px-12 flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6 text-center sm:text-left">
-        <div>
-          <p class="font-medium text-lg sm:text-xl uppercase tracking-tight text-dark">Arvind Verma</p>
-          <p class="text-xs text-dark/50 font-mono mt-1">&copy; 2026. All rights reserved.</p>
+      <div class="max-w-7xl mx-auto px-6 sm:px-12 flex flex-col md:flex-row justify-between items-center gap-6 text-center sm:text-left">
+        
+        <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
+          <div>
+            <p class="font-medium text-lg sm:text-xl uppercase tracking-tight text-dark">Arvind Verma</p>
+            <p class="text-xs text-dark/50 font-mono mt-1">&copy; 2026. All rights reserved.</p>
+          </div>
+          <!-- Availability Widget -->
+          <div class="flex items-center gap-3 px-4 py-2 bg-white rounded-full border border-dark/10 shadow-sm mt-2 sm:mt-0">
+            <span class="relative flex h-2.5 w-2.5">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+            </span>
+            <div class="flex flex-col text-left">
+              <span class="text-[9px] font-mono uppercase tracking-wider text-dark/60 leading-tight">Available for Remote Roles</span>
+              <span id="local-time" class="text-[10px] font-mono font-bold text-dark leading-tight">--:-- IST</span>
+            </div>
+          </div>
         </div>
+
         <div class="flex gap-6 sm:gap-8 text-sm font-mono text-dark/80">
           <a href="https://www.linkedin.com/in/arvind-verma-5061a3228" target="_blank" class="hover:text-brandOrange transition-colors">LinkedIn</a>
           <a href="https://wa.me/918874856868" target="_blank" class="hover:text-brandOrange transition-colors">WhatsApp</a>
@@ -639,7 +674,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", (event) => {
       
-      // 1. Lenis Smooth Scroll
+      // 1. Lenis Smooth Scroll Setup
       const lenis = new Lenis({
         duration: 1.5,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -650,20 +685,57 @@
       lenis.on('scroll', ScrollTrigger.update);
       gsap.ticker.add((time) => { lenis.raf(time * 1000); });
       gsap.ticker.lagSmoothing(0);
-
       gsap.registerPlugin(ScrollTrigger);
       ScrollTrigger.config({ ignoreMobileResize: true });
 
-      // 2. Custom Magnetic Cursor Logic
+      // 2. Smooth Section Progress Bar
+      gsap.to("#progress-bar", {
+        scaleX: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "body",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 0.1
+        }
+      });
+
+      // 3. Preloader Logic
+      let progress = 0;
+      const counterElement = document.getElementById('loader-counter');
+      const loaderInterval = setInterval(() => {
+        progress += Math.floor(Math.random() * 15) + 5;
+        if (progress > 100) progress = 100;
+        counterElement.innerText = progress + "%";
+        
+        if (progress === 100) {
+          clearInterval(loaderInterval);
+          gsap.to('#preloader', {
+            yPercent: -100,
+            duration: 1.2,
+            ease: "power4.inOut",
+            delay: 0.3,
+            onComplete: initHeroAnimations
+          });
+        }
+      }, 80);
+
+      // 4. Hero Animation (Triggered after preloader)
+      function initHeroAnimations() {
+        const heroTl = gsap.timeline();
+        heroTl.to(".gsap-hero-text", { opacity: 1, y: 0, duration: 1.5, ease: "power4.out" })
+              .to(".gsap-float-1", { scale: 1, opacity: 1, duration: 1, ease: "back.out(1.5)" }, "-=1")
+              .to(".gsap-float-2", { scale: 1, opacity: 1, duration: 1, ease: "back.out(1.5)" }, "-=0.8");
+      }
+
+      // 5. Custom Magnetic Cursor & Button Interaction
       if (window.matchMedia("(pointer: fine)").matches) {
         const cursor = document.getElementById('custom-cursor');
-        
         let mouseX = 0, mouseY = 0;
         let cursorX = 0, cursorY = 0;
         
         window.addEventListener('mousemove', (e) => {
-          mouseX = e.clientX;
-          mouseY = e.clientY;
+          mouseX = e.clientX; mouseY = e.clientY;
         });
 
         gsap.ticker.add(() => {
@@ -672,6 +744,7 @@
           gsap.set(cursor, { x: cursorX, y: cursorY });
         });
 
+        // Portfolio Hover
         document.querySelectorAll('.gsap-project-item').forEach(item => {
           item.addEventListener('mouseenter', () => {
             cursor.classList.add('view-mode');
@@ -682,9 +755,32 @@
             cursor.innerHTML = "";
           });
         });
+
+        // Magnetic Buttons Logic
+        document.querySelectorAll('.magnetic-btn').forEach(btn => {
+          btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            gsap.to(btn, { x: x * 0.3, y: y * 0.3, duration: 0.4, ease: "power2.out" });
+          });
+          btn.addEventListener('mouseleave', () => {
+            gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1, 0.3)" });
+          });
+        });
       }
 
-      // 3. Parallax Images in Portfolio Grid
+      // 6. Local Time Availability Widget
+      function updateTime() {
+        const now = new Date();
+        const options = { timeZone: 'Asia/Kolkata', hour: '2-digit', minute:'2-digit', second: '2-digit', hour12: true };
+        const timeString = now.toLocaleTimeString('en-US', options) + " IST";
+        document.getElementById('local-time').innerText = timeString;
+      }
+      setInterval(updateTime, 1000);
+      updateTime();
+
+      // Parallax Images in Portfolio Grid
       gsap.utils.toArray('.gsap-project-item').forEach(container => {
         const img = container.querySelector('.parallax-img');
         gsap.to(img, {
@@ -699,49 +795,26 @@
         });
       });
 
-      // Standard Entrance Animations
-      const heroTl = gsap.timeline();
-      heroTl.from(".gsap-hero-text", { y: 50, opacity: 0, duration: 1.5, ease: "power4.out" })
-            .from(".gsap-float-1", { scale: 0, opacity: 0, rotation: 0, duration: 1, ease: "back.out(1.5)" }, "-=1")
-            .from(".gsap-float-2", { scale: 0, opacity: 0, rotation: 0, duration: 1, ease: "back.out(1.5)" }, "-=0.8");
-
+      // Standard Scroll Animations
       gsap.to(".gsap-float-1", { y: -15, rotation: -15, duration: 3, yoyo: true, repeat: -1, ease: "sine.inOut" });
       gsap.to(".gsap-float-2", { y: 15, rotation: 3, duration: 3.5, yoyo: true, repeat: -1, ease: "sine.inOut" });
 
-      gsap.from(".gsap-stat", {
-        scrollTrigger: { trigger: ".gsap-stat", start: "top 90%" },
-        y: 30, opacity: 0, duration: 1, stagger: 0.1, ease: "power3.out"
-      });
-
-      gsap.utils.toArray('.gsap-fade-up').forEach(element => {
-        gsap.from(element, {
-          scrollTrigger: { trigger: element, start: "top 85%" },
-          y: 40, opacity: 0, duration: 1.2, ease: "power4.out"
-        });
-      });
-
+      gsap.from(".gsap-stat", { scrollTrigger: { trigger: ".gsap-stat", start: "top 90%" }, y: 30, opacity: 0, duration: 1, stagger: 0.1, ease: "power3.out" });
+      gsap.utils.toArray('.gsap-fade-up').forEach(element => { gsap.from(element, { scrollTrigger: { trigger: element, start: "top 85%" }, y: 40, opacity: 0, duration: 1.2, ease: "power4.out" }); });
+      
       const staggerGroups = [".gsap-service-item", ".gsap-stack-card", ".gsap-project-item"];
       staggerGroups.forEach(groupClass => {
-        gsap.from(groupClass, {
-          scrollTrigger: { trigger: groupClass, start: "top 85%" },
-          y: 40, opacity: 0, duration: 1.2, stagger: 0.1, ease: "power4.out"
-        });
+        gsap.from(groupClass, { scrollTrigger: { trigger: groupClass, start: "top 85%" }, y: 40, opacity: 0, duration: 1.2, stagger: 0.1, ease: "power4.out" });
       });
 
-      gsap.from(".gsap-contact-info", {
-        scrollTrigger: { trigger: "#connect", start: "top 85%" },
-        y: 30, opacity: 0, duration: 1.2, ease: "power4.out"
-      });
-      gsap.from(".gsap-contact-form", {
-        scrollTrigger: { trigger: "#connect", start: "top 85%" },
-        y: 40, opacity: 0, duration: 1.2, ease: "power4.out"
-      });
+      gsap.from(".gsap-contact-info", { scrollTrigger: { trigger: "#connect", start: "top 85%" }, y: 30, opacity: 0, duration: 1.2, ease: "power4.out" });
+      gsap.from(".gsap-contact-form", { scrollTrigger: { trigger: "#connect", start: "top 85%" }, y: 40, opacity: 0, duration: 1.2, ease: "power4.out" });
     });
 
+    // Custom Toast Form Submission
     async function submitViaGoogleScript(e) {
       e.preventDefault();
       const submitBtn = document.getElementById('submit-btn');
-      const statusMsg = document.getElementById('form-status');
       const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxikOKgThHvPuSbtPBg-vRB03yvX9SLVd2wv1eATG_OlUKLim-6YSJx4KoAbebuzas-/exec";
 
       const payload = {
@@ -756,25 +829,31 @@
 
       submitBtn.disabled = true;
       submitBtn.innerHTML = "SENDING... <span>&rarr;</span>";
-      statusMsg.classList.remove('hidden');
-      statusMsg.className = "text-sm font-mono mt-3 text-dark/60 block";
-      statusMsg.innerText = "Sending message...";
 
       try {
         await fetch(GOOGLE_SCRIPT_URL, {
           method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload)
         });
-        statusMsg.className = "text-sm font-mono mt-3 text-green-600 font-medium block";
-        statusMsg.innerText = "✓ Thank you! Message sent.";
+        showToast("✓ Message sent securely.", false);
         document.getElementById('portfolio-form').reset();
       } catch (err) {
-        statusMsg.className = "text-sm font-mono mt-3 text-red-600 font-medium block";
-        statusMsg.innerText = "Submission failed. Please email directly.";
+        showToast("✕ Submission failed. Please email.", true);
       } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = "Send Message <span>&rarr;</span>";
       }
+    }
+
+    function showToast(message, isError) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-msg').innerText = message;
+      toast.style.borderColor = isError ? 'rgba(239, 68, 68, 0.3)' : 'rgba(255, 255, 255, 0.1)';
+      
+      gsap.to(toast, { y: 0, opacity: 1, duration: 0.6, ease: "power4.out" });
+      setTimeout(() => {
+        gsap.to(toast, { y: 150, opacity: 0, duration: 0.5, ease: "power3.in" });
+      }, 4000);
     }
 
     function filterStores(category) {
@@ -800,9 +879,7 @@
         }
       });
 
-      setTimeout(() => {
-        ScrollTrigger.refresh();
-      }, 100);
+      setTimeout(() => { ScrollTrigger.refresh(); }, 100);
     }
   </script>
 </body>
