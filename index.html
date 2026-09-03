@@ -13,7 +13,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <!-- Added Playfair Display for the mixed editorial typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,500;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   
   <script>
     tailwind.config = {
@@ -21,6 +22,7 @@
         extend: {
           fontFamily: {
             sans: ['"Inter"', 'sans-serif'],
+            serif: ['"Playfair Display"', 'serif'],
             mono: ['"JetBrains Mono"', 'monospace'],
           },
           colors: {
@@ -35,6 +37,7 @@
   </script>
 
   <style>
+    /* Mandatory Lenis CSS */
     html.lenis, html.lenis body { height: auto; }
     .lenis.lenis-smooth { scroll-behavior: auto !important; }
     .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
@@ -48,6 +51,48 @@
       font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     }
 
+    /* 1. Subtle Film Grain Overlay */
+    .noise-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: 9998;
+      opacity: 0.05;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* 2. Custom Magnetic Cursor Styling */
+    @media (pointer: fine) {
+      body { cursor: none; }
+      a, button, select { cursor: none !important; }
+      input, textarea { cursor: text !important; }
+    }
+    @media (pointer: coarse) {
+      #custom-cursor { display: none !important; }
+    }
+    
+    #custom-cursor {
+      position: fixed;
+      top: 0; left: 0;
+      width: 12px; height: 12px;
+      background: #ff6b00;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%, -50%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0px;
+      color: white; font-weight: 500; font-family: 'Inter', sans-serif;
+      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1), height 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s;
+    }
+    #custom-cursor.view-mode {
+      width: 72px; height: 72px;
+      background: #0f141e;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+    }
+
+    /* Shapes */
     .shape-polygon { clip-path: polygon(5% 0, 100% 10%, 95% 100%, 0 90%); }
 
     @keyframes marquee {
@@ -62,18 +107,23 @@
 
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: #e5e5e5; }
     ::-webkit-scrollbar-thumb { background: #cccccc; border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: #999999; }
-
+    
     @media screen and (max-width: 768px) {
       input, select, textarea { font-size: 16px !important; }
     }
   </style>
 </head>
 <body class="font-sans antialiased text-dark selection:bg-brandOrange selection:text-white">
+
+  <!-- Film Grain Element -->
+  <div class="noise-overlay"></div>
+  
+  <!-- Custom Hover Cursor -->
+  <div id="custom-cursor"></div>
 
   <main>
     <!-- ============================================== -->
@@ -99,13 +149,14 @@
         SCROLL DOWN &darr;
       </div>
 
+      <!-- 5. Editorial Mixed Typography in Name -->
       <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none px-4">
-        <h1 class="gsap-hero-text text-[17vw] sm:text-[11vw] leading-[0.85] font-medium text-center uppercase tracking-tighter text-dark">
-          ARVIND<br>VERMA
+        <h1 class="gsap-hero-text text-[18vw] sm:text-[11vw] leading-[0.85] font-medium text-center uppercase tracking-tighter text-dark">
+          <span class="block">ARVIND</span>
+          <em class="font-serif italic font-normal tracking-normal text-dark/90 lowercase">verma</em>
         </h1>
       </div>
 
-      <!-- Floating Badges -->
       <div class="gsap-float-1 absolute top-[18%] left-[8%] sm:top-[25%] sm:left-[25%] z-20 bg-brandOrange rounded-full px-6 py-4 sm:px-10 sm:py-6 transform -rotate-12 shadow-sm pointer-events-none">
         <p class="text-[10px] sm:text-sm font-medium uppercase tracking-widest text-dark text-center leading-tight">
           SHOPIFY<br>EXPERT
@@ -117,7 +168,6 @@
         </p>
       </div>
 
-      <!-- Social Icons -->
       <div class="absolute top-8 right-6 sm:top-1/2 sm:-translate-y-1/2 sm:right-10 z-30 flex sm:flex-col gap-3">
         <a href="https://www.linkedin.com/in/arvind-verma-5061a3228" target="_blank" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-dark flex items-center justify-center hover:bg-dark hover:text-white transition-colors">
           <span class="text-[10px] sm:text-xs font-semibold">in</span>
@@ -130,7 +180,6 @@
         </a>
       </div>
       
-      <!-- Mobile Nav Fallback -->
       <div class="absolute bottom-6 left-0 w-full px-6 flex justify-between sm:hidden z-30 text-xs font-mono font-medium tracking-tight">
         <a href="#services" class="hover:text-brandOrange transition-colors">SERVICES</a>
         <a href="#works" class="hover:text-brandOrange transition-colors">WORK</a>
@@ -183,8 +232,10 @@
     <!-- ============================================== -->
     <section id="services" class="py-24 sm:py-32 max-w-7xl mx-auto px-6 sm:px-12 bg-bgGray">
       <div class="gsap-fade-up max-w-2xl mb-16 sm:mb-24">
+        <!-- 5. Editorial Mixed Typography -->
         <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter text-dark leading-[1.05]">
-          Capabilities &amp;<br>Services
+          <span class="block">Capabilities &amp;</span>
+          <em class="font-serif italic font-normal tracking-normal text-dark/80 lowercase">services</em>
         </h2>
         <p class="text-dark/60 text-sm sm:text-sm mt-5 font-mono max-w-md">End-to-End Technical Delivery for Modern E-Commerce</p>
       </div>
@@ -200,7 +251,6 @@
           <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight text-dark mb-4 group-hover:text-brandOrange transition-colors">Custom Themes &amp; Liquid</h3>
           <p class="text-sm text-dark/60 leading-relaxed font-mono">Bespoke Liquid section schemas, dynamic drawer checkouts, custom product options, and lightweight modular layouts built from scratch.</p>
         </div>
-
         <div class="gsap-service-item border-t border-dark/20 pt-6 group">
           <div class="flex justify-between items-start mb-4">
             <span class="text-brandOrange font-mono text-xs font-bold block">02</span>
@@ -211,7 +261,6 @@
           <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight text-dark mb-4 group-hover:text-brandOrange transition-colors">Payment Gateway</h3>
           <p class="text-sm text-dark/60 leading-relaxed font-mono">Direct checkout integrations enabling seamless domestic and global transactions with zero friction for shoppers.</p>
         </div>
-
         <div class="gsap-service-item border-t border-dark/20 pt-6 group">
           <div class="flex justify-between items-start mb-4">
             <span class="text-brandOrange font-mono text-xs font-bold block">03</span>
@@ -222,7 +271,6 @@
           <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight text-dark mb-4 group-hover:text-brandOrange transition-colors">Shipping &amp; Logistics</h3>
           <p class="text-sm text-dark/60 leading-relaxed font-mono">Automated courier allocation, real-time tracking webhooks, NDR management, and seamless reverse pickup flows.</p>
         </div>
-
         <div class="gsap-service-item border-t border-dark/20 pt-6 group">
           <div class="flex justify-between items-start mb-4">
             <span class="text-brandOrange font-mono text-xs font-bold block">04</span>
@@ -233,7 +281,6 @@
           <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight text-dark mb-4 group-hover:text-brandOrange transition-colors">Core Web Vitals</h3>
           <p class="text-sm text-dark/60 leading-relaxed font-mono">Aggressive script streamlining, vanilla JavaScript logic, and asset optimization for maximum Lighthouse scores.</p>
         </div>
-
         <div class="gsap-service-item border-t border-dark/20 pt-6 group">
           <div class="flex justify-between items-start mb-4">
             <span class="text-brandOrange font-mono text-xs font-bold block">05</span>
@@ -244,7 +291,6 @@
           <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight text-dark mb-4 group-hover:text-brandOrange transition-colors">Technical SEO</h3>
           <p class="text-sm text-dark/60 leading-relaxed font-mono">JSON-LD structured data (Product, Organization schema), clean metadata hooks, and canonical URL hygiene.</p>
         </div>
-
         <div class="gsap-service-item border-t border-dark/20 pt-6 group">
           <div class="flex justify-between items-start mb-4">
             <span class="text-brandOrange font-mono text-xs font-bold block">06</span>
@@ -264,8 +310,10 @@
     <section id="stack" class="py-24 sm:py-32 bg-white border-y border-dark/5">
       <div class="max-w-7xl mx-auto px-6 sm:px-12 text-center">
         <div class="gsap-fade-up">
-          <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter text-dark leading-[0.9]">
-            Three layers.<br>One developer.
+          <!-- 5. Editorial Mixed Typography -->
+          <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter text-dark leading-[1.05]">
+            <span class="block">Three layers.</span>
+            <em class="font-serif italic font-normal tracking-normal text-dark/80 lowercase">one developer.</em>
           </h2>
           <p class="text-dark/60 text-sm mt-6 sm:mt-8 max-w-xl mx-auto font-mono">
             Three sides of the same developer — frontend pixels, Shopify Liquid architecture, and the ecosystem integrations beneath them.
@@ -314,8 +362,10 @@
         
         <div class="gsap-fade-up flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
           <div>
-            <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter text-dark leading-[0.9]">
-              Selected<br>Work
+            <!-- 5. Editorial Mixed Typography -->
+            <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter text-dark leading-[1.05]">
+              <em class="font-serif italic font-normal tracking-normal text-dark/80 lowercase">selected</em>
+              <span class="block">Work</span>
             </h2>
           </div>
 
@@ -330,9 +380,10 @@
 
         <div id="projects-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mt-8">
           
+          <!-- Note: added relative + overflow-hidden to card, and applied grayscale + parallax to inner image -->
           <a href="https://michaelangelo.in/" target="_blank" class="gsap-project-item footwear group block">
-            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl mb-3 shadow-sm">
-              <img src="https://cdn.shopify.com/s/files/1/0657/7710/7144/files/Artboard_2_jpg.jpg?v=1779884867" alt="Michael Angelo" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
+              <img src="https://cdn.shopify.com/s/files/1/0657/7710/7144/files/Artboard_2_jpg.jpg?v=1779884867" alt="Michael Angelo" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:grayscale-0 transition-[filter] duration-700" loading="lazy" />
             </div>
             <div class="px-1">
               <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
@@ -343,8 +394,8 @@
           </a>
 
           <a href="https://www.leconcept.co.in/" target="_blank" class="gsap-project-item fashion group block">
-            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl mb-3 shadow-sm">
-              <img src="https://cdn.shopify.com/s/files/1/0890/7233/7188/files/Mask_group_6.png?v=1783936310" alt="Le Concept" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
+              <img src="https://cdn.shopify.com/s/files/1/0890/7233/7188/files/Mask_group_6.png?v=1783936310" alt="Le Concept" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:grayscale-0 transition-[filter] duration-700" loading="lazy" />
             </div>
             <div class="px-1">
               <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
@@ -355,8 +406,8 @@
           </a>
 
           <a href="https://www.spiffers.in/" target="_blank" class="gsap-project-item footwear group block">
-            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl mb-3 shadow-sm">
-              <img src="https://www.spiffers.in/cdn/shop/files/Rectangle_142.png?v=1780992822&width=1600" alt="Spiffers" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
+              <img src="https://www.spiffers.in/cdn/shop/files/Rectangle_142.png?v=1780992822&width=1600" alt="Spiffers" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:grayscale-0 transition-[filter] duration-700" loading="lazy" />
             </div>
             <div class="px-1">
               <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
@@ -367,8 +418,8 @@
           </a>
 
           <a href="https://nikunjbyniidhibajaj.com/" target="_blank" class="gsap-project-item fashion group block">
-            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl mb-3 shadow-sm">
-              <img src="https://nikunjbyniidhibajaj.com/cdn/shop/files/2.png?v=1780501726&width=2400" alt="Nikunj Niidhi Bajaj" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
+              <img src="https://nikunjbyniidhibajaj.com/cdn/shop/files/2.png?v=1780501726&width=2400" alt="Nikunj Niidhi Bajaj" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:grayscale-0 transition-[filter] duration-700" loading="lazy" />
             </div>
             <div class="px-1">
               <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
@@ -379,8 +430,8 @@
           </a>
 
           <a href="https://loomandstory.com/" target="_blank" class="gsap-project-item fashion group block">
-            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl mb-3 shadow-sm">
-              <img src="https://loomandstory.com/cdn/shop/files/website.jpg?v=1785494251&width=2000" alt="Loom & Story" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
+              <img src="https://loomandstory.com/cdn/shop/files/website.jpg?v=1785494251&width=2000" alt="Loom & Story" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:grayscale-0 transition-[filter] duration-700" loading="lazy" />
             </div>
             <div class="px-1">
               <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
@@ -391,8 +442,8 @@
           </a>
 
           <a href="https://zaydns.com/" target="_blank" class="gsap-project-item footwear group block">
-            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl mb-3 shadow-sm">
-              <img src="https://zaydns.com/cdn/shop/files/YOO.jpg?v=1779727236&width=1200" alt="Zaydn" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
+              <img src="https://zaydns.com/cdn/shop/files/YOO.jpg?v=1779727236&width=1200" alt="Zaydn" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:grayscale-0 transition-[filter] duration-700" loading="lazy" />
             </div>
             <div class="px-1">
               <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
@@ -403,8 +454,8 @@
           </a>
 
           <a href="https://www.miira.in/" target="_blank" class="gsap-project-item jewelry group block">
-            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl mb-3 shadow-sm">
-              <img src="https://www.miira.in/cdn/shop/files/SparklingnamenecklaceRs2499_700x.jpg?v=1784040283" alt="Miira" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
+              <img src="https://www.miira.in/cdn/shop/files/SparklingnamenecklaceRs2499_700x.jpg?v=1784040283" alt="Miira" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:grayscale-0 transition-[filter] duration-700" loading="lazy" />
             </div>
             <div class="px-1">
               <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
@@ -415,8 +466,8 @@
           </a>
 
           <a href="https://banarasiya.in/" target="_blank" class="gsap-project-item fashion group block">
-            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl mb-3 shadow-sm">
-              <img src="https://cdn.shopify.com/s/files/1/0497/0240/4258/files/Group_93_1.png?v=1778482629" alt="Banarasiya" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
+              <img src="https://cdn.shopify.com/s/files/1/0497/0240/4258/files/Group_93_1.png?v=1778482629" alt="Banarasiya" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:grayscale-0 transition-[filter] duration-700" loading="lazy" />
             </div>
             <div class="px-1">
               <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
@@ -427,8 +478,8 @@
           </a>
 
           <a href="https://www.vesperahomes.com/" target="_blank" class="gsap-project-item home group block">
-            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl mb-3 shadow-sm">
-              <img src="https://www.vesperahomes.com/cdn/shop/files/Self-care_Sunday_Sale_Green_Shopify_Banner_38.png?v=1783680878&width=1920" alt="Vespera Homes" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
+              <img src="https://www.vesperahomes.com/cdn/shop/files/Self-care_Sunday_Sale_Green_Shopify_Banner_38.png?v=1783680878&width=1920" alt="Vespera Homes" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:grayscale-0 transition-[filter] duration-700" loading="lazy" />
             </div>
             <div class="px-1">
               <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
@@ -439,8 +490,8 @@
           </a>
 
           <a href="https://sojanya.com/" target="_blank" class="gsap-project-item fashion group block">
-            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl mb-3 shadow-sm">
-              <img src="https://sojanya.com/cdn/shop/files/2_08eebcdd-d7f0-480a-9ad4-4daf34580003.jpg?v=1757503550&width=1410" alt="Sojanya" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
+              <img src="https://sojanya.com/cdn/shop/files/2_08eebcdd-d7f0-480a-9ad4-4daf34580003.jpg?v=1757503550&width=1410" alt="Sojanya" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:grayscale-0 transition-[filter] duration-700" loading="lazy" />
             </div>
             <div class="px-1">
               <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
@@ -451,8 +502,8 @@
           </a>
 
           <a href="https://paakhihome.com/" target="_blank" class="gsap-project-item home group block">
-            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl mb-3 shadow-sm">
-              <img src="https://paakhihome.com/cdn/shop/files/PRT-004_15_10a2899c-7648-4a38-8f54-1b48b3da78a1.jpg?v=1769081125&width=1296" alt="Paakhi" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
+              <img src="https://paakhihome.com/cdn/shop/files/PRT-004_15_10a2899c-7648-4a38-8f54-1b48b3da78a1.jpg?v=1769081125&width=1296" alt="Paakhi" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:grayscale-0 transition-[filter] duration-700" loading="lazy" />
             </div>
             <div class="px-1">
               <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
@@ -463,8 +514,8 @@
           </a>
 
           <a href="https://takshexclusive.com/" target="_blank" class="gsap-project-item jewelry group block">
-            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl mb-3 shadow-sm">
-              <img src="https://takshexclusive.com/cdn/shop/files/IMG_20260508_192457.png?v=1778248556&width=2560" alt="Taksh" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-white mb-3 shadow-sm">
+              <img src="https://takshexclusive.com/cdn/shop/files/IMG_20260508_192457.png?v=1778248556&width=2560" alt="Taksh" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:grayscale-0 transition-[filter] duration-700" loading="lazy" />
             </div>
             <div class="px-1">
               <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight text-dark flex items-center justify-between">
@@ -486,14 +537,16 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
           <div class="gsap-contact-info flex flex-col justify-between">
             <div>
+              <!-- 5. Editorial Mixed Typography -->
               <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter text-dark leading-[1.05]">
-                Got an idea?<br>Let's talk.
+                <span class="block">Got an idea?</span>
+                <em class="font-serif italic font-normal tracking-normal text-dark/80 lowercase">let's talk.</em>
               </h2>
               <p class="text-dark/60 text-sm mt-5 sm:mt-8 font-mono leading-relaxed max-w-md">
                 Shopify builds, Liquid architecture, checkout optimization, or payment integrations — I'm ready to ship it.
               </p>
             </div>
-            <div class="mt-8 sm:mt-0 space-y-4 sm:space-y-6 font-mono text-[10px] sm:text-sm">
+            <div class="mt-8 sm:mt-0 space-y-4 sm:space-y-6 font-mono text-[10px] sm:text-sm relative z-10">
               <a href="mailto:letswork.arvind@gmail.com" class="flex items-center gap-4 sm:gap-5 group w-fit">
                 <span class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#f2f2f2] flex items-center justify-center group-hover:bg-dark group-hover:text-white transition-all duration-300 text-dark/60">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
@@ -509,32 +562,32 @@
             </div>
           </div>
 
-          <div class="gsap-contact-form mt-4 lg:mt-0">
+          <div class="gsap-contact-form mt-4 lg:mt-0 relative z-10">
             <form id="portfolio-form" onsubmit="submitViaGoogleScript(event)" class="space-y-6 sm:space-y-12">
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10">
                 <div class="relative group">
                   <label for="form-name" class="block text-[10px] sm:text-xs font-mono font-semibold text-dark/40 uppercase mb-1 transition-colors group-focus-within:text-dark">Name</label>
-                  <input type="text" id="form-name" required class="w-full px-0 py-2 bg-transparent border-b border-dark/10 text-base sm:text-sm text-dark focus:outline-none focus:border-dark transition-colors" />
+                  <input type="text" id="form-name" required class="w-full px-0 py-2 bg-transparent border-b border-dark/10 text-base sm:text-sm text-dark focus:outline-none focus:border-dark transition-colors cursor-text" />
                 </div>
                 <div class="relative group">
                   <label for="form-email" class="block text-[10px] sm:text-xs font-mono font-semibold text-dark/40 uppercase mb-1 transition-colors group-focus-within:text-dark">Email</label>
-                  <input type="email" id="form-email" required class="w-full px-0 py-2 bg-transparent border-b border-dark/10 text-base sm:text-sm text-dark focus:outline-none focus:border-dark transition-colors" />
+                  <input type="email" id="form-email" required class="w-full px-0 py-2 bg-transparent border-b border-dark/10 text-base sm:text-sm text-dark focus:outline-none focus:border-dark transition-colors cursor-text" />
                 </div>
               </div>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10">
                 <div class="relative group">
                   <label for="form-phone" class="block text-[10px] sm:text-xs font-mono font-semibold text-dark/40 uppercase mb-1 transition-colors group-focus-within:text-dark">Phone</label>
-                  <input type="tel" id="form-phone" class="w-full px-0 py-2 bg-transparent border-b border-dark/10 text-base sm:text-sm text-dark focus:outline-none focus:border-dark transition-colors" />
+                  <input type="tel" id="form-phone" class="w-full px-0 py-2 bg-transparent border-b border-dark/10 text-base sm:text-sm text-dark focus:outline-none focus:border-dark transition-colors cursor-text" />
                 </div>
                 <div class="relative group">
                   <label for="form-company" class="block text-[10px] sm:text-xs font-mono font-semibold text-dark/40 uppercase mb-1 transition-colors group-focus-within:text-dark">Company</label>
-                  <input type="text" id="form-company" required class="w-full px-0 py-2 bg-transparent border-b border-dark/10 text-base sm:text-sm text-dark focus:outline-none focus:border-dark transition-colors" />
+                  <input type="text" id="form-company" required class="w-full px-0 py-2 bg-transparent border-b border-dark/10 text-base sm:text-sm text-dark focus:outline-none focus:border-dark transition-colors cursor-text" />
                 </div>
               </div>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10">
                 <div class="relative group">
                   <label for="form-website" class="block text-[10px] sm:text-xs font-mono font-semibold text-dark/40 uppercase mb-1 transition-colors group-focus-within:text-dark">Website URL</label>
-                  <input type="url" id="form-website" class="w-full px-0 py-2 bg-transparent border-b border-dark/10 text-base sm:text-sm text-dark focus:outline-none focus:border-dark transition-colors" />
+                  <input type="url" id="form-website" class="w-full px-0 py-2 bg-transparent border-b border-dark/10 text-base sm:text-sm text-dark focus:outline-none focus:border-dark transition-colors cursor-text" />
                 </div>
                 <div class="relative group">
                   <label for="form-service" class="block text-[10px] sm:text-xs font-mono font-semibold text-dark/40 uppercase mb-1 transition-colors group-focus-within:text-dark">Service</label>
@@ -549,7 +602,7 @@
               </div>
               <div class="relative group">
                 <label for="form-message" class="block text-[10px] sm:text-xs font-mono font-semibold text-dark/40 uppercase mb-1 transition-colors group-focus-within:text-dark">Message</label>
-                <textarea id="form-message" rows="1" required class="w-full px-0 py-2 bg-transparent border-b border-dark/10 text-base sm:text-sm text-dark focus:outline-none focus:border-dark transition-colors resize-none"></textarea>
+                <textarea id="form-message" rows="1" required class="w-full px-0 py-2 bg-transparent border-b border-dark/10 text-base sm:text-sm text-dark focus:outline-none focus:border-dark transition-colors resize-none cursor-text"></textarea>
               </div>
               <button type="submit" id="submit-btn" class="w-full sm:w-auto px-10 py-4 rounded-full bg-dark text-white font-medium text-xs sm:text-sm uppercase tracking-wider mt-4 hover:bg-brandOrange transition-colors shadow-lg shadow-dark/20 flex items-center justify-center gap-3">
                 Send Message <span>&rarr;</span>
@@ -564,7 +617,7 @@
     <!-- ============================================== -->
     <!-- 7. FOOTER                                      -->
     <!-- ============================================== -->
-    <footer class="py-10 sm:py-12 bg-bgGray border-t border-dark/5">
+    <footer class="py-10 sm:py-12 bg-bgGray border-t border-dark/5 relative z-10">
       <div class="max-w-7xl mx-auto px-6 sm:px-12 flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6 text-center sm:text-left">
         <div>
           <p class="font-medium text-lg sm:text-xl uppercase tracking-tight text-dark">Arvind Verma</p>
@@ -585,6 +638,8 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", (event) => {
+      
+      // 1. Lenis Smooth Scroll
       const lenis = new Lenis({
         duration: 1.5,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -599,6 +654,55 @@
       gsap.registerPlugin(ScrollTrigger);
       ScrollTrigger.config({ ignoreMobileResize: true });
 
+      // 2. Custom Magnetic Cursor Logic (Only active on fine pointer / desktop)
+      if (window.matchMedia("(pointer: fine)").matches) {
+        const cursor = document.getElementById('custom-cursor');
+        
+        // Fast, hardware-accelerated cursor following
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
+        
+        window.addEventListener('mousemove', (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+        });
+
+        // Ticker loop for smooth cursor lag
+        gsap.ticker.add(() => {
+          cursorX += (mouseX - cursorX) * 0.15;
+          cursorY += (mouseY - cursorY) * 0.15;
+          gsap.set(cursor, { x: cursorX, y: cursorY });
+        });
+
+        // Hover effect for project cards
+        document.querySelectorAll('.gsap-project-item').forEach(item => {
+          item.addEventListener('mouseenter', () => {
+            cursor.classList.add('view-mode');
+            cursor.innerHTML = "VIEW";
+          });
+          item.addEventListener('mouseleave', () => {
+            cursor.classList.remove('view-mode');
+            cursor.innerHTML = "";
+          });
+        });
+      }
+
+      // 3. Parallax Images in Portfolio Grid
+      gsap.utils.toArray('.gsap-project-item').forEach(container => {
+        const img = container.querySelector('.parallax-img');
+        gsap.to(img, {
+          yPercent: 15,
+          ease: "none",
+          scrollTrigger: {
+            trigger: container,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
+          }
+        });
+      });
+
+      // Standard Entrance Animations
       const heroTl = gsap.timeline();
       heroTl.from(".gsap-hero-text", { y: 50, opacity: 0, duration: 1.5, ease: "power4.out" })
             .from(".gsap-float-1", { scale: 0, opacity: 0, rotation: 0, duration: 1, ease: "back.out(1.5)" }, "-=1")
