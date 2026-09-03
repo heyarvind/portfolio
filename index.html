@@ -113,6 +113,55 @@
   <div class="noise-overlay dark:opacity-10"></div>
   <div id="custom-cursor" class="text-textDark dark:text-white"></div>
 
+  <!-- ============================================== -->
+  <!-- FIXED GLOBAL FRAME (Locks to corners)          -->
+  <!-- ============================================== -->
+  <div class="fixed inset-0 pointer-events-none z-40 overflow-hidden">
+    <!-- Top Left: Logo -->
+    <div class="absolute top-6 left-6 sm:top-10 sm:left-10 pointer-events-auto">
+      <div class="w-12 h-14 sm:w-16 sm:h-20 border-[2px] border-textDark dark:border-white rounded-2xl sm:rounded-3xl flex items-center justify-center bg-transparent transition-colors">
+        <span class="text-2xl sm:text-4xl font-bold tracking-tighter">A</span>
+      </div>
+    </div>
+
+    <!-- Top Right: Work & Dark Mode Toggle -->
+    <div class="absolute top-8 right-6 sm:top-14 sm:right-12 pointer-events-auto hidden sm:flex items-center gap-8">
+      <button onclick="toggleDarkMode()" class="magnetic-btn w-10 h-10 rounded-full border border-textDark/20 dark:border-white/20 flex items-center justify-center hover:bg-textDark hover:text-white dark:hover:bg-white dark:hover:text-textDark transition-colors">
+        <span class="dark:hidden">☾</span><span class="hidden dark:block">☀</span>
+      </button>
+      <a href="#works" class="text-2xl sm:text-3xl font-medium tracking-tight hover:opacity-50 transition-opacity">WORK</a>
+    </div>
+    
+    <!-- Mobile Dark Mode Toggle -->
+    <button onclick="toggleDarkMode()" class="sm:hidden absolute top-8 right-6 pointer-events-auto z-50 w-10 h-10 rounded-full border border-textDark/20 dark:border-white/20 flex items-center justify-center bg-bgLight/50 dark:bg-bgDark/50 backdrop-blur-sm">
+      <span class="dark:hidden">☾</span><span class="hidden dark:block">☀</span>
+    </button>
+
+    <!-- Bottom Left: Services -->
+    <div class="absolute bottom-8 left-6 sm:bottom-12 sm:left-12 pointer-events-auto hidden sm:block">
+      <a href="#services" class="text-2xl sm:text-3xl font-medium tracking-tight hover:opacity-50 transition-opacity">SERVICES</a>
+    </div>
+
+    <!-- Bottom Right: Contact -->
+    <div class="absolute bottom-8 right-6 sm:bottom-12 sm:right-12 pointer-events-auto hidden sm:block">
+      <a href="#connect" class="text-2xl sm:text-3xl font-medium tracking-tight hover:opacity-50 transition-opacity">CONTACT</a>
+    </div>
+
+    <!-- Right Center: Socials -->
+    <div class="absolute top-1/2 -translate-y-1/2 right-10 pointer-events-auto hidden sm:flex flex-col gap-3">
+      <a href="https://www.linkedin.com/in/arvind-verma-5061a3228" target="_blank" class="w-10 h-10 rounded-full border border-textDark/30 dark:border-white/30 flex items-center justify-center hover:bg-textDark hover:text-white dark:hover:bg-white dark:hover:text-textDark transition-colors">
+        <span class="text-xs font-semibold">in</span>
+      </a>
+    </div>
+
+    <!-- Mobile Nav Bar at Bottom Edge -->
+    <div class="absolute bottom-6 left-0 w-full px-6 pointer-events-auto flex justify-between sm:hidden z-50 text-xs font-mono font-medium tracking-tight">
+      <a href="#services">SERVICES</a>
+      <a href="#works">WORK</a>
+      <a href="#connect">CONTACT</a>
+    </div>
+  </div>
+
   <!-- Case Study Drawer -->
   <div id="drawer-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[10002] invisible opacity-0" onclick="closeCaseStudy()"></div>
   <div id="case-study-drawer" class="fixed top-0 right-0 w-full md:w-[600px] h-full bg-white dark:bg-cardDark z-[10003] transform translate-x-full overflow-y-auto border-l border-dark/10 dark:border-white/10 p-8 sm:p-12">
@@ -149,34 +198,12 @@
   </div>
 
   <main>
+    <!-- ============================================== -->
+    <!-- SCROLLABLE CANVAS CONTENT                      -->
+    <!-- ============================================== -->
+
     <!-- 1. HERO SECTION -->
     <section class="relative w-full h-[100dvh] overflow-hidden">
-      <!-- Top Nav & Dark Mode Toggle -->
-      <div class="absolute top-6 left-6 sm:top-10 sm:left-10 z-30 flex items-center gap-6">
-        <div class="w-12 h-14 sm:w-16 sm:h-20 border-[2px] border-textDark dark:border-white rounded-2xl sm:rounded-3xl flex items-center justify-center bg-transparent transition-colors">
-          <span class="text-2xl sm:text-4xl font-bold tracking-tighter">A</span>
-        </div>
-      </div>
-
-      <div class="absolute top-8 right-6 sm:top-14 sm:right-12 z-30 hidden sm:flex items-center gap-8">
-        <button onclick="toggleDarkMode()" class="magnetic-btn w-10 h-10 rounded-full border border-textDark/20 dark:border-white/20 flex items-center justify-center hover:bg-textDark hover:text-white dark:hover:bg-white dark:hover:text-textDark transition-colors">
-          <span class="dark:hidden">☾</span><span class="hidden dark:block">☀</span>
-        </button>
-        <a href="#works" class="text-2xl sm:text-3xl font-medium tracking-tight hover:opacity-50 transition-opacity">WORK</a>
-      </div>
-      
-      <!-- Mobile Dark Mode Toggle -->
-      <button onclick="toggleDarkMode()" class="sm:hidden absolute top-8 right-6 z-30 w-10 h-10 rounded-full border border-textDark/20 dark:border-white/20 flex items-center justify-center">
-        <span class="dark:hidden">☾</span><span class="hidden dark:block">☀</span>
-      </button>
-
-      <div class="absolute bottom-8 left-6 sm:bottom-12 sm:left-12 z-30 hidden sm:block">
-        <a href="#services" class="text-2xl sm:text-3xl font-medium tracking-tight hover:opacity-50 transition-opacity">SERVICES</a>
-      </div>
-      <div class="absolute bottom-8 right-6 sm:bottom-12 sm:right-12 z-30 hidden sm:block">
-        <a href="#connect" class="text-2xl sm:text-3xl font-medium tracking-tight hover:opacity-50 transition-opacity">CONTACT</a>
-      </div>
-
       <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none px-4">
         <h1 class="gsap-hero-text text-[18vw] sm:text-[11vw] leading-[0.85] font-medium text-center uppercase tracking-tighter opacity-0">
           <span class="block">ARVIND</span>
@@ -190,22 +217,10 @@
       <div class="gsap-float-2 absolute bottom-[20%] right-[8%] sm:bottom-[25%] sm:right-[25%] z-20 bg-brandBlue text-textDark shape-polygon px-8 py-6 sm:px-12 sm:py-8 transform rotate-6 shadow-sm pointer-events-none opacity-0">
         <p class="text-[10px] sm:text-sm font-medium uppercase tracking-widest text-center leading-tight">E-COMMERCE<br>DEVELOPER</p>
       </div>
-
-      <div class="absolute top-1/2 -translate-y-1/2 right-10 z-30 hidden sm:flex flex-col gap-3">
-        <a href="https://www.linkedin.com/in/arvind-verma-5061a3228" target="_blank" class="w-10 h-10 rounded-full border border-textDark/30 dark:border-white/30 flex items-center justify-center hover:bg-textDark hover:text-white dark:hover:bg-white dark:hover:text-textDark transition-colors">
-          <span class="text-xs font-semibold">in</span>
-        </a>
-      </div>
-      
-      <div class="absolute bottom-6 left-0 w-full px-6 flex justify-between sm:hidden z-30 text-xs font-mono font-medium tracking-tight">
-        <a href="#services">SERVICES</a>
-        <a href="#works">WORK</a>
-        <a href="#connect">CONTACT</a>
-      </div>
     </section>
 
     <!-- 2. MARQUEE & STATS -->
-    <div class="bg-textDark text-white dark:bg-white dark:text-textDark py-4 overflow-hidden transition-colors">
+    <div class="bg-textDark text-white dark:bg-white dark:text-textDark py-4 overflow-hidden">
       <div class="marquee-track font-mono text-sm sm:text-base font-normal uppercase tracking-widest flex items-center gap-12 whitespace-nowrap opacity-90">
         <span>★ SHOPIFY LIQUID</span><span>★ HTML5 &amp; MODERN CSS3</span><span>★ JAVASCRIPT ES6+</span><span>★ CORE WEB VITALS &lt;1.2S</span><span>★ 1-CLICK CHECKOUT</span><span>★ TECHNICAL SEO SCHEMA</span><span>★ SHOPIFY LIQUID</span><span>★ HTML5 &amp; MODERN CSS3</span><span>★ JAVASCRIPT ES6+</span><span>★ CORE WEB VITALS &lt;1.2S</span><span>★ 1-CLICK CHECKOUT</span>
       </div>
@@ -261,7 +276,7 @@
       </div>
     </section>
 
-    <!-- 4. SELECTED WORKS (With Video Hovers & Drawers) -->
+    <!-- 4. SELECTED WORKS -->
     <section id="works" class="py-24 sm:py-32 bg-white dark:bg-[#121212] transition-colors border-y border-textDark/5 dark:border-white/5">
       <div class="max-w-[90rem] mx-auto px-4 sm:px-10">
         <div class="gsap-fade-up flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
@@ -278,11 +293,9 @@
 
         <div id="projects-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mt-8">
           
-          <!-- Project: Michael Angelo -->
           <button onclick="openCaseStudy('michael-angelo')" class="gsap-project-item footwear group block text-left w-full">
             <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
               <img src="https://cdn.shopify.com/s/files/1/0657/7710/7144/files/Artboard_2_jpg.jpg?v=1779884867" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
-              <!-- Video Hover State -->
               <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700" src="https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4"></video>
             </div>
             <div class="px-1">
@@ -293,7 +306,6 @@
             </div>
           </button>
 
-          <!-- Project: Banarasiya -->
           <button onclick="openCaseStudy('banarasiya')" class="gsap-project-item fashion group block text-left w-full">
             <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
               <img src="https://cdn.shopify.com/s/files/1/0497/0240/4258/files/Group_93_1.png?v=1778482629" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
@@ -307,7 +319,6 @@
             </div>
           </button>
 
-          <!-- Project: ThreeSixFive -->
           <button onclick="openCaseStudy('threesixfive')" class="gsap-project-item fashion group block text-left w-full">
             <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
               <img src="https://nikunjbyniidhibajaj.com/cdn/shop/files/2.png?v=1780501726&width=2400" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
@@ -321,7 +332,6 @@
             </div>
           </button>
 
-          <!-- Project: VindX Brand Identity -->
           <button onclick="openCaseStudy('vindx')" class="gsap-project-item fashion group block text-left w-full">
             <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
               <img src="https://loomandstory.com/cdn/shop/files/website.jpg?v=1785494251&width=2000" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
@@ -339,7 +349,7 @@
       </div>
     </section>
 
-    <!-- 6. EDITORIAL SOCIAL PROOF -->
+    <!-- 5. SOCIAL PROOF -->
     <section class="py-16 sm:py-20 max-w-5xl mx-auto px-6 text-center">
       <div class="relative h-[120px] sm:h-[150px] flex items-center justify-center overflow-hidden">
         <p class="testimonial-quote absolute w-full text-lg sm:text-3xl font-serif italic tracking-tight opacity-100 transition-opacity duration-1000">
@@ -348,13 +358,10 @@
         <p class="testimonial-quote absolute w-full text-lg sm:text-3xl font-serif italic tracking-tight opacity-0 transition-opacity duration-1000">
           "Zero third-party bloat. The cleanest checkout flow we've ever had."<br><span class="block text-xs font-mono font-bold uppercase not-italic tracking-widest mt-4 opacity-50">— Technical Lead, Banarasiya</span>
         </p>
-        <p class="testimonial-quote absolute w-full text-lg sm:text-3xl font-serif italic tracking-tight opacity-0 transition-opacity duration-1000">
-          "He understands performance engineering. A true e-commerce partner."<br><span class="block text-xs font-mono font-bold uppercase not-italic tracking-widest mt-4 opacity-50">— Director, ThreeSixFive</span>
-        </p>
       </div>
     </section>
 
-    <!-- 7. CONTACT FORM -->
+    <!-- 6. CONTACT FORM -->
     <section id="connect" class="py-12 sm:py-20 max-w-[90rem] mx-auto px-4 sm:px-10 mb-12 sm:mb-20">
       <div class="bg-cardLight dark:bg-cardDark rounded-[2.5rem] sm:rounded-[3rem] p-6 sm:p-16 lg:p-20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-textDark/5 dark:border-white/5 overflow-hidden transition-colors">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
@@ -413,7 +420,7 @@
       </div>
     </section>
 
-    <!-- 8. FOOTER & LIVE AVAILABILITY -->
+    <!-- 7. FOOTER -->
     <footer class="py-10 sm:py-12 border-t border-textDark/5 dark:border-white/5 relative z-10 transition-colors">
       <div class="max-w-7xl mx-auto px-6 sm:px-12 flex flex-col md:flex-row justify-between items-center gap-6 text-center sm:text-left">
         <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
@@ -445,12 +452,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
   <script>
-    // --- Dark Mode Logic ---
     function toggleDarkMode() {
       document.documentElement.classList.toggle('dark');
     }
 
-    // --- Case Study Data & Logic ---
     const caseStudies = {
       'michael-angelo': { cat: 'Footwear', title: 'Michael Angelo', chal: 'The brand needed a high-density visual storytelling platform that didn\'t compromise on load times.', exec: 'Engineered bespoke Liquid section schemas and custom product options, resulting in an ultra-smooth drawer checkout.', m1v: '<1.2s', m1l: 'Load Time', m2v: '0', m2l: 'App Bloat' },
       'banarasiya': { cat: 'Fashion', title: 'Banarasiya', chal: 'A heritage brand requiring a modern, clean navigation without losing its traditional aesthetic.', exec: 'Built custom hero sliders and swatch selectors via Shopify Liquid, stripping away third-party apps.', m1v: 'Custom', m1l: 'Liquid Nav', m2v: '100%', m2l: 'Responsive' },
@@ -469,8 +474,6 @@
       document.getElementById('cs-metric-1-label').innerText = data.m1l;
       document.getElementById('cs-metric-2-val').innerText = data.m2v;
       document.getElementById('cs-metric-2-label').innerText = data.m2l;
-
-      // Play video in drawer
       document.getElementById('cs-video').src = "https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4";
 
       const overlay = document.getElementById('drawer-overlay');
@@ -490,7 +493,6 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      
       const lenis = new Lenis({ duration: 1.5, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), direction: 'vertical', smooth: true });
       lenis.on('scroll', ScrollTrigger.update);
       gsap.ticker.add((time) => { lenis.raf(time * 1000); });
@@ -519,7 +521,6 @@
               .to(".gsap-float-2", { scale: 1, opacity: 1, duration: 1, ease: "back.out(1.5)" }, "-=0.8");
       }
 
-      // Video Play on Hover
       document.querySelectorAll('.gsap-project-item').forEach(item => {
         const video = item.querySelector('video');
         if(video) {
@@ -528,7 +529,6 @@
         }
       });
 
-      // Crossfading Testimonials
       const quotes = document.querySelectorAll('.testimonial-quote');
       let currentQuote = 0;
       setInterval(() => {
@@ -588,7 +588,6 @@
       submitBtn.disabled = true; submitBtn.innerHTML = "SENDING... <span>&rarr;</span>";
 
       try {
-        // Simulate fetch for demo
         await new Promise(r => setTimeout(r, 1000));
         showToast("✓ Message sent securely.", false);
         document.getElementById('portfolio-form').reset();
