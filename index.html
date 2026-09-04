@@ -74,7 +74,7 @@
       transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1), height 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s;
     }
     #custom-cursor.view-mode {
-      width: 72px; height: 72px; background: currentColor;
+      width: 72px; height: 72px; background: #0f141e; color: #fff;
       font-size: 11px; letter-spacing: 0.15em;
     }
 
@@ -109,84 +109,57 @@
   </div>
 
   <div class="noise-overlay dark:opacity-10"></div>
-  <div id="custom-cursor" class="text-textDark dark:text-white"></div>
+  <div id="custom-cursor"></div>
 
-  <div class="fixed inset-0 pointer-events-none z-40 overflow-hidden">
-    <div class="absolute top-6 left-6 sm:top-10 sm:left-10 pointer-events-auto">
-      <div class="w-12 h-14 sm:w-16 sm:h-20 border-[2px] border-textDark dark:border-white rounded-2xl sm:rounded-3xl flex items-center justify-center bg-transparent transition-colors">
-        <span class="text-2xl sm:text-4xl font-bold tracking-tighter">A</span>
-      </div>
-    </div>
-
-    <div class="absolute top-8 right-6 sm:top-14 sm:right-12 pointer-events-auto hidden sm:flex items-center gap-8">
-      <button onclick="toggleDarkMode()" class="magnetic-btn w-10 h-10 rounded-full border border-textDark/20 dark:border-white/20 flex items-center justify-center hover:bg-textDark hover:text-white dark:hover:bg-white dark:hover:text-textDark transition-colors">
+  <header id="site-header" class="fixed top-0 left-0 w-full z-30 px-6 sm:px-12 py-5 flex justify-between items-center bg-bgLight/80 dark:bg-bgDark/80 backdrop-blur-md border-b border-textDark/5 dark:border-white/5 transition-all duration-300 opacity-0 pointer-events-none">
+    <a href="#" class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg border border-textDark dark:border-white flex items-center justify-center font-bold text-sm">A</div>
+      <span class="text-xs font-mono font-bold tracking-tight uppercase">Arvind Verma</span>
+    </a>
+    <nav class="flex items-center gap-6 sm:gap-8 font-mono text-xs uppercase tracking-wider">
+      <a href="#services" class="hover:text-brandOrange transition-colors">Services</a>
+      <a href="#stack" class="hover:text-brandOrange transition-colors">Stack</a>
+      <a href="#works" class="hover:text-brandOrange transition-colors">Work</a>
+      <a href="#connect" class="hover:text-brandOrange transition-colors">Contact</a>
+      <button onclick="toggleDarkMode()" class="w-7 h-7 rounded-full border border-textDark/20 dark:border-white/20 flex items-center justify-center text-xs">
         <span class="dark:hidden">☾</span><span class="hidden dark:block">☀</span>
       </button>
-      <a href="#works" class="text-2xl sm:text-3xl font-medium tracking-tight hover:opacity-50 transition-opacity">WORK</a>
-    </div>
-    
-    <button onclick="toggleDarkMode()" class="sm:hidden absolute top-8 right-6 pointer-events-auto z-50 w-10 h-10 rounded-full border border-textDark/20 dark:border-white/20 flex items-center justify-center bg-bgLight/50 dark:bg-bgDark/50 backdrop-blur-sm">
-      <span class="dark:hidden">☾</span><span class="hidden dark:block">☀</span>
-    </button>
-
-    <div class="absolute bottom-8 left-6 sm:bottom-12 sm:left-12 pointer-events-auto hidden sm:block">
-      <a href="#services" class="text-2xl sm:text-3xl font-medium tracking-tight hover:opacity-50 transition-opacity">SERVICES</a>
-    </div>
-
-    <div class="absolute bottom-8 right-6 sm:bottom-12 sm:right-12 pointer-events-auto hidden sm:block">
-      <a href="#connect" class="text-2xl sm:text-3xl font-medium tracking-tight hover:opacity-50 transition-opacity">CONTACT</a>
-    </div>
-
-    <div class="absolute top-1/2 -translate-y-1/2 right-10 pointer-events-auto hidden sm:flex flex-col gap-3">
-      <a href="https://www.linkedin.com/in/arvind-verma-5061a3228" target="_blank" class="w-10 h-10 rounded-full border border-textDark/30 dark:border-white/30 flex items-center justify-center hover:bg-textDark hover:text-white dark:hover:bg-white dark:hover:text-textDark transition-colors">
-        <span class="text-xs font-semibold">in</span>
-      </a>
-    </div>
-
-    <div class="absolute bottom-6 left-0 w-full px-6 pointer-events-auto flex justify-between sm:hidden z-50 text-xs font-mono font-medium tracking-tight">
-      <a href="#services">SERVICES</a>
-      <a href="#works">WORK</a>
-      <a href="#connect">CONTACT</a>
-    </div>
-  </div>
-
-  <div id="drawer-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[10002] invisible opacity-0" onclick="closeCaseStudy()"></div>
-  <div id="case-study-drawer" class="fixed top-0 right-0 w-full md:w-[600px] h-full bg-white dark:bg-cardDark z-[10003] transform translate-x-full overflow-y-auto border-l border-dark/10 dark:border-white/10 p-8 sm:p-12">
-    <button onclick="closeCaseStudy()" class="magnetic-btn absolute top-8 right-8 w-10 h-10 rounded-full border border-textDark/20 dark:border-white/20 flex items-center justify-center hover:bg-textDark hover:text-white dark:hover:bg-white dark:hover:text-textDark transition-colors">
-      ✕
-    </button>
-    <div class="mt-12">
-      <span id="cs-category" class="text-[10px] font-mono font-bold uppercase tracking-widest text-brandOrange"></span>
-      <h2 id="cs-title" class="text-4xl sm:text-5xl font-medium uppercase tracking-tighter mt-4 mb-8">Project Name</h2>
-      <div class="aspect-video w-full rounded-2xl overflow-hidden bg-bgLight dark:bg-bgDark mb-10">
-        <video id="cs-video" src="" muted loop playsinline autoplay class="w-full h-full object-cover"></video>
-      </div>
-      <div class="space-y-10">
-        <div>
-          <h4 class="text-sm font-mono font-bold uppercase tracking-wider mb-3 text-textDark/50 dark:text-white/50">The Challenge</h4>
-          <p id="cs-challenge" class="text-sm sm:text-base leading-relaxed opacity-90"></p>
-        </div>
-        <div>
-          <h4 class="text-sm font-mono font-bold uppercase tracking-wider mb-3 text-textDark/50 dark:text-white/50">The Execution</h4>
-          <p id="cs-execution" class="text-sm sm:text-base leading-relaxed opacity-90"></p>
-        </div>
-        <div class="grid grid-cols-2 gap-6 pt-6 border-t border-textDark/10 dark:border-white/10">
-          <div>
-            <span class="text-3xl font-medium tracking-tighter" id="cs-metric-1-val"></span>
-            <p class="text-[10px] font-mono uppercase text-textDark/50 dark:text-white/50 mt-1" id="cs-metric-1-label"></p>
-          </div>
-          <div>
-            <span class="text-3xl font-medium tracking-tighter" id="cs-metric-2-val"></span>
-            <p class="text-[10px] font-mono uppercase text-textDark/50 dark:text-white/50 mt-1" id="cs-metric-2-label"></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    </nav>
+  </header>
 
   <main>
-
     <section class="relative w-full h-[100dvh] overflow-hidden flex items-center justify-center">
+      
+      <div class="absolute top-6 left-6 sm:top-10 sm:left-10 z-20">
+        <div class="w-12 h-14 sm:w-16 sm:h-20 border-[2px] border-textDark dark:border-white rounded-2xl sm:rounded-3xl flex items-center justify-center bg-transparent transition-colors">
+          <span class="text-2xl sm:text-4xl font-bold tracking-tighter">A</span>
+        </div>
+      </div>
+
+      <div class="absolute top-8 right-6 sm:top-14 sm:right-12 z-20 flex items-center gap-6 sm:gap-8">
+        <button onclick="toggleDarkMode()" class="magnetic-btn w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-textDark/20 dark:border-white/20 flex items-center justify-center hover:bg-textDark hover:text-white dark:hover:bg-white dark:hover:text-textDark transition-colors">
+          <span class="dark:hidden">☾</span><span class="hidden dark:block">☀</span>
+        </button>
+        <a href="#works" class="text-xl sm:text-3xl font-medium tracking-tight hover:opacity-50 transition-opacity">WORK</a>
+      </div>
+
+      <div class="absolute bottom-8 left-6 sm:bottom-12 sm:left-12 z-20">
+        <a href="#services" class="text-xl sm:text-3xl font-medium tracking-tight hover:opacity-50 transition-opacity">SERVICES</a>
+      </div>
+
+      <div class="absolute bottom-8 right-6 sm:bottom-12 sm:right-12 z-20">
+        <a href="#connect" class="text-xl sm:text-3xl font-medium tracking-tight hover:opacity-50 transition-opacity">CONTACT</a>
+      </div>
+
+      <div class="absolute top-1/2 -translate-y-1/2 right-6 sm:right-10 z-20 flex flex-col gap-3">
+        <a href="https://www.linkedin.com/in/arvind-verma-5061a3228" target="_blank" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-textDark/30 dark:border-white/30 flex items-center justify-center hover:bg-textDark hover:text-white dark:hover:bg-white dark:hover:text-textDark transition-colors">
+          <span class="text-xs font-semibold">in</span>
+        </a>
+        <a href="https://wa.me/918874856868" target="_blank" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-textDark/30 dark:border-white/30 flex items-center justify-center hover:bg-textDark hover:text-white dark:hover:bg-white dark:hover:text-textDark transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+        </a>
+      </div>
+
       <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none px-4">
         <h1 class="gsap-hero-text text-[18vw] sm:text-[11vw] leading-[0.85] font-medium text-center uppercase tracking-tighter opacity-0">
           <span class="block">ARVIND</span>
@@ -194,11 +167,15 @@
         </h1>
       </div>
 
-      <div class="gsap-float-1 absolute top-[22%] left-[8%] sm:left-[22%] z-20 bg-brandOrange text-textDark rounded-full px-6 py-4 sm:px-10 sm:py-6 transform -rotate-12 shadow-sm pointer-events-none opacity-0">
+      <div class="gsap-float-1 absolute top-[20%] left-[10%] sm:top-[25%] sm:left-[24%] z-20 bg-brandOrange text-textDark rounded-full px-6 py-4 sm:px-10 sm:py-6 transform -rotate-12 shadow-sm pointer-events-none opacity-0">
         <p class="text-[10px] sm:text-sm font-medium uppercase tracking-widest text-center leading-tight">SHOPIFY<br>EXPERT</p>
       </div>
-      <div class="gsap-float-2 absolute bottom-[22%] right-[8%] sm:right-[22%] z-20 bg-brandBlue text-textDark shape-polygon px-8 py-6 sm:px-12 sm:py-8 transform rotate-6 shadow-sm pointer-events-none opacity-0">
+      <div class="gsap-float-2 absolute bottom-[20%] right-[10%] sm:bottom-[25%] sm:right-[24%] z-20 bg-brandBlue text-textDark shape-polygon px-8 py-6 sm:px-12 sm:py-8 transform rotate-6 shadow-sm pointer-events-none opacity-0">
         <p class="text-[10px] sm:text-sm font-medium uppercase tracking-widest text-center leading-tight">E-COMMERCE<br>DEVELOPER</p>
+      </div>
+
+      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 hidden sm:block text-[10px] sm:text-xs font-mono uppercase tracking-widest text-textDark/60 dark:text-textLight/60">
+        SCROLL DOWN &darr;
       </div>
     </section>
 
@@ -239,31 +216,139 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
+        
         <div class="gsap-service-item border-t border-textDark/20 dark:border-white/20 pt-6 group">
-          <span class="text-brandOrange font-mono text-xs font-bold mb-4 block">01</span>
+          <div class="flex justify-between items-start mb-4">
+            <span class="text-brandOrange font-mono text-xs font-bold block">01</span>
+            <svg class="w-6 h-6 text-textDark/30 dark:text-white/30 group-hover:text-brandOrange transition-colors" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+            </svg>
+          </div>
           <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight mb-4 group-hover:text-brandOrange transition-colors">Custom Themes &amp; Liquid</h3>
-          <p class="text-sm opacity-60 leading-relaxed font-mono">Bespoke Liquid section schemas, dynamic drawer checkouts, custom product options, and modular layouts built from scratch.</p>
+          <p class="text-sm opacity-60 leading-relaxed font-mono">Bespoke Liquid section schemas, dynamic drawer checkouts, custom product options, and lightweight modular layouts built from scratch.</p>
         </div>
+
         <div class="gsap-service-item border-t border-textDark/20 dark:border-white/20 pt-6 group">
-          <span class="text-brandOrange font-mono text-xs font-bold mb-4 block">02</span>
+          <div class="flex justify-between items-start mb-4">
+            <span class="text-brandOrange font-mono text-xs font-bold block">02</span>
+            <svg class="w-6 h-6 text-textDark/30 dark:text-white/30 group-hover:text-brandOrange transition-colors" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" />
+            </svg>
+          </div>
           <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight mb-4 group-hover:text-brandOrange transition-colors">Payment Gateway</h3>
           <p class="text-sm opacity-60 leading-relaxed font-mono">Direct checkout integrations enabling seamless domestic and global transactions with zero friction for shoppers.</p>
         </div>
+
         <div class="gsap-service-item border-t border-textDark/20 dark:border-white/20 pt-6 group">
-          <span class="text-brandOrange font-mono text-xs font-bold mb-4 block">03</span>
+          <div class="flex justify-between items-start mb-4">
+            <span class="text-brandOrange font-mono text-xs font-bold block">03</span>
+            <svg class="w-6 h-6 text-textDark/30 dark:text-white/30 group-hover:text-brandOrange transition-colors" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+            </svg>
+          </div>
           <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight mb-4 group-hover:text-brandOrange transition-colors">Shipping &amp; Logistics</h3>
           <p class="text-sm opacity-60 leading-relaxed font-mono">Automated courier allocation, real-time tracking webhooks, NDR management, and seamless reverse pickup flows.</p>
+        </div>
+
+        <div class="gsap-service-item border-t border-textDark/20 dark:border-white/20 pt-6 group">
+          <div class="flex justify-between items-start mb-4">
+            <span class="text-brandOrange font-mono text-xs font-bold block">04</span>
+            <svg class="w-6 h-6 text-textDark/30 dark:text-white/30 group-hover:text-brandOrange transition-colors" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+            </svg>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight mb-4 group-hover:text-brandOrange transition-colors">Core Web Vitals</h3>
+          <p class="text-sm opacity-60 leading-relaxed font-mono">Aggressive script streamlining, vanilla JavaScript logic, and asset optimization for maximum Lighthouse scores.</p>
+        </div>
+
+        <div class="gsap-service-item border-t border-textDark/20 dark:border-white/20 pt-6 group">
+          <div class="flex justify-between items-start mb-4">
+            <span class="text-brandOrange font-mono text-xs font-bold block">05</span>
+            <svg class="w-6 h-6 text-textDark/30 dark:text-white/30 group-hover:text-brandOrange transition-colors" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
+            </svg>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight mb-4 group-hover:text-brandOrange transition-colors">Technical SEO</h3>
+          <p class="text-sm opacity-60 leading-relaxed font-mono">JSON-LD structured data (Product, Organization schema), clean metadata hooks, and canonical URL hygiene.</p>
+        </div>
+
+        <div class="gsap-service-item border-t border-textDark/20 dark:border-white/20 pt-6 group">
+          <div class="flex justify-between items-start mb-4">
+            <span class="text-brandOrange font-mono text-xs font-bold block">06</span>
+            <svg class="w-6 h-6 text-textDark/30 dark:text-white/30 group-hover:text-brandOrange transition-colors" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+            </svg>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight mb-4 group-hover:text-brandOrange transition-colors">API Integrations</h3>
+          <p class="text-sm opacity-60 leading-relaxed font-mono">Connecting third-party logistics, ERPs, CRM platforms, and custom webhooks into Shopify without adding bloat.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="stack" class="py-24 sm:py-32 bg-white dark:bg-[#121212] border-y border-textDark/5 dark:border-white/5 transition-colors">
+      <div class="max-w-7xl mx-auto px-6 sm:px-12 text-center">
+        <div class="gsap-fade-up">
+          <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter leading-[1.05]">
+            <span class="block">Three layers.</span>
+            <em class="font-serif italic font-normal tracking-normal opacity-80 lowercase">one developer.</em>
+          </h2>
+          <p class="opacity-60 text-sm mt-6 sm:mt-8 max-w-xl mx-auto font-mono">
+            Three sides of the same developer — frontend pixels, Shopify Liquid architecture, and the ecosystem integrations beneath them.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mt-16 sm:mt-20 text-left">
+          
+          <div class="gsap-stack-card p-8 sm:p-10 border border-textDark/5 dark:border-white/10 rounded-3xl bg-bgLight dark:bg-bgDark">
+            <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-brandBlue">01 // FRONTEND</span>
+            <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight mt-4">Pixels with personality.</h3>
+            <p class="text-sm opacity-60 mt-3 font-mono leading-relaxed">Semantic HTML5, custom Tailwind CSS, and vanilla JavaScript written for sub-second interactions without framework bloat.</p>
+            <div class="flex flex-wrap gap-2 mt-8">
+              <span class="px-4 py-1.5 rounded-full bg-cardLight dark:bg-cardDark text-xs font-semibold shadow-sm">HTML5</span>
+              <span class="px-4 py-1.5 rounded-full bg-cardLight dark:bg-cardDark text-xs font-semibold shadow-sm">CSS3</span>
+              <span class="px-4 py-1.5 rounded-full bg-cardLight dark:bg-cardDark text-xs font-semibold shadow-sm">JS ES6</span>
+              <span class="px-4 py-1.5 rounded-full bg-cardLight dark:bg-cardDark text-xs font-semibold shadow-sm">Tailwind CSS</span>
+            </div>
+          </div>
+
+          <div class="gsap-stack-card p-8 sm:p-10 border border-textDark/5 dark:border-white/10 rounded-3xl bg-textDark dark:bg-[#1a1a1a] text-white">
+            <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-brandOrange">02 // BACKEND</span>
+            <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight mt-4 text-white">Logic that holds up.</h3>
+            <p class="text-sm opacity-70 mt-3 font-mono leading-relaxed">Custom Liquid section schemas, dynamic settings for merchants, fast snippet includes, and modular component architecture.</p>
+            <div class="flex flex-wrap gap-2 mt-8">
+              <span class="px-4 py-1.5 rounded-full bg-white/10 text-xs font-semibold border border-white/10 text-white">Shopify Liquid</span>
+              <span class="px-4 py-1.5 rounded-full bg-white/10 text-xs font-semibold border border-white/10 text-white">JSON Schemas</span>
+              <span class="px-4 py-1.5 rounded-full bg-white/10 text-xs font-semibold border border-white/10 text-white">Metafields</span>
+            </div>
+          </div>
+
+          <div class="gsap-stack-card p-8 sm:p-10 border border-textDark/5 dark:border-white/10 rounded-3xl bg-bgLight dark:bg-bgDark">
+            <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-brandBlue">03 // DATA</span>
+            <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight mt-4">Data that behaves.</h3>
+            <p class="text-sm opacity-60 mt-3 font-mono leading-relaxed">Connecting 1-click checkout engines, payment gateways, ERPs, and automated fulfillment APIs with reliable error handling.</p>
+            <div class="flex flex-wrap gap-2 mt-8">
+              <span class="px-4 py-1.5 rounded-full bg-cardLight dark:bg-cardDark text-xs font-semibold shadow-sm">Razorpay</span>
+              <span class="px-4 py-1.5 rounded-full bg-cardLight dark:bg-cardDark text-xs font-semibold shadow-sm">GoKwik</span>
+              <span class="px-4 py-1.5 rounded-full bg-cardLight dark:bg-cardDark text-xs font-semibold shadow-sm">Shiprocket</span>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
 
-    <section id="works" class="py-24 sm:py-32 bg-white dark:bg-[#121212] transition-colors border-y border-textDark/5 dark:border-white/5">
-      <div class="max-w-[90rem] mx-auto px-4 sm:px-10">
-        <div class="gsap-fade-up flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
-          <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter leading-[1.05]">
-            <em class="font-serif italic font-normal tracking-normal opacity-80 lowercase">selected</em>
-            <span class="block">Work</span>
-          </h2>
+    <section id="works" class="py-24 sm:py-32 bg-bgLight dark:bg-bgDark transition-colors">
+      <div class="max-w-[90rem] mx-auto px-6 sm:px-12">
+        
+        <div class="gsap-fade-up flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+          <div>
+            <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter leading-[1.05]">
+              <em class="font-serif italic font-normal tracking-normal opacity-80 lowercase">selected</em>
+              <span class="block">Work</span>
+            </h2>
+          </div>
+
           <div class="flex overflow-x-auto no-scrollbar gap-2 sm:gap-3 pb-2 font-mono text-[10px] sm:text-xs w-full md:w-auto">
             <button onclick="filterStores('all')" class="magnetic-btn filter-btn active shrink-0 px-4 py-2 rounded-full bg-textDark text-white dark:bg-white dark:text-textDark transition-colors" data-category="all">All</button>
             <button onclick="filterStores('footwear')" class="magnetic-btn filter-btn shrink-0 px-4 py-2 rounded-full border border-textDark/20 dark:border-white/20 bg-transparent transition-colors" data-category="footwear">Footwear</button>
@@ -275,10 +360,9 @@
 
         <div id="projects-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mt-8">
           
-          <button onclick="openCaseStudy('michael-angelo')" class="gsap-project-item footwear group block text-left w-full">
-            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
-              <img src="https://cdn.shopify.com/s/files/1/0657/7710/7144/files/Artboard_2_jpg.jpg?v=1779884867" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
-              <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700" src="https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4"></video>
+          <a href="https://michaelangelo.in/" target="_blank" class="gsap-project-item footwear group block">
+            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl bg-cardLight dark:bg-cardDark mb-3 shadow-sm">
+              <img src="https://cdn.shopify.com/s/files/1/0657/7710/7144/files/Artboard_2_jpg.jpg?v=1779884867" alt="Michael Angelo" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
             </div>
             <div class="px-1">
               <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
@@ -286,12 +370,11 @@
               </h3>
               <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Premium Footwear</p>
             </div>
-          </button>
+          </a>
 
-          <button onclick="openCaseStudy('banarasiya')" class="gsap-project-item fashion group block text-left w-full">
-            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
-              <img src="https://cdn.shopify.com/s/files/1/0890/7233/7188/files/Mask_group_6.png?v=1783936310" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
-              <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700" src="https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4"></video>
+          <a href="https://www.leconcept.co.in/" target="_blank" class="gsap-project-item fashion group block">
+            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl bg-cardLight dark:bg-cardDark mb-3 shadow-sm">
+              <img src="https://cdn.shopify.com/s/files/1/0890/7233/7188/files/Mask_group_6.png?v=1783936310" alt="Le Concept" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
             </div>
             <div class="px-1">
               <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
@@ -299,12 +382,11 @@
               </h3>
               <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Women's Wear</p>
             </div>
-          </button>
+          </a>
 
-          <button onclick="openCaseStudy('threesixfive')" class="gsap-project-item footwear group block text-left w-full">
-            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
-              <img src="https://www.spiffers.in/cdn/shop/files/Rectangle_142.png?v=1780992822&width=1600" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
-              <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700" src="https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4"></video>
+          <a href="https://www.spiffers.in/" target="_blank" class="gsap-project-item footwear group block">
+            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl bg-cardLight dark:bg-cardDark mb-3 shadow-sm">
+              <img src="https://www.spiffers.in/cdn/shop/files/Rectangle_142.png?v=1780992822&width=1600" alt="Spiffers" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
             </div>
             <div class="px-1">
               <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
@@ -312,12 +394,11 @@
               </h3>
               <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Footwear Brand</p>
             </div>
-          </button>
+          </a>
 
-          <button onclick="openCaseStudy('vindx')" class="gsap-project-item fashion group block text-left w-full">
-            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
-              <img src="https://nikunjbyniidhibajaj.com/cdn/shop/files/2.png?v=1780501726&width=2400" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
-              <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700" src="https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4"></video>
+          <a href="https://nikunjbyniidhibajaj.com/" target="_blank" class="gsap-project-item fashion group block">
+            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl bg-cardLight dark:bg-cardDark mb-3 shadow-sm">
+              <img src="https://nikunjbyniidhibajaj.com/cdn/shop/files/2.png?v=1780501726&width=2400" alt="Nikunj Niidhi Bajaj" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
             </div>
             <div class="px-1">
               <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
@@ -325,12 +406,11 @@
               </h3>
               <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Women Ethnic Wear</p>
             </div>
-          </button>
+          </a>
 
-          <button onclick="openCaseStudy('vindx')" class="gsap-project-item fashion group block text-left w-full">
-            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
-              <img src="https://loomandstory.com/cdn/shop/files/website.jpg?v=1785494251&width=2000" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
-              <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700" src="https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4"></video>
+          <a href="https://loomandstory.com/" target="_blank" class="gsap-project-item fashion group block">
+            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl bg-cardLight dark:bg-cardDark mb-3 shadow-sm">
+              <img src="https://loomandstory.com/cdn/shop/files/website.jpg?v=1785494251&width=2000" alt="Loom & Story" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
             </div>
             <div class="px-1">
               <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
@@ -338,12 +418,11 @@
               </h3>
               <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Textile Storytelling</p>
             </div>
-          </button>
+          </a>
 
-          <button onclick="openCaseStudy('vindx')" class="gsap-project-item footwear group block text-left w-full">
-            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
-              <img src="https://zaydns.com/cdn/shop/files/YOO.jpg?v=1779727236&width=1200" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
-              <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700" src="https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4"></video>
+          <a href="https://zaydns.com/" target="_blank" class="gsap-project-item footwear group block">
+            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl bg-cardLight dark:bg-cardDark mb-3 shadow-sm">
+              <img src="https://zaydns.com/cdn/shop/files/YOO.jpg?v=1779727236&width=1200" alt="Zaydn" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
             </div>
             <div class="px-1">
               <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
@@ -351,12 +430,11 @@
               </h3>
               <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Sneaker Brand</p>
             </div>
-          </button>
+          </a>
 
-          <button onclick="openCaseStudy('vindx')" class="gsap-project-item jewelry group block text-left w-full">
-            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
-              <img src="https://www.miira.in/cdn/shop/files/SparklingnamenecklaceRs2499_700x.jpg?v=1784040283" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
-              <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700" src="https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4"></video>
+          <a href="https://www.miira.in/" target="_blank" class="gsap-project-item jewelry group block">
+            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl bg-cardLight dark:bg-cardDark mb-3 shadow-sm">
+              <img src="https://www.miira.in/cdn/shop/files/SparklingnamenecklaceRs2499_700x.jpg?v=1784040283" alt="Miira" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
             </div>
             <div class="px-1">
               <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
@@ -364,12 +442,11 @@
               </h3>
               <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Artificial Jewellery</p>
             </div>
-          </button>
+          </a>
 
-          <button onclick="openCaseStudy('banarasiya')" class="gsap-project-item fashion group block text-left w-full">
-            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
-              <img src="https://cdn.shopify.com/s/files/1/0497/0240/4258/files/Group_93_1.png?v=1778482629" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
-              <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700" src="https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4"></video>
+          <a href="https://banarasiya.in/" target="_blank" class="gsap-project-item fashion group block">
+            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl bg-cardLight dark:bg-cardDark mb-3 shadow-sm">
+              <img src="https://cdn.shopify.com/s/files/1/0497/0240/4258/files/Group_93_1.png?v=1778482629" alt="Banarasiya" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
             </div>
             <div class="px-1">
               <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
@@ -377,12 +454,11 @@
               </h3>
               <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Heritage Saree Store</p>
             </div>
-          </button>
+          </a>
 
-          <button onclick="openCaseStudy('vindx')" class="gsap-project-item home group block text-left w-full">
-            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
-              <img src="https://www.vesperahomes.com/cdn/shop/files/Self-care_Sunday_Sale_Green_Shopify_Banner_38.png?v=1783680878&width=1920" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
-              <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700" src="https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4"></video>
+          <a href="https://www.vesperahomes.com/" target="_blank" class="gsap-project-item home group block">
+            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl bg-cardLight dark:bg-cardDark mb-3 shadow-sm">
+              <img src="https://www.vesperahomes.com/cdn/shop/files/Self-care_Sunday_Sale_Green_Shopify_Banner_38.png?v=1783680878&width=1920" alt="Vespera Homes" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
             </div>
             <div class="px-1">
               <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
@@ -390,12 +466,11 @@
               </h3>
               <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Home Decor</p>
             </div>
-          </button>
+          </a>
 
-          <button onclick="openCaseStudy('vindx')" class="gsap-project-item fashion group block text-left w-full">
-            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
-              <img src="https://sojanya.com/cdn/shop/files/2_08eebcdd-d7f0-480a-9ad4-4daf34580003.jpg?v=1757503550&width=1410" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
-              <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700" src="https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4"></video>
+          <a href="https://sojanya.com/" target="_blank" class="gsap-project-item fashion group block">
+            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl bg-cardLight dark:bg-cardDark mb-3 shadow-sm">
+              <img src="https://sojanya.com/cdn/shop/files/2_08eebcdd-d7f0-480a-9ad4-4daf34580003.jpg?v=1757503550&width=1410" alt="Sojanya" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
             </div>
             <div class="px-1">
               <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
@@ -403,12 +478,11 @@
               </h3>
               <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Men Ethnic Wear</p>
             </div>
-          </button>
+          </a>
 
-          <button onclick="openCaseStudy('vindx')" class="gsap-project-item home group block text-left w-full">
-            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
-              <img src="https://paakhihome.com/cdn/shop/files/PRT-004_15_10a2899c-7648-4a38-8f54-1b48b3da78a1.jpg?v=1769081125&width=1296" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
-              <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700" src="https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4"></video>
+          <a href="https://paakhihome.com/" target="_blank" class="gsap-project-item home group block">
+            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl bg-cardLight dark:bg-cardDark mb-3 shadow-sm">
+              <img src="https://paakhihome.com/cdn/shop/files/PRT-004_15_10a2899c-7648-4a38-8f54-1b48b3da78a1.jpg?v=1769081125&width=1296" alt="Paakhi" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
             </div>
             <div class="px-1">
               <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
@@ -416,12 +490,11 @@
               </h3>
               <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Home Essentials</p>
             </div>
-          </button>
+          </a>
 
-          <button onclick="openCaseStudy('vindx')" class="gsap-project-item jewelry group block text-left w-full">
-            <div class="w-full aspect-[4/3] relative overflow-hidden rounded-2xl bg-bgLight dark:bg-bgDark mb-3 shadow-sm">
-              <img src="https://takshexclusive.com/cdn/shop/files/IMG_20260508_192457.png?v=1778248556&width=2560" class="parallax-img absolute top-[-15%] w-full h-[130%] object-cover object-center grayscale group-hover:opacity-0 transition-opacity duration-500" loading="lazy" />
-              <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700" src="https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4"></video>
+          <a href="https://takshexclusive.com/" target="_blank" class="gsap-project-item jewelry group block">
+            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl bg-cardLight dark:bg-cardDark mb-3 shadow-sm">
+              <img src="https://takshexclusive.com/cdn/shop/files/IMG_20260508_192457.png?v=1778248556&width=2560" alt="Taksh" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
             </div>
             <div class="px-1">
               <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
@@ -429,26 +502,16 @@
               </h3>
               <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Bridal Jewelry</p>
             </div>
-          </button>
+          </a>
 
         </div>
       </div>
     </section>
 
-    <section class="py-16 sm:py-20 max-w-5xl mx-auto px-6 text-center">
-      <div class="relative h-[120px] sm:h-[150px] flex items-center justify-center overflow-hidden">
-        <p class="testimonial-quote absolute w-full text-lg sm:text-3xl font-serif italic tracking-tight opacity-100 transition-opacity duration-1000">
-          "Arvind's custom Liquid architecture halved our load times."<br><span class="block text-xs font-mono font-bold uppercase not-italic tracking-widest mt-4 opacity-50">— Founder, Michael Angelo</span>
-        </p>
-        <p class="testimonial-quote absolute w-full text-lg sm:text-3xl font-serif italic tracking-tight opacity-0 transition-opacity duration-1000">
-          "Zero third-party bloat. The cleanest checkout flow we've ever had."<br><span class="block text-xs font-mono font-bold uppercase not-italic tracking-widest mt-4 opacity-50">— Technical Lead, Banarasiya</span>
-        </p>
-      </div>
-    </section>
-
-    <section id="connect" class="py-12 sm:py-20 max-w-[90rem] mx-auto px-4 sm:px-10 mb-12 sm:mb-20">
+    <section id="connect" class="py-12 sm:py-24 max-w-7xl mx-auto px-6 sm:px-12 mb-12 sm:mb-20">
       <div class="bg-cardLight dark:bg-cardDark rounded-[2.5rem] sm:rounded-[3rem] p-6 sm:p-16 lg:p-20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-textDark/5 dark:border-white/5 overflow-hidden transition-colors">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
+          
           <div class="gsap-contact-info flex flex-col justify-between">
             <div>
               <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter leading-[1.05]">
@@ -459,18 +522,26 @@
                 Shopify builds, Liquid architecture, checkout optimization, or payment integrations — I'm ready to ship it.
               </p>
             </div>
-            <div class="mt-8 sm:mt-0 space-y-4 sm:space-y-6 font-mono text-[10px] sm:text-sm relative z-10">
+            
+            <div class="mt-8 sm:mt-0 space-y-4 sm:space-y-6 font-mono text-[10px] sm:text-sm">
               <a href="mailto:letswork.arvind@gmail.com" class="magnetic-btn flex items-center gap-4 sm:gap-5 group w-fit">
                 <span class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-bgLight dark:bg-white/5 flex items-center justify-center group-hover:bg-textDark group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-textDark transition-all duration-300 opacity-60 group-hover:opacity-100">
                   ✉
                 </span>
                 <span class="opacity-80 group-hover:opacity-100 transition-opacity border-b border-transparent group-hover:border-current pb-0.5 break-all">letswork.arvind@gmail.com</span>
               </a>
+              <a href="https://wa.me/918874856868" target="_blank" class="magnetic-btn flex items-center gap-4 sm:gap-5 group w-fit">
+                <span class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-bgLight dark:bg-white/5 flex items-center justify-center group-hover:bg-textDark group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-textDark transition-all duration-300 opacity-60 group-hover:opacity-100">
+                  💬
+                </span>
+                <span class="opacity-80 group-hover:opacity-100 transition-opacity border-b border-transparent group-hover:border-current pb-0.5">+91 8874856868</span>
+              </a>
             </div>
           </div>
 
-          <div class="gsap-contact-form mt-4 lg:mt-0 relative z-10">
-            <form id="portfolio-form" onsubmit="submitViaGoogleScript(event)" class="space-y-6 sm:space-y-12">
+          <div class="gsap-contact-form mt-4 lg:mt-0">
+            <form id="portfolio-form" onsubmit="submitViaGoogleScript(event)" class="space-y-6 sm:space-y-10">
+              
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10">
                 <div class="relative group">
                   <label class="block text-[10px] sm:text-xs font-mono font-semibold opacity-40 uppercase mb-1 group-focus-within:opacity-100 transition-opacity">Name</label>
@@ -481,6 +552,7 @@
                   <input type="email" id="form-email" required class="w-full px-0 py-2 bg-transparent border-b border-textDark/10 dark:border-white/10 text-base sm:text-sm focus:outline-none focus:border-current transition-colors cursor-text" />
                 </div>
               </div>
+
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10">
                 <div class="relative group">
                   <label class="block text-[10px] sm:text-xs font-mono font-semibold opacity-40 uppercase mb-1 group-focus-within:opacity-100 transition-opacity">Phone</label>
@@ -491,10 +563,11 @@
                   <input type="text" id="form-company" required class="w-full px-0 py-2 bg-transparent border-b border-textDark/10 dark:border-white/10 text-base sm:text-sm focus:outline-none focus:border-current transition-colors cursor-text" />
                 </div>
               </div>
+
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10">
                 <div class="relative group">
                   <label class="block text-[10px] sm:text-xs font-mono font-semibold opacity-40 uppercase mb-1 group-focus-within:opacity-100 transition-opacity">Website URL</label>
-                  <input type="url" id="form-website" class="w-full px-0 py-2 bg-transparent border-b border-textDark/10 dark:border-white/10 text-base sm:text-sm focus:outline-none focus:border-current transition-colors cursor-text" />
+                  <input type="url" id="form-website" placeholder="https://..." class="w-full px-0 py-2 bg-transparent border-b border-textDark/10 dark:border-white/10 text-base sm:text-sm focus:outline-none focus:border-current transition-colors cursor-text" />
                 </div>
                 <div class="relative group">
                   <label class="block text-[10px] sm:text-xs font-mono font-semibold opacity-40 uppercase mb-1 group-focus-within:opacity-100 transition-opacity">Service</label>
@@ -503,25 +576,30 @@
                     <option value="Shopify Speed & Core Web Vitals" class="dark:bg-cardDark">Shopify Speed & Core Web Vitals</option>
                     <option value="Payment Gateway Integration" class="dark:bg-cardDark">Payment Gateway Integration</option>
                     <option value="Shipping & Logistics Automation" class="dark:bg-cardDark">Shipping & Logistics Automation</option>
+                    <option value="Technical SEO & Structured Schema" class="dark:bg-cardDark">Technical SEO & Structured Schema</option>
                     <option value="Other" class="dark:bg-cardDark">Other</option>
                   </select>
                 </div>
               </div>
+
               <div class="relative group">
                 <label class="block text-[10px] sm:text-xs font-mono font-semibold opacity-40 uppercase mb-1 group-focus-within:opacity-100 transition-opacity">Message</label>
-                <textarea id="form-message" rows="1" required class="w-full px-0 py-2 bg-transparent border-b border-textDark/10 dark:border-white/10 text-base sm:text-sm focus:outline-none focus:border-current transition-colors resize-none cursor-text"></textarea>
+                <textarea id="form-message" rows="2" required class="w-full px-0 py-2 bg-transparent border-b border-textDark/10 dark:border-white/10 text-base sm:text-sm focus:outline-none focus:border-current transition-colors resize-none cursor-text"></textarea>
               </div>
+
               <button type="submit" id="submit-btn" class="magnetic-btn w-full sm:w-auto px-10 py-4 rounded-full bg-textDark text-white dark:bg-white dark:text-textDark font-medium text-xs sm:text-sm uppercase tracking-wider mt-4 transition-colors shadow-lg flex items-center justify-center gap-3">
                 Send Message <span>&rarr;</span>
               </button>
             </form>
           </div>
+
         </div>
       </div>
     </section>
 
-    <footer class="py-10 sm:py-12 border-t border-textDark/5 dark:border-white/5 relative z-10 transition-colors">
+    <footer class="py-12 border-t border-textDark/5 dark:border-white/5 transition-colors">
       <div class="max-w-7xl mx-auto px-6 sm:px-12 flex flex-col md:flex-row justify-between items-center gap-6 text-center sm:text-left">
+        
         <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
           <div>
             <p class="font-medium text-lg sm:text-xl uppercase tracking-tight">Arvind Verma</p>
@@ -538,8 +616,11 @@
             </div>
           </div>
         </div>
+
         <div class="flex gap-6 sm:gap-8 text-sm font-mono opacity-80">
           <a href="https://www.linkedin.com/in/arvind-verma-5061a3228" target="_blank" class="hover:text-brandOrange transition-colors">LinkedIn</a>
+          <a href="https://wa.me/918874856868" target="_blank" class="hover:text-brandOrange transition-colors">WhatsApp</a>
+          <a href="mailto:letswork.arvind@gmail.com" class="hover:text-brandOrange transition-colors">Email</a>
         </div>
       </div>
     </footer>
@@ -555,51 +636,42 @@
       document.documentElement.classList.toggle('dark');
     }
 
-    const caseStudies = {
-      'michael-angelo': { cat: 'Footwear', title: 'Michael Angelo', chal: 'The brand needed a high-density visual storytelling platform that didn\'t compromise on load times.', exec: 'Engineered bespoke Liquid section schemas and custom product options, resulting in an ultra-smooth drawer checkout.', m1v: '<1.2s', m1l: 'Load Time', m2v: '0', m2l: 'App Bloat' },
-      'banarasiya': { cat: 'Fashion', title: 'Banarasiya', chal: 'A heritage brand requiring a modern, clean navigation without losing its traditional aesthetic.', exec: 'Built custom hero sliders and swatch selectors via Shopify Liquid, stripping away third-party apps.', m1v: 'Custom', m1l: 'Liquid Nav', m2v: '100%', m2l: 'Responsive' },
-      'threesixfive': { cat: 'Fashion', title: 'ThreeSixFive', chal: 'Needed a scalable custom storefront capable of handling rapid inventory updates.', exec: 'Developed a robust frontend architecture utilizing JSON-LD structured data and vanilla JS for fast interactions.', m1v: 'JSON-LD', m1l: 'Schema', m2v: 'Vanilla', m2l: 'JS Engine' },
-      'vindx': { cat: 'App', title: 'VindX Engine', chal: 'Required a proprietary Shopify CLI app for shoppable video sections.', exec: 'Configured a custom Tailwind and Liquid architecture under the VindX brand for highly modular integrations.', m1v: 'CLI', m1l: 'Built', m2v: 'Liquid', m2l: 'Modular' }
-    };
-
-    function openCaseStudy(id) {
-      const data = caseStudies[id] || caseStudies['michael-angelo'];
-      document.getElementById('cs-category').innerText = data.cat;
-      document.getElementById('cs-title').innerText = data.title;
-      document.getElementById('cs-challenge').innerText = data.chal;
-      document.getElementById('cs-execution').innerText = data.exec;
-      document.getElementById('cs-metric-1-val').innerText = data.m1v;
-      document.getElementById('cs-metric-1-label').innerText = data.m1l;
-      document.getElementById('cs-metric-2-val').innerText = data.m2v;
-      document.getElementById('cs-metric-2-label').innerText = data.m2l;
-      document.getElementById('cs-video').src = "https://cdn.coverr.co/videos/coverr-walking-in-the-city-2849/1080p.mp4";
-
-      const overlay = document.getElementById('drawer-overlay');
-      const drawer = document.getElementById('case-study-drawer');
-      gsap.to(overlay, { autoAlpha: 1, duration: 0.4 });
-      gsap.to(drawer, { x: '0%', duration: 0.6, ease: 'power4.out' });
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeCaseStudy() {
-      const overlay = document.getElementById('drawer-overlay');
-      const drawer = document.getElementById('case-study-drawer');
-      gsap.to(overlay, { autoAlpha: 0, duration: 0.4 });
-      gsap.to(drawer, { x: '100%', duration: 0.6, ease: 'power4.in' });
-      document.body.style.overflow = '';
-      document.getElementById('cs-video').pause();
-    }
-
     document.addEventListener("DOMContentLoaded", () => {
-      const lenis = new Lenis({ duration: 1.5, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), direction: 'vertical', smooth: true });
+      // 1. Lenis Smooth Scroll
+      const lenis = new Lenis({
+        duration: 1.5,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        direction: 'vertical',
+        smooth: true,
+      });
+
       lenis.on('scroll', ScrollTrigger.update);
       gsap.ticker.add((time) => { lenis.raf(time * 1000); });
       gsap.ticker.lagSmoothing(0);
       gsap.registerPlugin(ScrollTrigger);
       ScrollTrigger.config({ ignoreMobileResize: true });
 
-      gsap.to("#progress-bar", { scaleX: 1, ease: "none", scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 0.1 } });
+      // 2. Hairline Progress Bar
+      gsap.to("#progress-bar", {
+        scaleX: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "body",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 0.1
+        }
+      });
 
+      // 3. Reveal Sticky Nav on Scroll Past Hero
+      ScrollTrigger.create({
+        trigger: "#services",
+        start: "top 80%",
+        onEnter: () => gsap.to("#site-header", { opacity: 1, pointerEvents: "auto", duration: 0.3 }),
+        onLeaveBack: () => gsap.to("#site-header", { opacity: 0, pointerEvents: "none", duration: 0.3 })
+      });
+
+      // 4. Preloader
       let progress = 0;
       const counterElement = document.getElementById('loader-counter');
       const loaderInterval = setInterval(() => {
@@ -608,9 +680,15 @@
         counterElement.innerText = progress + "%";
         if (progress === 100) {
           clearInterval(loaderInterval);
-          gsap.to('#preloader', { yPercent: -100, duration: 1.2, ease: "power4.inOut", delay: 0.3, onComplete: initHeroAnimations });
+          gsap.to('#preloader', {
+            yPercent: -100,
+            duration: 1.2,
+            ease: "power4.inOut",
+            delay: 0.3,
+            onComplete: initHeroAnimations
+          });
         }
-      }, 80);
+      }, 70);
 
       function initHeroAnimations() {
         const heroTl = gsap.timeline();
@@ -619,24 +697,7 @@
               .to(".gsap-float-2", { scale: 1, opacity: 1, duration: 1, ease: "back.out(1.5)" }, "-=0.8");
       }
 
-      document.querySelectorAll('.gsap-project-item').forEach(item => {
-        const video = item.querySelector('video');
-        if(video) {
-          item.addEventListener('mouseenter', () => video.play());
-          item.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
-        }
-      });
-
-      const quotes = document.querySelectorAll('.testimonial-quote');
-      let currentQuote = 0;
-      setInterval(() => {
-        quotes[currentQuote].classList.remove('opacity-100');
-        quotes[currentQuote].classList.add('opacity-0');
-        currentQuote = (currentQuote + 1) % quotes.length;
-        quotes[currentQuote].classList.remove('opacity-0');
-        quotes[currentQuote].classList.add('opacity-100');
-      }, 4000);
-
+      // 5. Magnetic Cursor
       if (window.matchMedia("(pointer: fine)").matches) {
         const cursor = document.getElementById('custom-cursor');
         let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
@@ -662,6 +723,7 @@
         });
       }
 
+      // 6. Live Clock
       function updateTime() {
         const now = new Date();
         const options = { timeZone: 'Asia/Kolkata', hour: '2-digit', minute:'2-digit', second: '2-digit', hour12: true };
@@ -669,17 +731,22 @@
       }
       setInterval(updateTime, 1000); updateTime();
 
-      gsap.utils.toArray('.gsap-project-item').forEach(container => {
-        const img = container.querySelector('.parallax-img');
-        if(img) gsap.to(img, { yPercent: 15, ease: "none", scrollTrigger: { trigger: container, start: "top bottom", end: "bottom top", scrub: true } });
-      });
-
+      // 7. Animations
       gsap.to(".gsap-float-1", { y: -15, rotation: -15, duration: 3, yoyo: true, repeat: -1, ease: "sine.inOut" });
       gsap.to(".gsap-float-2", { y: 15, rotation: 3, duration: 3.5, yoyo: true, repeat: -1, ease: "sine.inOut" });
       gsap.from(".gsap-stat", { scrollTrigger: { trigger: ".gsap-stat", start: "top 90%" }, y: 30, opacity: 0, duration: 1, stagger: 0.1, ease: "power3.out" });
       gsap.utils.toArray('.gsap-fade-up').forEach(el => gsap.from(el, { scrollTrigger: { trigger: el, start: "top 85%" }, y: 40, opacity: 0, duration: 1.2, ease: "power4.out" }));
+
+      const staggerGroups = [".gsap-service-item", ".gsap-stack-card", ".gsap-project-item"];
+      staggerGroups.forEach(groupClass => {
+        gsap.from(groupClass, { scrollTrigger: { trigger: groupClass, start: "top 85%" }, y: 40, opacity: 0, duration: 1.2, stagger: 0.1, ease: "power4.out" });
+      });
+
+      gsap.from(".gsap-contact-info", { scrollTrigger: { trigger: "#connect", start: "top 85%" }, y: 30, opacity: 0, duration: 1.2, ease: "power4.out" });
+      gsap.from(".gsap-contact-form", { scrollTrigger: { trigger: "#connect", start: "top 85%" }, y: 40, opacity: 0, duration: 1.2, ease: "power4.out" });
     });
 
+    // Form Submission
     async function submitViaGoogleScript(e) {
       e.preventDefault();
       const submitBtn = document.getElementById('submit-btn');
@@ -723,13 +790,24 @@
 
     function filterStores(category) {
       document.querySelectorAll('.filter-btn').forEach(btn => {
-        if(btn.dataset.category === category) { btn.classList.add('bg-textDark', 'text-white', 'dark:bg-white', 'dark:text-textDark'); btn.classList.remove('bg-transparent', 'border-textDark/20'); } 
-        else { btn.classList.remove('bg-textDark', 'text-white', 'dark:bg-white', 'dark:text-textDark'); btn.classList.add('bg-transparent', 'border-textDark/20'); }
+        if(btn.dataset.category === category) {
+          btn.classList.add('bg-textDark', 'text-white', 'dark:bg-white', 'dark:text-textDark');
+          btn.classList.remove('bg-transparent', 'border-textDark/20');
+        } else {
+          btn.classList.remove('bg-textDark', 'text-white', 'dark:bg-white', 'dark:text-textDark');
+          btn.classList.add('bg-transparent', 'border-textDark/20');
+        }
       });
+
       document.querySelectorAll('.gsap-project-item').forEach(item => {
-        if (category === 'all' || item.classList.contains(category)) { item.style.display = 'block'; gsap.fromTo(item, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" }); } 
-        else { item.style.display = 'none'; }
+        if (category === 'all' || item.classList.contains(category)) {
+          item.style.display = 'block';
+          gsap.fromTo(item, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" });
+        } else {
+          item.style.display = 'none';
+        }
       });
+
       setTimeout(() => ScrollTrigger.refresh(), 100);
     }
   </script>
