@@ -66,16 +66,34 @@
     }
     @media (pointer: coarse) { #custom-cursor { display: none !important; } }
     
+    /* Dynamic Theme-Adaptive Custom Cursor */
     #custom-cursor {
       position: fixed; top: 0; left: 0; width: 12px; height: 12px;
       background: #ff6b00; border-radius: 50%; pointer-events: none; z-index: 10000;
       transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center;
-      font-size: 0px; color: white; font-weight: 500; font-family: 'Inter', sans-serif;
-      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1), height 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s;
+      font-size: 0px; font-weight: 600; font-family: 'Inter', sans-serif;
+      box-shadow: 0 0 10px rgba(255, 107, 0, 0.4);
+      transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+                  height 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+                  background-color 0.25s ease, 
+                  color 0.25s ease;
     }
+
+    /* Light Mode: dark circle with white text */
     #custom-cursor.view-mode {
-      width: 72px; height: 72px; background: #0f141e; color: #fff;
-      font-size: 11px; letter-spacing: 0.15em;
+      width: 72px; height: 72px;
+      background: #0f141e;
+      color: #ffffff;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Dark Mode: crisp white circle with dark text */
+    html.dark #custom-cursor.view-mode {
+      background: #f8f8f8;
+      color: #0f141e;
+      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
     }
 
     #progress-bar { transform-origin: 0% 50%; }
@@ -96,6 +114,7 @@
 </head>
 <body class="font-sans antialiased bg-bgLight text-textDark dark:bg-bgDark dark:text-textLight selection:bg-brandOrange selection:text-white">
 
+  <!-- Preloader -->
   <div id="preloader" class="fixed inset-0 bg-textDark dark:bg-bgDark z-[10001] p-10 sm:p-20 text-white">
     <div class="overflow-hidden">
       <div id="loader-counter" class="font-serif italic text-6xl sm:text-9xl tracking-tighter leading-none translate-y-full">0%</div>
@@ -104,6 +123,7 @@
 
   <div id="progress-bar" class="fixed top-0 left-0 w-full h-[3px] bg-brandOrange z-[9999] scale-x-0"></div>
 
+  <!-- Toast Notification -->
   <div id="toast" class="fixed bottom-8 right-8 translate-y-[150%] opacity-0 bg-textDark dark:bg-cardDark text-white font-mono text-xs sm:text-sm px-6 py-4 rounded-xl shadow-2xl z-[10000] flex items-center gap-3 border border-white/10 pointer-events-none">
     <span class="text-brandOrange">✔</span> <span id="toast-msg">Message sent securely.</span>
   </div>
@@ -111,12 +131,14 @@
   <div class="noise-overlay dark:opacity-10"></div>
   <div id="custom-cursor"></div>
 
+  <!-- Sticky Minimalist Navigation Header with Mobile Hamburger -->
   <header id="site-header" class="fixed top-0 left-0 w-full z-30 px-6 sm:px-12 py-4 sm:py-5 flex justify-between items-center bg-bgLight/90 dark:bg-bgDark/90 backdrop-blur-md border-b border-textDark/10 dark:border-white/10 transition-all duration-300 opacity-0 pointer-events-none">
     <a href="#" class="flex items-center gap-2.5">
       <div class="w-8 h-8 rounded-lg border border-textDark dark:border-white flex items-center justify-center font-bold text-sm">A</div>
       <span class="text-xs font-mono font-bold tracking-tight uppercase">Arvind Verma</span>
     </a>
     
+    <!-- Desktop Navigation Menu -->
     <nav class="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-wider">
       <a href="#services" class="hover:text-brandOrange transition-colors">Services</a>
       <a href="#stack" class="hover:text-brandOrange transition-colors">Stack</a>
@@ -127,6 +149,7 @@
       </button>
     </nav>
 
+    <!-- Mobile Hamburger Button -->
     <div class="flex items-center gap-3 md:hidden">
       <button onclick="toggleDarkMode()" class="w-8 h-8 rounded-full border border-textDark/20 dark:border-white/20 flex items-center justify-center text-xs" aria-label="Toggle theme">
         <span class="dark:hidden">☾</span><span class="hidden dark:block">☀</span>
@@ -137,6 +160,7 @@
       </button>
     </div>
 
+    <!-- Mobile Dropdown Menu -->
     <div id="mobile-nav-menu" class="hidden absolute top-full left-0 w-full bg-bgLight dark:bg-bgDark border-b border-textDark/10 dark:border-white/10 px-6 py-6 shadow-xl flex flex-col gap-4 font-mono text-xs uppercase tracking-wider md:hidden">
       <a href="#services" onclick="closeMobileNav()" class="py-1 hover:text-brandOrange">Services</a>
       <a href="#stack" onclick="closeMobileNav()" class="py-1 hover:text-brandOrange">Stack</a>
@@ -146,14 +170,19 @@
   </header>
 
   <main>
+    <!-- ============================================== -->
+    <!-- 1. HERO SECTION                                -->
+    <!-- ============================================== -->
     <section class="relative w-full h-[100dvh] overflow-hidden flex items-center justify-center">
       
+      <!-- Top Left: Logo -->
       <div class="absolute top-6 left-6 sm:top-10 sm:left-10 z-20">
         <div class="w-12 h-14 sm:w-16 sm:h-20 border-[2px] border-textDark dark:border-white rounded-2xl sm:rounded-3xl flex items-center justify-center bg-transparent transition-colors">
           <span class="text-2xl sm:text-4xl font-bold tracking-tighter">A</span>
         </div>
       </div>
 
+      <!-- Top Right: Work & Theme Toggle -->
       <div class="absolute top-8 right-6 sm:top-14 sm:right-12 z-20 flex items-center gap-6 sm:gap-8">
         <button onclick="toggleDarkMode()" class="magnetic-btn w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-textDark/20 dark:border-white/20 flex items-center justify-center hover:bg-textDark hover:text-white dark:hover:bg-white dark:hover:text-textDark transition-colors" aria-label="Toggle theme">
           <span class="dark:hidden">☾</span><span class="hidden dark:block">☀</span>
@@ -161,14 +190,17 @@
         <a href="#works" class="text-xl sm:text-3xl font-medium tracking-tight hover:opacity-50 transition-opacity">WORK</a>
       </div>
 
+      <!-- Bottom Left: Services -->
       <div class="absolute bottom-8 left-6 sm:bottom-12 sm:left-12 z-20">
         <a href="#services" class="text-xl sm:text-3xl font-medium tracking-tight hover:opacity-50 transition-opacity">SERVICES</a>
       </div>
 
+      <!-- Bottom Right: Contact -->
       <div class="absolute bottom-8 right-6 sm:bottom-12 sm:right-12 z-20">
         <a href="#connect" class="text-xl sm:text-3xl font-medium tracking-tight hover:opacity-50 transition-opacity">CONTACT</a>
       </div>
 
+      <!-- Right Center: Socials -->
       <div class="absolute top-1/2 -translate-y-1/2 right-6 sm:right-10 z-20 flex flex-col gap-3">
         <a href="https://www.linkedin.com/in/arvind-verma-5061a3228" target="_blank" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-textDark/30 dark:border-white/30 flex items-center justify-center hover:bg-textDark hover:text-white dark:hover:bg-white dark:hover:text-textDark transition-colors" aria-label="LinkedIn Profile">
           <span class="text-xs font-semibold">in</span>
@@ -178,6 +210,7 @@
         </a>
       </div>
 
+      <!-- Center Typography -->
       <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none px-4">
         <h1 class="gsap-hero-text text-[18vw] sm:text-[11vw] leading-[0.85] font-medium text-center uppercase tracking-tighter opacity-0">
           <span class="block">ARVIND</span>
@@ -185,6 +218,7 @@
         </h1>
       </div>
 
+      <!-- Floating Badges -->
       <div class="gsap-float-1 absolute top-[20%] left-[10%] sm:top-[25%] sm:left-[24%] z-20 bg-brandOrange text-textDark rounded-full px-6 py-4 sm:px-10 sm:py-6 transform -rotate-12 shadow-sm pointer-events-none opacity-0">
         <p class="text-[10px] sm:text-sm font-medium uppercase tracking-widest text-center leading-tight">SHOPIFY<br>EXPERT</p>
       </div>
@@ -197,6 +231,9 @@
       </div>
     </section>
 
+    <!-- ============================================== -->
+    <!-- 2. MARQUEE & STATS                             -->
+    <!-- ============================================== -->
     <div class="bg-textDark text-white dark:bg-white dark:text-textDark py-4 overflow-hidden">
       <div class="marquee-track font-mono text-sm sm:text-base font-normal uppercase tracking-widest flex items-center gap-12 whitespace-nowrap opacity-90">
         <span>★ SHOPIFY LIQUID</span><span>★ HTML5 &amp; MODERN CSS3</span><span>★ JAVASCRIPT ES6+</span><span>★ CORE WEB VITALS &lt;1.2S</span><span>★ 1-CLICK CHECKOUT</span><span>★ TECHNICAL SEO SCHEMA</span><span>★ SHOPIFY LIQUID</span><span>★ HTML5 &amp; MODERN CSS3</span><span>★ JAVASCRIPT ES6+</span><span>★ CORE WEB VITALS &lt;1.2S</span><span>★ 1-CLICK CHECKOUT</span>
@@ -224,6 +261,9 @@
       </div>
     </section>
 
+    <!-- ============================================== -->
+    <!-- 3. SERVICES                                    -->
+    <!-- ============================================== -->
     <section id="services" class="py-24 sm:py-32 max-w-7xl mx-auto px-6 sm:px-12">
       <div class="gsap-fade-up max-w-2xl mb-16 sm:mb-24">
         <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter leading-[1.05]">
@@ -304,6 +344,9 @@
       </div>
     </section>
 
+    <!-- ============================================== -->
+    <!-- 4. THE STACK                                   -->
+    <!-- ============================================== -->
     <section id="stack" class="py-24 sm:py-32 bg-white dark:bg-[#121212] border-y border-textDark/5 dark:border-white/5 transition-colors">
       <div class="max-w-7xl mx-auto px-6 sm:px-12 text-center">
         <div class="gsap-fade-up">
@@ -356,6 +399,9 @@
       </div>
     </section>
 
+    <!-- ============================================== -->
+    <!-- 5. SELECTED WORKS                              -->
+    <!-- ============================================== -->
     <section id="works" class="py-24 sm:py-32 bg-bgLight dark:bg-bgDark transition-colors">
       <div class="max-w-[90rem] mx-auto px-6 sm:px-12">
         
@@ -526,6 +572,9 @@
       </div>
     </section>
 
+    <!-- ============================================== -->
+    <!-- 6. CONTACT FORM                                -->
+    <!-- ============================================== -->
     <section id="connect" class="py-6 sm:py-24 max-w-7xl mx-auto px-4 sm:px-12 mb-8 sm:mb-20">
       <div class="bg-cardLight dark:bg-cardDark rounded-[2rem] sm:rounded-[3rem] p-5 sm:p-16 lg:p-20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-textDark/5 dark:border-white/5 overflow-hidden transition-colors">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-24">
@@ -589,7 +638,7 @@
                 </div>
                 <div class="relative group">
                   <label for="form-service" class="block text-[9px] sm:text-xs font-mono font-semibold opacity-40 uppercase mb-0.5 sm:mb-1 group-focus-within:opacity-100 transition-opacity">Service</label>
-                  <select id="form-service" class="w-full px-0 py-1 sm:py-2 bg-transparent border-b border-textDark/10 dark:border-white/10 text-sm sm:text-sm focus:outline-none focus:border-current transition-colors appearance-none rounded-none cursor-pointer">
+                  <select id="form-service" class="w-full px-0 py-1 sm:py-2 bg-transparent border-b border-textDark/10 dark:border-white/10 text-base sm:text-sm focus:outline-none focus:border-current transition-colors appearance-none rounded-none cursor-pointer">
                     <option value="Custom Shopify Theme & Store Development" class="dark:bg-cardDark">Custom Shopify Theme & Store Development</option>
                     <option value="Shopify Speed & Core Web Vitals" class="dark:bg-cardDark">Shopify Speed & Core Web Vitals</option>
                     <option value="Payment Gateway Integration" class="dark:bg-cardDark">Payment Gateway Integration</option>
@@ -615,6 +664,9 @@
       </div>
     </section>
 
+    <!-- ============================================== -->
+    <!-- 7. FOOTER                                      -->
+    <!-- ============================================== -->
     <footer class="py-12 border-t border-textDark/5 dark:border-white/5 transition-colors">
       <div class="max-w-7xl mx-auto px-6 sm:px-12 flex flex-col md:flex-row justify-between items-center gap-6 text-center sm:text-left">
         
@@ -654,7 +706,6 @@
       document.documentElement.classList.toggle('dark');
     }
 
-    // Toggle Mobile Navigation Drawer in Sticky Header
     function toggleMobileNav() {
       const menu = document.getElementById('mobile-nav-menu');
       const line1 = document.getElementById('line-1');
