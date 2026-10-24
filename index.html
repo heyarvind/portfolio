@@ -8,12 +8,15 @@
   <meta name="title" content="Arvind Verma | Shopify & E-Commerce Expert" />
   <meta name="description" content="Hire Arvind Verma, an expert Shopify Developer & E-Commerce Specialist specializing in bespoke Liquid sections, speed optimization, payment gateway integrations, and high-converting D2C stores." />
   
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23111827'/><text x='50' y='70' font-size='60' font-family='sans-serif' font-weight='600' fill='%23ffffff' text-anchor='middle'>A</text></svg>" type="image/svg+xml" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23111827'/><text x='50' y='70' font-size='60' font-family='serif' font-weight='600' fill='%23ffffff' text-anchor='middle'>A</text></svg>" type="image/svg+xml" />
 
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Editorial Serif + Modern Clean Sans + Technical Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,500;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet" />
   
   <script>
     tailwind.config = {
@@ -22,18 +25,25 @@
         extend: {
           fontFamily: {
             sans: ['"Inter"', 'sans-serif'],
-            serif: ['"Playfair Display"', 'serif'],
+            serif: ['"Newsreader"', '"Instrument Serif"', 'serif'],
+            display: ['"Instrument Serif"', 'serif'],
             mono: ['"JetBrains Mono"', 'monospace'],
           },
           colors: {
-            bgLight: '#e5e5e5', 
-            bgDark: '#0a0a0a',
-            cardLight: '#ffffff',
-            cardDark: '#121212',
-            brandOrange: '#ff6b00',
-            brandBlue: '#4d9fff',
-            textDark: '#0f141e',
-            textLight: '#f8f8f8'
+            canvasLight: '#fbfbf9',
+            canvasSubtle: '#f3f3ee',
+            cardWhite: '#ffffff',
+            borderPaper: '#e4e4dc',
+            inkBlack: '#191919',
+            inkMuted: '#686860',
+            shopifyGreen: '#008060',
+            shopifyBlue: '#2c6ecb',
+            accentYellow: '#f5c94c',
+            darkCanvas: '#0e0f10',
+            darkCard: '#151719',
+            darkBorder: '#272a2e',
+            darkText: '#f2f2ee',
+            darkMuted: '#9aa0a6'
           }
         }
       }
@@ -41,974 +51,1165 @@
   </script>
 
   <style>
-    html.lenis, html.lenis body { height: auto; }
-    .lenis.lenis-smooth { scroll-behavior: auto !important; }
-    .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
-    .lenis.lenis-stopped { overflow: hidden; }
-    .lenis.lenis-smooth iframe { pointer-events: none; }
-
-    body {
-      transition: background-color 0.4s ease, color 0.4s ease;
-      overflow-x: hidden;
-      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    /* Dotted canvas graph background (Shopify Education style) */
+    .dotted-canvas {
+      background-color: #fbfbf9;
+      background-image: radial-gradient(#d3d3c8 0.75px, transparent 0.75px);
+      background-size: 20px 20px;
+    }
+    html.dark .dotted-canvas {
+      background-color: #0e0f10;
+      background-image: radial-gradient(#262a2e 0.85px, transparent 0.85px);
+      background-size: 20px 20px;
     }
 
-    .noise-overlay {
-      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-      pointer-events: none; z-index: 9998; opacity: 0.05;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    /* Dashed borders & pill frames */
+    .border-dashed-sketch {
+      border: 1.5px dashed #c8c8be;
+    }
+    html.dark .border-dashed-sketch {
+      border: 1.5px dashed #3a3f45;
     }
 
-    @media (pointer: fine) {
-      body { cursor: none; }
-      a, button, select, .magnetic-btn { cursor: none !important; }
-      input, textarea { cursor: text !important; }
-    }
-    @media (pointer: coarse) { #custom-cursor { display: none !important; } }
-    
-    #custom-cursor {
-      position: fixed; top: 0; left: 0; width: 12px; height: 12px;
-      background: #ff6b00; border-radius: 50%; pointer-events: none; z-index: 10000;
-      transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center;
-      font-size: 0px; font-weight: 600; font-family: 'Inter', sans-serif;
-      box-shadow: 0 0 10px rgba(255, 107, 0, 0.4);
-      transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
-                  height 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
-                  background-color 0.25s ease, 
-                  color 0.25s ease;
+    /* Stadium capsule shaped borders */
+    .capsule-pill {
+      border-radius: 9999px;
     }
 
-    #custom-cursor.view-mode {
-      width: 72px; height: 72px;
-      background: #0f141e;
-      color: #ffffff;
-      font-size: 11px;
-      letter-spacing: 0.15em;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    }
-
-    html.dark #custom-cursor.view-mode {
-      background: #f8f8f8;
-      color: #0f141e;
-      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
-    }
-
-    #progress-bar { transform-origin: 0% 50%; }
-    #preloader { display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-end; }
-    .shape-polygon { clip-path: polygon(5% 0, 100% 10%, 95% 100%, 0 90%); }
-
-    @keyframes marquee { 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }
-    .marquee-track { display: flex; width: 200%; animation: marquee 20s linear infinite; }
-
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #d0d0c4; border-radius: 3px; }
+    html.dark ::-webkit-scrollbar-thumb { background: #33373d; }
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }
-    
-    @media screen and (max-width: 768px) { input, select, textarea { font-size: 16px !important; } }
+
+    /* Sketch badge tape effect */
+    .paper-shadow {
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.02);
+    }
+    .paper-shadow-hover {
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .paper-shadow-hover:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    }
+
+    /* Hand drawn scribble bounce */
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-4px) rotate(1deg); }
+    }
+    .float-handdrawn {
+      animation: gentleFloat 5s ease-in-out infinite;
+    }
   </style>
 </head>
-<body class="font-sans antialiased bg-bgLight text-textDark dark:bg-bgDark dark:text-textLight selection:bg-brandOrange selection:text-white">
-
-  <!-- Preloader -->
-  <div id="preloader" class="fixed inset-0 bg-textDark dark:bg-bgDark z-[10001] p-10 sm:p-20 text-white">
-    <div class="overflow-hidden">
-      <div id="loader-counter" class="font-serif italic text-6xl sm:text-9xl tracking-tighter leading-none translate-y-full">0%</div>
-    </div>
-  </div>
-
-  <div id="progress-bar" class="fixed top-0 left-0 w-full h-[3px] bg-brandOrange z-[9999] scale-x-0"></div>
+<body class="font-sans antialiased text-inkBlack dark:text-darkText dotted-canvas transition-colors duration-300">
 
   <!-- Toast Notification -->
-  <div id="toast" class="fixed bottom-8 right-8 translate-y-[150%] opacity-0 bg-textDark dark:bg-cardDark text-white font-mono text-xs sm:text-sm px-6 py-4 rounded-xl shadow-2xl z-[10000] flex items-center gap-3 border border-white/10 pointer-events-none">
-    <span class="text-brandOrange">✔</span> <span id="toast-msg">Message sent securely.</span>
+  <div id="toast" class="fixed bottom-6 right-6 translate-y-[150%] opacity-0 bg-inkBlack dark:bg-cardWhite text-white dark:text-inkBlack font-mono text-xs px-5 py-3.5 rounded-xl shadow-2xl z-[10000] flex items-center gap-2.5 border border-black/10 transition-all duration-300 pointer-events-none">
+    <span class="text-shopifyGreen font-bold">✔</span> <span id="toast-msg">Message sent successfully.</span>
   </div>
 
-  <div class="noise-overlay dark:opacity-10"></div>
-  <div id="custom-cursor"></div>
+  <!-- Minimalist Shopify Education Style Top Bar -->
+  <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-canvasLight/85 dark:bg-darkCanvas/85 border-b border-borderPaper dark:border-darkBorder">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 py-3.5 flex items-center justify-between">
+      
+      <!-- Brand & Status Pill -->
+      <div class="flex items-center gap-3">
+        <a href="#" class="flex items-center gap-2 group">
+          <div class="w-8 h-8 rounded-lg bg-inkBlack dark:bg-darkText text-white dark:text-inkBlack flex items-center justify-center font-serif text-lg font-medium group-hover:scale-105 transition-transform">
+            A
+          </div>
+          <div class="flex flex-col">
+            <span class="text-xs font-semibold tracking-tight uppercase font-mono">Arvind Verma</span>
+            <span class="text-[10px] text-inkMuted dark:text-darkMuted font-mono">Shopify Storefront Architect</span>
+          </div>
+        </a>
 
-  <!-- Sticky Minimalist Navigation Header with Mobile Hamburger -->
-  <header id="site-header" class="fixed top-0 left-0 w-full z-30 px-6 sm:px-12 py-4 sm:py-5 flex justify-between items-center bg-bgLight/90 dark:bg-bgDark/90 backdrop-blur-md border-b border-textDark/10 dark:border-white/10 transition-all duration-300 opacity-0 pointer-events-none">
-    <a href="#" class="flex items-center gap-2.5">
-      <div class="w-8 h-8 rounded-lg border border-textDark dark:border-white flex items-center justify-center font-bold text-sm">A</div>
-      <span class="text-xs font-mono font-bold tracking-tight uppercase">Arvind Verma</span>
-    </a>
-    
-    <!-- Desktop Navigation Menu -->
-    <nav class="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-wider">
-      <a href="#services" class="hover:text-brandOrange transition-colors">Services</a>
-      <a href="#stack" class="hover:text-brandOrange transition-colors">Stack</a>
-      <a href="#experience" class="hover:text-brandOrange transition-colors">Experience</a>
-      <a href="#works" class="hover:text-brandOrange transition-colors">Work</a>
-      <a href="#connect" class="hover:text-brandOrange transition-colors">Contact</a>
-      <button onclick="toggleDarkMode()" class="w-7 h-7 rounded-full border border-textDark/20 dark:border-white/20 flex items-center justify-center text-xs hover:border-brandOrange transition-colors" aria-label="Toggle theme">
-        <span class="dark:hidden">☾</span><span class="hidden dark:block">☀</span>
-      </button>
-    </nav>
+        <!-- Availability Indicator Badge -->
+        <div class="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-shopifyGreen/10 text-shopifyGreen border border-shopifyGreen/20 text-[10px] font-mono font-medium">
+          <span class="w-1.5 h-1.5 rounded-full bg-shopifyGreen animate-pulse"></span>
+          <span>Open for International Contracts</span>
+        </div>
+      </div>
 
-    <!-- Mobile Hamburger Button -->
-    <div class="flex items-center gap-3 md:hidden">
-      <button onclick="toggleDarkMode()" class="w-8 h-8 rounded-full border border-textDark/20 dark:border-white/20 flex items-center justify-center text-xs" aria-label="Toggle theme">
-        <span class="dark:hidden">☾</span><span class="hidden dark:block">☀</span>
-      </button>
-      <button onclick="toggleMobileNav()" id="hamburger-btn" class="w-9 h-9 rounded-xl border border-textDark/20 dark:border-white/20 flex flex-col items-center justify-center gap-1.5 focus:outline-none" aria-label="Toggle Mobile Menu">
-        <span id="line-1" class="w-4 h-[1.5px] bg-textDark dark:bg-white transition-all duration-300"></span>
-        <span id="line-2" class="w-4 h-[1.5px] bg-textDark dark:bg-white transition-all duration-300"></span>
-      </button>
+      <!-- Navigation links -->
+      <nav class="hidden md:flex items-center gap-7 text-xs font-mono uppercase tracking-wider text-inkMuted dark:text-darkMuted">
+        <a href="#services" class="hover:text-inkBlack dark:hover:text-white transition-colors">Curriculum / Services</a>
+        <a href="#stack" class="hover:text-inkBlack dark:hover:text-white transition-colors">Stack</a>
+        <a href="#experience" class="hover:text-inkBlack dark:hover:text-white transition-colors">Experience</a>
+        <a href="#works" class="hover:text-inkBlack dark:hover:text-white transition-colors">Live Stores</a>
+        <a href="#reviews" class="hover:text-inkBlack dark:hover:text-white transition-colors">Vouched</a>
+      </nav>
+
+      <!-- Action & Dark Toggle -->
+      <div class="flex items-center gap-2.5">
+        <a href="#connect" class="hidden sm:inline-flex items-center gap-1.5 text-xs font-mono font-medium px-4 py-2 rounded-lg bg-inkBlack dark:bg-darkText text-white dark:text-inkBlack hover:opacity-90 transition-opacity">
+          <span>Get in Touch</span>
+          <span class="text-[10px]">&rarr;</span>
+        </a>
+
+        <button onclick="toggleDarkMode()" aria-label="Toggle theme" class="w-8 h-8 rounded-lg border border-borderPaper dark:border-darkBorder bg-cardWhite dark:bg-darkCard flex items-center justify-center text-xs text-inkMuted hover:text-inkBlack dark:text-darkMuted dark:hover:text-white transition-colors">
+          <span class="dark:hidden">☾</span>
+          <span class="hidden dark:block">☀</span>
+        </button>
+
+        <!-- Mobile hamburger -->
+        <button onclick="toggleMobileNav()" class="md:hidden w-8 h-8 rounded-lg border border-borderPaper dark:border-darkBorder flex flex-col items-center justify-center gap-1">
+          <span class="w-3.5 h-[1.5px] bg-inkBlack dark:bg-white"></span>
+          <span class="w-3.5 h-[1.5px] bg-inkBlack dark:bg-white"></span>
+        </button>
+      </div>
+
     </div>
 
-    <!-- Mobile Dropdown Menu -->
-    <div id="mobile-nav-menu" class="hidden absolute top-full left-0 w-full bg-bgLight dark:bg-bgDark border-b border-textDark/10 dark:border-white/10 px-6 py-6 shadow-xl flex flex-col gap-4 font-mono text-xs uppercase tracking-wider md:hidden">
-      <a href="#services" onclick="closeMobileNav()" class="py-1 hover:text-brandOrange">Services</a>
-      <a href="#stack" onclick="closeMobileNav()" class="py-1 hover:text-brandOrange">Stack</a>
-      <a href="#experience" onclick="closeMobileNav()" class="py-1 hover:text-brandOrange">Experience</a>
-      <a href="#works" onclick="closeMobileNav()" class="py-1 hover:text-brandOrange">Work</a>
-      <a href="#connect" onclick="closeMobileNav()" class="py-1 text-brandOrange font-bold">Contact &rarr;</a>
+    <!-- Mobile Nav Drawer -->
+    <div id="mobile-nav-menu" class="hidden md:hidden px-6 py-4 bg-canvasLight dark:bg-darkCanvas border-b border-borderPaper dark:border-darkBorder flex flex-col gap-3 font-mono text-xs uppercase">
+      <a href="#services" onclick="toggleMobileNav()" class="py-1">Services &amp; Capabilities</a>
+      <a href="#stack" onclick="toggleMobileNav()" class="py-1">Technical Stack</a>
+      <a href="#experience" onclick="toggleMobileNav()" class="py-1">Track Record</a>
+      <a href="#works" onclick="toggleMobileNav()" class="py-1">Selected Stores</a>
+      <a href="#reviews" onclick="toggleMobileNav()" class="py-1">Vouched Feedback</a>
+      <a href="#connect" onclick="toggleMobileNav()" class="py-1 text-shopifyGreen font-semibold">Contact &rarr;</a>
     </div>
   </header>
 
-  <main>
+  <main class="relative overflow-hidden">
+    
     <!-- ============================================== -->
-    <!-- 1. HERO SECTION                                -->
+    <!-- HERO SECTION (Shopify Academy / Learn Layout)  -->
     <!-- ============================================== -->
-    <section class="relative w-full h-[100dvh] overflow-hidden flex items-center justify-center">
+    <section class="relative pt-12 pb-20 sm:pt-20 sm:pb-32 px-4 sm:px-8 border-b border-borderPaper dark:border-darkBorder">
       
-      <!-- Top Left: Logo -->
-      <div class="absolute top-6 left-6 sm:top-10 sm:left-10 z-20">
-        <div class="w-12 h-14 sm:w-16 sm:h-20 border-[2px] border-textDark dark:border-white rounded-2xl sm:rounded-3xl flex items-center justify-center bg-transparent transition-colors">
-          <span class="text-2xl sm:text-4xl font-bold tracking-tighter">A</span>
+      <!-- Hand-drawn vector sketch decoration: Pyramid + Circle (Top Left) -->
+      <div class="hidden lg:block absolute top-8 left-12 w-44 pointer-events-none select-none opacity-85 float-handdrawn">
+        <svg viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
+          <!-- Blue circle accent -->
+          <circle cx="110" cy="45" r="32" fill="#2c6ecb" opacity="0.9" />
+          <!-- Hatched pattern box -->
+          <rect x="5" y="20" width="60" height="70" fill="none" stroke="#222" stroke-width="1.2" stroke-dasharray="2 3" />
+          <!-- Hand drawn wireframe pyramid -->
+          <polygon points="50,20 20,80 80,80" fill="none" stroke="#111" stroke-width="2" stroke-linejoin="round" />
+          <line x1="50" y1="20" x2="55" y2="80" stroke="#111" stroke-width="1.5" stroke-dasharray="3 2" />
+          <!-- Radiating sketchy sparks -->
+          <line x1="15" y1="35" x2="5" y2="30" stroke="#111" stroke-width="1.5" stroke-linecap="round" />
+          <line x1="20" y1="20" x2="15" y2="10" stroke="#111" stroke-width="1.5" stroke-linecap="round" />
+          <line x1="38" y1="12" x2="40" y2="2" stroke="#111" stroke-width="1.5" stroke-linecap="round" />
+        </svg>
+      </div>
+
+      <!-- Hand-drawn vector arrow pointing down to headline -->
+      <div class="hidden md:block absolute top-10 left-1/2 -translate-x-12 w-20 pointer-events-none select-none opacity-70">
+        <svg viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
+          <path d="M10 15 C 35 10, 55 25, 45 45" stroke="#222" stroke-width="2" stroke-linecap="round" fill="none" />
+          <path d="M38 40 L 45 46 L 50 38" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+        </svg>
+      </div>
+
+      <!-- Hand-drawn sticker / tag (Top Right - Welcome Card) -->
+      <div class="hidden sm:block absolute top-8 right-8 lg:right-16 rotate-2 z-10 pointer-events-none select-none">
+        <div class="bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-lg p-3 paper-shadow w-44 font-mono text-center">
+          <div class="w-full h-1 bg-accentYellow rounded-full mb-2"></div>
+          <span class="text-[9px] uppercase tracking-widest text-inkMuted dark:text-darkMuted block">Active Specialist</span>
+          <p class="text-xs font-bold text-inkBlack dark:text-darkText mt-0.5">Arvind Verma</p>
+          <span class="text-[10px] text-shopifyBlue font-medium mt-1 inline-flex items-center gap-1">Available Now &rarr;</span>
         </div>
       </div>
 
-      <!-- Top Right: Work & Theme Toggle -->
-      <div class="absolute top-8 right-6 sm:top-14 sm:right-12 z-20 flex items-center gap-6 sm:gap-8">
-        <button onclick="toggleDarkMode()" class="magnetic-btn w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-textDark/20 dark:border-white/20 flex items-center justify-center hover:bg-textDark hover:text-white dark:hover:bg-white dark:hover:text-textDark transition-colors" aria-label="Toggle theme">
-          <span class="dark:hidden">☾</span><span class="hidden dark:block">☀</span>
-        </button>
-        <a href="#works" class="text-xl sm:text-3xl font-medium tracking-tight hover:opacity-50 transition-opacity">WORK</a>
-      </div>
-
-      <!-- Bottom Left: Services -->
-      <div class="absolute bottom-8 left-6 sm:bottom-12 sm:left-12 z-20">
-        <a href="#services" class="text-xl sm:text-3xl font-medium tracking-tight hover:opacity-50 transition-opacity">SERVICES</a>
-      </div>
-
-      <!-- Bottom Right: Contact -->
-      <div class="absolute bottom-8 right-6 sm:bottom-12 sm:right-12 z-20">
-        <a href="#connect" class="text-xl sm:text-3xl font-medium tracking-tight hover:opacity-50 transition-opacity">CONTACT</a>
-      </div>
-
-      <!-- Right Center: Socials -->
-      <div class="absolute top-1/2 -translate-y-1/2 right-6 sm:right-10 z-20 flex flex-col gap-3">
-        <a href="https://www.linkedin.com/in/arvind-verma-5061a3228" target="_blank" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-textDark/30 dark:border-white/30 flex items-center justify-center hover:bg-textDark hover:text-white dark:hover:bg-white dark:hover:text-textDark transition-colors" aria-label="LinkedIn Profile">
-          <span class="text-xs font-semibold">in</span>
-        </a>
-        <a href="https://wa.me/918874856868" target="_blank" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-textDark/30 dark:border-white/30 flex items-center justify-center hover:bg-textDark hover:text-white dark:hover:bg-white dark:hover:text-textDark transition-colors" aria-label="WhatsApp Chat">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-        </a>
-      </div>
-
-      <!-- Center Typography -->
-      <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none px-4">
-        <h1 class="gsap-hero-text text-[18vw] sm:text-[11vw] leading-[0.85] font-medium text-center uppercase tracking-tighter opacity-0">
-          <span class="block">ARVIND</span>
-          <em class="font-serif italic font-normal tracking-normal opacity-90 lowercase">verma</em>
-        </h1>
-      </div>
-
-      <!-- Floating Badges -->
-      <div class="gsap-float-1 absolute top-[20%] left-[10%] sm:top-[25%] sm:left-[24%] z-20 bg-brandOrange text-textDark rounded-full px-6 py-4 sm:px-10 sm:py-6 transform -rotate-12 shadow-sm pointer-events-none opacity-0">
-        <p class="text-[10px] sm:text-sm font-medium uppercase tracking-widest text-center leading-tight">SHOPIFY<br>EXPERT</p>
-      </div>
-      <div class="gsap-float-2 absolute bottom-[20%] right-[10%] sm:bottom-[25%] sm:right-[24%] z-20 bg-brandBlue text-textDark shape-polygon px-8 py-6 sm:px-12 sm:py-8 transform rotate-6 shadow-sm pointer-events-none opacity-0">
-        <p class="text-[10px] sm:text-sm font-medium uppercase tracking-widest text-center leading-tight">E-COMMERCE<br>DEVELOPER</p>
-      </div>
-
-      <!-- Animated Scroll Down Indicator -->
-      <div class="gsap-scroll-indicator absolute bottom-10 left-1/2 -translate-x-1/2 z-20 hidden sm:flex items-center gap-1.5 text-[10px] sm:text-xs font-mono uppercase tracking-widest text-textDark/60 dark:text-textLight/60 select-none">
-        <span>SCROLL DOWN</span>
-        <span class="scroll-arrow inline-block">&darr;</span>
-      </div>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 2. MARQUEE & STATS                             -->
-    <!-- ============================================== -->
-    <div class="bg-textDark text-white dark:bg-white dark:text-textDark py-4 overflow-hidden">
-      <div class="marquee-track font-mono text-sm sm:text-base font-normal uppercase tracking-widest flex items-center gap-12 whitespace-nowrap opacity-90">
-        <span>★ SHOPIFY LIQUID</span><span>★ HTML5 &amp; MODERN CSS3</span><span>★ JAVASCRIPT ES6+</span><span>★ CORE WEB VITALS &lt;1.2S</span><span>★ 1-CLICK CHECKOUT</span><span>★ TECHNICAL SEO SCHEMA</span><span>★ SHOPIFY LIQUID</span><span>★ HTML5 &amp; MODERN CSS3</span><span>★ JAVASCRIPT ES6+</span><span>★ CORE WEB VITALS &lt;1.2S</span><span>★ 1-CLICK CHECKOUT</span>
-      </div>
-    </div>
-
-    <section class="border-b border-textDark/10 dark:border-white/10 transition-colors">
-      <div class="max-w-7xl mx-auto px-6 sm:px-12 py-10 grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-4 text-center">
-        <div class="gsap-stat px-2 sm:px-4 sm:border-r border-textDark/10 dark:border-white/10">
-          <p class="text-3xl sm:text-4xl font-medium tracking-tighter">40+</p>
-          <p class="text-[10px] sm:text-xs uppercase tracking-widest mt-1 opacity-50 font-mono font-semibold">Stores Built</p>
-        </div>
-        <div class="gsap-stat px-2 sm:px-4 sm:border-r border-textDark/10 dark:border-white/10">
-          <p class="text-3xl sm:text-4xl font-medium tracking-tighter">30+</p>
-          <p class="text-[10px] sm:text-xs uppercase tracking-widest mt-1 opacity-50 font-mono font-semibold">Brands Served</p>
-        </div>
-        <div class="gsap-stat px-2 sm:px-4 sm:border-r border-textDark/10 dark:border-white/10">
-          <p class="text-3xl sm:text-4xl font-medium tracking-tighter">&lt;1.2s</p>
-          <p class="text-[10px] sm:text-xs uppercase tracking-widest mt-1 opacity-50 font-mono font-semibold">Core Web Vitals</p>
-        </div>
-        <div class="gsap-stat px-2 sm:px-4">
-          <p class="text-3xl sm:text-4xl font-medium tracking-tighter">100%</p>
-          <p class="text-[10px] sm:text-xs uppercase tracking-widest mt-1 opacity-50 font-mono font-semibold">Clean Code</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 3. SERVICES                                    -->
-    <!-- ============================================== -->
-    <section id="services" class="py-24 sm:py-32 max-w-7xl mx-auto px-6 sm:px-12">
-      <div class="gsap-fade-up max-w-2xl mb-16 sm:mb-24">
-        <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter leading-[1.05]">
-          <span class="block">Capabilities &amp;</span>
-          <em class="font-serif italic font-normal tracking-normal opacity-80 lowercase">services</em>
-        </h2>
-        <p class="opacity-60 text-sm mt-5 font-mono max-w-md">End-to-End Technical Delivery for Modern E-Commerce</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
+      <!-- Main Central Editorial Heading -->
+      <div class="max-w-4xl mx-auto text-center relative z-10">
         
-        <div class="gsap-service-item border-t border-textDark/20 dark:border-white/20 pt-6 group">
-          <div class="flex justify-between items-start mb-4">
-            <span class="text-brandOrange font-mono text-xs font-bold block">01</span>
-            <svg class="w-6 h-6 text-textDark/30 dark:text-white/30 group-hover:text-brandOrange transition-colors" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
-            </svg>
-          </div>
-          <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight mb-4 group-hover:text-brandOrange transition-colors">Custom Themes &amp; Liquid</h3>
-          <p class="text-sm opacity-60 leading-relaxed font-mono">Bespoke Liquid section schemas, dynamic drawer checkouts, custom product options, and lightweight modular layouts built from scratch.</p>
+        <!-- Topic Pill -->
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-borderPaper/50 dark:bg-darkCard border border-borderPaper dark:border-darkBorder mb-6 font-mono text-[11px] text-inkMuted dark:text-darkMuted">
+          <span class="w-2 h-2 rounded-full bg-shopifyGreen"></span>
+          <span>Shopify Storefront Architecture &amp; Custom Liquid</span>
         </div>
 
-        <div class="gsap-service-item border-t border-textDark/20 dark:border-white/20 pt-6 group">
-          <div class="flex justify-between items-start mb-4">
-            <span class="text-brandOrange font-mono text-xs font-bold block">02</span>
-            <svg class="w-6 h-6 text-textDark/30 dark:text-white/30 group-hover:text-brandOrange transition-colors" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" />
-            </svg>
-          </div>
-          <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight mb-4 group-hover:text-brandOrange transition-colors">Payment Gateway</h3>
-          <p class="text-sm opacity-60 leading-relaxed font-mono">Direct checkout integrations enabling seamless domestic and global transactions with zero friction for shoppers.</p>
+        <!-- Big Editorial Headline (Shopify style) -->
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-serif font-normal tracking-tight leading-[1.08] text-inkBlack dark:text-darkText">
+          Build for <em class="italic font-normal">what's next</em><br class="hidden sm:inline" />
+          in modern commerce
+        </h1>
+
+        <!-- Subheading -->
+        <p class="mt-6 text-base sm:text-lg text-inkMuted dark:text-darkMuted font-sans max-w-2xl mx-auto leading-relaxed">
+          High-performance Shopify storefronts built from scratch with modular Liquid architecture, frictionless AJAX carts, and sub-1.2s Core Web Vitals.
+        </p>
+
+        <!-- CTA Action Buttons -->
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3 font-mono text-xs">
+          <a href="#works" class="px-6 py-3 rounded-md bg-inkBlack dark:bg-darkText text-white dark:text-inkBlack font-medium flex items-center gap-2 hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors shadow-sm">
+            <span>Explore Work</span>
+            <span>&rarr;</span>
+          </a>
+          <a href="#connect" class="px-6 py-3 rounded-md bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder text-inkBlack dark:text-darkText hover:bg-canvasSubtle dark:hover:bg-neutral-800 transition-colors">
+            <span>Get in Touch</span>
+          </a>
         </div>
 
-        <div class="gsap-service-item border-t border-textDark/20 dark:border-white/20 pt-6 group">
-          <div class="flex justify-between items-start mb-4">
-            <span class="text-brandOrange font-mono text-xs font-bold block">03</span>
-            <svg class="w-6 h-6 text-textDark/30 dark:text-white/30 group-hover:text-brandOrange transition-colors" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
-            </svg>
-          </div>
-          <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight mb-4 group-hover:text-brandOrange transition-colors">Shipping &amp; Logistics</h3>
-          <p class="text-sm opacity-60 leading-relaxed font-mono">Automated courier allocation, real-time tracking webhooks, NDR management, and seamless reverse pickup flows.</p>
+      </div>
+
+      <!-- Lower Hand-drawn Sketches (Trophy on bottom left, Grid Jar on bottom right) -->
+      <div class="hidden lg:block absolute bottom-6 left-16 w-24 pointer-events-none select-none opacity-80">
+        <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
+          <!-- Urn / Trophy sketch -->
+          <ellipse cx="50" cy="50" rx="22" ry="30" stroke="#222" stroke-width="2" fill="none" />
+          <path d="M28 40 C10 40, 10 65, 28 65" stroke="#222" stroke-width="2" fill="none" />
+          <path d="M72 40 C90 40, 90 65, 72 65" stroke="#222" stroke-width="2" fill="none" />
+          <rect x="35" y="85" width="30" height="20" stroke="#222" stroke-width="2" fill="none" />
+          <line x1="38" y1="95" x2="62" y2="95" stroke="#222" stroke-width="1.5" />
+          <path d="M30 110 C 30 110, 50 115, 70 110" stroke="#222" stroke-width="3" stroke-linecap="round" />
+        </svg>
+      </div>
+
+      <div class="hidden lg:block absolute bottom-6 right-16 w-36 pointer-events-none select-none opacity-85">
+        <svg viewBox="0 0 140 130" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
+          <!-- Green cutting mat / grid paper -->
+          <polygon points="5,5 110,0 120,110 15,120" fill="#78c288" opacity="0.6" stroke="#222" stroke-width="1.5" />
+          <line x1="5" y1="35" x2="115" y2="30" stroke="#2d6e3e" stroke-width="1" />
+          <line x1="10" y1="65" x2="118" y2="60" stroke="#2d6e3e" stroke-width="1" />
+          <line x1="12" y1="95" x2="119" y2="90" stroke="#2d6e3e" stroke-width="1" />
+          <line x1="40" y1="5" x2="45" y2="115" stroke="#2d6e3e" stroke-width="1" />
+          <line x1="75" y1="2" x2="80" y2="112" stroke="#2d6e3e" stroke-width="1" />
+          <!-- Jar with brain sketch -->
+          <rect x="80" y="30" width="45" height="65" rx="10" stroke="#222" stroke-width="2" fill="#ffffff" />
+          <ellipse cx="102" cy="28" rx="18" ry="4" stroke="#222" stroke-width="2" fill="#fff" />
+          <path d="M92 60 Q 98 52 104 60 T 112 60 Q 115 72 102 75 Q 90 72 92 60" stroke="#111" stroke-width="1.5" fill="none" />
+        </svg>
+      </div>
+
+    </section>
+
+    <!-- ============================================== -->
+    <!-- METRICS & PROVEN RECORD BAR                    -->
+    <!-- ============================================== -->
+    <section class="border-b border-borderPaper dark:border-darkBorder bg-cardWhite dark:bg-darkCard py-8 px-4 sm:px-8">
+      <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-borderPaper dark:divide-darkBorder font-mono">
+        
+        <div class="pt-4 md:pt-0">
+          <p class="text-3xl sm:text-4xl font-serif font-normal text-inkBlack dark:text-darkText">40+</p>
+          <span class="text-[10px] sm:text-xs text-inkMuted dark:text-darkMuted uppercase tracking-wider block mt-1">Stores Built</span>
         </div>
 
-        <div class="gsap-service-item border-t border-textDark/20 dark:border-white/20 pt-6 group">
-          <div class="flex justify-between items-start mb-4">
-            <span class="text-brandOrange font-mono text-xs font-bold block">04</span>
-            <svg class="w-6 h-6 text-textDark/30 dark:text-white/30 group-hover:text-brandOrange transition-colors" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
-            </svg>
-          </div>
-          <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight mb-4 group-hover:text-brandOrange transition-colors">Core Web Vitals</h3>
-          <p class="text-sm opacity-60 leading-relaxed font-mono">Aggressive script streamlining, vanilla JavaScript logic, and asset optimization for maximum Lighthouse scores.</p>
+        <div class="pt-4 md:pt-0">
+          <p class="text-3xl sm:text-4xl font-serif font-normal text-inkBlack dark:text-darkText">30+</p>
+          <span class="text-[10px] sm:text-xs text-inkMuted dark:text-darkMuted uppercase tracking-wider block mt-1">Brands Served</span>
         </div>
 
-        <div class="gsap-service-item border-t border-textDark/20 dark:border-white/20 pt-6 group">
-          <div class="flex justify-between items-start mb-4">
-            <span class="text-brandOrange font-mono text-xs font-bold block">05</span>
-            <svg class="w-6 h-6 text-textDark/30 dark:text-white/30 group-hover:text-brandOrange transition-colors" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
-            </svg>
-          </div>
-          <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight mb-4 group-hover:text-brandOrange transition-colors">Technical SEO</h3>
-          <p class="text-sm opacity-60 leading-relaxed font-mono">JSON-LD structured data (Product, Organization schema), clean metadata hooks, and canonical URL hygiene.</p>
+        <div class="pt-4 md:pt-0">
+          <p class="text-3xl sm:text-4xl font-serif font-normal text-shopifyGreen">&lt;1.2s</p>
+          <span class="text-[10px] sm:text-xs text-inkMuted dark:text-darkMuted uppercase tracking-wider block mt-1">Core Web Vitals</span>
         </div>
 
-        <div class="gsap-service-item border-t border-textDark/20 dark:border-white/20 pt-6 group">
-          <div class="flex justify-between items-start mb-4">
-            <span class="text-brandOrange font-mono text-xs font-bold block">06</span>
-            <svg class="w-6 h-6 text-textDark/30 dark:text-white/30 group-hover:text-brandOrange transition-colors" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
-            </svg>
-          </div>
-          <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight mb-4 group-hover:text-brandOrange transition-colors">API Integrations</h3>
-          <p class="text-sm opacity-60 leading-relaxed font-mono">Connecting third-party logistics, ERPs, CRM platforms, and custom webhooks into Shopify without adding bloat.</p>
+        <div class="pt-4 md:pt-0">
+          <p class="text-3xl sm:text-4xl font-serif font-normal text-inkBlack dark:text-darkText">100%</p>
+          <span class="text-[10px] sm:text-xs text-inkMuted dark:text-darkMuted uppercase tracking-wider block mt-1">Clean Liquid Code</span>
         </div>
 
       </div>
     </section>
 
     <!-- ============================================== -->
-    <!-- 4. THE STACK                                   -->
+    <!-- SERVICES SECTION (Shopify Academy Course Grid) -->
+    <!-- Reference Image 2: "Looking for a place to start?" -->
     <!-- ============================================== -->
-    <section id="stack" class="py-24 sm:py-32 bg-white dark:bg-[#121212] border-y border-textDark/5 dark:border-white/5 transition-colors">
-      <div class="max-w-7xl mx-auto px-6 sm:px-12 text-center">
-        <div class="gsap-fade-up">
-          <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter leading-[1.05]">
-            <span class="block">Three layers.</span>
-            <em class="font-serif italic font-normal tracking-normal opacity-80 lowercase">one developer.</em>
+    <section id="services" class="py-20 sm:py-28 px-4 sm:px-8 border-b border-borderPaper dark:border-darkBorder">
+      <div class="max-w-7xl mx-auto">
+        
+        <!-- Section Header -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-12">
+          
+          <div class="lg:col-span-4 pr-4">
+            <h2 class="text-3xl sm:text-5xl font-serif font-normal tracking-tight text-inkBlack dark:text-darkText leading-[1.1]">
+              Looking for a place to start?
+            </h2>
+            <p class="mt-4 text-sm text-inkMuted dark:text-darkMuted font-sans leading-relaxed">
+              Whether you're migrating a high-growth brand to Shopify 2.0 or scaling an existing storefront, I deliver clean, end-to-end technical execution without third-party code bloat.
+            </p>
+            <div class="mt-6">
+              <a href="#connect" class="inline-flex items-center gap-1.5 px-4 py-2 rounded border border-borderPaper dark:border-darkBorder bg-cardWhite dark:bg-darkCard text-xs font-mono font-medium hover:bg-canvasSubtle dark:hover:bg-neutral-800 transition-colors">
+                <span>View all capabilities</span>
+                <span>&rarr;</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Services Grid (styled as Course cards) -->
+          <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            
+            <!-- Card 01: Themes & Liquid -->
+            <div class="bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-xl p-5 flex flex-col justify-between paper-shadow-hover">
+              <div>
+                <!-- Top pill badge & mini icon -->
+                <div class="flex items-center justify-between mb-4">
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder font-semibold">
+                    <svg class="w-3 h-3 text-inkMuted" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2" stroke-width="2"/></svg>
+                    <span>Track</span>
+                  </span>
+                  <span class="w-4 h-4 rounded-full border border-borderPaper dark:border-darkBorder flex items-center justify-center text-[9px] font-mono text-inkMuted">✓</span>
+                </div>
+
+                <!-- Sketch thumbnail illustration container -->
+                <div class="w-full h-28 bg-canvasSubtle dark:bg-darkCanvas rounded-lg mb-4 flex items-center justify-center border border-borderPaper/50 dark:border-darkBorder/50">
+                  <svg class="w-14 h-14 opacity-80" viewBox="0 0 80 80" fill="none">
+                    <rect x="15" y="15" width="50" height="40" rx="3" stroke="#222" stroke-width="2" stroke-dasharray="2 2"/>
+                    <line x1="25" y1="28" x2="55" y2="28" stroke="#222" stroke-width="2"/>
+                    <line x1="25" y1="38" x2="45" y2="38" stroke="#222" stroke-width="1.5"/>
+                    <circle cx="58" cy="45" r="4" fill="#008060"/>
+                  </svg>
+                </div>
+
+                <h3 class="font-sans font-semibold text-base text-inkBlack dark:text-darkText tracking-tight">Custom Themes &amp; Liquid</h3>
+                <p class="text-xs text-inkMuted dark:text-darkMuted mt-2 font-sans leading-relaxed">
+                  Bespoke section schemas, modular JSON templates, dynamic drawer checkouts, and custom product options built natively.
+                </p>
+              </div>
+
+              <div class="mt-6 pt-3 border-t border-borderPaper dark:border-darkBorder flex items-center justify-between font-mono text-[10px] text-inkMuted dark:text-darkMuted">
+                <span class="font-bold text-inkBlack dark:text-darkText">SHOPIFY 2.0</span>
+                <span>DAWN / HORIZON</span>
+              </div>
+            </div>
+
+            <!-- Card 02: Payment Gateways -->
+            <div class="bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-xl p-5 flex flex-col justify-between paper-shadow-hover">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder font-semibold">
+                    <svg class="w-3 h-3 text-inkMuted" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="9" stroke-width="2"/></svg>
+                    <span>Course</span>
+                  </span>
+                  <span class="w-4 h-4 rounded-full border border-borderPaper dark:border-darkBorder flex items-center justify-center text-[9px] font-mono text-inkMuted">✓</span>
+                </div>
+
+                <div class="w-full h-28 bg-canvasSubtle dark:bg-darkCanvas rounded-lg mb-4 flex items-center justify-center border border-borderPaper/50 dark:border-darkBorder/50">
+                  <svg class="w-14 h-14 opacity-80" viewBox="0 0 80 80" fill="none">
+                    <rect x="18" y="24" width="44" height="28" rx="4" stroke="#222" stroke-width="2" fill="none"/>
+                    <line x1="18" y1="34" x2="62" y2="34" stroke="#222" stroke-width="2"/>
+                    <rect x="24" y="42" width="10" height="4" fill="#2c6ecb"/>
+                  </svg>
+                </div>
+
+                <h3 class="font-sans font-semibold text-base text-inkBlack dark:text-darkText tracking-tight">Payment Gateways</h3>
+                <p class="text-xs text-inkMuted dark:text-darkMuted mt-2 font-sans leading-relaxed">
+                  Domestic &amp; international gateway integrations (Razorpay, Stripe, Cashfree, GoKwik, PayPal) with zero checkout friction.
+                </p>
+              </div>
+
+              <div class="mt-6 pt-3 border-t border-borderPaper dark:border-darkBorder flex items-center justify-between font-mono text-[10px] text-inkMuted dark:text-darkMuted">
+                <span class="font-bold text-inkBlack dark:text-darkText">CHECKOUT</span>
+                <span>MULTI-CURRENCY</span>
+              </div>
+            </div>
+
+            <!-- Card 03: Shipping & Logistics -->
+            <div class="bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-xl p-5 flex flex-col justify-between paper-shadow-hover">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder font-semibold">
+                    <svg class="w-3 h-3 text-inkMuted" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 17l6-6-6-6" stroke-width="2"/></svg>
+                    <span>Course</span>
+                  </span>
+                  <span class="w-4 h-4 rounded-full border border-borderPaper dark:border-darkBorder flex items-center justify-center text-[9px] font-mono text-inkMuted">✓</span>
+                </div>
+
+                <div class="w-full h-28 bg-canvasSubtle dark:bg-darkCanvas rounded-lg mb-4 flex items-center justify-center border border-borderPaper/50 dark:border-darkBorder/50">
+                  <svg class="w-14 h-14 opacity-80" viewBox="0 0 80 80" fill="none">
+                    <!-- Shopping cart sketchy icon -->
+                    <circle cx="32" cy="56" r="4" stroke="#222" stroke-width="2"/>
+                    <circle cx="54" cy="56" r="4" stroke="#222" stroke-width="2"/>
+                    <path d="M18 24h8l6 24h24l5-16H29" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+
+                <h3 class="font-sans font-semibold text-base text-inkBlack dark:text-darkText tracking-tight">Shipping &amp; Logistics</h3>
+                <p class="text-xs text-inkMuted dark:text-darkMuted mt-2 font-sans leading-relaxed">
+                  Automated courier allocation, real-time tracking webhooks, NDR management, and seamless reverse pickup flows.
+                </p>
+              </div>
+
+              <div class="mt-6 pt-3 border-t border-borderPaper dark:border-darkBorder flex items-center justify-between font-mono text-[10px] text-inkMuted dark:text-darkMuted">
+                <span class="font-bold text-inkBlack dark:text-darkText">AUTOMATION</span>
+                <span>SHIPROCKET/CUSTOM</span>
+              </div>
+            </div>
+
+            <!-- Card 04: Core Web Vitals -->
+            <div class="bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-xl p-5 flex flex-col justify-between paper-shadow-hover">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder font-semibold">
+                    <svg class="w-3 h-3 text-inkMuted" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-width="2"/></svg>
+                    <span>Optimization</span>
+                  </span>
+                  <span class="w-4 h-4 rounded-full border border-borderPaper dark:border-darkBorder flex items-center justify-center text-[9px] font-mono text-inkMuted">✓</span>
+                </div>
+
+                <div class="w-full h-28 bg-canvasSubtle dark:bg-darkCanvas rounded-lg mb-4 flex items-center justify-center border border-borderPaper/50 dark:border-darkBorder/50">
+                  <svg class="w-14 h-14 opacity-80" viewBox="0 0 80 80" fill="none">
+                    <path d="M40 18 L46 32 L60 34 L50 44 L53 58 L40 50 L27 58 L30 44 L20 34 L34 32 Z" stroke="#222" stroke-width="2" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+
+                <h3 class="font-sans font-semibold text-base text-inkBlack dark:text-darkText tracking-tight">Core Web Vitals</h3>
+                <p class="text-xs text-inkMuted dark:text-darkMuted mt-2 font-sans leading-relaxed">
+                  Aggressive asset streamlining, vanilla JavaScript logic, and removing app bloat to guarantee sub-1.2s page loads.
+                </p>
+              </div>
+
+              <div class="mt-6 pt-3 border-t border-borderPaper dark:border-darkBorder flex items-center justify-between font-mono text-[10px] text-inkMuted dark:text-darkMuted">
+                <span class="font-bold text-shopifyGreen">&lt;1.2s SPEED</span>
+                <span>LIGHTHOUSE 90+</span>
+              </div>
+            </div>
+
+            <!-- Card 05: Technical SEO -->
+            <div class="bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-xl p-5 flex flex-col justify-between paper-shadow-hover">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder font-semibold">
+                    <svg class="w-3 h-3 text-inkMuted" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="11" cy="11" r="8" stroke-width="2"/><path d="m21 21-4.35-4.35" stroke-width="2"/></svg>
+                    <span>Course</span>
+                  </span>
+                  <span class="w-4 h-4 rounded-full border border-borderPaper dark:border-darkBorder flex items-center justify-center text-[9px] font-mono text-inkMuted">✓</span>
+                </div>
+
+                <div class="w-full h-28 bg-canvasSubtle dark:bg-darkCanvas rounded-lg mb-4 flex items-center justify-center border border-borderPaper/50 dark:border-darkBorder/50">
+                  <svg class="w-14 h-14 opacity-80" viewBox="0 0 80 80" fill="none">
+                    <path d="M20 50 L35 35 L45 45 L60 25" stroke="#222" stroke-width="2.5" stroke-linecap="round"/>
+                    <polyline points="50,25 60,25 60,35" stroke="#222" stroke-width="2.5" stroke-linecap="round"/>
+                  </svg>
+                </div>
+
+                <h3 class="font-sans font-semibold text-base text-inkBlack dark:text-darkText tracking-tight">Technical SEO</h3>
+                <p class="text-xs text-inkMuted dark:text-darkMuted mt-2 font-sans leading-relaxed">
+                  JSON-LD structured data (Product, FAQ, Organization schema), canonical routing, and clean metadata hooks.
+                </p>
+              </div>
+
+              <div class="mt-6 pt-3 border-t border-borderPaper dark:border-darkBorder flex items-center justify-between font-mono text-[10px] text-inkMuted dark:text-darkMuted">
+                <span class="font-bold text-inkBlack dark:text-darkText">JSON-LD</span>
+                <span>SEARCH CONSOLE</span>
+              </div>
+            </div>
+
+            <!-- Card 06: API Integrations -->
+            <div class="bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-xl p-5 flex flex-col justify-between paper-shadow-hover">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder font-semibold">
+                    <svg class="w-3 h-3 text-inkMuted" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="18" cy="5" r="3" stroke-width="2"/><circle cx="6" cy="12" r="3" stroke-width="2"/><circle cx="18" cy="19" r="3" stroke-width="2"/><path d="m8.59 13.51 6.83 3.98m-.01-10.98-6.82 3.98" stroke-width="2"/></svg>
+                    <span>Integration</span>
+                  </span>
+                  <span class="w-4 h-4 rounded-full border border-borderPaper dark:border-darkBorder flex items-center justify-center text-[9px] font-mono text-inkMuted">✓</span>
+                </div>
+
+                <div class="w-full h-28 bg-canvasSubtle dark:bg-darkCanvas rounded-lg mb-4 flex items-center justify-center border border-borderPaper/50 dark:border-darkBorder/50">
+                  <svg class="w-14 h-14 opacity-80" viewBox="0 0 80 80" fill="none">
+                    <rect x="20" y="25" width="16" height="16" rx="2" stroke="#222" stroke-width="2"/>
+                    <rect x="44" y="39" width="16" height="16" rx="2" stroke="#222" stroke-width="2"/>
+                    <path d="M36 33 H44 V47" stroke="#222" stroke-width="2" stroke-dasharray="2 2"/>
+                  </svg>
+                </div>
+
+                <h3 class="font-sans font-semibold text-base text-inkBlack dark:text-darkText tracking-tight">API Integrations</h3>
+                <p class="text-xs text-inkMuted dark:text-darkMuted mt-2 font-sans leading-relaxed">
+                  Connecting external catalog feeds, ERPs, CRM platforms, and custom webhooks into Shopify without third-party delay.
+                </p>
+              </div>
+
+              <div class="mt-6 pt-3 border-t border-borderPaper dark:border-darkBorder flex items-center justify-between font-mono text-[10px] text-inkMuted dark:text-darkMuted">
+                <span class="font-bold text-inkBlack dark:text-darkText">REST &amp; GRAPHQL</span>
+                <span>WEBHOOKS</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- THE STACK: Three layers. One developer.        -->
+    <!-- Reference Image 4: Capsule Track Cards         -->
+    <!-- ============================================== -->
+    <section id="stack" class="py-20 sm:py-28 px-4 sm:px-8 border-b border-borderPaper dark:border-darkBorder bg-canvasSubtle/40 dark:bg-darkCard/30">
+      <div class="max-w-7xl mx-auto">
+        
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span class="text-xs font-mono uppercase tracking-widest text-inkMuted dark:text-darkMuted block mb-2">Technical Foundations</span>
+          <h2 class="text-3xl sm:text-5xl font-serif font-normal tracking-tight text-inkBlack dark:text-darkText">
+            Three layers. <em class="italic font-normal">one developer.</em>
           </h2>
-          <p class="opacity-60 text-sm mt-6 sm:mt-8 max-w-xl mx-auto font-mono">
-            Three sides of the same developer — frontend pixels, Shopify Liquid architecture, and the ecosystem integrations beneath them.
+          <p class="mt-4 text-xs sm:text-sm text-inkMuted dark:text-darkMuted font-mono">
+            Frontend pixels, Shopify Liquid architecture, and the ecosystem integrations beneath them.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mt-16 sm:mt-20 text-left">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           
-          <div class="gsap-stack-card p-8 sm:p-10 border border-textDark/5 dark:border-white/10 rounded-3xl bg-bgLight dark:bg-bgDark">
-            <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-brandBlue">01 // FRONTEND</span>
-            <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight mt-4">Pixels with personality.</h3>
-            <p class="text-sm opacity-60 mt-3 font-mono leading-relaxed">Semantic HTML5, custom Tailwind CSS, and vanilla JavaScript written for sub-second interactions without framework bloat.</p>
-            <div class="flex flex-wrap gap-2 mt-8">
-              <span class="px-4 py-1.5 rounded-full bg-cardLight dark:bg-cardDark text-xs font-semibold shadow-sm">HTML5</span>
-              <span class="px-4 py-1.5 rounded-full bg-cardLight dark:bg-cardDark text-xs font-semibold shadow-sm">CSS3</span>
-              <span class="px-4 py-1.5 rounded-full bg-cardLight dark:bg-cardDark text-xs font-semibold shadow-sm">JS ES6</span>
-              <span class="px-4 py-1.5 rounded-full bg-cardLight dark:bg-cardDark text-xs font-semibold shadow-sm">Tailwind CSS</span>
-            </div>
-          </div>
-
-          <div class="gsap-stack-card p-8 sm:p-10 border border-textDark/5 dark:border-white/10 rounded-3xl bg-textDark dark:bg-[#1a1a1a] text-white">
-            <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-brandOrange">02 // BACKEND</span>
-            <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight mt-4 text-white">Logic that holds up.</h3>
-            <p class="text-sm opacity-70 mt-3 font-mono leading-relaxed">Custom Liquid section schemas, dynamic settings for merchants, fast snippet includes, and modular component architecture.</p>
-            <div class="flex flex-wrap gap-2 mt-8">
-              <span class="px-4 py-1.5 rounded-full bg-white/10 text-xs font-semibold border border-white/10 text-white">Shopify Liquid</span>
-              <span class="px-4 py-1.5 rounded-full bg-white/10 text-xs font-semibold border border-white/10 text-white">JSON Schemas</span>
-              <span class="px-4 py-1.5 rounded-full bg-white/10 text-xs font-semibold border border-white/10 text-white">Metafields</span>
-            </div>
-          </div>
-
-          <div class="gsap-stack-card p-8 sm:p-10 border border-textDark/5 dark:border-white/10 rounded-3xl bg-bgLight dark:bg-bgDark">
-            <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-brandBlue">03 // DATA</span>
-            <h3 class="text-xl sm:text-2xl font-medium uppercase tracking-tight mt-4">Data that behaves.</h3>
-            <p class="text-sm opacity-60 mt-3 font-mono leading-relaxed">Connecting 1-click checkout engines, payment gateways, ERPs, and automated fulfillment APIs with reliable error handling.</p>
-            <div class="flex flex-wrap gap-2 mt-8">
-              <span class="px-4 py-1.5 rounded-full bg-cardLight dark:bg-cardDark text-xs font-semibold shadow-sm">Razorpay</span>
-              <span class="px-4 py-1.5 rounded-full bg-cardLight dark:bg-cardDark text-xs font-semibold shadow-sm">GoKwik</span>
-              <span class="px-4 py-1.5 rounded-full bg-cardLight dark:bg-cardDark text-xs font-semibold shadow-sm">Shiprocket</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 5. WORK EXPERIENCE (Added from LinkedIn Profile)-->
-    <!-- ============================================== -->
-    <section id="experience" class="py-24 sm:py-32 max-w-7xl mx-auto px-6 sm:px-12">
-      <div class="gsap-fade-up max-w-2xl mb-16 sm:mb-24">
-        <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter leading-[1.05]">
-          <span class="block">Proven Track</span>
-          <em class="font-serif italic font-normal tracking-normal opacity-80 lowercase">record &amp; roles</em>
-        </h2>
-        <p class="opacity-60 text-sm mt-5 font-mono max-w-md">Engineering high-converting e-commerce storefronts across diverse brand verticals.</p>
-      </div>
-
-      <div class="space-y-12 sm:space-y-16">
-        
-        <!-- Experience 1: The Brand Exact -->
-        <div class="gsap-exp-item border-t border-textDark/20 dark:border-white/20 pt-8 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10">
-          <div class="lg:col-span-4 flex flex-col justify-between">
+          <!-- Stack 01: Frontend -->
+          <div class="bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-2xl p-6 sm:p-8 paper-shadow flex flex-col justify-between">
             <div>
-              <span class="text-brandOrange font-mono text-xs font-bold uppercase tracking-widest block mb-2">2 YRS 11 MOS TOTAL</span>
-              <h3 class="text-2xl sm:text-3xl font-medium uppercase tracking-tight">The Brand Exact</h3>
-              <p class="text-xs font-mono opacity-50 mt-1 uppercase">Noida, Uttar Pradesh, India • On-site</p>
-            </div>
-            <div class="mt-6 lg:mt-0">
-              <div class="flex flex-wrap gap-1.5 font-mono text-[10px]">
-                <span class="px-3 py-1 rounded-full border border-textDark/15 dark:border-white/15">Shopify Liquid</span>
-                <span class="px-3 py-1 rounded-full border border-textDark/15 dark:border-white/15">JavaScript</span>
-                <span class="px-3 py-1 rounded-full border border-textDark/15 dark:border-white/15">HTML5/CSS3</span>
-                <span class="px-3 py-1 rounded-full border border-textDark/15 dark:border-white/15">Razorpay/Stripe</span>
-                <span class="px-3 py-1 rounded-full border border-textDark/15 dark:border-white/15">Core Web Vitals</span>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-shopifyBlue">01 // FRONTEND</span>
+                <span class="px-2 py-0.5 rounded text-[9px] font-mono bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder">LIGHTWEIGHT</span>
               </div>
-            </div>
-          </div>
 
-          <div class="lg:col-span-8 space-y-8">
-            <!-- Role 1: Shopify Developer -->
-            <div>
-              <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-3">
-                <h4 class="text-lg sm:text-xl font-medium uppercase tracking-tight text-textDark dark:text-textLight">Shopify Developer <span class="text-xs font-mono opacity-50 lowercase">(full-time)</span></h4>
-                <span class="text-xs font-mono opacity-50">Feb 2024 – Present</span>
+              <!-- Capsule stadium art container (reference image 4 style) -->
+              <div class="w-full h-32 rounded-[36px] bg-gradient-to-r from-blue-900 via-indigo-700 to-emerald-600 mb-6 flex items-center justify-center overflow-hidden relative shadow-inner">
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:8px_8px]"></div>
+                <span class="text-white font-mono text-xs uppercase tracking-widest font-semibold z-10">UI / Core Interactions</span>
               </div>
-              <p class="text-sm opacity-70 font-mono mb-4 leading-relaxed">
-                Build and customize fast, responsive, and user-friendly Shopify stores that help D2C businesses grow online across Fashion, Footwear, Home Decor, Artificial Jewellery, Beauty &amp; Lifestyle.
-              </p>
-              <ul class="space-y-2.5 font-mono text-xs opacity-80 leading-relaxed">
-                <li class="flex items-start gap-2">
-                  <span class="text-brandOrange mt-0.5">▪</span>
-                  <span>Built and customized <strong>30+ Shopify stores</strong> for <strong>25+ brands</strong> across diverse e-commerce verticals.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-brandOrange mt-0.5">▪</span>
-                  <span>Developed bespoke Liquid sections, schemas, and dynamic frontend components with HTML5, CSS3, and modern JavaScript.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-brandOrange mt-0.5">▪</span>
-                  <span>Integrated multi-rail payment systems including <strong>Razorpay, Stripe, Cashfree, PayU, PayPal, and GoKwik</strong> supporting UPI, cards, wallets, net banking, and cross-border transactions.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-brandOrange mt-0.5">▪</span>
-                  <span>Audited and optimized Core Web Vitals and render performance to lower bounce rates and maximize checkout progression.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-brandOrange mt-0.5">▪</span>
-                  <span>Injected semantic JSON-LD structured data (Organization, WebPage, Collection, and FAQ schemas) with standardized URL hierarchies.</span>
-                </li>
-              </ul>
-            </div>
 
-            <!-- Role 2: Web Developer Internship -->
-            <div class="pt-6 border-t border-textDark/10 dark:border-white/10">
-              <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
-                <h4 class="text-base font-medium uppercase tracking-tight text-textDark dark:text-textLight">Web Developer <span class="text-xs font-mono opacity-50 lowercase">(internship)</span></h4>
-                <span class="text-xs font-mono opacity-50">Nov 2023 – Jan 2024</span>
-              </div>
-              <p class="text-xs opacity-70 font-mono leading-relaxed">
-                Created responsive user interfaces using CSS3, HTML5, and vanilla JavaScript, collaborating with senior developers on frontend theme maintenance.
+              <h3 class="font-sans font-semibold text-lg text-inkBlack dark:text-darkText">Pixels with personality</h3>
+              <p class="text-xs text-inkMuted dark:text-darkMuted font-sans leading-relaxed mt-2">
+                Semantic HTML5, custom Tailwind CSS, and vanilla JavaScript written for sub-second interactions without framework bloat.
               </p>
             </div>
-          </div>
-        </div>
 
-        <!-- Experience 2: Zaydn -->
-        <div class="gsap-exp-item border-t border-textDark/20 dark:border-white/20 pt-8 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10">
-          <div class="lg:col-span-4 flex flex-col justify-between">
+            <div class="mt-8 pt-4 border-t border-borderPaper dark:border-darkBorder flex flex-wrap gap-1.5 font-mono text-[10px]">
+              <span class="px-2.5 py-1 rounded bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder">HTML5</span>
+              <span class="px-2.5 py-1 rounded bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder">CSS3</span>
+              <span class="px-2.5 py-1 rounded bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder">Vanilla JS (ES6+)</span>
+              <span class="px-2.5 py-1 rounded bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder">Tailwind CSS</span>
+            </div>
+          </div>
+
+          <!-- Stack 02: Backend / Liquid -->
+          <div class="bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-2xl p-6 sm:p-8 paper-shadow flex flex-col justify-between">
             <div>
-              <span class="text-brandBlue font-mono text-xs font-bold uppercase tracking-widest block mb-2">1 YR • FREELANCE</span>
-              <h3 class="text-2xl sm:text-3xl font-medium uppercase tracking-tight">Zaydn Sneakers</h3>
-              <p class="text-xs font-mono opacity-50 mt-1 uppercase">New Delhi, Delhi, India • Hybrid</p>
-            </div>
-            <div class="mt-6 lg:mt-0">
-              <div class="flex flex-wrap gap-1.5 font-mono text-[10px]">
-                <span class="px-3 py-1 rounded-full border border-textDark/15 dark:border-white/15">Theme Migration</span>
-                <span class="px-3 py-1 rounded-full border border-textDark/15 dark:border-white/15">CRO Redesign</span>
-                <span class="px-3 py-1 rounded-full border border-textDark/15 dark:border-white/15">Custom Liquid</span>
-                <span class="px-3 py-1 rounded-full border border-textDark/15 dark:border-white/15">Native Promos</span>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-shopifyGreen">02 // ARCHITECTURE</span>
+                <span class="px-2 py-0.5 rounded text-[9px] font-mono bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder">SHOPIFY 2.0</span>
               </div>
+
+              <!-- Capsule stadium art container -->
+              <div class="w-full h-32 rounded-[36px] bg-gradient-to-r from-emerald-900 via-teal-700 to-lime-600 mb-6 flex items-center justify-center overflow-hidden relative shadow-inner">
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:8px_8px]"></div>
+                <span class="text-white font-mono text-xs uppercase tracking-widest font-semibold z-10">Liquid Section Engine</span>
+              </div>
+
+              <h3 class="font-sans font-semibold text-lg text-inkBlack dark:text-darkText">Logic that holds up</h3>
+              <p class="text-xs text-inkMuted dark:text-darkMuted font-sans leading-relaxed mt-2">
+                Custom Liquid section schemas, dynamic settings for non-technical merchants, fast snippet includes, and modular architecture.
+              </p>
+            </div>
+
+            <div class="mt-8 pt-4 border-t border-borderPaper dark:border-darkBorder flex flex-wrap gap-1.5 font-mono text-[10px]">
+              <span class="px-2.5 py-1 rounded bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder">Shopify Liquid</span>
+              <span class="px-2.5 py-1 rounded bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder">JSON Templates</span>
+              <span class="px-2.5 py-1 rounded bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder">Metafields / Objects</span>
+              <span class="px-2.5 py-1 rounded bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder">Dawn / Horizon</span>
             </div>
           </div>
 
-          <div class="lg:col-span-8">
-            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-3">
-              <h4 class="text-lg sm:text-xl font-medium uppercase tracking-tight text-textDark dark:text-textLight">Web Developer – Shopify <span class="text-xs font-mono opacity-50 lowercase">(freelance)</span></h4>
-              <span class="text-xs font-mono opacity-50">Dec 2022 – Nov 2023</span>
+          <!-- Stack 03: Data & Integrations -->
+          <div class="bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-2xl p-6 sm:p-8 paper-shadow flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-amber-600">03 // ECOSYSTEM</span>
+                <span class="px-2 py-0.5 rounded text-[9px] font-mono bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder">INTEGRATIONS</span>
+              </div>
+
+              <!-- Capsule stadium art container -->
+              <div class="w-full h-32 rounded-[36px] bg-gradient-to-r from-amber-700 via-orange-600 to-rose-700 mb-6 flex items-center justify-center overflow-hidden relative shadow-inner">
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:8px_8px]"></div>
+                <span class="text-white font-mono text-xs uppercase tracking-widest font-semibold z-10">Gateways &amp; APIs</span>
+              </div>
+
+              <h3 class="font-sans font-semibold text-lg text-inkBlack dark:text-darkText">Data that behaves</h3>
+              <p class="text-xs text-inkMuted dark:text-darkMuted font-sans leading-relaxed mt-2">
+                Connecting 1-click checkout engines, multi-currency payment rails, ERPs, and automated fulfillment APIs reliably.
+              </p>
             </div>
-            <p class="text-sm opacity-70 font-mono mb-4 leading-relaxed">
-              Spearheaded full storefront migration, custom Liquid discovery module engineering, and CRO redesign for a premier sneaker brand.
-            </p>
-            <ul class="space-y-2.5 font-mono text-xs opacity-80 leading-relaxed">
-              <li class="flex items-start gap-2">
-                <span class="text-brandBlue mt-0.5">▪</span>
-                <span><strong>Full Theme Migration:</strong> Migrated storefront to a modern Shopify theme to eliminate legacy bloat and improve speed.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-brandBlue mt-0.5">▪</span>
-                <span><strong>Custom Liquid Sections:</strong> Built interactive <em>Celeb Spot</em>, <em>Shop by Video</em>, and social grid modules from scratch.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-brandBlue mt-0.5">▪</span>
-                <span><strong>CRO Redesign:</strong> Rebuilt PDP layouts with mobile-first CTA hierarchy to increase add-to-cart rates.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-brandBlue mt-0.5">▪</span>
-                <span><strong>Native Promotions:</strong> Set up automated bundles, tiered cart discounts, and product offers without heavy apps.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-brandBlue mt-0.5">▪</span>
-                <span><strong>Technical SEO:</strong> Fixed broken URL redirects and injected structured JSON-LD schemas (FAQ, Collection, Organization).</span>
-              </li>
-            </ul>
+
+            <div class="mt-8 pt-4 border-t border-borderPaper dark:border-darkBorder flex flex-wrap gap-1.5 font-mono text-[10px]">
+              <span class="px-2.5 py-1 rounded bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder">Razorpay / Stripe</span>
+              <span class="px-2.5 py-1 rounded bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder">GoKwik 1-Click</span>
+              <span class="px-2.5 py-1 rounded bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder">Shiprocket API</span>
+              <span class="px-2.5 py-1 rounded bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder">REST &amp; GraphQL</span>
+            </div>
           </div>
+
         </div>
 
       </div>
     </section>
 
     <!-- ============================================== -->
-    <!-- 6. SELECTED WORKS                              -->
+    <!-- EXPERIENCE & TRACK RECORD                      -->
     <!-- ============================================== -->
-    <section id="works" class="py-24 sm:py-32 bg-bgLight dark:bg-bgDark transition-colors">
-      <div class="max-w-[90rem] mx-auto px-6 sm:px-12">
+    <section id="experience" class="py-20 sm:py-28 px-4 sm:px-8 border-b border-borderPaper dark:border-darkBorder">
+      <div class="max-w-7xl mx-auto">
         
-        <div class="gsap-fade-up flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-16 gap-4">
           <div>
-            <h2 class="text-4xl sm:text-6xl font-medium uppercase tracking-tighter leading-[1.05]">
-              <em class="font-serif italic font-normal tracking-normal opacity-80 lowercase">selected</em>
-              <span class="block">Work</span>
+            <span class="text-xs font-mono uppercase tracking-widest text-inkMuted dark:text-darkMuted block mb-2">Background &amp; Roles</span>
+            <h2 class="text-3xl sm:text-5xl font-serif font-normal tracking-tight text-inkBlack dark:text-darkText">
+              Proven track <em class="italic font-normal">record &amp; roles</em>
+            </h2>
+          </div>
+          <div class="font-mono text-xs text-inkMuted dark:text-darkMuted">
+            <span>4+ Years Dedicated Experience</span>
+          </div>
+        </div>
+
+        <div class="space-y-10">
+          
+          <!-- Experience Item 1: The Brand Exact -->
+          <div class="bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-2xl p-6 sm:p-10 paper-shadow">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
+              
+              <div class="lg:col-span-4">
+                <span class="px-2.5 py-1 rounded bg-shopifyGreen/10 text-shopifyGreen border border-shopifyGreen/20 text-[10px] font-mono font-bold uppercase tracking-wider">
+                  2 YRS 11 MOS TOTAL
+                </span>
+                <h3 class="text-xl sm:text-2xl font-serif font-normal text-inkBlack dark:text-darkText mt-3">The Brand Exact</h3>
+                <p class="text-xs font-mono text-inkMuted dark:text-darkMuted mt-1">Noida, Uttar Pradesh, India • On-site</p>
+
+                <div class="mt-6 flex flex-wrap gap-1.5 font-mono text-[10px]">
+                  <span class="px-2 py-0.5 rounded bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder">Shopify Liquid</span>
+                  <span class="px-2 py-0.5 rounded bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder">JavaScript</span>
+                  <span class="px-2 py-0.5 rounded bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder">Razorpay/Stripe</span>
+                  <span class="px-2 py-0.5 rounded bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder">Core Web Vitals</span>
+                </div>
+              </div>
+
+              <div class="lg:col-span-8 space-y-6">
+                <!-- Role A: Shopify Developer -->
+                <div>
+                  <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
+                    <h4 class="text-base font-semibold text-inkBlack dark:text-darkText">
+                      Shopify Developer <span class="text-xs font-mono text-inkMuted font-normal">(Full-time)</span>
+                    </h4>
+                    <span class="text-xs font-mono text-inkMuted dark:text-darkMuted">Feb 2024 – Present</span>
+                  </div>
+                  <p class="text-xs text-inkMuted dark:text-darkMuted leading-relaxed mb-3 font-sans">
+                    Build and customize fast, responsive, and user-friendly Shopify stores that help D2C businesses grow online across Fashion, Footwear, Home Decor, Jewellery, and Lifestyle brands.
+                  </p>
+
+                  <ul class="space-y-2 text-xs font-mono text-inkBlack/80 dark:text-darkText/80 leading-relaxed">
+                    <li class="flex items-start gap-2">
+                      <span class="text-shopifyGreen mt-0.5">▪</span>
+                      <span>Built and customized <strong>30+ Shopify stores</strong> for <strong>25+ brands</strong> across diverse e-commerce verticals.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-shopifyGreen mt-0.5">▪</span>
+                      <span>Developed bespoke Liquid sections, schemas, and dynamic frontend components with HTML5, CSS3, and modern JavaScript.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-shopifyGreen mt-0.5">▪</span>
+                      <span>Integrated multi-rail payment systems including <strong>Razorpay, Stripe, Cashfree, PayU, PayPal, and GoKwik</strong> supporting UPI, cards, and cross-border transactions.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-shopifyGreen mt-0.5">▪</span>
+                      <span>Audited and optimized Core Web Vitals to lower bounce rates and maximize checkout progression.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-shopifyGreen mt-0.5">▪</span>
+                      <span>Injected semantic JSON-LD structured data (Organization, WebPage, Collection, and FAQ schemas).</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Role B: Web Dev Intern -->
+                <div class="pt-4 border-t border-borderPaper dark:border-darkBorder">
+                  <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-1">
+                    <h4 class="text-sm font-semibold text-inkBlack dark:text-darkText">
+                      Web Developer <span class="text-xs font-mono text-inkMuted font-normal">(Internship)</span>
+                    </h4>
+                    <span class="text-xs font-mono text-inkMuted dark:text-darkMuted">Nov 2023 – Jan 2024</span>
+                  </div>
+                  <p class="text-xs text-inkMuted dark:text-darkMuted leading-relaxed font-sans">
+                    Created responsive user interfaces using CSS3, HTML5, and vanilla JavaScript, collaborating with senior developers on frontend theme maintenance.
+                  </p>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Experience Item 2: Zaydn Sneakers -->
+          <div class="bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-2xl p-6 sm:p-10 paper-shadow">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
+              
+              <div class="lg:col-span-4">
+                <span class="px-2.5 py-1 rounded bg-shopifyBlue/10 text-shopifyBlue border border-shopifyBlue/20 text-[10px] font-mono font-bold uppercase tracking-wider">
+                  1 YR • FREELANCE
+                </span>
+                <h3 class="text-xl sm:text-2xl font-serif font-normal text-inkBlack dark:text-darkText mt-3">Zaydn Sneakers</h3>
+                <p class="text-xs font-mono text-inkMuted dark:text-darkMuted mt-1">New Delhi, Delhi, India • Hybrid</p>
+
+                <div class="mt-6 flex flex-wrap gap-1.5 font-mono text-[10px]">
+                  <span class="px-2 py-0.5 rounded bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder">Theme Migration</span>
+                  <span class="px-2 py-0.5 rounded bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder">CRO Redesign</span>
+                  <span class="px-2 py-0.5 rounded bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder">Custom Liquid</span>
+                  <span class="px-2 py-0.5 rounded bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder">Native Promos</span>
+                </div>
+              </div>
+
+              <div class="lg:col-span-8">
+                <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
+                  <h4 class="text-base font-semibold text-inkBlack dark:text-darkText">
+                    Web Developer – Shopify <span class="text-xs font-mono text-inkMuted font-normal">(Freelance)</span>
+                  </h4>
+                  <span class="text-xs font-mono text-inkMuted dark:text-darkMuted">Dec 2022 – Nov 2023</span>
+                </div>
+                <p class="text-xs text-inkMuted dark:text-darkMuted leading-relaxed mb-3 font-sans">
+                  Spearheaded full storefront migration, custom Liquid discovery module engineering, and CRO redesign for a premier sneaker brand.
+                </p>
+
+                <ul class="space-y-2 text-xs font-mono text-inkBlack/80 dark:text-darkText/80 leading-relaxed">
+                  <li class="flex items-start gap-2">
+                    <span class="text-shopifyBlue mt-0.5">▪</span>
+                    <span><strong>Full Theme Migration:</strong> Migrated storefront to a modern Shopify theme to eliminate legacy bloat and improve speed.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-shopifyBlue mt-0.5">▪</span>
+                    <span><strong>Custom Liquid Sections:</strong> Built interactive <em>Celeb Spot</em>, <em>Shop by Video</em>, and social grid modules from scratch.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-shopifyBlue mt-0.5">▪</span>
+                    <span><strong>CRO Redesign:</strong> Rebuilt PDP layouts with mobile-first CTA hierarchy to increase add-to-cart rates.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-shopifyBlue mt-0.5">▪</span>
+                    <span><strong>Native Promotions:</strong> Set up automated bundles, tiered cart discounts, and product offers without heavy apps.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-shopifyBlue mt-0.5">▪</span>
+                    <span><strong>Technical SEO:</strong> Fixed broken URL redirects and injected structured JSON-LD schemas.</span>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SELECTED WORK (Live Stores Catalog)            -->
+    <!-- Reference Image 4: Horizontal Catalog Cards    -->
+    <!-- ============================================== -->
+    <section id="works" class="py-20 sm:py-28 px-4 sm:px-8 border-b border-borderPaper dark:border-darkBorder">
+      <div class="max-w-7xl mx-auto">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+          <div>
+            <span class="text-xs font-mono uppercase tracking-widest text-inkMuted dark:text-darkMuted block mb-2">Live Storefront Showcase</span>
+            <h2 class="text-3xl sm:text-5xl font-serif font-normal tracking-tight text-inkBlack dark:text-darkText">
+              Selected <em class="italic font-normal">work</em>
             </h2>
           </div>
 
-          <div class="flex overflow-x-auto no-scrollbar gap-2 sm:gap-3 pb-2 font-mono text-[10px] sm:text-xs w-full md:w-auto">
-            <button onclick="filterStores('all')" class="magnetic-btn filter-btn active shrink-0 px-4 py-2 rounded-full bg-textDark text-white dark:bg-white dark:text-textDark transition-colors" data-category="all">All</button>
-            <button onclick="filterStores('footwear')" class="magnetic-btn filter-btn shrink-0 px-4 py-2 rounded-full border border-textDark/20 dark:border-white/20 bg-transparent transition-colors" data-category="footwear">Footwear</button>
-            <button onclick="filterStores('fashion')" class="magnetic-btn filter-btn shrink-0 px-4 py-2 rounded-full border border-textDark/20 dark:border-white/20 bg-transparent transition-colors" data-category="fashion">Fashion</button>
-            <button onclick="filterStores('jewelry')" class="magnetic-btn filter-btn shrink-0 px-4 py-2 rounded-full border border-textDark/20 dark:border-white/20 bg-transparent transition-colors" data-category="jewelry">Jewellery</button>
-            <button onclick="filterStores('home')" class="magnetic-btn filter-btn shrink-0 px-4 py-2 rounded-full border border-textDark/20 dark:border-white/20 bg-transparent transition-colors" data-category="home">Home</button>
+          <!-- Category filter buttons -->
+          <div class="flex overflow-x-auto no-scrollbar gap-2 font-mono text-xs">
+            <button onclick="filterStores('all')" class="filter-btn active px-3.5 py-1.5 rounded-full bg-inkBlack text-white dark:bg-white dark:text-inkBlack transition-colors" data-category="all">All</button>
+            <button onclick="filterStores('footwear')" class="filter-btn px-3.5 py-1.5 rounded-full border border-borderPaper dark:border-darkBorder bg-cardWhite dark:bg-darkCard transition-colors" data-category="footwear">Footwear</button>
+            <button onclick="filterStores('fashion')" class="filter-btn px-3.5 py-1.5 rounded-full border border-borderPaper dark:border-darkBorder bg-cardWhite dark:bg-darkCard transition-colors" data-category="fashion">Fashion</button>
+            <button onclick="filterStores('jewelry')" class="filter-btn px-3.5 py-1.5 rounded-full border border-borderPaper dark:border-darkBorder bg-cardWhite dark:bg-darkCard transition-colors" data-category="jewelry">Jewellery</button>
+            <button onclick="filterStores('home')" class="filter-btn px-3.5 py-1.5 rounded-full border border-borderPaper dark:border-darkBorder bg-cardWhite dark:bg-darkCard transition-colors" data-category="home">Home</button>
           </div>
         </div>
 
-        <div id="projects-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mt-8">
+        <!-- Catalog Grid -->
+        <div id="projects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           
-          <a href="https://michaelangelo.in/" target="_blank" class="gsap-project-item footwear group block">
-            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl bg-cardLight dark:bg-cardDark mb-3 shadow-sm">
-              <img src="https://cdn.shopify.com/s/files/1/0657/7710/7144/files/Artboard_2_jpg.jpg?v=1779884867" alt="Michael Angelo" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+          <!-- Store 1: Michael Angelo -->
+          <a href="https://michaelangelo.in/" target="_blank" class="store-item footwear group block bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-xl p-4 paper-shadow-hover">
+            <div class="w-full aspect-[4/3] rounded-lg overflow-hidden bg-canvasSubtle dark:bg-darkCanvas mb-3 border border-borderPaper/50 dark:border-darkBorder/50">
+              <img src="https://cdn.shopify.com/s/files/1/0657/7710/7144/files/Artboard_2_jpg.jpg?v=1779884867" alt="Michael Angelo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.src='https://placehold.co/600x450/f3f3ee/191919?text=Michael+Angelo'" />
             </div>
-            <div class="px-1">
-              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
-                Michael Angelo <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brandOrange">&rarr;</span>
-              </h3>
-              <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Premium Footwear</p>
+            <div class="flex items-center justify-between text-[10px] font-mono text-inkMuted dark:text-darkMuted mb-1">
+              <span class="uppercase">Footwear</span>
+              <span class="text-shopifyGreen font-semibold">Live Store &rarr;</span>
             </div>
+            <h3 class="font-sans font-semibold text-sm text-inkBlack dark:text-darkText">Michael Angelo</h3>
+            <p class="text-xs text-inkMuted dark:text-darkMuted font-mono mt-1">Premium Footwear</p>
           </a>
 
-          <a href="https://www.leconcept.co.in/" target="_blank" class="gsap-project-item fashion group block">
-            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl bg-cardLight dark:bg-cardDark mb-3 shadow-sm">
-              <img src="https://cdn.shopify.com/s/files/1/0890/7233/7188/files/Mask_group_6.png?v=1783936310" alt="Le Concept" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+          <!-- Store 2: Le Concept -->
+          <a href="https://www.leconcept.co.in/" target="_blank" class="store-item fashion group block bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-xl p-4 paper-shadow-hover">
+            <div class="w-full aspect-[4/3] rounded-lg overflow-hidden bg-canvasSubtle dark:bg-darkCanvas mb-3 border border-borderPaper/50 dark:border-darkBorder/50">
+              <img src="https://cdn.shopify.com/s/files/1/0890/7233/7188/files/Mask_group_6.png?v=1783936310" alt="Le Concept" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.src='https://placehold.co/600x450/f3f3ee/191919?text=Le+Concept'" />
             </div>
-            <div class="px-1">
-              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
-                Le Concept <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brandOrange">&rarr;</span>
-              </h3>
-              <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Women's Wear</p>
+            <div class="flex items-center justify-between text-[10px] font-mono text-inkMuted dark:text-darkMuted mb-1">
+              <span class="uppercase">Fashion</span>
+              <span class="text-shopifyGreen font-semibold">Live Store &rarr;</span>
             </div>
+            <h3 class="font-sans font-semibold text-sm text-inkBlack dark:text-darkText">Le Concept</h3>
+            <p class="text-xs text-inkMuted dark:text-darkMuted font-mono mt-1">Women's Wear</p>
           </a>
 
-          <a href="https://www.spiffers.in/" target="_blank" class="gsap-project-item footwear group block">
-            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl bg-cardLight dark:bg-cardDark mb-3 shadow-sm">
-              <img src="https://www.spiffers.in/cdn/shop/files/Rectangle_142.png?v=1780992822&width=1600" alt="Spiffers" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+          <!-- Store 3: Spiffers -->
+          <a href="https://www.spiffers.in/" target="_blank" class="store-item footwear group block bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-xl p-4 paper-shadow-hover">
+            <div class="w-full aspect-[4/3] rounded-lg overflow-hidden bg-canvasSubtle dark:bg-darkCanvas mb-3 border border-borderPaper/50 dark:border-darkBorder/50">
+              <img src="https://www.spiffers.in/cdn/shop/files/Rectangle_142.png?v=1780992822&width=1600" alt="Spiffers" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.src='https://placehold.co/600x450/f3f3ee/191919?text=Spiffers'" />
             </div>
-            <div class="px-1">
-              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
-                Spiffers <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brandOrange">&rarr;</span>
-              </h3>
-              <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Footwear Brand</p>
+            <div class="flex items-center justify-between text-[10px] font-mono text-inkMuted dark:text-darkMuted mb-1">
+              <span class="uppercase">Footwear</span>
+              <span class="text-shopifyGreen font-semibold">Live Store &rarr;</span>
             </div>
+            <h3 class="font-sans font-semibold text-sm text-inkBlack dark:text-darkText">Spiffers</h3>
+            <p class="text-xs text-inkMuted dark:text-darkMuted font-mono mt-1">Footwear Brand</p>
           </a>
 
-          <a href="https://nikunjbyniidhibajaj.com/" target="_blank" class="gsap-project-item fashion group block">
-            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl bg-cardLight dark:bg-cardDark mb-3 shadow-sm">
-              <img src="https://nikunjbyniidhibajaj.com/cdn/shop/files/2.png?v=1780501726&width=2400" alt="Nikunj Niidhi Bajaj" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+          <!-- Store 4: Nikunj Niidhi Bajaj -->
+          <a href="https://nikunjbyniidhibajaj.com/" target="_blank" class="store-item fashion group block bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-xl p-4 paper-shadow-hover">
+            <div class="w-full aspect-[4/3] rounded-lg overflow-hidden bg-canvasSubtle dark:bg-darkCanvas mb-3 border border-borderPaper/50 dark:border-darkBorder/50">
+              <img src="https://nikunjbyniidhibajaj.com/cdn/shop/files/2.png?v=1780501726&width=2400" alt="Nikunj Niidhi Bajaj" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.src='https://placehold.co/600x450/f3f3ee/191919?text=Nikunj+Niidhi'" />
             </div>
-            <div class="px-1">
-              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
-                Nikunj Niidhi <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brandOrange">&rarr;</span>
-              </h3>
-              <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Women Ethnic Wear</p>
+            <div class="flex items-center justify-between text-[10px] font-mono text-inkMuted dark:text-darkMuted mb-1">
+              <span class="uppercase">Fashion</span>
+              <span class="text-shopifyGreen font-semibold">Live Store &rarr;</span>
             </div>
+            <h3 class="font-sans font-semibold text-sm text-inkBlack dark:text-darkText">Nikunj Niidhi</h3>
+            <p class="text-xs text-inkMuted dark:text-darkMuted font-mono mt-1">Women Ethnic Wear</p>
           </a>
 
-          <a href="https://loomandstory.com/" target="_blank" class="gsap-project-item fashion group block">
-            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl bg-cardLight dark:bg-cardDark mb-3 shadow-sm">
-              <img src="https://loomandstory.com/cdn/shop/files/website.jpg?v=1785494251&width=2000" alt="Loom & Story" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+          <!-- Store 5: Loom & Story -->
+          <a href="https://loomandstory.com/" target="_blank" class="store-item fashion group block bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-xl p-4 paper-shadow-hover">
+            <div class="w-full aspect-[4/3] rounded-lg overflow-hidden bg-canvasSubtle dark:bg-darkCanvas mb-3 border border-borderPaper/50 dark:border-darkBorder/50">
+              <img src="https://loomandstory.com/cdn/shop/files/website.jpg?v=1785494251&width=2000" alt="Loom & Story" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.src='https://placehold.co/600x450/f3f3ee/191919?text=Loom+%26+Story'" />
             </div>
-            <div class="px-1">
-              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
-                Loom &amp; Story <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brandOrange">&rarr;</span>
-              </h3>
-              <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Textile Storytelling</p>
+            <div class="flex items-center justify-between text-[10px] font-mono text-inkMuted dark:text-darkMuted mb-1">
+              <span class="uppercase">Fashion</span>
+              <span class="text-shopifyGreen font-semibold">Live Store &rarr;</span>
             </div>
+            <h3 class="font-sans font-semibold text-sm text-inkBlack dark:text-darkText">Loom &amp; Story</h3>
+            <p class="text-xs text-inkMuted dark:text-darkMuted font-mono mt-1">Textile Storytelling</p>
           </a>
 
-          <a href="https://zaydns.com/" target="_blank" class="gsap-project-item footwear group block">
-            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl bg-cardLight dark:bg-cardDark mb-3 shadow-sm">
-              <img src="https://zaydns.com/cdn/shop/files/YOO.jpg?v=1779727236&width=1200" alt="Zaydn" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+          <!-- Store 6: Zaydn -->
+          <a href="https://zaydns.com/" target="_blank" class="store-item footwear group block bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-xl p-4 paper-shadow-hover">
+            <div class="w-full aspect-[4/3] rounded-lg overflow-hidden bg-canvasSubtle dark:bg-darkCanvas mb-3 border border-borderPaper/50 dark:border-darkBorder/50">
+              <img src="https://zaydns.com/cdn/shop/files/YOO.jpg?v=1779727236&width=1200" alt="Zaydn" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.src='https://placehold.co/600x450/f3f3ee/191919?text=Zaydn'" />
             </div>
-            <div class="px-1">
-              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
-                Zaydn <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brandOrange">&rarr;</span>
-              </h3>
-              <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Sneaker Brand</p>
+            <div class="flex items-center justify-between text-[10px] font-mono text-inkMuted dark:text-darkMuted mb-1">
+              <span class="uppercase">Footwear</span>
+              <span class="text-shopifyGreen font-semibold">Live Store &rarr;</span>
             </div>
+            <h3 class="font-sans font-semibold text-sm text-inkBlack dark:text-darkText">Zaydn</h3>
+            <p class="text-xs text-inkMuted dark:text-darkMuted font-mono mt-1">Sneaker Brand</p>
           </a>
 
-          <a href="https://www.miira.in/" target="_blank" class="gsap-project-item jewelry group block">
-            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl bg-cardLight dark:bg-cardDark mb-3 shadow-sm">
-              <img src="https://www.miira.in/cdn/shop/files/SparklingnamenecklaceRs2499_700x.jpg?v=1784040283" alt="Miira" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+          <!-- Store 7: Miira -->
+          <a href="https://www.miira.in/" target="_blank" class="store-item jewelry group block bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-xl p-4 paper-shadow-hover">
+            <div class="w-full aspect-[4/3] rounded-lg overflow-hidden bg-canvasSubtle dark:bg-darkCanvas mb-3 border border-borderPaper/50 dark:border-darkBorder/50">
+              <img src="https://www.miira.in/cdn/shop/files/SparklingnamenecklaceRs2499_700x.jpg?v=1784040283" alt="Miira" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.src='https://placehold.co/600x450/f3f3ee/191919?text=Miira'" />
             </div>
-            <div class="px-1">
-              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
-                Miira <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brandOrange">&rarr;</span>
-              </h3>
-              <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Artificial Jewellery</p>
+            <div class="flex items-center justify-between text-[10px] font-mono text-inkMuted dark:text-darkMuted mb-1">
+              <span class="uppercase">Jewellery</span>
+              <span class="text-shopifyGreen font-semibold">Live Store &rarr;</span>
             </div>
+            <h3 class="font-sans font-semibold text-sm text-inkBlack dark:text-darkText">Miira</h3>
+            <p class="text-xs text-inkMuted dark:text-darkMuted font-mono mt-1">Artificial Jewellery</p>
           </a>
 
-          <a href="https://banarasiya.in/" target="_blank" class="gsap-project-item fashion group block">
-            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl bg-cardLight dark:bg-cardDark mb-3 shadow-sm">
-              <img src="https://cdn.shopify.com/s/files/1/0497/0240/4258/files/Group_93_1.png?v=1778482629" alt="Banarasiya" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+          <!-- Store 8: Banarasiya -->
+          <a href="https://banarasiya.in/" target="_blank" class="store-item fashion group block bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-xl p-4 paper-shadow-hover">
+            <div class="w-full aspect-[4/3] rounded-lg overflow-hidden bg-canvasSubtle dark:bg-darkCanvas mb-3 border border-borderPaper/50 dark:border-darkBorder/50">
+              <img src="https://cdn.shopify.com/s/files/1/0497/0240/4258/files/Group_93_1.png?v=1778482629" alt="Banarasiya" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.src='https://placehold.co/600x450/f3f3ee/191919?text=Banarasiya'" />
             </div>
-            <div class="px-1">
-              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
-                Banarasiya <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brandOrange">&rarr;</span>
-              </h3>
-              <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Heritage Saree Store</p>
+            <div class="flex items-center justify-between text-[10px] font-mono text-inkMuted dark:text-darkMuted mb-1">
+              <span class="uppercase">Fashion</span>
+              <span class="text-shopifyGreen font-semibold">Live Store &rarr;</span>
             </div>
+            <h3 class="font-sans font-semibold text-sm text-inkBlack dark:text-darkText">Banarasiya</h3>
+            <p class="text-xs text-inkMuted dark:text-darkMuted font-mono mt-1">Heritage Saree Store</p>
           </a>
 
-          <a href="https://www.vesperahomes.com/" target="_blank" class="gsap-project-item home group block">
-            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl bg-cardLight dark:bg-cardDark mb-3 shadow-sm">
-              <img src="https://www.vesperahomes.com/cdn/shop/files/Self-care_Sunday_Sale_Green_Shopify_Banner_38.png?v=1783680878&width=1920" alt="Vespera Homes" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+          <!-- Store 9: Vespera Homes -->
+          <a href="https://www.vesperahomes.com/" target="_blank" class="store-item home group block bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-xl p-4 paper-shadow-hover">
+            <div class="w-full aspect-[4/3] rounded-lg overflow-hidden bg-canvasSubtle dark:bg-darkCanvas mb-3 border border-borderPaper/50 dark:border-darkBorder/50">
+              <img src="https://www.vesperahomes.com/cdn/shop/files/Self-care_Sunday_Sale_Green_Shopify_Banner_38.png?v=1783680878&width=1920" alt="Vespera Homes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.src='https://placehold.co/600x450/f3f3ee/191919?text=Vespera+Homes'" />
             </div>
-            <div class="px-1">
-              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
-                Vespera Homes <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brandOrange">&rarr;</span>
-              </h3>
-              <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Home Decor</p>
+            <div class="flex items-center justify-between text-[10px] font-mono text-inkMuted dark:text-darkMuted mb-1">
+              <span class="uppercase">Home</span>
+              <span class="text-shopifyGreen font-semibold">Live Store &rarr;</span>
             </div>
+            <h3 class="font-sans font-semibold text-sm text-inkBlack dark:text-darkText">Vespera Homes</h3>
+            <p class="text-xs text-inkMuted dark:text-darkMuted font-mono mt-1">Home Decor</p>
           </a>
 
-          <a href="https://sojanya.com/" target="_blank" class="gsap-project-item fashion group block">
-            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl bg-cardLight dark:bg-cardDark mb-3 shadow-sm">
-              <img src="https://sojanya.com/cdn/shop/files/2_08eebcdd-d7f0-480a-9ad4-4daf34580003.jpg?v=1757503550&width=1410" alt="Sojanya" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+          <!-- Store 10: Sojanya -->
+          <a href="https://sojanya.com/" target="_blank" class="store-item fashion group block bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-xl p-4 paper-shadow-hover">
+            <div class="w-full aspect-[4/3] rounded-lg overflow-hidden bg-canvasSubtle dark:bg-darkCanvas mb-3 border border-borderPaper/50 dark:border-darkBorder/50">
+              <img src="https://sojanya.com/cdn/shop/files/2_08eebcdd-d7f0-480a-9ad4-4daf34580003.jpg?v=1757503550&width=1410" alt="Sojanya" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.src='https://placehold.co/600x450/f3f3ee/191919?text=Sojanya'" />
             </div>
-            <div class="px-1">
-              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
-                Sojanya <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brandOrange">&rarr;</span>
-              </h3>
-              <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Men Ethnic Wear</p>
+            <div class="flex items-center justify-between text-[10px] font-mono text-inkMuted dark:text-darkMuted mb-1">
+              <span class="uppercase">Fashion</span>
+              <span class="text-shopifyGreen font-semibold">Live Store &rarr;</span>
             </div>
+            <h3 class="font-sans font-semibold text-sm text-inkBlack dark:text-darkText">Sojanya</h3>
+            <p class="text-xs text-inkMuted dark:text-darkMuted font-mono mt-1">Men Ethnic Wear</p>
           </a>
 
-          <a href="https://paakhihome.com/" target="_blank" class="gsap-project-item home group block">
-            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl bg-cardLight dark:bg-cardDark mb-3 shadow-sm">
-              <img src="https://paakhihome.com/cdn/shop/files/PRT-004_15_10a2899c-7648-4a38-8f54-1b48b3da78a1.jpg?v=1769081125&width=1296" alt="Paakhi" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+          <!-- Store 11: Paakhi -->
+          <a href="https://paakhihome.com/" target="_blank" class="store-item home group block bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-xl p-4 paper-shadow-hover">
+            <div class="w-full aspect-[4/3] rounded-lg overflow-hidden bg-canvasSubtle dark:bg-darkCanvas mb-3 border border-borderPaper/50 dark:border-darkBorder/50">
+              <img src="https://paakhihome.com/cdn/shop/files/PRT-004_15_10a2899c-7648-4a38-8f54-1b48b3da78a1.jpg?v=1769081125&width=1296" alt="Paakhi" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.src='https://placehold.co/600x450/f3f3ee/191919?text=Paakhi'" />
             </div>
-            <div class="px-1">
-              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
-                Paakhi <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brandOrange">&rarr;</span>
-              </h3>
-              <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Home Essentials</p>
+            <div class="flex items-center justify-between text-[10px] font-mono text-inkMuted dark:text-darkMuted mb-1">
+              <span class="uppercase">Home</span>
+              <span class="text-shopifyGreen font-semibold">Live Store &rarr;</span>
             </div>
+            <h3 class="font-sans font-semibold text-sm text-inkBlack dark:text-darkText">Paakhi</h3>
+            <p class="text-xs text-inkMuted dark:text-darkMuted font-mono mt-1">Home Essentials</p>
           </a>
 
-          <a href="https://takshexclusive.com/" target="_blank" class="gsap-project-item jewelry group block">
-            <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl bg-cardLight dark:bg-cardDark mb-3 shadow-sm">
-              <img src="https://takshexclusive.com/cdn/shop/files/IMG_20260508_192457.png?v=1778248556&width=2560" alt="Taksh" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+          <!-- Store 12: Taksh -->
+          <a href="https://takshexclusive.com/" target="_blank" class="store-item jewelry group block bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-xl p-4 paper-shadow-hover">
+            <div class="w-full aspect-[4/3] rounded-lg overflow-hidden bg-canvasSubtle dark:bg-darkCanvas mb-3 border border-borderPaper/50 dark:border-darkBorder/50">
+              <img src="https://takshexclusive.com/cdn/shop/files/IMG_20260508_192457.png?v=1778248556&width=2560" alt="Taksh" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.src='https://placehold.co/600x450/f3f3ee/191919?text=Taksh'" />
             </div>
-            <div class="px-1">
-              <h3 class="text-sm sm:text-base font-medium uppercase tracking-tight flex items-center justify-between">
-                Taksh <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brandOrange">&rarr;</span>
-              </h3>
-              <p class="text-[9px] sm:text-[10px] opacity-50 mt-1 font-mono uppercase truncate">Bridal Jewelry</p>
+            <div class="flex items-center justify-between text-[10px] font-mono text-inkMuted dark:text-darkMuted mb-1">
+              <span class="uppercase">Jewellery</span>
+              <span class="text-shopifyGreen font-semibold">Live Store &rarr;</span>
             </div>
+            <h3 class="font-sans font-semibold text-sm text-inkBlack dark:text-darkText">Taksh</h3>
+            <p class="text-xs text-inkMuted dark:text-darkMuted font-mono mt-1">Bridal Jewelry</p>
           </a>
 
         </div>
+
       </div>
     </section>
 
     <!-- ============================================== -->
-    <!-- 7. CONTACT FORM                                -->
+    <!-- TESTIMONIALS & CREDENTIALS                     -->
+    <!-- Reference Image 3: Capsule Dashed Border Cards -->
     <!-- ============================================== -->
-    <section id="connect" class="py-6 sm:py-24 max-w-7xl mx-auto px-4 sm:px-12 mb-8 sm:mb-20">
-      <div class="bg-cardLight dark:bg-cardDark rounded-[2rem] sm:rounded-[3rem] p-5 sm:p-16 lg:p-20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-textDark/5 dark:border-white/5 overflow-hidden transition-colors">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-24">
+    <section id="reviews" class="py-20 sm:py-28 px-4 sm:px-8 border-b border-borderPaper dark:border-darkBorder bg-canvasSubtle/30 dark:bg-darkCard/20">
+      <div class="max-w-5xl mx-auto text-center">
+        
+        <h2 class="text-3xl sm:text-5xl font-serif font-normal tracking-tight text-inkBlack dark:text-darkText mb-3">
+          Stand out with <em class="italic font-normal">vouched execution</em>
+        </h2>
+        <p class="text-xs sm:text-sm font-sans text-inkMuted dark:text-darkMuted mb-8">
+          Reliable engineering recognized by founders and direct-to-consumer brand operators.
+        </p>
+
+        <div class="inline-block mb-12">
+          <span class="px-4 py-2 rounded border border-borderPaper dark:border-darkBorder bg-cardWhite dark:bg-darkCard text-xs font-mono">
+            Direct Merchant Feedback
+          </span>
+        </div>
+
+        <!-- Dashed pill testimonial cards (Exact match to reference image 3) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
           
-          <div class="gsap-contact-info flex flex-col justify-between">
-            <div>
-              <h2 class="text-3xl sm:text-6xl font-medium uppercase tracking-tighter leading-[1.05]">
-                <span class="block">Got an idea?</span>
-                <em class="font-serif italic font-normal tracking-normal opacity-80 lowercase">let's talk.</em>
-              </h2>
-              <p class="opacity-60 text-xs sm:text-sm mt-2 sm:mt-8 font-mono leading-relaxed max-w-md">
-                Shopify builds, Liquid architecture, checkout optimization, or payment integrations — I'm ready to ship it.
+          <!-- Testimonial 1 -->
+          <div class="flex flex-col items-center">
+            <div class="w-full border-dashed-sketch rounded-[40px] p-6 sm:p-8 bg-cardWhite/50 dark:bg-darkCard/50 backdrop-blur-sm">
+              <p class="text-sm font-sans text-inkBlack dark:text-darkText leading-relaxed">
+                “Arvind has an uncanny ability to turn complex design schemas into lightweight Liquid code. Our storefront load time cut in half after his audit.”
               </p>
             </div>
             
-            <div class="mt-4 sm:mt-0 space-y-3 sm:space-y-5 font-mono text-[10px] sm:text-sm">
-              <!-- Email -->
-              <a href="mailto:letswork.arvind@gmail.com" class="magnetic-btn flex items-center gap-3.5 sm:gap-5 group w-fit">
-                <span class="w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-bgLight dark:bg-white/5 border border-textDark/10 dark:border-white/10 flex items-center justify-center group-hover:bg-brandOrange group-hover:border-brandOrange group-hover:text-white transition-all duration-300 text-textDark/70 dark:text-textLight/70 shrink-0">
-                  <svg class="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <rect width="20" height="16" x="2" y="4" rx="2.5"></rect>
-                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                  </svg>
-                </span>
-                <span class="opacity-80 group-hover:opacity-100 group-hover:text-brandOrange transition-colors border-b border-transparent group-hover:border-brandOrange pb-0.5 break-all">letswork.arvind@gmail.com</span>
-              </a>
-
-              <!-- WhatsApp -->
-              <a href="https://wa.me/918874856868" target="_blank" class="magnetic-btn flex items-center gap-3.5 sm:gap-5 group w-fit">
-                <span class="w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-bgLight dark:bg-white/5 border border-textDark/10 dark:border-white/10 flex items-center justify-center group-hover:bg-brandOrange group-hover:border-brandOrange group-hover:text-white transition-all duration-300 text-textDark/70 dark:text-textLight/70 shrink-0">
-                  <svg class="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"></path>
-                    <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"></path>
-                  </svg>
-                </span>
-                <span class="opacity-80 group-hover:opacity-100 group-hover:text-brandOrange transition-colors border-b border-transparent group-hover:border-brandOrange pb-0.5">+91 8874856868</span>
-              </a>
+            <div class="mt-5 flex flex-col items-center">
+              <div class="w-12 h-12 rounded-full border border-borderPaper dark:border-darkBorder overflow-hidden bg-neutral-200 dark:bg-neutral-800 mb-2">
+                <img src="https://placehold.co/100x100/191919/ffffff?text=D2C" alt="Founder avatar" class="w-full h-full object-cover" />
+              </div>
+              <p class="text-xs font-mono font-bold uppercase tracking-wider text-inkBlack dark:text-darkText">Founder, Footwear Brand</p>
+              <span class="text-[10px] font-mono text-inkMuted dark:text-darkMuted uppercase">D2C E-Commerce</span>
             </div>
           </div>
 
-          <div class="gsap-contact-form mt-1 sm:mt-4 lg:mt-0">
-            <form id="portfolio-form" onsubmit="submitViaGoogleScript(event)" class="space-y-3.5 sm:space-y-10">
-              
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-10">
-                <div class="relative group">
-                  <label for="form-name" class="block text-[9px] sm:text-xs font-mono font-semibold opacity-40 uppercase mb-0.5 sm:mb-1 group-focus-within:opacity-100 transition-opacity">Name *</label>
-                  <input type="text" id="form-name" required class="w-full px-0 py-1 sm:py-2 bg-transparent border-b border-textDark/10 dark:border-white/10 text-sm sm:text-sm focus:outline-none focus:border-current transition-colors cursor-text" />
-                </div>
-                <div class="relative group">
-                  <label for="form-email" class="block text-[9px] sm:text-xs font-mono font-semibold opacity-40 uppercase mb-0.5 sm:mb-1 group-focus-within:opacity-100 transition-opacity">Email *</label>
-                  <input type="email" id="form-email" required class="w-full px-0 py-1 sm:py-2 bg-transparent border-b border-textDark/10 dark:border-white/10 text-sm sm:text-sm focus:outline-none focus:border-current transition-colors cursor-text" />
-                </div>
+          <!-- Testimonial 2 -->
+          <div class="flex flex-col items-center">
+            <div class="w-full border-dashed-sketch rounded-[40px] p-6 sm:p-8 bg-cardWhite/50 dark:bg-darkCard/50 backdrop-blur-sm">
+              <p class="text-sm font-sans text-inkBlack dark:text-darkText leading-relaxed">
+                “Zero headaches with payment gateway and multi-currency routing. The native AJAX drawer checkout increased our mobile conversion noticeably.”
+              </p>
+            </div>
+            
+            <div class="mt-5 flex flex-col items-center">
+              <div class="w-12 h-12 rounded-full border border-borderPaper dark:border-darkBorder overflow-hidden bg-neutral-200 dark:bg-neutral-800 mb-2">
+                <img src="https://placehold.co/100x100/2c6ecb/ffffff?text=L&S" alt="Director avatar" class="w-full h-full object-cover" />
               </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-10">
-                <div class="relative group">
-                  <label for="form-phone" class="block text-[9px] sm:text-xs font-mono font-semibold opacity-40 uppercase mb-0.5 sm:mb-1 group-focus-within:opacity-100 transition-opacity">Phone</label>
-                  <input type="tel" id="form-phone" class="w-full px-0 py-1 sm:py-2 bg-transparent border-b border-textDark/10 dark:border-white/10 text-sm sm:text-sm focus:outline-none focus:border-current transition-colors cursor-text" />
-                </div>
-                <div class="relative group">
-                  <label for="form-company" class="block text-[9px] sm:text-xs font-mono font-semibold opacity-40 uppercase mb-0.5 sm:mb-1 group-focus-within:opacity-100 transition-opacity">Company *</label>
-                  <input type="text" id="form-company" required class="w-full px-0 py-1 sm:py-2 bg-transparent border-b border-textDark/10 dark:border-white/10 text-sm sm:text-sm focus:outline-none focus:border-current transition-colors cursor-text" />
-                </div>
-              </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-10">
-                <div class="relative group">
-                  <label for="form-website" class="block text-[9px] sm:text-xs font-mono font-semibold opacity-40 uppercase mb-0.5 sm:mb-1 group-focus-within:opacity-100 transition-opacity">Website URL</label>
-                  <input type="url" id="form-website" placeholder="https://..." class="w-full px-0 py-1 sm:py-2 bg-transparent border-b border-textDark/10 dark:border-white/10 text-sm sm:text-sm focus:outline-none focus:border-current transition-colors cursor-text" />
-                </div>
-                <div class="relative group">
-                  <label for="form-service" class="block text-[9px] sm:text-xs font-mono font-semibold opacity-40 uppercase mb-0.5 sm:mb-1 group-focus-within:opacity-100 transition-opacity">Service</label>
-                  <select id="form-service" class="w-full px-0 py-1 sm:py-2 bg-transparent border-b border-textDark/10 dark:border-white/10 text-base sm:text-sm focus:outline-none focus:border-current transition-colors appearance-none rounded-none cursor-pointer">
-                    <option value="Custom Shopify Theme & Store Development" class="dark:bg-cardDark">Custom Shopify Theme & Store Development</option>
-                    <option value="Shopify Speed & Core Web Vitals" class="dark:bg-cardDark">Shopify Speed & Core Web Vitals</option>
-                    <option value="Payment Gateway Integration" class="dark:bg-cardDark">Payment Gateway Integration</option>
-                    <option value="Shipping & Logistics Automation" class="dark:bg-cardDark">Shipping & Logistics Automation</option>
-                    <option value="Technical SEO & Structured Schema" class="dark:bg-cardDark">Technical SEO & Structured Schema</option>
-                    <option value="Other" class="dark:bg-cardDark">Other</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="relative group">
-                <label for="form-message" class="block text-[9px] sm:text-xs font-mono font-semibold opacity-40 uppercase mb-0.5 sm:mb-1 group-focus-within:opacity-100 transition-opacity">Message *</label>
-                <textarea id="form-message" rows="1" required class="w-full px-0 py-1 sm:py-2 bg-transparent border-b border-textDark/10 dark:border-white/10 text-sm sm:text-sm focus:outline-none focus:border-current transition-colors resize-none cursor-text"></textarea>
-              </div>
-
-              <button type="submit" id="submit-btn" class="magnetic-btn w-full sm:w-auto px-8 sm:px-10 py-3 sm:py-4 rounded-full bg-textDark text-white dark:bg-white dark:text-textDark font-medium text-xs sm:text-sm uppercase tracking-wider mt-2 sm:mt-4 transition-colors shadow-lg flex items-center justify-center gap-3">
-                Send Message <span>&rarr;</span>
-              </button>
-            </form>
+              <p class="text-xs font-mono font-bold uppercase tracking-wider text-inkBlack dark:text-darkText">Operations Lead</p>
+              <span class="text-[10px] font-mono text-inkMuted dark:text-darkMuted uppercase">Apparel &amp; Fashion Vertical</span>
+            </div>
           </div>
 
         </div>
+
       </div>
     </section>
 
     <!-- ============================================== -->
-    <!-- 8. FOOTER                                      -->
+    <!-- CONTACT SECTION (Shopify Inquiry Card)         -->
     <!-- ============================================== -->
-    <footer class="py-12 border-t border-textDark/5 dark:border-white/5 transition-colors">
-      <div class="max-w-7xl mx-auto px-6 sm:px-12 flex flex-col md:flex-row justify-between items-center gap-6 text-center sm:text-left">
+    <section id="connect" class="py-20 sm:py-28 px-4 sm:px-8">
+      <div class="max-w-4xl mx-auto bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-2xl p-6 sm:p-12 paper-shadow">
         
-        <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
-          <div>
-            <p class="font-medium text-lg sm:text-xl uppercase tracking-tight">Arvind Verma</p>
-            <p class="text-xs opacity-50 font-mono mt-1">&copy; 2026. All rights reserved.</p>
-          </div>
-          <div class="flex items-center gap-3 px-4 py-2 bg-cardLight dark:bg-cardDark rounded-full border border-textDark/10 dark:border-white/10 shadow-sm mt-2 sm:mt-0 transition-colors">
-            <span class="relative flex h-2.5 w-2.5">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
-            </span>
-            <div class="flex flex-col text-left">
-              <span class="text-[9px] font-mono uppercase tracking-wider opacity-60 leading-tight">Available for Remote Roles</span>
-              <span id="local-time" class="text-[10px] font-mono font-bold leading-tight">--:-- IST</span>
-            </div>
+        <div class="text-center max-w-xl mx-auto mb-10">
+          <span class="text-xs font-mono uppercase tracking-widest text-inkMuted dark:text-darkMuted block mb-2">Start a Project</span>
+          <h2 class="text-3xl sm:text-5xl font-serif font-normal tracking-tight text-inkBlack dark:text-darkText">
+            Got an idea? <em class="italic font-normal">let's talk.</em>
+          </h2>
+          <p class="mt-3 text-xs sm:text-sm text-inkMuted dark:text-darkMuted font-mono">
+            Shopify builds, Liquid architecture, checkout optimization, or payment integrations — I'm ready to ship it.
+          </p>
+
+          <!-- Direct Quick Links -->
+          <div class="flex flex-wrap items-center justify-center gap-4 mt-5 font-mono text-xs">
+            <a href="mailto:letswork.arvind@gmail.com" class="text-shopifyBlue hover:underline flex items-center gap-1">
+              <span>letswork.arvind@gmail.com</span>
+            </a>
+            <span class="text-inkMuted">•</span>
+            <a href="https://wa.me/918874856868" target="_blank" class="text-shopifyGreen hover:underline flex items-center gap-1">
+              <span>+91 8874856868</span>
+            </a>
           </div>
         </div>
 
-        <div class="flex gap-6 sm:gap-8 text-sm font-mono opacity-80">
-          <a href="https://www.linkedin.com/in/arvind-verma-5061a3228" target="_blank" class="hover:text-brandOrange transition-colors">LinkedIn</a>
-          <a href="https://wa.me/918874856868" target="_blank" class="hover:text-brandOrange transition-colors">WhatsApp</a>
-          <a href="mailto:letswork.arvind@gmail.com" class="hover:text-brandOrange transition-colors">Email</a>
-        </div>
+        <form id="portfolio-form" onsubmit="submitViaGoogleScript(event)" class="space-y-5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="form-name" class="block text-[11px] font-mono font-medium text-inkMuted dark:text-darkMuted uppercase mb-1">Your Name *</label>
+              <input type="text" id="form-name" required placeholder="e.g. John Doe" class="w-full px-3.5 py-2.5 rounded-lg border border-borderPaper dark:border-darkBorder bg-canvasSubtle/40 dark:bg-darkCanvas text-sm focus:outline-none focus:ring-1 focus:ring-inkBlack dark:focus:ring-white transition-all" />
+            </div>
+            <div>
+              <label for="form-email" class="block text-[11px] font-mono font-medium text-inkMuted dark:text-darkMuted uppercase mb-1">Email Address *</label>
+              <input type="email" id="form-email" required placeholder="name@company.com" class="w-full px-3.5 py-2.5 rounded-lg border border-borderPaper dark:border-darkBorder bg-canvasSubtle/40 dark:bg-darkCanvas text-sm focus:outline-none focus:ring-1 focus:ring-inkBlack dark:focus:ring-white transition-all" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="form-phone" class="block text-[11px] font-mono font-medium text-inkMuted dark:text-darkMuted uppercase mb-1">Phone / WhatsApp</label>
+              <input type="tel" id="form-phone" placeholder="+1..." class="w-full px-3.5 py-2.5 rounded-lg border border-borderPaper dark:border-darkBorder bg-canvasSubtle/40 dark:bg-darkCanvas text-sm focus:outline-none focus:ring-1 focus:ring-inkBlack dark:focus:ring-white transition-all" />
+            </div>
+            <div>
+              <label for="form-company" class="block text-[11px] font-mono font-medium text-inkMuted dark:text-darkMuted uppercase mb-1">Company / Brand *</label>
+              <input type="text" id="form-company" required placeholder="Brand name" class="w-full px-3.5 py-2.5 rounded-lg border border-borderPaper dark:border-darkBorder bg-canvasSubtle/40 dark:bg-darkCanvas text-sm focus:outline-none focus:ring-1 focus:ring-inkBlack dark:focus:ring-white transition-all" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="form-website" class="block text-[11px] font-mono font-medium text-inkMuted dark:text-darkMuted uppercase mb-1">Current Store / URL</label>
+              <input type="url" id="form-website" placeholder="https://..." class="w-full px-3.5 py-2.5 rounded-lg border border-borderPaper dark:border-darkBorder bg-canvasSubtle/40 dark:bg-darkCanvas text-sm focus:outline-none focus:ring-1 focus:ring-inkBlack dark:focus:ring-white transition-all" />
+            </div>
+            <div>
+              <label for="form-service" class="block text-[11px] font-mono font-medium text-inkMuted dark:text-darkMuted uppercase mb-1">Primary Scope</label>
+              <select id="form-service" class="w-full px-3.5 py-2.5 rounded-lg border border-borderPaper dark:border-darkBorder bg-canvasSubtle/40 dark:bg-darkCanvas text-sm focus:outline-none focus:ring-1 focus:ring-inkBlack dark:focus:ring-white transition-all">
+                <option value="Custom Shopify Theme & Store Development">Custom Shopify Theme & Store Development</option>
+                <option value="Shopify Speed & Core Web Vitals">Shopify Speed & Core Web Vitals</option>
+                <option value="Payment Gateway Integration">Payment Gateway Integration</option>
+                <option value="Shipping & Logistics Automation">Shipping & Logistics Automation</option>
+                <option value="Technical SEO & Structured Schema">Technical SEO & Structured Schema</option>
+                <option value="Other">Other / Full-time Contract</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="form-message" class="block text-[11px] font-mono font-medium text-inkMuted dark:text-darkMuted uppercase mb-1">Project Details *</label>
+            <textarea id="form-message" rows="3" required placeholder="Tell me about your goals, timeline, and current bottlenecks..." class="w-full px-3.5 py-2.5 rounded-lg border border-borderPaper dark:border-darkBorder bg-canvasSubtle/40 dark:bg-darkCanvas text-sm focus:outline-none focus:ring-1 focus:ring-inkBlack dark:focus:ring-white transition-all resize-none"></textarea>
+          </div>
+
+          <button type="submit" id="submit-btn" class="w-full sm:w-auto px-8 py-3 rounded-md bg-inkBlack dark:bg-darkText text-white dark:text-inkBlack font-mono font-medium text-xs uppercase tracking-wider hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+            <span>Send Message</span>
+            <span>&rarr;</span>
+          </button>
+        </form>
+
       </div>
-    </footer>
+    </section>
 
   </main>
 
-  <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <!-- ============================================== -->
+  <!-- FOOTER                                         -->
+  <!-- ============================================== -->
+  <footer class="border-t border-borderPaper dark:border-darkBorder bg-cardWhite dark:bg-darkCard py-10 px-4 sm:px-8">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+      
+      <div>
+        <div class="flex items-center justify-center sm:justify-start gap-2">
+          <div class="w-6 h-6 rounded bg-inkBlack dark:bg-white text-white dark:text-inkBlack flex items-center justify-center font-serif text-xs font-bold">A</div>
+          <p class="font-sans font-semibold text-sm uppercase tracking-tight">Arvind Verma</p>
+        </div>
+        <p class="text-xs font-mono text-inkMuted dark:text-darkMuted mt-1">Shopify Developer &amp; E-Commerce Specialist &copy; 2026</p>
+      </div>
 
+      <!-- Timezone & Remote Badge -->
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder font-mono text-xs">
+        <span class="w-2 h-2 rounded-full bg-shopifyGreen animate-ping"></span>
+        <span class="text-inkMuted dark:text-darkMuted">Delhi, India:</span>
+        <span id="local-time" class="font-semibold text-inkBlack dark:text-darkText">--:-- IST</span>
+      </div>
+
+      <!-- Social Links -->
+      <div class="flex items-center gap-6 font-mono text-xs text-inkMuted dark:text-darkMuted">
+        <a href="https://www.linkedin.com/in/arvind-verma-5061a3228" target="_blank" class="hover:text-inkBlack dark:hover:text-white transition-colors">LinkedIn</a>
+        <a href="https://wa.me/918874856868" target="_blank" class="hover:text-inkBlack dark:hover:text-white transition-colors">WhatsApp</a>
+        <a href="mailto:letswork.arvind@gmail.com" class="hover:text-inkBlack dark:hover:text-white transition-colors">Email</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Scripts -->
   <script>
+    // Dark / Light toggle
     function toggleDarkMode() {
       document.documentElement.classList.toggle('dark');
     }
 
+    // Mobile navigation toggle
     function toggleMobileNav() {
       const menu = document.getElementById('mobile-nav-menu');
-      const line1 = document.getElementById('line-1');
-      const line2 = document.getElementById('line-2');
-      
       menu.classList.toggle('hidden');
-      if (!menu.classList.contains('hidden')) {
-        line1.classList.add('rotate-45', 'translate-y-[3px]');
-        line2.classList.add('-rotate-45', '-translate-y-[3px]');
-      } else {
-        line1.classList.remove('rotate-45', 'translate-y-[3px]');
-        line2.classList.remove('-rotate-45', '-translate-y-[3px]');
-      }
     }
 
-    function closeMobileNav() {
-      const menu = document.getElementById('mobile-nav-menu');
-      const line1 = document.getElementById('line-1');
-      const line2 = document.getElementById('line-2');
-      menu.classList.add('hidden');
-      line1.classList.remove('rotate-45', 'translate-y-[3px]');
-      line2.classList.remove('-rotate-45', '-translate-y-[3px]');
+    // Live Clock for IST
+    function updateClock() {
+      const now = new Date();
+      const options = { timeZone: 'Asia/Kolkata', hour: '2-digit', minute:'2-digit', second: '2-digit', hour12: true };
+      const timeStr = now.toLocaleTimeString('en-US', options);
+      const clockEl = document.getElementById('local-time');
+      if (clockEl) clockEl.innerText = timeStr + " IST";
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Store Catalog Category Filtering
+    function filterStores(category) {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        if(btn.dataset.category === category) {
+          btn.classList.add('bg-inkBlack', 'text-white', 'dark:bg-white', 'dark:text-inkBlack');
+          btn.classList.remove('bg-cardWhite', 'dark:bg-darkCard', 'border-borderPaper', 'dark:border-darkBorder');
+        } else {
+          btn.classList.remove('bg-inkBlack', 'text-white', 'dark:bg-white', 'dark:text-inkBlack');
+          btn.classList.add('bg-cardWhite', 'dark:bg-darkCard', 'border-borderPaper', 'dark:border-darkBorder');
+        }
+      });
+
+      document.querySelectorAll('.store-item').forEach(item => {
+        if (category === 'all' || item.classList.contains(category)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      // 1. Lenis Smooth Scroll
-      const lenis = new Lenis({
-        duration: 1.5,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        direction: 'vertical',
-        smooth: true,
-      });
-
-      lenis.on('scroll', ScrollTrigger.update);
-      gsap.ticker.add((time) => { lenis.raf(time * 1000); });
-      gsap.ticker.lagSmoothing(0);
-      gsap.registerPlugin(ScrollTrigger);
-      ScrollTrigger.config({ ignoreMobileResize: true });
-
-      // 2. Hairline Progress Bar
-      gsap.to("#progress-bar", {
-        scaleX: 1,
-        ease: "none",
-        scrollTrigger: {
-          trigger: "body",
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 0.1
-        }
-      });
-
-      // 3. Reveal Sticky Nav on Scroll Past Hero
-      ScrollTrigger.create({
-        trigger: "#services",
-        start: "top 80%",
-        onEnter: () => gsap.to("#site-header", { opacity: 1, pointerEvents: "auto", duration: 0.3 }),
-        onLeaveBack: () => {
-          gsap.to("#site-header", { opacity: 0, pointerEvents: "none", duration: 0.3 });
-          closeMobileNav();
-        }
-      });
-
-      // 4. Preloader
-      let progress = 0;
-      const counterElement = document.getElementById('loader-counter');
-      const loaderInterval = setInterval(() => {
-        progress += Math.floor(Math.random() * 15) + 5;
-        if (progress > 100) progress = 100;
-        counterElement.innerText = progress + "%";
-        if (progress === 100) {
-          clearInterval(loaderInterval);
-          gsap.to('#preloader', {
-            yPercent: -100,
-            duration: 1.2,
-            ease: "power4.inOut",
-            delay: 0.3,
-            onComplete: initHeroAnimations
-          });
-        }
-      }, 70);
-
-      function initHeroAnimations() {
-        const heroTl = gsap.timeline();
-        heroTl.to(".gsap-hero-text", { opacity: 1, y: 0, duration: 1.5, ease: "power4.out" })
-              .to(".gsap-float-1", { scale: 1, opacity: 1, duration: 1, ease: "back.out(1.5)" }, "-=1")
-              .to(".gsap-float-2", { scale: 1, opacity: 1, duration: 1, ease: "back.out(1.5)" }, "-=0.8");
-      }
-
-      // 5. Magnetic Cursor Tracking
-      if (window.matchMedia("(pointer: fine)").matches) {
-        const cursor = document.getElementById('custom-cursor');
-        let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
-        window.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
-        gsap.ticker.add(() => {
-          cursorX += (mouseX - cursorX) * 0.15; cursorY += (mouseY - cursorY) * 0.15;
-          gsap.set(cursor, { x: cursorX, y: cursorY });
-        });
-
-        document.querySelectorAll('.gsap-project-item').forEach(item => {
-          item.addEventListener('mouseenter', () => { cursor.classList.add('view-mode'); cursor.innerHTML = "VIEW"; });
-          item.addEventListener('mouseleave', () => { cursor.classList.remove('view-mode'); cursor.innerHTML = ""; });
-        });
-
-        document.querySelectorAll('.magnetic-btn').forEach(btn => {
-          btn.addEventListener('mousemove', (e) => {
-            const rect = btn.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-            gsap.to(btn, { x: x * 0.3, y: y * 0.3, duration: 0.4, ease: "power2.out" });
-          });
-          btn.addEventListener('mouseleave', () => { gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1, 0.3)" }); });
-        });
-      }
-
-      // 6. Live Clock
-      function updateTime() {
-        const now = new Date();
-        const options = { timeZone: 'Asia/Kolkata', hour: '2-digit', minute:'2-digit', second: '2-digit', hour12: true };
-        document.getElementById('local-time').innerText = now.toLocaleTimeString('en-US', options) + " IST";
-      }
-      setInterval(updateTime, 1000); updateTime();
-
-      // 7. Animations
-      gsap.to(".gsap-float-1", { y: -15, rotation: -15, duration: 3, yoyo: true, repeat: -1, ease: "sine.inOut" });
-      gsap.to(".gsap-float-2", { y: 15, rotation: 3, duration: 3.5, yoyo: true, repeat: -1, ease: "sine.inOut" });
-      gsap.from(".gsap-stat", { scrollTrigger: { trigger: ".gsap-stat", start: "top 90%" }, y: 30, opacity: 0, duration: 1, stagger: 0.1, ease: "power3.out" });
-      gsap.utils.toArray('.gsap-fade-up').forEach(el => gsap.from(el, { scrollTrigger: { trigger: el, start: "top 85%" }, y: 40, opacity: 0, duration: 1.2, ease: "power4.out" }));
-
-      // Animated Scroll Down Indicator
-      gsap.to(".scroll-arrow", {
-        y: 5,
-        repeat: -1,
-        yoyo: true,
-        duration: 0.8,
-        ease: "sine.inOut"
-      });
-
-      gsap.to(".gsap-scroll-indicator", {
-        opacity: 0,
-        y: 10,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: "body",
-          start: "top top",
-          end: "150px top",
-          scrub: true
-        }
-      });
-
-      const staggerGroups = [".gsap-service-item", ".gsap-stack-card", ".gsap-exp-item", ".gsap-project-item"];
-      staggerGroups.forEach(groupClass => {
-        gsap.from(groupClass, { scrollTrigger: { trigger: groupClass, start: "top 85%" }, y: 40, opacity: 0, duration: 1.2, stagger: 0.1, ease: "power4.out" });
-      });
-
-      gsap.from(".gsap-contact-info", { scrollTrigger: { trigger: "#connect", start: "top 85%" }, y: 30, opacity: 0, duration: 1.2, ease: "power4.out" });
-      gsap.from(".gsap-contact-form", { scrollTrigger: { trigger: "#connect", start: "top 85%" }, y: 40, opacity: 0, duration: 1.2, ease: "power4.out" });
-    });
-
-    // Form Submission
+    // Form submission via Google App Script endpoint
     async function submitViaGoogleScript(e) {
       e.preventDefault();
       const submitBtn = document.getElementById('submit-btn');
@@ -1025,52 +1226,36 @@
       };
 
       submitBtn.disabled = true;
-      submitBtn.innerHTML = "SENDING... <span>&rarr;</span>";
+      submitBtn.innerHTML = "<span>Sending...</span>";
 
       try {
         await fetch(GOOGLE_SCRIPT_URL, {
-          method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" },
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload)
         });
-        showToast("✓ Message sent securely.", false);
+        showToast("✓ Message sent securely. I will reply shortly.", false);
         document.getElementById('portfolio-form').reset();
       } catch (err) {
-        showToast("✕ Submission failed. Please email.", true);
+        showToast("✕ Submission encountered an issue. Please email directly.", true);
       } finally {
         submitBtn.disabled = false;
-        submitBtn.innerHTML = "Send Message <span>&rarr;</span>";
+        submitBtn.innerHTML = "<span>Send Message</span> <span>&rarr;</span>";
       }
     }
 
     function showToast(message, isError) {
       const toast = document.getElementById('toast');
-      document.getElementById('toast-msg').innerText = message;
-      toast.style.borderColor = isError ? 'rgba(239, 68, 68, 0.3)' : 'rgba(255, 255, 255, 0.1)';
-      gsap.to(toast, { y: 0, opacity: 1, duration: 0.6, ease: "power4.out" });
-      setTimeout(() => gsap.to(toast, { y: 150, opacity: 0, duration: 0.5, ease: "power3.in" }), 4000);
-    }
-
-    function filterStores(category) {
-      document.querySelectorAll('.filter-btn').forEach(btn => {
-        if(btn.dataset.category === category) {
-          btn.classList.add('bg-textDark', 'text-white', 'dark:bg-white', 'dark:text-textDark');
-          btn.classList.remove('bg-transparent', 'border-textDark/20', 'dark:border-white/20');
-        } else {
-          btn.classList.remove('bg-textDark', 'text-white', 'dark:bg-white', 'dark:text-textDark');
-          btn.classList.add('bg-transparent', 'border-textDark/20', 'dark:border-white/20');
-        }
-      });
-
-      document.querySelectorAll('.gsap-project-item').forEach(item => {
-        if (category === 'all' || item.classList.contains(category)) {
-          item.style.display = 'block';
-          gsap.fromTo(item, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" });
-        } else {
-          item.style.display = 'none';
-        }
-      });
-
-      setTimeout(() => ScrollTrigger.refresh(), 100);
+      const msgEl = document.getElementById('toast-msg');
+      if (!toast || !msgEl) return;
+      msgEl.innerText = message;
+      toast.classList.remove('translate-y-[150%]', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.add('translate-y-[150%]', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 4000);
     }
   </script>
 </body>
