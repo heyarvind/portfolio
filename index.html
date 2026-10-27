@@ -59,7 +59,7 @@
     }
     html.dark .dotted-canvas {
       background-color: #0e0f10;
-      background-image: radial-gradient(#262a2e 0.85px, transparent 0.85px);
+      background-image: radial-gradient(#2c3035 0.9px, transparent 0.9px);
       background-size: 20px 20px;
     }
 
@@ -68,7 +68,7 @@
       border: 1.5px dashed #c8c8be;
     }
     html.dark .border-dashed-sketch {
-      border: 1.5px dashed #3a3f45;
+      border: 1.5px dashed #424750;
     }
 
     /* Stadium capsule shaped borders */
@@ -180,43 +180,43 @@
   <main class="relative overflow-hidden">
     
     <!-- ============================================== -->
-    <!-- HERO SECTION (Shopify Academy / Learn Layout)  -->
-    <!-- Fixed: min-h-[90dvh] on both mobile & desktop  -->
+    <!-- HERO SECTION                                   -->
+    <!-- Contrast Fix: Sketches use currentColor & dark -->
     <!-- ============================================== -->
-    <section class="relative min-h-[90dvh] flex flex-col justify-center pt-16 pb-16 sm:py-24 px-4 sm:px-8 border-b border-borderPaper dark:border-darkBorder">
+    <section class="relative min-h-[90dvh] flex flex-col justify-center pt-16 pb-16 sm:py-24 px-4 sm:px-8 border-b border-borderPaper dark:border-darkBorder overflow-hidden">
       
       <!-- Hand-drawn vector sketch decoration: Pyramid + Circle (Top Left) -->
-      <div class="hidden lg:block absolute top-12 left-12 w-44 pointer-events-none select-none opacity-85 float-handdrawn">
+      <div class="block absolute top-4 left-3 sm:top-10 sm:left-10 lg:top-12 lg:left-12 w-20 sm:w-32 lg:w-44 pointer-events-none select-none text-inkBlack dark:text-darkText opacity-80 dark:opacity-90 float-handdrawn z-0">
         <svg viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
           <!-- Blue circle accent -->
           <circle cx="110" cy="45" r="32" fill="#2c6ecb" opacity="0.9" />
           <!-- Hatched pattern box -->
-          <rect x="5" y="20" width="60" height="70" fill="none" stroke="#222" stroke-width="1.2" stroke-dasharray="2 3" />
+          <rect x="5" y="20" width="60" height="70" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2 3" class="opacity-60" />
           <!-- Hand drawn wireframe pyramid -->
-          <polygon points="50,20 20,80 80,80" fill="none" stroke="#111" stroke-width="2" stroke-linejoin="round" />
-          <line x1="50" y1="20" x2="55" y2="80" stroke="#111" stroke-width="1.5" stroke-dasharray="3 2" />
+          <polygon points="50,20 20,80 80,80" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+          <line x1="50" y1="20" x2="55" y2="80" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 2" />
           <!-- Radiating sketchy sparks -->
-          <line x1="15" y1="35" x2="5" y2="30" stroke="#111" stroke-width="1.5" stroke-linecap="round" />
-          <line x1="20" y1="20" x2="15" y2="10" stroke="#111" stroke-width="1.5" stroke-linecap="round" />
-          <line x1="38" y1="12" x2="40" y2="2" stroke="#111" stroke-width="1.5" stroke-linecap="round" />
+          <line x1="15" y1="35" x2="5" y2="30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          <line x1="20" y1="20" x2="15" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          <line x1="38" y1="12" x2="40" y2="2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
         </svg>
       </div>
 
       <!-- Hand-drawn vector arrow pointing down to headline -->
-      <div class="hidden md:block absolute top-12 left-1/2 -translate-x-12 w-20 pointer-events-none select-none opacity-70">
+      <div class="block absolute top-6 left-1/2 -translate-x-1/2 sm:top-10 lg:top-12 sm:-translate-x-12 w-14 sm:w-20 pointer-events-none select-none text-inkBlack dark:text-darkText opacity-60 dark:opacity-75 z-0">
         <svg viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
-          <path d="M10 15 C 35 10, 55 25, 45 45" stroke="#222" stroke-width="2" stroke-linecap="round" fill="none" />
-          <path d="M38 40 L 45 46 L 50 38" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+          <path d="M10 15 C 35 10, 55 25, 45 45" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" />
+          <path d="M38 40 L 45 46 L 50 38" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
         </svg>
       </div>
 
       <!-- Hand-drawn sticker / tag (Top Right - Welcome Card) -->
-      <div class="hidden sm:block absolute top-12 right-8 lg:right-16 rotate-2 z-10 pointer-events-none select-none">
-        <div class="bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-lg p-3 paper-shadow w-44 font-mono text-center">
-          <div class="w-full h-1 bg-accentYellow rounded-full mb-2"></div>
-          <span class="text-[9px] uppercase tracking-widest text-inkMuted dark:text-darkMuted block">Active Specialist</span>
-          <p class="text-xs font-bold text-inkBlack dark:text-darkText mt-0.5">Arvind Verma</p>
-          <span class="text-[10px] text-shopifyBlue font-medium mt-1 inline-flex items-center gap-1">Available Now &rarr;</span>
+      <div class="block absolute top-4 right-3 sm:top-10 sm:right-8 lg:top-12 lg:right-16 rotate-2 z-10 pointer-events-none select-none scale-[0.78] sm:scale-100 origin-top-right">
+        <div class="bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-lg p-2.5 sm:p-3 paper-shadow w-36 sm:w-44 font-mono text-center">
+          <div class="w-full h-1 bg-accentYellow rounded-full mb-1.5 sm:mb-2"></div>
+          <span class="text-[8px] sm:text-[9px] uppercase tracking-widest text-inkMuted dark:text-darkMuted block">Active Specialist</span>
+          <p class="text-[11px] sm:text-xs font-bold text-inkBlack dark:text-darkText mt-0.5">Arvind Verma</p>
+          <span class="text-[9px] sm:text-[10px] text-shopifyBlue font-medium mt-0.5 sm:mt-1 inline-flex items-center gap-1">Available Now &rarr;</span>
         </div>
       </div>
 
@@ -253,29 +253,30 @@
 
       </div>
 
-      <!-- Lower Hand-drawn Sketches (Trophy on bottom left, Grid Jar on bottom right) -->
-      <div class="hidden lg:block absolute bottom-8 left-16 w-24 pointer-events-none select-none opacity-80">
+      <!-- Lower Hand-drawn Sketches: Trophy on bottom left -->
+      <div class="block absolute bottom-3 left-3 sm:bottom-6 sm:left-10 lg:bottom-8 lg:left-16 w-14 sm:w-20 lg:w-24 pointer-events-none select-none text-inkBlack dark:text-darkText opacity-75 dark:opacity-85 z-0">
         <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
-          <ellipse cx="50" cy="50" rx="22" ry="30" stroke="#222" stroke-width="2" fill="none" />
-          <path d="M28 40 C10 40, 10 65, 28 65" stroke="#222" stroke-width="2" fill="none" />
-          <path d="M72 40 C90 40, 90 65, 72 65" stroke="#222" stroke-width="2" fill="none" />
-          <rect x="35" y="85" width="30" height="20" stroke="#222" stroke-width="2" fill="none" />
-          <line x1="38" y1="95" x2="62" y2="95" stroke="#222" stroke-width="1.5" />
-          <path d="M30 110 C 30 110, 50 115, 70 110" stroke="#222" stroke-width="3" stroke-linecap="round" />
+          <ellipse cx="50" cy="50" rx="22" ry="30" stroke="currentColor" stroke-width="2" fill="none" />
+          <path d="M28 40 C10 40, 10 65, 28 65" stroke="currentColor" stroke-width="2" fill="none" />
+          <path d="M72 40 C90 40, 90 65, 72 65" stroke="currentColor" stroke-width="2" fill="none" />
+          <rect x="35" y="85" width="30" height="20" stroke="currentColor" stroke-width="2" fill="none" />
+          <line x1="38" y1="95" x2="62" y2="95" stroke="currentColor" stroke-width="1.5" />
+          <path d="M30 110 C 30 110, 50 115, 70 110" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
         </svg>
       </div>
 
-      <div class="hidden lg:block absolute bottom-8 right-16 w-36 pointer-events-none select-none opacity-85">
+      <!-- Lower Hand-drawn Sketches: Grid Jar on bottom right -->
+      <div class="block absolute bottom-3 right-3 sm:bottom-6 sm:right-10 lg:bottom-8 lg:right-16 w-20 sm:w-28 lg:w-36 pointer-events-none select-none opacity-85 dark:opacity-90 z-0">
         <svg viewBox="0 0 140 130" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
-          <polygon points="5,5 110,0 120,110 15,120" fill="#78c288" opacity="0.6" stroke="#222" stroke-width="1.5" />
-          <line x1="5" y1="35" x2="115" y2="30" stroke="#2d6e3e" stroke-width="1" />
-          <line x1="10" y1="65" x2="118" y2="60" stroke="#2d6e3e" stroke-width="1" />
-          <line x1="12" y1="95" x2="119" y2="90" stroke="#2d6e3e" stroke-width="1" />
-          <line x1="40" y1="5" x2="45" y2="115" stroke="#2d6e3e" stroke-width="1" />
-          <line x1="75" y1="2" x2="80" y2="112" stroke="#2d6e3e" stroke-width="1" />
-          <rect x="80" y="30" width="45" height="65" rx="10" stroke="#222" stroke-width="2" fill="#ffffff" />
-          <ellipse cx="102" cy="28" rx="18" ry="4" stroke="#222" stroke-width="2" fill="#fff" />
-          <path d="M92 60 Q 98 52 104 60 T 112 60 Q 115 72 102 75 Q 90 72 92 60" stroke="#111" stroke-width="1.5" fill="none" />
+          <polygon points="5,5 110,0 120,110 15,120" fill="#78c288" class="dark:fill-[#1e4626]" opacity="0.65" stroke="currentColor" stroke-width="1.5" />
+          <line x1="5" y1="35" x2="115" y2="30" stroke="#2d6e3e" class="dark:stroke-[#4ade80]" stroke-width="1" />
+          <line x1="10" y1="65" x2="118" y2="60" stroke="#2d6e3e" class="dark:stroke-[#4ade80]" stroke-width="1" />
+          <line x1="12" y1="95" x2="119" y2="90" stroke="#2d6e3e" class="dark:stroke-[#4ade80]" stroke-width="1" />
+          <line x1="40" y1="5" x2="45" y2="115" stroke="#2d6e3e" class="dark:stroke-[#4ade80]" stroke-width="1" />
+          <line x1="75" y1="2" x2="80" y2="112" stroke="#2d6e3e" class="dark:stroke-[#4ade80]" stroke-width="1" />
+          <rect x="80" y="30" width="45" height="65" rx="10" stroke="currentColor" stroke-width="2" class="fill-white dark:fill-[#1c1e22] text-inkBlack dark:text-darkText" />
+          <ellipse cx="102" cy="28" rx="18" ry="4" stroke="currentColor" stroke-width="2" class="fill-white dark:fill-[#1c1e22] text-inkBlack dark:text-darkText" />
+          <path d="M92 60 Q 98 52 104 60 T 112 60 Q 115 72 102 75 Q 90 72 92 60" stroke="currentColor" stroke-width="1.5" fill="none" class="text-inkBlack dark:text-darkText" />
         </svg>
       </div>
 
@@ -283,7 +284,6 @@
 
     <!-- ============================================== -->
     <!-- METRICS & PROVEN RECORD BAR                    -->
-    <!-- Fixed: Clean mobile 2x2 grid without odd lines -->
     <!-- ============================================== -->
     <section class="border-b border-borderPaper dark:border-darkBorder bg-cardWhite dark:bg-darkCard py-8 px-4 sm:px-8">
       <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 font-mono divide-x divide-y md:divide-y-0 divide-borderPaper dark:divide-darkBorder -mt-[1px] border border-borderPaper dark:border-darkBorder md:border-0 rounded-xl md:rounded-none overflow-hidden">
@@ -313,7 +313,7 @@
 
     <!-- ============================================== -->
     <!-- SERVICES SECTION (Shopify Academy Course Grid) -->
-    <!-- Fixed: Real technical engineering badges       -->
+    <!-- Contrast Fix: Thumbnails use currentColor      -->
     <!-- ============================================== -->
     <section id="services" class="py-20 sm:py-28 px-4 sm:px-8 border-b border-borderPaper dark:border-darkBorder">
       <div class="max-w-7xl mx-auto">
@@ -342,21 +342,19 @@
             <!-- Card 01: Themes & Liquid -->
             <div class="bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-xl p-5 flex flex-col justify-between paper-shadow-hover">
               <div>
-                <!-- Top pill badge with relevant badge -->
                 <div class="flex items-center justify-between mb-4">
                   <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder font-semibold text-shopifyGreen">
                     <span class="w-1.5 h-1.5 rounded-full bg-shopifyGreen"></span>
                     <span>Liquid Architecture</span>
                   </span>
-                  <span class="w-4 h-4 rounded-full border border-borderPaper dark:border-darkBorder flex items-center justify-center text-[9px] font-mono text-inkMuted">✓</span>
+                  <span class="w-4 h-4 rounded-full border border-borderPaper dark:border-darkBorder flex items-center justify-center text-[9px] font-mono text-inkMuted dark:text-darkMuted">✓</span>
                 </div>
 
-                <!-- Sketch thumbnail illustration container -->
-                <div class="w-full h-28 bg-canvasSubtle dark:bg-darkCanvas rounded-lg mb-4 flex items-center justify-center border border-borderPaper/50 dark:border-darkBorder/50">
+                <div class="w-full h-28 bg-canvasSubtle dark:bg-darkCanvas rounded-lg mb-4 flex items-center justify-center border border-borderPaper/50 dark:border-darkBorder/50 text-inkBlack dark:text-darkText">
                   <svg class="w-14 h-14 opacity-80" viewBox="0 0 80 80" fill="none">
-                    <rect x="15" y="15" width="50" height="40" rx="3" stroke="#222" stroke-width="2" stroke-dasharray="2 2"/>
-                    <line x1="25" y1="28" x2="55" y2="28" stroke="#222" stroke-width="2"/>
-                    <line x1="25" y1="38" x2="45" y2="38" stroke="#222" stroke-width="1.5"/>
+                    <rect x="15" y="15" width="50" height="40" rx="3" stroke="currentColor" stroke-width="2" stroke-dasharray="2 2"/>
+                    <line x1="25" y1="28" x2="55" y2="28" stroke="currentColor" stroke-width="2"/>
+                    <line x1="25" y1="38" x2="45" y2="38" stroke="currentColor" stroke-width="1.5"/>
                     <circle cx="58" cy="45" r="4" fill="#008060"/>
                   </svg>
                 </div>
@@ -381,13 +379,13 @@
                     <span class="w-1.5 h-1.5 rounded-full bg-shopifyBlue"></span>
                     <span>Checkout Engine</span>
                   </span>
-                  <span class="w-4 h-4 rounded-full border border-borderPaper dark:border-darkBorder flex items-center justify-center text-[9px] font-mono text-inkMuted">✓</span>
+                  <span class="w-4 h-4 rounded-full border border-borderPaper dark:border-darkBorder flex items-center justify-center text-[9px] font-mono text-inkMuted dark:text-darkMuted">✓</span>
                 </div>
 
-                <div class="w-full h-28 bg-canvasSubtle dark:bg-darkCanvas rounded-lg mb-4 flex items-center justify-center border border-borderPaper/50 dark:border-darkBorder/50">
+                <div class="w-full h-28 bg-canvasSubtle dark:bg-darkCanvas rounded-lg mb-4 flex items-center justify-center border border-borderPaper/50 dark:border-darkBorder/50 text-inkBlack dark:text-darkText">
                   <svg class="w-14 h-14 opacity-80" viewBox="0 0 80 80" fill="none">
-                    <rect x="18" y="24" width="44" height="28" rx="4" stroke="#222" stroke-width="2" fill="none"/>
-                    <line x1="18" y1="34" x2="62" y2="34" stroke="#222" stroke-width="2"/>
+                    <rect x="18" y="24" width="44" height="28" rx="4" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <line x1="18" y1="34" x2="62" y2="34" stroke="currentColor" stroke-width="2"/>
                     <rect x="24" y="42" width="10" height="4" fill="#2c6ecb"/>
                   </svg>
                 </div>
@@ -412,14 +410,14 @@
                     <span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
                     <span>Logistics Sync</span>
                   </span>
-                  <span class="w-4 h-4 rounded-full border border-borderPaper dark:border-darkBorder flex items-center justify-center text-[9px] font-mono text-inkMuted">✓</span>
+                  <span class="w-4 h-4 rounded-full border border-borderPaper dark:border-darkBorder flex items-center justify-center text-[9px] font-mono text-inkMuted dark:text-darkMuted">✓</span>
                 </div>
 
-                <div class="w-full h-28 bg-canvasSubtle dark:bg-darkCanvas rounded-lg mb-4 flex items-center justify-center border border-borderPaper/50 dark:border-darkBorder/50">
+                <div class="w-full h-28 bg-canvasSubtle dark:bg-darkCanvas rounded-lg mb-4 flex items-center justify-center border border-borderPaper/50 dark:border-darkBorder/50 text-inkBlack dark:text-darkText">
                   <svg class="w-14 h-14 opacity-80" viewBox="0 0 80 80" fill="none">
-                    <circle cx="32" cy="56" r="4" stroke="#222" stroke-width="2"/>
-                    <circle cx="54" cy="56" r="4" stroke="#222" stroke-width="2"/>
-                    <path d="M18 24h8l6 24h24l5-16H29" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="32" cy="56" r="4" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="54" cy="56" r="4" stroke="currentColor" stroke-width="2"/>
+                    <path d="M18 24h8l6 24h24l5-16H29" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </div>
 
@@ -443,12 +441,12 @@
                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
                     <span>Speed / CWV</span>
                   </span>
-                  <span class="w-4 h-4 rounded-full border border-borderPaper dark:border-darkBorder flex items-center justify-center text-[9px] font-mono text-inkMuted">✓</span>
+                  <span class="w-4 h-4 rounded-full border border-borderPaper dark:border-darkBorder flex items-center justify-center text-[9px] font-mono text-inkMuted dark:text-darkMuted">✓</span>
                 </div>
 
-                <div class="w-full h-28 bg-canvasSubtle dark:bg-darkCanvas rounded-lg mb-4 flex items-center justify-center border border-borderPaper/50 dark:border-darkBorder/50">
+                <div class="w-full h-28 bg-canvasSubtle dark:bg-darkCanvas rounded-lg mb-4 flex items-center justify-center border border-borderPaper/50 dark:border-darkBorder/50 text-inkBlack dark:text-darkText">
                   <svg class="w-14 h-14 opacity-80" viewBox="0 0 80 80" fill="none">
-                    <path d="M40 18 L46 32 L60 34 L50 44 L53 58 L40 50 L27 58 L30 44 L20 34 L34 32 Z" stroke="#222" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M40 18 L46 32 L60 34 L50 44 L53 58 L40 50 L27 58 L30 44 L20 34 L34 32 Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
                   </svg>
                 </div>
 
@@ -472,13 +470,13 @@
                     <span class="w-1.5 h-1.5 rounded-full bg-indigo-600"></span>
                     <span>Structured Data</span>
                   </span>
-                  <span class="w-4 h-4 rounded-full border border-borderPaper dark:border-darkBorder flex items-center justify-center text-[9px] font-mono text-inkMuted">✓</span>
+                  <span class="w-4 h-4 rounded-full border border-borderPaper dark:border-darkBorder flex items-center justify-center text-[9px] font-mono text-inkMuted dark:text-darkMuted">✓</span>
                 </div>
 
-                <div class="w-full h-28 bg-canvasSubtle dark:bg-darkCanvas rounded-lg mb-4 flex items-center justify-center border border-borderPaper/50 dark:border-darkBorder/50">
+                <div class="w-full h-28 bg-canvasSubtle dark:bg-darkCanvas rounded-lg mb-4 flex items-center justify-center border border-borderPaper/50 dark:border-darkBorder/50 text-inkBlack dark:text-darkText">
                   <svg class="w-14 h-14 opacity-80" viewBox="0 0 80 80" fill="none">
-                    <path d="M20 50 L35 35 L45 45 L60 25" stroke="#222" stroke-width="2.5" stroke-linecap="round"/>
-                    <polyline points="50,25 60,25 60,35" stroke="#222" stroke-width="2.5" stroke-linecap="round"/>
+                    <path d="M20 50 L35 35 L45 45 L60 25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                    <polyline points="50,25 60,25 60,35" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
                   </svg>
                 </div>
 
@@ -502,14 +500,14 @@
                     <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span>
                     <span>API Middleware</span>
                   </span>
-                  <span class="w-4 h-4 rounded-full border border-borderPaper dark:border-darkBorder flex items-center justify-center text-[9px] font-mono text-inkMuted">✓</span>
+                  <span class="w-4 h-4 rounded-full border border-borderPaper dark:border-darkBorder flex items-center justify-center text-[9px] font-mono text-inkMuted dark:text-darkMuted">✓</span>
                 </div>
 
-                <div class="w-full h-28 bg-canvasSubtle dark:bg-darkCanvas rounded-lg mb-4 flex items-center justify-center border border-borderPaper/50 dark:border-darkBorder/50">
+                <div class="w-full h-28 bg-canvasSubtle dark:bg-darkCanvas rounded-lg mb-4 flex items-center justify-center border border-borderPaper/50 dark:border-darkBorder/50 text-inkBlack dark:text-darkText">
                   <svg class="w-14 h-14 opacity-80" viewBox="0 0 80 80" fill="none">
-                    <rect x="20" y="25" width="16" height="16" rx="2" stroke="#222" stroke-width="2"/>
-                    <rect x="44" y="39" width="16" height="16" rx="2" stroke="#222" stroke-width="2"/>
-                    <path d="M36 33 H44 V47" stroke="#222" stroke-width="2" stroke-dasharray="2 2"/>
+                    <rect x="20" y="25" width="16" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+                    <rect x="44" y="39" width="16" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+                    <path d="M36 33 H44 V47" stroke="currentColor" stroke-width="2" stroke-dasharray="2 2"/>
                   </svg>
                 </div>
 
@@ -534,7 +532,6 @@
 
     <!-- ============================================== -->
     <!-- THE STACK: Three layers. One developer.        -->
-    <!-- Reference Image 4: Capsule Track Cards         -->
     <!-- ============================================== -->
     <section id="stack" class="py-20 sm:py-28 px-4 sm:px-8 border-b border-borderPaper dark:border-darkBorder bg-canvasSubtle/40 dark:bg-darkCard/30">
       <div class="max-w-7xl mx-auto">
@@ -559,7 +556,6 @@
                 <span class="px-2 py-0.5 rounded text-[9px] font-mono bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder">LIGHTWEIGHT</span>
               </div>
 
-              <!-- Capsule stadium art container (reference image 4 style) -->
               <div class="w-full h-32 rounded-[36px] bg-gradient-to-r from-blue-900 via-indigo-700 to-emerald-600 mb-6 flex items-center justify-center overflow-hidden relative shadow-inner">
                 <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:8px_8px]"></div>
                 <span class="text-white font-mono text-xs uppercase tracking-widest font-semibold z-10">UI / Core Interactions</span>
@@ -587,7 +583,6 @@
                 <span class="px-2 py-0.5 rounded text-[9px] font-mono bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder">SHOPIFY 2.0</span>
               </div>
 
-              <!-- Capsule stadium art container -->
               <div class="w-full h-32 rounded-[36px] bg-gradient-to-r from-emerald-900 via-teal-700 to-lime-600 mb-6 flex items-center justify-center overflow-hidden relative shadow-inner">
                 <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:8px_8px]"></div>
                 <span class="text-white font-mono text-xs uppercase tracking-widest font-semibold z-10">Liquid Section Engine</span>
@@ -615,7 +610,6 @@
                 <span class="px-2 py-0.5 rounded text-[9px] font-mono bg-canvasSubtle dark:bg-darkCanvas border border-borderPaper dark:border-darkBorder">INTEGRATIONS</span>
               </div>
 
-              <!-- Capsule stadium art container -->
               <div class="w-full h-32 rounded-[36px] bg-gradient-to-r from-amber-700 via-orange-600 to-rose-700 mb-6 flex items-center justify-center overflow-hidden relative shadow-inner">
                 <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:8px_8px]"></div>
                 <span class="text-white font-mono text-xs uppercase tracking-widest font-semibold z-10">Gateways &amp; APIs</span>
@@ -798,7 +792,6 @@
 
     <!-- ============================================== -->
     <!-- SELECTED WORK (Live Stores Catalog)            -->
-    <!-- Reference Image 4: Horizontal Catalog Cards    -->
     <!-- ============================================== -->
     <section id="works" class="py-20 sm:py-28 px-4 sm:px-8 border-b border-borderPaper dark:border-darkBorder">
       <div class="max-w-7xl mx-auto">
@@ -987,7 +980,6 @@
 
     <!-- ============================================== -->
     <!-- TESTIMONIALS & CREDENTIALS                     -->
-    <!-- Reference Image 3: Capsule Dashed Border Cards -->
     <!-- ============================================== -->
     <section id="reviews" class="py-20 sm:py-28 px-4 sm:px-8 border-b border-borderPaper dark:border-darkBorder bg-canvasSubtle/30 dark:bg-darkCard/20">
       <div class="max-w-5xl mx-auto text-center">
@@ -1005,7 +997,6 @@
           </span>
         </div>
 
-        <!-- Dashed pill testimonial cards (Exact match to reference image 3) -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
           
           <!-- Testimonial 1 -->
@@ -1049,7 +1040,6 @@
 
     <!-- ============================================== -->
     <!-- CONTACT SECTION (Shopify Inquiry Card)         -->
-    <!-- Fixed: Custom Dropdown Menu (No native select) -->
     <!-- ============================================== -->
     <section id="connect" class="py-20 sm:py-28 px-4 sm:px-8">
       <div class="max-w-4xl mx-auto bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-2xl p-6 sm:p-12 paper-shadow">
@@ -1108,10 +1098,8 @@
             <div class="relative">
               <label class="block text-[11px] font-mono font-medium text-inkMuted dark:text-darkMuted uppercase mb-1">Primary Scope</label>
               
-              <!-- Hidden form input to preserve exact script payload -->
               <input type="hidden" id="form-service" name="service" value="Custom Shopify Theme & Store Development" />
 
-              <!-- Custom Trigger Button -->
               <button type="button" id="custom-select-trigger" onclick="toggleCustomDropdown()" aria-haspopup="listbox" aria-expanded="false" class="w-full px-3.5 py-2.5 rounded-lg border border-borderPaper dark:border-darkBorder bg-canvasSubtle/40 dark:bg-darkCanvas text-sm text-left flex items-center justify-between text-inkBlack dark:text-darkText hover:border-inkBlack/30 dark:hover:border-white/30 transition-all focus:outline-none focus:ring-1 focus:ring-inkBlack dark:focus:ring-white">
                 <span id="custom-select-label" class="truncate">Custom Shopify Theme & Store Development</span>
                 <svg id="custom-select-chevron" class="w-4 h-4 ml-2 text-inkMuted dark:text-darkMuted transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1119,7 +1107,6 @@
                 </svg>
               </button>
 
-              <!-- Custom Animated Menu List -->
               <div id="custom-select-options" class="hidden absolute left-0 right-0 top-full mt-1.5 z-50 bg-cardWhite dark:bg-darkCard border border-borderPaper dark:border-darkBorder rounded-xl shadow-xl overflow-hidden py-1.5 font-sans text-xs sm:text-sm">
                 
                 <div class="custom-option px-3.5 py-2.5 cursor-pointer flex items-center justify-between hover:bg-canvasSubtle dark:hover:bg-neutral-800/80 transition-colors text-inkBlack dark:text-darkText" data-value="Custom Shopify Theme & Store Development" onclick="selectCustomOption(this)">
